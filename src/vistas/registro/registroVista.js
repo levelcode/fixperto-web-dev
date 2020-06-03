@@ -12,7 +12,17 @@ class Registro extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div>HOLA AMBAR JEJEJE</div>
+				<div className="container">
+					<form className="w3-container">
+
+						<label>First Name</label>
+						<input className="w3-input" type="text"/>
+
+						<label>Last Name</label>
+						<input className="w3-input" type="text"/>
+
+					</form>
+				</div>
 			</React.Fragment >
 		);
 	}

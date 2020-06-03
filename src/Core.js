@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import "./index.css";
+import "./style/index.css";
 
 const Profile = () => <div>You're on the Profile Tab</div>;
 const Comments = () => <div>You're on the Comments Tab</div>;
