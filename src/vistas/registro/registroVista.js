@@ -21,6 +21,8 @@ class Registro extends React.Component {
 						<label>Last Name</label>
 						<input className="w3-input" type="text"/>
 
+						<img src="logo.png" className="w3-round" alt="Norway"/>
+
 					</form>
 				</div>
 			</React.Fragment >
