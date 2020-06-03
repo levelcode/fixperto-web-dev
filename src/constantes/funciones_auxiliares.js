@@ -8,4 +8,8 @@ const convertDate = (inputFormat) => {
 }
 const validateEmail = email => { let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; return reg.test(email.trim()); };
 
-export { redondeo, convertDate, validateEmail } 
+const validateName = name => { let reg = /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/; return reg.test(name); }
+
+const validatePhone = phone => { let reg = /^[0-9]{7,10}$/; return reg.test(phone); };
+
+export { redondeo, convertDate, validateEmail, validateName, validatePhone  } 
