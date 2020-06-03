@@ -18,6 +18,12 @@ class Registro extends React.Component {
 						<p>Eres muy importante para nosotros, regálanos tus datosde contacto.</p>
 						<form class="w3-container">
 
+							<div className="imgAvatar"></div>
+							<div className="iconsAvatar">
+								<div>Ca</div>
+								<div>Ad</div>
+							</div>
+
 							<label>Nombre y apellido</label>
 							<input class="w3-input" type="text"/>
 

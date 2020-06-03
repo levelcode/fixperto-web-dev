@@ -19,6 +19,32 @@
   padding-top: 30px;
 }
 
+.formRegister .imgAvatar{
+  position: relative;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  border: dotted  #676767;
+}
+
+.formRegister .iconsAvatar{
+  position: relative;
+  top: 5px;
+  width: 8%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom:  20px;
+}
+
+.formRegister .iconsAvatar > div{
+  position: relative;
+  border:  solid 2px #43AECC;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
 .formRegister h1{
   text-align: center;
   color: #273861;
