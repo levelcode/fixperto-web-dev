@@ -14,3 +14,43 @@
   width: 80%;
   margin: auto;
 }
+
+.formRegister{
+  padding-top: 30px;
+}
+
+.formRegister h1{
+  text-align: center;
+  color: #273861;
+  font-size: 2rem;
+}
+
+.formRegister p{
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.formRegister form input{
+  margin-bottom: 25px;
+}
+
+.formRegister label{
+  color: #676767;
+}
+
+.formRegister .labelCheck{
+  margin-left: 10px;
+}
+
+.formRegister .labelCheck a{
+  color: #43AECC;
+  font-weight: bold;
+}
+
+.btn{
+  background-color: #43AECC;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 5px;
+}

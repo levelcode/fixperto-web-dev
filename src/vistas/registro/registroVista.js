@@ -13,17 +13,34 @@ class Registro extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="container">
-					<form className="w3-container">
+					<div className="formRegister">
+						<h1 className="titleRegister">Ingresa tus datos</h1>
+						<p>Eres muy importante para nosotros, regálanos tus datosde contacto.</p>
+						<form class="w3-container">
 
-						<label>First Name</label>
-						<input className="w3-input" type="text"/>
+							<label>Nombre y apellido</label>
+							<input class="w3-input" type="text"/>
 
-						<label>Last Name</label>
-						<input className="w3-input" type="text"/>
+							<label>Correo</label>
+							<input class="w3-input" type="text"/>
 
-						<img src="logo.png" className="w3-round" alt="Norway"/>
+							<label>Teléfono</label>
+							<input class="w3-input" type="text"/>
 
-					</form>
+							<label>Contraseña</label>
+							<input class="w3-input" type="text"/>
+
+							<label>Confirmar contraseña</label>
+							<input class="w3-input" type="text"/>
+
+							<input class="w3-check" type="checkbox"/>
+							<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones</a> </label>
+
+							<p><button class="w3-button btn">Continuar</button></p>
+
+						</form>
+					</div>
+					
 				</div>
 			</React.Fragment >
 		);
