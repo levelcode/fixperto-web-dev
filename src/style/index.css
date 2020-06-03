@@ -30,11 +30,11 @@
 .formRegister .iconsAvatar{
   position: relative;
   top: 5px;
-  width: 8%;
   margin: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom:  20px;
+  left: -5px;
 }
 
 .formRegister .iconsAvatar > div{
@@ -43,6 +43,8 @@
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
+  
 }
 
 
