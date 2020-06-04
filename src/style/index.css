@@ -15,7 +15,7 @@
   margin: auto;
 }
 
-.formRegister{
+.formRegister, .beneficios{
   padding-top: 30px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 
-.formRegister h1{
+h1.titleRegister{
   text-align: center;
   color: #273861;
   font-size: 2rem;
@@ -82,4 +82,8 @@
   padding-left: 40px;
   padding-right: 40px;
   border-radius: 5px;
+}
+
+.beneficios .text_ben p{
+  color: #676767;
 }

@@ -57,12 +57,6 @@ class Registro extends React.Component {
 						</div>
 						<form className="w3-container">
 
-							<div className="imgAvatar">
-							</div>
-							<div className="iconsAvatar">
-								<div>Ca</div>
-								<div>Ad</div>
-							</div>
 							<label>Nombre y apellido*</label>
 							<input className="w3-input w3-border w3-round-large" type="text" value={name}
 								onChange={(e) => this.setState({ name: e.target.value })} />
