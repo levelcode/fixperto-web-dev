@@ -16,10 +16,10 @@ class CodigoSms extends React.Component {
 						<div className="w3-row">
 
                             <div className="w3-row cont_cod">
-                                <input type="number" className="w3-round-large" />
-                                <input type="number" className="w3-round-large" />
-                                <input type="number" className="w3-round-large" />
-                                <input type="number" className="w3-round-large" />
+                                <input type="number" className="w3-round-large" min={0}  max={9} maxLength={1}/>
+                                <input type="number" className="w3-round-large" min={0} max={9} maxLength={1}/>
+                                <input type="number" className="w3-round-large" min={0} max={9} maxLength={1}/>
+                                <input type="number" className="w3-round-large" min={0} max={9} maxLength={1}/>
                             </div>
 
 							<div className="w3-row">

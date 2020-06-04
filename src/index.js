@@ -17,9 +17,9 @@ const routes = (
 			<Route path="/registro" component={Registro} />
 			<Route path="/beneficios" component={Beneficios} />
 			<Route path="/codigosms" component={CodigoSms} />
-			<Redirect from="/" to="/ingreso" />
 			<Route path="/perfil" component={Perfil} />
-			<Redirect from="/" to="/perfil" />
+			<Redirect from="/" to="/ingreso" />
+			
 		</Switch>
 	</BrowserRouter>
 );
