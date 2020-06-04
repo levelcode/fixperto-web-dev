@@ -1,5 +1,6 @@
 import React from 'react';
 import Alerta from "../../componentes/alertaVista";
+import FileUpload from "../../componentes/fileUpload";
 import { validateEmail, validateName, validatePhone, fechaAutorizada } from "../../constantes/funciones_auxiliares";
 
 class Registro extends React.Component {
@@ -51,14 +52,17 @@ class Registro extends React.Component {
 					<div className="formRegister">
 						<h1 className="titleRegister">Ingresa tus datos</h1>
 						<p>Eres muy importante para nosotros, regálanos tus datos de contacto.</p>
+						<div className="w3-center">
+							<FileUpload onChange={(photo) => { this.setState({ photo }) }} />
+						</div>
 						<form className="w3-container">
 
-							<div className="imgAvatar"></div>
+							<div className="imgAvatar">
+							</div>
 							<div className="iconsAvatar">
 								<div>Ca</div>
 								<div>Ad</div>
 							</div>
-
 							<label>Nombre y apellido*</label>
 							<input className="w3-input w3-border w3-round-large" type="text" value={name}
 								onChange={(e) => this.setState({ name: e.target.value })} />
