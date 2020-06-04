@@ -7,12 +7,13 @@ class Beneficios extends React.Component {
 
 				<div className="container">
 					<div className="beneficios">
+                        <h1 className="titleRegister">Beneficios</h1>
 						<hr></hr>
 						<div className="w3-row">
 							<div className="w3-col s12 ">
 								<div className="w3-row">
 									<div className="w3-col s12 m4 l6">
-										<p>Hola</p>
+										<img src="./assets/beneficio1.png" className="w3-round" alt="Norway" />
 									</div>
 									<div className="w3-col s12 m8 l6 text_ben">
 										<p>Cotizaciones gratis e ilimitadas.</p>
@@ -27,7 +28,7 @@ class Beneficios extends React.Component {
 							<div className="w3-col s12 ">
 								<div className="w3-row">
 									<div className="w3-col s12 m4 l6 ">
-										<img src="./assets/beneficio1.png" className="w3-round" alt="Norway" />
+										<img src="./assets/beneficio2.png" className="w3-round" alt="Norway" />
 									</div>
 									<div className="w3-col s12 m8 l6 text_ben">
 										<p>Sistema de valoración (Reviews) para la mejor elección.</p>
@@ -40,7 +41,7 @@ class Beneficios extends React.Component {
 							<div className="w3-col s12">
 								<div className="w3-row">
 									<div className="w3-col s12 m4 l6 ">
-										<p>Hola</p>
+										<img src="./assets/beneficio3.png" className="w3-round" alt="Norway" />
 									</div>
 									<div className="w3-col s12 m8  l6 text_ben">
 										<p>Cuenta personalizada, control e historial de tus servicios.</p>
@@ -50,7 +51,7 @@ class Beneficios extends React.Component {
 								<hr></hr>
 							</div>
 							<div className="w3-row">
-								<p><button className="w3-button btn"
+								<p className="p_btn"><button className="w3-button btn"
 									onClick={(e) => {
 										e.preventDefault();
 										this.continuar();

@@ -86,4 +86,15 @@ h1.titleRegister{
 
 .beneficios .text_ben p{
   color: #676767;
+  font-size: 1.2rem;
+}
+
+.beneficios img{
+  position: relative;
+  width: 30%;
+  left: 35%;
+}
+
+.beneficios .p_btn{
+  text-align: center;
 }
