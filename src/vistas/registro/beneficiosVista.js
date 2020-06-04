@@ -66,7 +66,7 @@ class Beneficios extends React.Component {
                                 <hr></hr>
                             </div>
 
-                            <div w3-row>
+                            <div className="w3-row">
                                 <p><button className="w3-button btn"
 								onClick={(e) => {
 									e.preventDefault();
