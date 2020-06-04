@@ -1,18 +1,18 @@
 import React from 'react';
 import Alerta from "../../componentes/alertaVista";
-import { validateEmail, validateName, validatePhone } from "../../constantes/funciones_auxiliares";
+import { validateEmail, validateName, validatePhone, fechaAutorizada } from "../../constantes/funciones_auxiliares";
 
 class Registro extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "",  gender: 1, phone: "", password: "", repeat_password: "", term_condition: false
+			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false
 		}
 	}
 
 	componentDidMount() { }
-
+	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
 	continuar = () => {
 		let vacios = [];
 		//if (this.state["photo"] === "") { vacios.push("  *Foto"); }
@@ -35,13 +35,13 @@ class Registro extends React.Component {
 			else if (!validateName(this.state["name"])) {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
-		}else{
+		} else {
 			return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() });
 		}
 	}
 
 	render() {
-		const { textoAlert, showAlert, photo, name, email, birth_date,  gender, phone, password, repeat_password, term_condition } = this.state;
+		const { textoAlert, showAlert, photo, name, email, birth_date, gender, phone, password, repeat_password, term_condition } = this.state;
 		return (
 			<React.Fragment>
 
@@ -59,36 +59,41 @@ class Registro extends React.Component {
 								<div>Ad</div>
 							</div>
 
-							<label>Nombre y apellido</label>
+							<label>Nombre y apellido*</label>
 							<input className="w3-input w3-border w3-round-large" type="text" value={name}
-							onChange={(e) => this.setState({ name: e.target.value })}/>
+								onChange={(e) => this.setState({ name: e.target.value })} />
 
-							<label>Correo</label>
+							<label>Correo*</label>
 							<input className="w3-input w3-border w3-round-large" type="text" value={email}
-							onChange={(e) => this.setState({ email: e.target.value })}/>
+								onChange={(e) => this.setState({ email: e.target.value })} />
 
-							<label>Fecha de nacimiento</label>
-							<input className="w3-input w3-border w3-round-large" type="text" value={birth_date}
-							onChange={(e) => this.setState({ birth_date: e.target.value })}/>
+							<label>Fecha de nacimiento*</label>
+							<input className="w3-input w3-border w3-round-large" type="date" value={birth_date}
+								max={fechaAutorizada()}
+								onChange={(e) => this.setState({ birth_date: e.target.value })} />
 
-							<label>Género</label>
-							<input className="w3-input w3-border w3-round-large" type="text" value={gender}
-							onChange={(e) => this.setState({ gender: e.target.value })}/>
+							<label>Género*</label>
+							<select className="w3-select w3-border w3-round-large w3-margin-bottom" name="gender"
+								value={gender} onChange={(e) => this.setState({ gender: e.target.gender })}>
+								{this.gender_type.map((gender_type, key) => (
+									<option key={key} value={gender_type.id} >{gender_type.denomination}</option>
+								))}
+							</select>
 
-							<label>Teléfono</label>
+							<label>Teléfono*</label>
 							<input className="w3-input w3-border w3-round-large" type="number" value={phone}
-							onChange={(e) => this.setState({ phone: e.target.value })}/>
+								onChange={(e) => this.setState({ phone: e.target.value })} />
 
-							<label>Contraseña</label>
+							<label>Contraseña*</label>
 							<input className="w3-input w3-border w3-round-large" type="password" value={password}
-							onChange={(e) => this.setState({ password: e.target.value })}/>
+								onChange={(e) => this.setState({ password: e.target.value })} />
 
-							<label>Confirmar contraseña</label>
+							<label>Confirmar contraseña*</label>
 							<input className="w3-input w3-border w3-round-large" type="password" value={repeat_password}
-							onChange={(e) => this.setState({ repeat_password: e.target.value })} />
+								onChange={(e) => this.setState({ repeat_password: e.target.value })} />
 
-							<input class="w3-check" type="checkbox" value={term_condition}
-							onChange={(e) => this.setState({ term_condition: e.target.value })}/>
+							<input className="w3-check" type="checkbox" value={term_condition}
+								onChange={(e) => this.setState({ term_condition: e.target.value })} />
 							<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones</a> </label>
 
 							<p><button className="w3-button btn"
@@ -99,7 +104,7 @@ class Registro extends React.Component {
 
 						</form>
 					</div>
-					
+
 				</div>
 			</React.Fragment >
 		);

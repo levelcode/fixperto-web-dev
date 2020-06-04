@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Alerta from "../../componentes/alertaVista";
 import { validateEmail } from "../../constantes/funciones_auxiliares";
 class Login extends React.Component {
@@ -12,16 +13,16 @@ class Login extends React.Component {
 				this.setState({ showAlert: true, textoAlert: "Correo inválido, por favor verifíquelo" })
 			}
 			else {
-				return fetch('https://server.fixperto.creactive.com.co/seguridad/login', {
-					method: "POST",
-					headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-					body: JSON.stringify({ email: this.state["email"], password: this.state["password"] })
-				}).then(response => response.json()).then(responseJson => {
-
-					if (responseJson.success && responseJson["user"].length) { }
-
+				axios.post('https://server.fixperto.creactive.com.co/seguridad/login', {
+					email: this.state["email"], password: this.state["password"]
 				})
+					.then(responseJson => {
+						if (responseJson.success && responseJson["user"].length) {
+							this.setState({ showAlert: true, textoAlert: "OKOK" })
+						}
+					})
 					.catch((error) => {
+						alert("ERROR")
 						if (error.message === 'Timeout' || error.message === 'Network request failed') {
 
 						}
@@ -39,7 +40,7 @@ class Login extends React.Component {
 					<div className="w3-row w3-section">
 						<div className="w3-col" style={{ width: 50 + "px" }}><i className="w3-xxlarge fa fa-envelope-o"></i></div>
 						<div className="w3-rest">
-							<input className="w3-input w3-border" name="email" type="text" placeholder="Email" required
+							<input className="w3-input w3-border w3-round-large" name="email" type="text" placeholder="Email" required
 								value={email}
 								onChange={(e) => this.setState({ email: e.target.value })}
 							/>
@@ -48,7 +49,7 @@ class Login extends React.Component {
 					<div className="w3-row w3-section">
 						<div className="w3-col" style={{ width: 50 + "px" }}><i className="w3-xxlarge fa fa-envelope-o"></i></div>
 						<div className="w3-rest">
-							<input className="w3-input w3-border" name="password" type="password" placeholder="Contraseña" required
+							<input className="w3-input w3-border w3-round-large" name="password" type="password" placeholder="Contraseña" required
 								value={password}
 								onChange={(e) => this.setState({ password: e.target.value })}
 							/>
@@ -59,7 +60,7 @@ class Login extends React.Component {
 							className="w3-button w3-hover-indigo w3-indigo w3-round-large"
 							style={{ width: 250 + "px" }}
 							onClick={(e) => {
-								if (email !== '' && password !== '') { e.preventDefault(); this.login(); }
+								if (email !== '' && password !== '') { e.preventDefault(); this.login() }
 								else {
 									this.setState({ showAlert: true, textoAlert: "Existen campos vacios" })
 								}
