@@ -66,17 +66,20 @@ class Registro extends React.Component {
 								onChange={(e) => this.setState({ email: e.target.value })} />
 
 							<label>Fecha de nacimiento*</label>
-							<input className="w3-input w3-border w3-round-large" type="date" value={birth_date}
+							<input className="w3-input w3-border w3-round-large size200" type="date" value={birth_date}
 								max={fechaAutorizada()}
 								onChange={(e) => this.setState({ birth_date: e.target.value })} />
 
 							<label>Género*</label>
-							<select className="w3-select w3-border w3-round-large w3-margin-bottom" name="gender"
-								value={gender} onChange={(e) => this.setState({ gender: e.target.gender })}>
-								{this.gender_type.map((gender_type, key) => (
-									<option key={key} value={gender_type.id} >{gender_type.denomination}</option>
-								))}
-							</select>
+							<div>
+								<select className="w3-select w3-border w3-round-large w3-margin-bottom size200" name="gender"
+									value={gender} onChange={(e) => this.setState({ gender: e.target.gender })}>
+									{this.gender_type.map((gender_type, key) => (
+										<option key={key} value={gender_type.id} >{gender_type.denomination}</option>
+									))}
+								</select>
+							</div>
+							
 
 							<label>Teléfono*</label>
 							<input className="w3-input w3-border w3-round-large" type="number" value={phone}
