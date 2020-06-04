@@ -37,23 +37,17 @@ class Login extends React.Component {
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<form>
-					<div className="w3-row w3-section">
-						<div className="w3-col" style={{ width: 50 + "px" }}><i className="w3-xxlarge fa fa-envelope-o"></i></div>
-						<div className="w3-rest">
-							<input className="w3-input w3-border w3-round-large" name="email" type="text" placeholder="Email" required
-								value={email}
-								onChange={(e) => this.setState({ email: e.target.value })}
-							/>
-						</div>
+					<div>
+						<input className="w3-input w3-border w3-round-large" name="email" type="text" placeholder="Email" required
+							value={email}
+							onChange={(e) => this.setState({ email: e.target.value })}
+						/>
 					</div>
-					<div className="w3-row w3-section">
-						<div className="w3-col" style={{ width: 50 + "px" }}><i className="w3-xxlarge fa fa-envelope-o"></i></div>
-						<div className="w3-rest">
-							<input className="w3-input w3-border w3-round-large" name="password" type="password" placeholder="Contraseña" required
-								value={password}
-								onChange={(e) => this.setState({ password: e.target.value })}
-							/>
-						</div>
+					<div className="w3-margin-top">
+						<input className="w3-input w3-border w3-round-large" name="password" type="password" placeholder="Contraseña" required
+							value={password}
+							onChange={(e) => this.setState({ password: e.target.value })}
+						/>
 					</div>
 					<br />
 					<div className="w3-center">
