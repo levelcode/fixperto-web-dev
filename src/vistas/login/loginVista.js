@@ -36,7 +36,7 @@ class Login extends React.Component {
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-				<form className="w3-container">
+				<form>
 					<div className="w3-row w3-section">
 						<div className="w3-col" style={{ width: 50 + "px" }}><i className="w3-xxlarge fa fa-envelope-o"></i></div>
 						<div className="w3-rest">
@@ -55,10 +55,10 @@ class Login extends React.Component {
 							/>
 						</div>
 					</div>
+					<br />
 					<div className="w3-center">
 						<button type="button"
-							className="w3-button w3-hover-indigo w3-indigo w3-round-large"
-							style={{ width: 250 + "px" }}
+							className="w3-button w3-hover-indigo w3-blue w3-round-large w3-block"
 							onClick={(e) => {
 								if (email !== '' && password !== '') { e.preventDefault(); this.login() }
 								else {
