@@ -9,6 +9,7 @@ class Ingreso extends React.Component {
 
 	olvidoPassword = () => {
 	}
+	registrarme = () => { this.props["history"]["push"]("registro"); }
 	render() {
 		return (
 			<React.Fragment>
@@ -22,7 +23,8 @@ class Ingreso extends React.Component {
 						<Login />
 						<br />
 						<br />
-						<button className="w3-button w3-indigo w3-border w3-border-blue w3-round-large w3-block w3-text-blue">REGISTRARME</button>
+						<button className="w3-button w3-indigo w3-border w3-border-blue w3-round-large w3-block w3-text-blue"
+							onClick={() => { this.registrarme() }}>REGISTRARME</button>
 						<div className="w3-section">
 							<b className="w3-text-blue textLink" onClick={() => { this.olvidoPassword() }}>¿Olvidaste tu contraseña?</b>
 						</div>
