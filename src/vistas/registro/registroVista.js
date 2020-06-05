@@ -67,7 +67,7 @@ class Registro extends React.Component {
 									onClick={(e) => {
 										e.preventDefault();
 										this.continuar();
-									}}>Continuar</button>
+									}}>Registrate</button>
 								</div>
 							</div>
 						</div>

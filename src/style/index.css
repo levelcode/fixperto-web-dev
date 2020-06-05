@@ -90,30 +90,6 @@ html, body, #root, #root>div {
   border: dotted  #676767;
 }
 
-.formRegister .iconsAvatar{
-  position: relative;
-  top: 5px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  margin-bottom:  20px;
-  left: -5px;
-}
-
-.formRegister .iconsAvatar > div{
-  position: relative;
-  border:  solid 2px #43AECC;
-  padding: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-  
-}
-
-.size200{
-  /*width: 200px !important;*/
-}
-
 h1.titleRegister{
   text-align: center;
   color: #273861;
@@ -134,7 +110,7 @@ h1.titleRegister{
   margin-bottom: 20px;
 }
 
-.formRegister{
+.formRegister, .beneficios{
   width: 90%;
   margin: auto;
   padding-left: 0px;
@@ -181,8 +157,9 @@ h1.titleRegister{
 
 .beneficios img{
   position: relative;
-  width: 30%;
-  left: 35%;
+  width: 50%;
+  left: 25%;
+  margin-bottom: 20px;
 }
 
 .beneficios .p_btn{
@@ -268,6 +245,10 @@ h1.titleRegister{
     padding-left: 50px;
     padding-right: 50px;
   }
+
+  .beneficios{
+    width: 95%;
+  }
 }
 
 @media(min-width : 80em){
@@ -295,18 +276,14 @@ h1.titleRegister{
   }
 
 
-  .formRegister{
+  .formRegister, .beneficios{
     width: 90%;
     margin: auto;
     padding-left: 150px;
     padding-right: 150px;
   }
 
-  .beneficios img{
-    position: relative;
-    width: 20%;
-    left: 40%;
-  }
+ 
 
   .codigo .cont_cod input{
     padding-left: 18px;

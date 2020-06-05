@@ -9,8 +9,30 @@ class CodigoSms extends React.Component {
 			<React.Fragment>
 
 				<div className="container">
+
+					<div class="w3-bar w3-border w3-card-4 ey seccion_nav">
+						<div  className="w3-row container_web">
+							<div className="w3-col s12 m6">
+								<div className="img_logo">
+									<img src="./assets/fixperto1.png" className="w3-round" alt="Norway" />
+								</div>
+							</div>
+
+							<div className="w3-col s12 m6">
+								<div className="text_nav">
+									<p>Iniciar sesion</p>
+									<button className="w3-button "
+									onClick={(e) => {
+										e.preventDefault();
+										this.continuar();
+									}}>Registrate</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div className="codigo">
-                        <h1 className="titleRegister">Ya estás registrado ahora, verifiquemos tu cuenta</h1>
+                        <h1 className="titleRegister">Ya estás registrado ahora, <br/> verifiquemos tu cuenta</h1>
                         <p>Ingresa el código de verificación que se te envio a tu equipo </p>
 
 						<div className="w3-row">
