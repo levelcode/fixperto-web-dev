@@ -1,8 +1,13 @@
 
-html, body, #root, #root>div {
-  height: 100%;
-  width: 100%;
-}
+html, body, #root {
+	height: 100%;
+	width: 100%;
+  }
+
+.headerFixperto{
+	  width: 125px;
+	  height: 40px;
+  }
 
 .container_web{
   width: 60%;
@@ -59,7 +64,7 @@ html, body, #root, #root>div {
 }
 
 .fondPage{
-	  background-color: indigo;
+	  background-color:#273861;
 	  align-items: center;
   }
   .textLink{

@@ -50,28 +50,7 @@ class Registro extends React.Component {
 
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 
-				<div className="container">
-
-					<div class="w3-bar w3-border w3-card-4 ey seccion_nav">
-						<div  className="w3-row container_web">
-							<div className="w3-col s12 m6">
-								<div className="img_logo">
-									<img src="./assets/fixperto1.png" className="w3-round" alt="Norway" />
-								</div>
-							</div>
-
-							<div className="w3-col s12 m6">
-								<div className="text_nav">
-									<p>Iniciar sesion</p>
-									<button className="w3-button "
-									onClick={(e) => {
-										e.preventDefault();
-										this.continuar();
-									}}>Registrate</button>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div className="container">					
 
 					<div className="formRegister">
 						<h1 className="titleRegister">Ingresa tus datos</h1>

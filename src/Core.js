@@ -2,38 +2,42 @@ import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "./style/index.css";
 
-const Profile = () => <div>You're on the Profile Tab</div>;
-const Comments = () => <div>You're on the Comments Tab</div>;
-const Contact = () => <div>You're on the Contact Tab</div>;
+const Solicitudes = () => <div>Componente Solicitudes</div>;
+const Servicios = () => <div>Componente servicios</div>;
+const Chat = () => <div>Componente chat</div>;
+const Perfil = () => <div>Componente perfil</div>;
 
-class Cpre extends Component {
-  render() {
-    const { path } = this.props.match;
+class Core extends Component {
+	render() {
+		const { path } = this.props.match;
 
-    return (
-      <div>
-        <h1>Hey welcome home!</h1>
-        <div className="links">
-          <Link to={`${path}/profile`} className="link">
-            Profile
+		return (
+			<div>
+				<h1>Hey welcome home!</h1>
+				<div className="links">
+					<Link to={`${path}/solicitudes`} className="link">
+						Solicitudes
           </Link>
-          <Link to={`${path}/comments`} className="link">
-            Comments
+					<Link to={`${path}/servicios`} className="link">
+						Servicios
           </Link>
-          <Link to={`${path}/contact`} className="link">
-            Contact
+					<Link to={`${path}/chat`} className="link">
+						Chat
           </Link>
-        </div>
-        <div className="tabs">
-          <Switch>
-            <Route path={`${path}/profile`} exact component={Profile} />
-            <Route path={`${path}/comments`} component={Comments} />
-            <Route path={`${path}/contact`} component={Contact} />
-          </Switch>
-        </div>
-      </div>
-    );
-  }
+					<Link to={`${path}/perfil`} className="link">
+						Perfil
+          </Link>
+				</div>
+				<div className="tabs">
+					<Switch>
+						<Route path={`${path}/solicitudes`} exact component={Solicitudes} />
+						<Route path={`${path}/servicios`} component={Servicios} />
+						<Route path={`${path}/chat`} component={Chat} />
+						<Route path={`${path}/perfil`} component={Perfil} />
+					</Switch>
+				</div>
+			</div>
+		);
+	}
 }
-
-export default Cpre;
+export default Core;
