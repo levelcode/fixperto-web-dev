@@ -13,8 +13,8 @@ class Alerta extends React.Component {
 								<label><b>{this.props["textoAlert"]}</b></label>
 							</div>
 							<div className="w3-margin-bottom">
-								<button onClick={this.props["close"]}
-									className="w3-button w3-indigo w3-hover-indigo w3-round-large">Aceptar</button>
+								<div onClick={this.props["close"]}
+									className="w3-button w3-indigo w3-hover-indigo w3-round-large">Aceptar</div>
 							</div>
 						</div>
 					</div>

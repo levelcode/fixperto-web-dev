@@ -46,8 +46,8 @@ const ChangePassword = (props) => {
 								</div>
 							}
 						</div>
-						<button onClick={changePassword}
-							className="w3-button w3-indigo w3-hover-indigo w3-round-large">Aceptar</button>
+						<div onClick={changePassword}
+							className="w3-button w3-indigo w3-hover-indigo w3-round-large">Aceptar</div>
 					</div>
 				</div>
 			</div>
