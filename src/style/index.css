@@ -4,6 +4,60 @@ html, body, #root, #root>div {
   width: 100%;
 }
 
+.container_web{
+  width: 60%;
+  margin: auto;
+}
+
+.seccion_nav{
+  height: 150px;
+}
+
+.seccion_nav .img_logo{
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.seccion_nav .text_nav{
+  position: relative;
+  display: flex;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.seccion_nav .text_nav p{
+  color: #273861;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.seccion_nav .text_nav button{
+  background-color: #43AECC;
+  height: 30px; 
+  margin-left: 0px;
+  margin-top: 25px;
+  border-radius: 7px;
+  color: white;
+  padding:  0px ;
+  padding-left: 20px;
+  padding-right: 30px
+
+}
+
+.seccion_nav .text_nav{
+  position: relative;
+  display: flex;
+}
+
+.seccion_nav .img_logo img{
+  position: relative;
+  width: 80%;
+  margin: auto;
+  margin-top: 15px;
+}
+
 .fondPage{
 	  background-color: indigo;
 	  align-items: center;
@@ -23,10 +77,6 @@ html, body, #root, #root>div {
   border: 1px solid #f5f5f5;
 }
 
-.container{
-  width: 80%;
-  margin: auto;
-}
 
 .formRegister, .beneficios, .codigo{
   padding-top: 30px;
@@ -61,22 +111,42 @@ html, body, #root, #root>div {
 }
 
 .size200{
-  width: 200px !important;
+  /*width: 200px !important;*/
 }
 
 h1.titleRegister{
   text-align: center;
   color: #273861;
   font-size: 2rem;
+  font-weight: bold;
 }
 
 .formRegister p{
   text-align: center;
   font-size: 1.2rem;
+  width: 80%;
+  margin: auto;
+}
+
+.formRegister .img_upl{
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.formRegister{
+  width: 90%;
+  margin: auto;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .formRegister form input{
   margin-bottom: 25px;
+}
+
+.formRegister form select{
+  background: transparent;
 }
 
 .formRegister label{
@@ -98,6 +168,8 @@ h1.titleRegister{
   padding-left: 40px;
   padding-right: 40px;
   border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .beneficios .text_ben p{
@@ -145,7 +217,91 @@ h1.titleRegister{
   color: #676767;
 }
 
+@media(min-width : 48em){
+
+  .container_web{
+    width: 70%;
+  }
+
+  .seccion_nav{
+    height: 90px;
+  }
+
+  .seccion_nav .text_nav{
+    margin-top: 20px;
+  }
+
+  .seccion_nav .text_nav button{
+    margin-left: 20px;
+    margin-top: 15px;
+    padding-right: 20px
+
+  }
+
+  .seccion_nav .img_logo img{
+    margin-top: 20px;
+    width: 60%;
+  }
+
+
+  .container{
+    width: 80%;
+    margin: auto;
+  }
+
+  .formRegister p{
+    text-align: center;
+    font-size: 1.2rem;
+    width: 90%;
+    margin: auto;
+  }
+
+  .formRegister .img_upl{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .formRegister{
+    width: 90%;
+    margin: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
 @media(min-width : 80em){
+
+
+  .seccion_nav{
+    height: 100px;
+  }
+
+  .seccion_nav .text_nav{
+    margin-top: 25px;
+  }
+
+
+  .seccion_nav .text_nav button{
+    margin-left: 15px;
+    margin-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px
+  }
+
+  .seccion_nav .img_logo img{
+    width: 40%;
+    margin-top: 30px;
+  }
+
+
+  .formRegister{
+    width: 90%;
+    margin: auto;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+
   .beneficios img{
     position: relative;
     width: 20%;
