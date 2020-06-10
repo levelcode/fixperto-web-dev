@@ -7,6 +7,7 @@ import Registro from "./vistas/registro/registroVista";
 import Beneficios from "./vistas/registro/beneficiosVista";
 import CodigoSms  from "./vistas/registro/codigoVista";
 import Perfil from "./vistas/perfil/perfilVista";
+import PerfilInformacion from "./vistas/perfil/perfilInformacion"
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 const routes = (
@@ -18,6 +19,7 @@ const routes = (
 			<Route path="/beneficios" component={Beneficios} />
 			<Route path="/codigosms" component={CodigoSms} />
 			<Route path="/perfil" component={Perfil} />
+			<Route path="/perfil-informacion" component={PerfilInformacion} />
 			<Redirect from="/" to="/ingreso" />
 			
 		</Switch>

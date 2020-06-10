@@ -131,7 +131,6 @@ class Registro extends React.Component {
 
 						</form>
 					</div>
-
 				</div>
 			</React.Fragment >
 		);

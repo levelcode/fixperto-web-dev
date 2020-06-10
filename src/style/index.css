@@ -58,6 +58,7 @@ html, body, #root, #root>div {
   margin-top: 15px;
 }
 
+
 .fondPage{
 	  background-color: indigo;
 	  align-items: center;
@@ -78,11 +79,11 @@ html, body, #root, #root>div {
 }
 
 
-.formRegister, .beneficios, .codigo{
+.formRegister, .beneficios, .codigo, .perfil{
   padding-top: 30px;
 }
 
-.formRegister .imgAvatar{
+.formRegister .img_avatar{
   position: relative;
   margin: auto;
   width: 100px;
@@ -181,8 +182,6 @@ h1.titleRegister{
   margin-top: 20px;
 }
 
-
-
 .codigo .cont_cod input{
   width: 60px;
   height: 50px;
@@ -194,6 +193,118 @@ h1.titleRegister{
   color: #676767;
 }
 
+/******PERFIL********/
+.perfil .card_perfil{
+  position: relative;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.perfil .card_info{
+  position: relative;
+  width: 95%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.perfil .card_perfil .info_person{
+  background-color: #F8F8F8;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.perfil .img_upl img{
+  width: 50%;
+}
+
+.perfil .card_perfil h5{
+  color: #273861;
+  font-weight: bold;
+}
+
+.perfil .card_perfil .img_star{
+  width: 20px;
+  margin-top: -8px;
+  margin-right: 5px;
+}
+
+.perfil .card_perfil .copy{
+  background-color: #ECF7F9;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.perfil .card_perfil .copy .img_alert {
+  width: 50%;
+  position: relative;
+  left: 25%;
+  top: 20px;
+}
+
+.perfil .card_perfil .copy p{
+  color: #43AECC;
+}
+
+.perfil .card_perfil .title_datos h2{
+  margin-left: 10px;
+  font-size: 1.1rem;
+  margin-top: 30px;
+  color: #273861;
+  font-weight: bold;
+}
+
+.perfil .card_perfil .title_datos .img_tus_datos{
+  width: 7%;
+  margin-right: 5px;
+}
+
+.perfil .card_perfil .list_datos{
+  width: 80%;
+  margin: auto;
+  margin-top : 10px;
+}
+
+.perfil .card_perfil .list_datos .list{
+  margin-top : 13px;
+}
+
+.perfil .card_perfil .list_datos a{
+  color: #676767;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.perfil .card_perfil .list_datos img{
+  width: 15px;
+}
+
+.perfil .btn_close{
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.perfil .btn_close button{
+  position: relative;
+  border: solid #CE4343;
+  width: 80%;
+  left: 10%;
+  color: #CE4343;
+  border-radius: 7px;
+}
+
+/*******INFO COMPONENTES*********/
+
+.info_perfil_comp .titleRegister{
+  font-size: 1.5rem;
+}
+
+.info_perfil_comp div{
+  margin-top: 20px !important;
+}
+
 @media(min-width : 48em){
 
   .container_web{
@@ -203,6 +314,7 @@ h1.titleRegister{
   .seccion_nav{
     height: 90px;
   }
+
 
   .seccion_nav .text_nav{
     margin-top: 20px;
@@ -246,8 +358,19 @@ h1.titleRegister{
     padding-right: 50px;
   }
 
-  .beneficios{
+  .beneficios, .perfil{
     width: 95%;
+  }
+
+  .perfil .card_perfil .copy .img_alert {
+    width: 40%;
+    left: 30%;
+    top: 10px;
+  }
+
+  .perfil .btn_close button{
+    width: 60%;
+    left: 20%;
   }
 }
 
@@ -276,16 +399,30 @@ h1.titleRegister{
   }
 
 
-  .formRegister, .beneficios{
+  .formRegister, .beneficiosm{
     width: 90%;
     margin: auto;
     padding-left: 150px;
     padding-right: 150px;
   }
 
- 
-
   .codigo .cont_cod input{
     padding-left: 18px;
   }
+
+  .perfil .card_perfil .copy .img_alert {
+    width: 30%;
+    left: 35%;
+    top: 10px;
+  }
+
+  .perfil .card_perfil .title_datos h2{
+    margin-left: 55px;
+  }
+
+  .perfil .btn_close button{
+    width: 40%;
+    left: 30%;
+  }
+
 }
