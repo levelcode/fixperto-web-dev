@@ -11,6 +11,7 @@ class Ingreso extends React.Component {
 					<div className="w3-quarter w3-container" />
 					<div className="w3-half w3-container w3-center">
 						<div className="w3-container fondPage w3-text-white w3-round-large w3-margin-top">
+						<br />
 							<h1><b>Bienvenido</b></h1>
 							<p className="w3-section">Todo lo que necesitas en arreglos para tu <b>casa, oficina y trabajo</b> en un sólo lugar.</p>
 							<br />
