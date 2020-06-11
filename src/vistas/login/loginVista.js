@@ -17,6 +17,7 @@ class Login extends React.Component {
 			else {
 				httpClient.post('/seguridad/login', { email: this.state["email"], password: this.state["password"] })
 					.then((responseJson) => {
+						console.log(responseJson.data)
 						if (responseJson.success && responseJson["user"].length) {
 							this.setState({ showAlert: true, textoAlert: "OKOK" })
 						}
