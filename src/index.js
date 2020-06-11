@@ -1,29 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import 'w3-css/w3.css';
-import Core from "./Core";
-import Ingreso from "./vistas/ingreso/ingresoVista";
-import Registro from "./vistas/registro/registroVista";
-import Beneficios from "./vistas/registro/beneficiosVista";
-import CodigoSms  from "./vistas/registro/codigoVista";
-import Perfil from "./vistas/perfil/perfilVista";
-import PerfilInformacion from "./vistas/perfil/perfilInformacion"
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-
+import "./style/index.css";
+import rutas from "./rutas";
+import { Router, Route, Switch } from "react-router";
+const Redirect = require("react-router").Redirect
+const historia = require("history").createBrowserHistory();
 const routes = (
-	<BrowserRouter>
+	<Router history={historia}>
 		<Switch>
-			<Route path="/home" component={Core} />
-			<Route path="/ingreso" component={Ingreso} />
-			<Route path="/registro" component={Registro} />
-			<Route path="/beneficios" component={Beneficios} />
-			<Route path="/codigosms" component={CodigoSms} />
-			<Route path="/perfil" component={Perfil} />
-			<Route path="/perfil-informacion" component={PerfilInformacion} />
+			{rutas.map((route, i) => (
+				<Route key={i} path={route.path} render={() => (<route.component history={historia} rutes={route.sub_routes} />)} />
+			))}
 			<Redirect from="/" to="/ingreso" />
-			
 		</Switch>
-	</BrowserRouter>
+	</Router>
 );
-
 ReactDOM.render(routes, document.getElementById("root"));
