@@ -8,7 +8,10 @@ html, body, #root {
 	  width: 125px;
 	  height: 40px;
   }
-
+.footerFixperto{
+	width: 135px;
+	height: 45px;
+}
 .container_web{
   width: 60%;
   margin: auto;
