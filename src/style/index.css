@@ -261,7 +261,7 @@ h1.titleRegister{
 }
 
 .perfil .card_perfil .list_datos{
-  width: 80%;
+  width: 90%;
   margin: auto;
   margin-top : 10px;
 }
@@ -325,6 +325,15 @@ h1.titleRegister{
 
 .info_perfil_atencion .table_atencion thead tr{
   background: #43AECC !important;
+}
+
+.info_perfil_terminos{
+  width: 90%;
+  margin: auto;
+}
+
+.info_perfil_terminos p {
+  text-align: justify;
 }
 
 .btn_cerrar{
@@ -471,7 +480,7 @@ h1.titleRegister{
   }
 
   .perfil .card_perfil .title_datos h2{
-    margin-left: 55px;
+    margin-left: 20px;
   }
 
   .perfil .btn_close button{
