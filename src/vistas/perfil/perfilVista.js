@@ -80,6 +80,16 @@ class Perfil extends React.Component {
 													
 												</div>
 											</div>
+
+											<div className="w3-row list">
+												<div className="w3-col s10">
+													<Link to="/perfil/registro" className="">Cambiar contraseña</Link>
+												</div>
+												<div className="w3-col s2">
+													<Link to="/perfil/registro" ><img src="../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img></Link>
+													
+												</div>
+											</div>
 											
 										</div>
 									</div>

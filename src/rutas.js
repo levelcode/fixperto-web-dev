@@ -7,6 +7,8 @@ import PerfilInformacion from "./vistas/perfil/perfilInformacion";
 import PerfilConfig from "./vistas/perfil/perfilConfig";
 import PerfilAtencionCliente from "./vistas/perfil/perfilAtencionCliente";
 import PerfilTerminos from "./vistas/perfil/perfilTerminos";
+import perfilCambiarContr from "./vistas/perfil/perfilCambiarContr";
+
 const rutas = [
 	{ path: "/ingreso", text: 'Ingreso', component: Ingreso },
 	{
@@ -18,6 +20,7 @@ const rutas = [
 			{ path: "/perfil-config", text: 'Perfil Configuración', component: PerfilConfig },
 			{ path: "/perfil-atencion", text: 'Perfil Atencion Cliente', component: PerfilAtencionCliente },
 			{ path: "/perfil-terminos", text: 'Perfil Terminos', component: PerfilTerminos },
+			{ path: "/perfil-contrasena", text: 'Perfil Cambiar Contraseña', component: perfilCambiarContr },
 		]
 	}
 ];
