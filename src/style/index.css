@@ -65,15 +65,17 @@ html, body, #root {
 
 
 .fondPage{
-	  background-color:#273861;
-	  align-items: center;
-  }
-  .textLink{
-	  cursor: pointer;
-  }
+  background-color:#273861;
+  align-items: center;
+}
+.textLink{
+  cursor: pointer;
+}
+
 .links {
   margin-bottom: 10px;
 }
+
 .link {
   margin: 0 10px;
 }
@@ -142,16 +144,6 @@ h1.titleRegister{
 .formRegister .labelCheck a, .codigo a{
   color: #43AECC;
   font-weight: bold;
-}
-
-.btn{
-  background-color: #43AECC;
-  color: white;
-  padding-left: 40px;
-  padding-right: 40px;
-  border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .beneficios .text_ben p{
@@ -299,6 +291,60 @@ h1.titleRegister{
   color: #CE4343;
   border-radius: 7px;
 }
+
+.info_perfil_config p{
+  text-align: center;
+}
+
+.info_perfil_config .check_config{
+  padding-left: 20px;
+}
+
+.info_perfil_config .check_config label{
+  padding-left: 20px;
+  color: #273861;
+}
+
+.info_perfil_atencion p{
+  text-align: center;
+}
+
+.info_perfil_atencion .btn_atencion_cliente{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.info_perfil_atencion .table_atencion{
+  width: 95%;
+  margin: auto;
+}
+
+.info_perfil_atencion .table_atencion thead tr{
+  background: #43AECC !important;
+}
+
+.btn_cerrar{
+  color: #CE4343;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: solid #CE4343;
+}
+
+.btn{
+  background-color: #43AECC;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: solid #43AECC;
+}
+
 
 /*******INFO COMPONENTES*********/
 
