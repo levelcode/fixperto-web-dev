@@ -18,32 +18,13 @@ class Perfil extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="container">
-					<div class="w3-bar w3-border w3-card-4 ey seccion_nav">
-						<div  className="w3-row container_web">
-							<div className="w3-col s12 m6">
-								<div className="img_logo">
-									<img src="../assets/fixperto1.png" className="w3-round" alt="Norway" />
-								</div>
-							</div>
 
-							<div className="w3-col s12 m6">
-								<div className="text_nav">
-									<p>Iniciar sesion</p>
-									<button className="w3-button "
-									onClick={(e) => {
-										e.preventDefault();
-										this.continuar();
-									}}>Registrate</button>
-								</div>
-							</div>
-						</div>
-					</div>
 
 					<div className="perfil">
                         
 						<div className="w3-row">
 
-							<div className="w3-col s12 m7">
+							<div className="w3-col s12 m5">
 								<div class="w3-card card_perfil">
 									<div className="w3-row info_person">
 										<div className="w3-col s12 m5">
@@ -82,7 +63,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/perfil/perfil-informacion" className="">Información personal</Link>
+													<Link to="/fixperto/perfil-informacion" className="">Información personal</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/perfil/perfil-informacion"><img src="../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img></Link>
@@ -150,10 +131,10 @@ class Perfil extends React.Component {
 
 							</div>
 
-							<div className="w3-col s12 m5">
+							<div className="w3-col s12 m7">
 								<div class="w3-card card_info">
 									<Switch>
-										<Route path="/perfil/perfil-informacion" component={PerfilInformacion} />
+										<Route path="/perfil-informacion" component={PerfilInformacion} />
 										<Route path="/perfil/registro" component={Ingreso} />
 										<Route path="/perfil/codigosms" component={CodigoSms} />
 									</Switch>
