@@ -1,19 +1,21 @@
-import axios from "axios"; const urlBase = 'https://server.fixperto.creactive.com.co';
+import axios from "axios"; const urlBase = 'https://api.fixperto.com';
 /**
  * @param {string}  url url a la cual consultar
  * esta funcion detecta si es una nueva url base (comienza con http:// o https://).
  * en caso de ser asi, retorna la url. en caso contrario, se asume que es un fragmento
  * de path por lo que se concatena con la constante urlBase
  **/
-const readUrl = (url = '') =>
-	url.startsWith('http://') || url.startsWith('https://') ? url : `${urlBase}/${url}`
+const readUrl = (url = '') => url.startsWith('http://') || url.startsWith('https://') ? url : `${urlBase}/${url}`
 
 const get = (url = '', headers = {}) => axios.get(readUrl(url), {
 	headers: { Accept: 'application/json', 'Content-Type': 'text/plain', ...headers }
 })
 const post = (url = '', body = {}, headers = {}) => axios({
-	method: 'post', url: urlBase + url, params: body, headers: { 'Content-Type': 'text/plain' },
-	responseType: 'json', ...headers
+	method: 'post',
+	url: urlBase + url,
+	params: body,
+	headers: { Accept: 'application/json', 'Content-Type': 'text/plain', ...headers },
+	responseType: 'json'
 })
 
 const put = (url = '', body = {}, headers = {}) => axios.put(readUrl(url), body, {
