@@ -36,6 +36,9 @@ class Registro extends React.Component {
 			else if (!validateName(this.state["name"])) {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
+			else {
+				this.props["history"]["push"]("fixperto/servicios");
+			}
 		} else {
 			return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() });
 		}
@@ -50,7 +53,7 @@ class Registro extends React.Component {
 
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 
-				<div className="container">					
+				<div className="container">
 
 					<div className="formRegister">
 						<h1 className="titleRegister">Ingresa tus datos</h1>
@@ -84,7 +87,7 @@ class Registro extends React.Component {
 									))}
 								</select>
 							</div>
-							
+
 
 							<label>Teléfono*</label>
 							<input className="w3-input w3-border w3-round-large" type="number" value={phone}

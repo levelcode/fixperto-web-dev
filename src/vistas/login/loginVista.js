@@ -8,7 +8,7 @@ class Login extends React.Component {
 		super(props);
 		this.state = { showChangePassword: false, showAlert: false, textoAlert: "", email: "", password: "" };
 	}
-	registrarme = () => { this.props["history"]["push"]("fixperto/beneficios"); }
+	registrarme = () => { this.props["history"]["push"]("beneficios"); }
 	login = () => {
 		if (this.state["email"] !== "" && this.state["password"] !== "") {
 			if (!validateEmail(this.state["email"])) {
