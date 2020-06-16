@@ -22,12 +22,12 @@ class Perfil extends React.Component {
 							<div className="w3-col s12 m5">
 								<div className="w3-card card_perfil">
 									<div className="w3-row info_person">
-										<div className="w3-col s12 m5">
+										<div className="w3-col s12 l5">
 											<div className="w3-center img_upl">
 												<FileUpload onChange={(photo) => { this.setState({ photo }) }} />
 											</div>
 										</div>
-										<div className="w3-col s10 m5">
+										<div className="w3-col s10 l5">
 											<h5>¡Hola!</h5>
 											<h6>Maria Hurtado</h6>
 										</div>
@@ -61,7 +61,9 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													<Link to="/fixperto/perfil/perfil-informacion" className="">
+														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													</Link>
 												</div>
 											</div>
 
@@ -70,7 +72,10 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/configuracion" className="">Configuración</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													<Link to="/fixperto/perfil/configuracion" className="">
+														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													</Link>
+													
 												</div>
 											</div>
 
@@ -79,7 +84,10 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/cambio_password" className="">Cambiar contraseña</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													<Link to="/fixperto/perfil/cambio_password" className=""> 
+														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													</Link>
+													
 												</div>
 											</div>
 
@@ -100,7 +108,10 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/fixperto/perfil/quienes_somos" className="">Quienes somos</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													<Link to="/fixperto/fixperto/perfil/quienes_somos" className="">
+														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													</Link>
+													
 												</div>
 											</div>
 
@@ -109,7 +120,10 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/atencion_cliente" className="">Atención al cliente</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													<Link to="/fixperto/perfil/atencion_cliente" className="">
+														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													</Link>
+													
 												</div>
 											</div>
 
@@ -118,7 +132,10 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/terminos_condiciones" className="">Términos y condiciones</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													<Link to="/fixperto/perfil/terminos_condiciones" className="">
+														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
+													</Link>
+													
 												</div>
 											</div>
 										</div>

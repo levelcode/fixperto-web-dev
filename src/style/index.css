@@ -68,9 +68,33 @@ html, body, #root {
 
 
 .fondPage{
+  flex-direction: row;
   background-color:#273861;
   align-items: center;
 }
+
+.fondPage a{
+  text-align: left;
+}
+
+.fondPage a:hover{
+  background-color: #43AECC !important;
+  color: white !important;
+}
+
+.fondPage img{
+  width: 30px;
+  margin-right: 20px;
+}
+
+.blue_menu{
+  background-color: #43AECC;
+}
+
+.blue_menu_dark{
+  background-color: #273861;
+}
+
 .textLink{
   cursor: pointer;
 }
@@ -207,6 +231,7 @@ h1.titleRegister{
   margin: auto;
   border-radius: 10px;
   padding: 20px;
+  top: 30px;
 }
 
 .perfil .card_perfil .info_person{
@@ -357,18 +382,163 @@ h1.titleRegister{
   border: solid #43AECC;
 }
 
+.btn_ubicacion{
+  background-color: white;
+  color: #43AECC;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: solid #43AECC;
+  width: 100%;
+}
+
 
 /*******INFO COMPONENTES*********/
-
-.info_perfil_comp .titleRegister{
-  font-size: 1.5rem;
-}
 
 .info_perfil_comp div{
   margin-top: 20px !important;
 }
 
+
+/***************SERVICIOS******************/
+.servicios{
+  margin-top: 1px;
+}
+
+.servicios .buscador{
+  height: 250px;
+  width: 100%;
+  background-color:#43AECC;
+}
+
+.servicios .buscador h3{
+  margin: 0;
+  text-align: center;
+  position: relative;
+  top: 50px;
+  font-size: 20px;
+  color: #1a1a1a;
+}
+
+.servicios .buscador input{
+  width: 80%;
+  margin: auto;
+  position: relative;
+  top: 60px;
+}
+
+.servicios .list_servicios{
+  width: 95%;
+  margin: auto;
+}
+
+.servicios .list_servicios .card_serv{
+  width: 80%;
+  margin: auto;
+  padding: 5px;
+  height: 110px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.servicios .list_servicios .card_serv img{
+  width: 40%;
+  position: relative;
+  left: 30%;
+  margin-top: 10px;
+}
+
+.servicios .list_servicios .card_serv p{
+  color: #273861;
+  font-size: 12px;
+  text-align: center;
+}
+
+.categorias_serv{
+  width: 90%;
+  margin: auto;
+}
+
+.categorias_serv .item{
+  margin-bottom: 5px;
+}
+
+.categorias_serv img{
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+
+.categorias_serv .text a{
+  text-decoration: none;
+  position: relative;
+  top: 5px;
+}
+
+.categorias_serv .img_continue{
+  width: 20%;
+  position: relative;
+  top: 10px;
+}
+
+.nueva_solicitud .item{
+  margin-bottom: 20px;
+}
+
+.nueva_solicitud img{
+  width: 100%;
+  position: relative;
+}
+
+.nueva_solicitud .text a{
+  text-decoration: none;
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+
+.nueva_solicitud .text_blue{
+  color: #273861;
+  font-weight: bold;
+}
+
+.nueva_solicitud input{
+  margin-bottom: 15px;
+}
+
+.nueva_solicitud .ubicacion p img{
+  width: 8%;
+  margin-right: 10px;
+}
+
+.nueva_solicitud .btn{
+  width: 100% !important;
+}
+
 @media(min-width : 48em){
+
+  .fondPage a{
+    text-align: center;
+  }
+
+  .fondPage .menu{
+    width: 73%;
+    margin: auto;
+  }
+
+  .fondPage img{
+    width: 35px;
+  }
+
+  .perfil .card_info{
+    top: 0px;
+    height: 810px;
+    overflow: scroll;
+    margin-bottom: 20px;
+  }
 
   .container_web{
     width: 70%;
@@ -397,7 +567,7 @@ h1.titleRegister{
 
 
   .container{
-    width: 80%;
+    width: 90%;
     margin: auto;
   }
 
@@ -421,8 +591,16 @@ h1.titleRegister{
     padding-right: 50px;
   }
 
-  .beneficios, .perfil{
+  .beneficios{
     width: 95%;
+  }
+
+  h1.titleRegister {
+    font-size: 1rem;
+  }
+
+  .perfil{
+    width: 100%;
   }
 
   .perfil .card_perfil .copy .img_alert {
@@ -432,22 +610,105 @@ h1.titleRegister{
   }
 
   .perfil .btn_close button{
-    width: 60%;
-    left: 20%;
+    width: 80%;
+    left: 10%;
   }
+
+  .servicios .buscador{
+    height: 280px;
+  }
+
+  .servicios .buscador h3{
+    top: 40px;
+    font-size: 25px;
+  }
+
+  .servicios .buscador input{
+    width: 60%;
+  }
+
+  .servicios .list_servicios{
+    width: 80%;
+    margin: auto;
+  }
+
+  
+  .categorias_serv{
+    width: 50%;
+  }
+
+  .categorias_serv img{
+    width: 40%;
+    left: 30%;
+  }
+
+  .categorias_serv .text a{
+    top: 10px;
+  }
+
+  .categorias_serv .img_continue{
+    width: 15%;
+  }
+
+
+  .nueva_solicitud img{
+    width: 70%;
+  }
+
+  .nueva_solicitud .text a{
+    top: 15px;
+    left: 0px;
+  }
+
+  .nueva_solicitud .ubicacion p img{
+    width: 6%;
+  }
+
+  .btn_ubicacion{
+    width: 30%;
+  }
+
+  .nueva_solicitud .btn{
+    width: 30% !important;
+  }
+
 }
 
 @media(min-width : 80em){
 
+  .perfil .card_info{
+    height: 700px;
+  }
+
+  .servicios .buscador h3{
+    top: 50px;
+    font-size: 20px;
+  }
+
+  .fondPage .menu {
+    width: 43%;
+  }
+
+  .w3-button{
+    padding: 15px 16px !important;
+  }
 
   .seccion_nav{
     height: 100px;
+  }
+
+  .perfil {
+    width: 95%;
+    margin: auto;
   }
 
   .seccion_nav .text_nav{
     margin-top: 25px;
   }
 
+  h1.titleRegister {
+    font-size: 1.5rem;
+  }
 
   .seccion_nav .text_nav button{
     margin-left: 15px;
@@ -484,8 +745,67 @@ h1.titleRegister{
   }
 
   .perfil .btn_close button{
-    width: 40%;
-    left: 30%;
+    width: 50%;
+    left: 25%;
+  }
+
+  .servicios .buscador input{
+    width: 50%;
+    top: 90px;
+  }
+
+  .servicios .list_servicios{
+    width: 60%;
+    margin-top: 25px;
+  }
+
+  .servicios .list_servicios .card_serv{
+    width: 80%;
+  }
+
+  .servicios .list_servicios .card_serv p{
+    font-size: 11px;
+  }
+
+  .categorias_serv{
+    width: 30%;
+  }
+
+  .categorias_serv img{
+    width: 35%;
+    left: 35%;
+  }
+
+  .categorias_serv .text a{
+    top: 10px;
+  }
+
+  .categorias_serv .img_continue{
+    width: 13%;
+  }
+
+  .nueva_solicitud img{
+    width: 35%;
+  }
+
+  .nueva_solicitud .text a{
+    top: 15px;
+    left: -40px;
+  }
+
+  .nueva_solicitud .ubicacion p img{
+    width: 3%;
+    margin-right: 10px;
+  }
+
+  .btn_ubicacion{
+    width: 20%;
+    padding: 8px 16px !important;
+  }
+
+  .nueva_solicitud .btn{
+    width: 20% !important;
+    padding: 8px 16px !important;
   }
 
 }
