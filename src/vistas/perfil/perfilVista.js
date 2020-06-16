@@ -20,7 +20,7 @@ class Perfil extends React.Component {
 						<div className="w3-row">
 
 							<div className="w3-col s12 m5">
-								<div class="w3-card card_perfil">
+								<div className="w3-card card_perfil">
 									<div className="w3-row info_person">
 										<div className="w3-col s12 m5">
 											<div className="w3-center img_upl">
@@ -33,14 +33,14 @@ class Perfil extends React.Component {
 										</div>
 										<div className="w3-col s2 m2">
 											<p>
-												<img src="../../assets/iconos/star.png" class="img_star" alt="star"></img>
+												<img src="../../assets/iconos/star.png" className="img_star" alt="star"></img>
 											4.9</p>
 										</div>
 									</div>
 
 									<div className="w3-row copy">
 										<div className="w3-col s3">
-											<img src="../../assets/iconos/alert.png" class=" img_alert" alt="alert"></img>
+											<img src="../../assets/iconos/alert.png" className=" img_alert" alt="alert"></img>
 										</div>
 										<div className="w3-col s9">
 											<p>Completa todos los datos de tu perfil</p>
@@ -50,7 +50,7 @@ class Perfil extends React.Component {
 									<div>
 										<div className="w3-row title_datos">
 											<h2>
-												<img src="../../assets/iconos/solicit.png" class=" img_tus_datos" alt="solicitud"></img>
+												<img src="../../assets/iconos/solicit.png" className=" img_tus_datos" alt="solicitud"></img>
 											Tus datos</h2>
 										</div>
 
@@ -61,7 +61,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img>
+													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 												</div>
 											</div>
 
@@ -70,7 +70,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/configuracion" className="">Configuración</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img>
+													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 												</div>
 											</div>
 
@@ -79,7 +79,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/cambio_password" className="">Cambiar contraseña</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img>
+													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 												</div>
 											</div>
 
@@ -89,7 +89,7 @@ class Perfil extends React.Component {
 									<div>
 										<div className="w3-row title_datos">
 											<h2>
-												<img src="../../assets/iconos/solicit.png" class=" img_tus_datos" alt="solicitud"></img>
+												<img src="../../assets/iconos/solicit.png" className=" img_tus_datos" alt="solicitud"></img>
 											Sobre Fixperto</h2>
 										</div>
 
@@ -100,7 +100,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/fixperto/perfil/quienes_somos" className="">Quienes somos</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img>
+													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 												</div>
 											</div>
 
@@ -109,7 +109,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/atencion_cliente" className="">Atención al cliente</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img>
+													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 												</div>
 											</div>
 
@@ -118,22 +118,22 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/terminos_condiciones" className="">Términos y condiciones</Link>
 												</div>
 												<div className="w3-col s2">
-													<img src="../../assets/iconos/continuar.png" class=" img_continuar" alt="continuar"></img>
+													<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 												</div>
 											</div>
 										</div>
 									</div>
 
 									<div className="w3-row btn_close">
-										<button class="w3-button "> CERRAR SESIÓN </button>
+										<button className="w3-button "> CERRAR SESIÓN </button>
 									</div>
 
 								</div>
 
 							</div>
 
-							<div className="w3-col s12 m7">
-								<div class="w3-card card_info">
+							{this.props["history"]["location"]["pathname"] !== "/fixperto/perfil/" && <div className="w3-col s12 m7">
+								<div className="w3-card card_info">
 									<Switch>
 										<Route path="/fixperto/perfil/perfil-informacion" component={PerfilInformacion} />
 										<Route path="/fixperto/perfil/configuracion" component={PerfilConfig} />
@@ -143,7 +143,7 @@ class Perfil extends React.Component {
 										<Route path="/fixperto/perfil/terminos_condiciones" component={PerfilTerminos} />
 									</Switch>
 								</div>
-							</div>
+							</div>}
 						</div>
 					</div>
 				</div>
