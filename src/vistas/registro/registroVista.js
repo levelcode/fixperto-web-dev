@@ -2,6 +2,7 @@ import React from 'react';
 import Alerta from "../../componentes/alertaVista";
 import FileUpload from "../../componentes/fileUpload";
 import httpClient from "../../constantes/axios";
+import axios from "axios";
 import { validateEmail, validateName, validatePhone, fechaAutorizada } from "../../constantes/funciones_auxiliares";
 
 class Registro extends React.Component {
@@ -24,7 +25,7 @@ class Registro extends React.Component {
 		var fecha = new Date(date);
 		return fecha.toISOString().split('T')[0] + ' ' + fecha.toTimeString().split(' ')[0];
 	}
-	
+
 	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
 	continuar = () => {
 		let vacios = [];
@@ -49,18 +50,13 @@ class Registro extends React.Component {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
 			else {
-				var token = localStorage.getItem("token")
-
+				//	var token = localStorage.getItem("token");
 				const createFormData = () => {
-
 					const data = new FormData();
-					
-					data.append("token", token);
+					data.append("token", "token");
 					Object.keys(this.state).forEach(key => {
-						
 						switch (key) {
 							case "photo":
-								
 								if (this.state["photo"] !== "")
 									data.append("documentos", this.state["photo"]);
 								break;
@@ -82,44 +78,41 @@ class Registro extends React.Component {
 							case "gender":
 								data.append("gender", this.state["gender"]);
 								break;
+							default:
+								break;
 						}
 					});
 					return data;
-					
 				};
-
-				httpClient.post('/seguridad/addCliente', createFormData())
-					.then((responseJson) => {
-						console.log(responseJson);
-					
-						if (responseJson.success) {
-							localStorage.setItem("@USER", JSON.stringify({ 
-								id: responseJson.user.id, 
-								typeId: responseJson.user.typeId, 
-								type: "cliente", 
-								avatar: responseJson.user.avatar, 
-								notification: true, 
-								notification_chat: true, 
-								name: this.state["name"], 
-								email: this.state["email"], 
-								token: this.state["token"], 
-								code_number: responseJson.user.code_number 
-							}));
-
-							//this.props["navigation"].navigate("ValidarPhone", { to: "BottomNavigatorCliente" });
-							this.props["history"]["push"]("fixperto/codigosms");
+				let me = this;
+				axios({
+					method: 'post',
+					url: httpClient.urlBase + '/seguridad/addCliente',
+					data: createFormData(), headers: { Accept: 'application/json' }
+				})
+					.then(function (response) {
+						let responseJson = response["data"];
+						if (responseJson["success"]) {
+							localStorage.setItem("@USER", JSON.stringify({ userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, type: "cliente", avatar: responseJson.user.avatar, notification: true, notification_chat: true, name: me.state["name"], email: me.state["email"], token: me.state["token"], code_number: responseJson.user.code_number }));
+							me.props["history"]["push"]("codigosms");
+						} else {
+							if (responseJson["existe"]) {
+								me.setState({ showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
+							}
 						}
 					})
-					
+					.catch(function (response) {
+						me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+					});
+
 			}
 		} else {
 			return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() });
 		}
 	}
-
 	render() {
 
-		const { textoAlert, showAlert, photo, name, email, birth_date, gender, phone, password, repeat_password, term_condition } = this.state;
+		const { textoAlert, showAlert, name, email, birth_date, gender, phone, password, repeat_password, term_condition } = this.state;
 
 		return (
 			<React.Fragment>

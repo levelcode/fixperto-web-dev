@@ -3,6 +3,8 @@ import httpClient from "../../constantes/axios";
 import ChangePassword from "../../componentes/changePassword";
 import Alerta from "../../componentes/alertaVista";
 import { validateEmail } from "../../constantes/funciones_auxiliares";
+import axios from "axios";
+
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,13 +17,27 @@ class Login extends React.Component {
 				this.setState({ showAlert: true, textoAlert: "Correo inválido, por favor verifíquelo" })
 			}
 			else {
-				httpClient.post('/seguridad/login', { email: this.state["email"], password: this.state["password"] })
-					.then((responseJson) => {
-						console.log(responseJson.data)
-						if (responseJson.success && responseJson["user"].length) {
-							this.setState({ showAlert: true, textoAlert: "OKOK" })
+				let me = this;
+				return axios({
+					method: 'post',
+					url: httpClient.urlBase + '/seguridad/login',
+					data: { email: this.state["email"], password: this.state["password"] }, headers: { Accept: 'application/json' }
+				})
+					.then(function (response) {
+						let responseJson = response["data"];
+						if (responseJson["success"] && responseJson["user"].length) {
+							var user = responseJson["user"][0];
+							localStorage.setItem("@USER", JSON.stringify({ insured: 1, evaluation: (user["evaluation"]) ? user["evaluation"] : 0, userId: user["id"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], email: user["email"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false }));
+							if (user["validate_number"] === 0) { me.props["history"]["push"]("codigosms"); }
+							else { me.props["history"]["push"]("fixperto/servicios"); }
+						}
+						else {
+							me.setState({ showAlert: true, textoAlert: "Correo o contraseña incorrecta, inténtelo nuevamente" });
 						}
 					})
+					.catch(function (response) {
+						me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+					});
 			}
 		}
 		else { this.setState({ showAlert: true, textoAlert: "Existen campos vacios" }); }
