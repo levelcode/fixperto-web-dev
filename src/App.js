@@ -7,8 +7,8 @@ import Perfil from "./vistas/perfil/perfilVista";
 import Servicios from "./vistas/servicios/serviciosVista";
 import ServiciosCategorias from "./vistas/servicios/serviciosCategorias";
 import ServiciosNuevaSolicitud from "./vistas/servicios/serviciosNuevaSolic";
+import Solicitudes from "./vistas/solicitudes/solicitudesVista"
 
-const Solicitudes = () => { return <div>Solicitudes</div> }
 class App extends React.Component {
 	constructor(props) { super(props); this.state = { servicios: true, solicitudes: false, chat: false, perfil: false }; }
 	componentDidMount() { }

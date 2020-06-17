@@ -517,6 +517,81 @@ h1.titleRegister{
   width: 100% !important;
 }
 
+/*********SOLICITUDES*********/
+
+.solicitudes .progreso{
+  background-color: #E7F6D7;
+  width: 90%;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+}
+
+.solicitudes .progreso img{
+  width: 80%;
+  position: relative;
+  padding: 5px;
+  left: 10%;
+  top: 20px;
+}
+
+.solicitudes .progreso p{
+  color: #72B330;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.solicitudes .list_datos div {
+  padding: 20px;
+}
+
+.solicitudes .list_datos div.active {
+  padding: 20px;
+  border-right: 2px solid #43AECC;
+}
+
+.solicitudes .list_datos div.active a{
+  color: #43AECC !important;
+  font-weight: bold;
+}
+
+.solicitudes .serv{
+  margin-top: 20px;
+}
+
+.solicitudes .serv img.img_serv{
+  width: 100%;
+  position: relative;
+  top: 0px;
+}
+
+.solicitudes .serv p{
+ text-align: left;
+ margin-left: 20px;
+ margin-top: 5px;
+ margin-bottom: 5px;
+}
+
+.solicitudes .serv p span{
+ color: #273861;
+ font-weight: bold;
+}
+
+.solicitudes .serv img.img_esperando{
+  width: 8%;
+  position: relative;
+  margin-right: 5px;
+}
+
+.solicitudes .serv img.img_mas{
+  width: 8%;
+  position: relative;
+  margin-right: 5px;
+}
+
+
 @media(min-width : 48em){
 
   .fondPage a{
@@ -671,6 +746,31 @@ h1.titleRegister{
     width: 30% !important;
   }
 
+  
+  .solicitudes .progreso{
+    width: 95%;
+  }
+
+  .solicitudes .progreso img{
+    width: 80%;
+    left: 10%;
+    top: 5px
+  }
+
+  
+  .solicitudes .serv img.img_serv{
+    width: 80%;
+    left: 10%;
+  }
+
+  .solicitudes .serv img.img_esperando{
+    width: 9%;
+  }
+
+  .solicitudes .serv img.img_mas{
+    width: 9%;
+  }
+
 }
 
 @media(min-width : 80em){
@@ -691,6 +791,12 @@ h1.titleRegister{
   .w3-button{
     padding: 5px 70px !important;
   }
+
+  .menu .w3-button{
+    padding: 8px 16px !important;
+  }
+
+      padding: 8px 16px;
 
   .seccion_nav{
     height: 100px;
@@ -805,6 +911,29 @@ h1.titleRegister{
   .nueva_solicitud .btn{
     width: 20% !important;
     padding: 8px 16px !important;
+  }
+
+   .solicitudes .progreso{
+    width: 98%;
+  }
+
+  .solicitudes .progreso img{
+    width: 20%;
+    left: 70%;
+    top: 5px;
+  }
+
+  .solicitudes .serv img.img_serv{
+    width: 40%;
+    left: 50%;
+  }
+
+  .solicitudes .serv img.img_esperando{
+    width: 6%;
+  }
+
+  .solicitudes .serv img.img_mas{
+    width: 6%;
   }
 
 }
