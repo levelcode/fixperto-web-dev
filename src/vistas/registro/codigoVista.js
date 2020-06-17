@@ -2,7 +2,26 @@ import React from 'react';
 
 class CodigoSms extends React.Component {
 
-	componentDidMount() { }
+	constructor(props) { 
+		super(props); 
+		this.state = { 
+			textoAlert: "", 
+			showAlert: false, 
+			code_number: "", 
+			isModalVisibleShangePhone: false, 
+			new_phone: "", 
+			user: {} 
+		} 
+	}
+
+	componentDidMount() { 
+		//AsyncStorage.getItem("@USER").then((user) => { user = JSON.parse(user); this.setState({ user }); }) 
+
+
+
+		localStorage.getItem("@USER")
+	}
+
 
 	render() {
 		return (
@@ -17,10 +36,8 @@ class CodigoSms extends React.Component {
 						<div className="w3-row">
 
                             <div className="w3-row cont_cod">
-                                <input type="number" className="w3-round-large" min={0}  max={9} maxLength={1}/>
-                                <input type="number" className="w3-round-large" min={0} max={9} maxLength={1}/>
-                                <input type="number" className="w3-round-large" min={0} max={9} maxLength={1}/>
-                                <input type="number" className="w3-round-large" min={0} max={9} maxLength={1}/>
+
+								<input type="number" className="w3-round-large" min={0} max={9} maxLength={4}/>
                             </div>
 
 							<div className="w3-row">

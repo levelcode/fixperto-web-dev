@@ -5,9 +5,10 @@ html, body, #root {
   }
 
 .headerFixperto{
-	  width: 125px;
-	  height: 40px;
-  }
+  width: 125px;
+  height: 40px;
+}
+
 .footerFixperto{
 	width: 135px;
 	height: 45px;
@@ -207,13 +208,11 @@ h1.titleRegister{
 }
 
 .codigo .cont_cod input{
-  width: 60px;
-  height: 50px;
+  width: 80%;
   border: none;
   border: solid 1px #676767;
   text-align: center;
   font-size: 1.5rem;
-  border-radius: 35%;
   color: #676767;
 }
 
@@ -690,7 +689,7 @@ h1.titleRegister{
   }
 
   .w3-button{
-    padding: 15px 16px !important;
+    padding: 5px 70px !important;
   }
 
   .seccion_nav{

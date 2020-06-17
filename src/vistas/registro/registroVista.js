@@ -1,6 +1,7 @@
 import React from 'react';
 import Alerta from "../../componentes/alertaVista";
 import FileUpload from "../../componentes/fileUpload";
+import httpClient from "../../constantes/axios";
 import { validateEmail, validateName, validatePhone, fechaAutorizada } from "../../constantes/funciones_auxiliares";
 
 class Registro extends React.Component {
@@ -12,7 +13,17 @@ class Registro extends React.Component {
 		}
 	}
 
-	componentDidMount() { }
+
+	formatDate = date => {
+		let today = new Date(date);
+		let fecha = today.getDate() + "/" + parseInt(today.getMonth() + 1) + "/" + today.getFullYear();
+		return fecha;
+	}
+
+	convertDateTime = date => {
+		var fecha = new Date(date);
+		return fecha.toISOString().split('T')[0] + ' ' + fecha.toTimeString().split(' ')[0];
+	}
 	
 	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
 	continuar = () => {
@@ -38,7 +49,68 @@ class Registro extends React.Component {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
 			else {
-				this.props["history"]["push"]("fixperto/servicios");
+				var token = localStorage.getItem("token")
+
+				const createFormData = () => {
+
+					const data = new FormData();
+					
+					data.append("token", token);
+					Object.keys(this.state).forEach(key => {
+						
+						switch (key) {
+							case "photo":
+								
+								if (this.state["photo"] !== "")
+									data.append("documentos", this.state["photo"]);
+								break;
+							case "name":
+								data.append("name", this.state["name"]);
+								break;
+							case "email":
+								data.append("email", this.state["email"]);
+								break;
+							case "birth_date":
+								data.append("birth_date", this.convertDateTime(this.state["birth_date"]));
+								break;
+							case "phone":
+								data.append("phone", this.state["phone"]);
+								break;
+							case "password":
+								data.append("password", this.state["password"]);
+								break;
+							case "gender":
+								data.append("gender", this.state["gender"]);
+								break;
+						}
+					});
+					return data;
+					
+				};
+
+				httpClient.post('/seguridad/addCliente', createFormData())
+					.then((responseJson) => {
+						console.log(responseJson);
+					
+						if (responseJson.success) {
+							localStorage.setItem("@USER", JSON.stringify({ 
+								id: responseJson.user.id, 
+								typeId: responseJson.user.typeId, 
+								type: "cliente", 
+								avatar: responseJson.user.avatar, 
+								notification: true, 
+								notification_chat: true, 
+								name: this.state["name"], 
+								email: this.state["email"], 
+								token: this.state["token"], 
+								code_number: responseJson.user.code_number 
+							}));
+
+							//this.props["navigation"].navigate("ValidarPhone", { to: "BottomNavigatorCliente" });
+							this.props["history"]["push"]("fixperto/codigosms");
+						}
+					})
+					
 			}
 		} else {
 			return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() });
