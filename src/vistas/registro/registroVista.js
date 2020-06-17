@@ -13,6 +13,7 @@ class Registro extends React.Component {
 	}
 
 	componentDidMount() { }
+	
 	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
 	continuar = () => {
 		let vacios = [];

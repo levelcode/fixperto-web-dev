@@ -22,13 +22,13 @@ class Registro extends React.Component {
                         <div className="categorias_serv">
 
                             <div className="w3-row item">
-                                 <Link to="/fixperto/perfil/perfil-informacion" className="">
+                                 <Link to="/fixperto/servicios-nueva" className="">
                                     <div className="w3-col s3">
                                         <img src="../../assets/iconos/services/1.png" className="" alt="1"></img>
                                     </div>
 
                                     <div className="w3-col s7 text">
-                                        <Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
+                                        <Link to="/fixperto/servicios-nueva" className="">Carpinteros</Link>
                                     </div>
 
                                     <div className="w3-col s2">
@@ -38,13 +38,13 @@ class Registro extends React.Component {
                             </div>
 
                             <div className="w3-row item">
-                                 <Link to="/fixperto/perfil/perfil-informacion" className="">
+                                 <Link to="/fixperto/servicios-nueva"  className="">
                                     <div className="w3-col s3">
                                         <img src="../../assets/iconos/services/2.png" className="" alt="1"></img>
                                     </div>
 
                                     <div className="w3-col s7 text">
-                                        <Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
+                                        <Link to="/fixperto/servicios-nueva"  className="">planos</Link>
                                     </div>
 
                                     <div className="w3-col s2">
@@ -54,13 +54,13 @@ class Registro extends React.Component {
                             </div>
 
                             <div className="w3-row item">
-                                 <Link to="/fixperto/perfil/perfil-informacion" className="">
+                                 <Link to="/fixperto/servicios-nueva"  className="">
                                     <div className="w3-col s3">
                                         <img src="../../assets/iconos/services/3.png" className="" alt="1"></img>
                                     </div>
 
                                     <div className="w3-col s7 text">
-                                        <Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
+                                        <Link to="/fixperto/servicios-nueva"  className="">Construcción</Link>
                                     </div>
 
                                     <div className="w3-col s2">
@@ -70,13 +70,13 @@ class Registro extends React.Component {
                             </div>
 
                             <div className="w3-row item">
-                                 <Link to="/fixperto/perfil/perfil-informacion" className="">
+                                 <Link to="/fixperto/servicios-nueva"  className="">
                                     <div className="w3-col s3">
                                         <img src="../../assets/iconos/services/4.png" className="" alt="1"></img>
                                     </div>
 
                                     <div className="w3-col s7 text">
-                                        <Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
+                                        <Link to="/fixperto/servicios-nueva"  className="">BBQ</Link>
                                     </div>
 
                                     <div className="w3-col s2">
@@ -86,13 +86,13 @@ class Registro extends React.Component {
                             </div>
 
                             <div className="w3-row item">
-                                 <Link to="/fixperto/perfil/perfil-informacion" className="">
+                                 <Link to="/fixperto/servicios-nueva"  className="">
                                     <div className="w3-col s3">
                                         <img src="../../assets/iconos/services/5.png" className="" alt="1"></img>
                                     </div>
 
                                     <div className="w3-col s7 text">
-                                        <Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
+                                        <Link to="/fixperto/servicios-nueva"  className="">Arquitectura general</Link>
                                     </div>
 
                                     <div className="w3-col s2">

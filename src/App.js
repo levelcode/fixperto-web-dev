@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import Header from "./componentes/header";
 import Chat from "./vistas/chat/chatVista";
 import Perfil from "./vistas/perfil/perfilVista";
-import Servicios from "./vistas/servicios/serviciosNuevaSolic";
+import Servicios from "./vistas/servicios/serviciosVista";
+import ServiciosCategorias from "./vistas/servicios/serviciosCategorias";
+import ServiciosNuevaSolicitud from "./vistas/servicios/serviciosNuevaSolic";
+
 const Solicitudes = () => { return <div>Solicitudes</div> }
 class App extends React.Component {
 	constructor(props) { super(props); this.state = { servicios: true, solicitudes: false, chat: false, perfil: false }; }
@@ -48,6 +51,10 @@ class App extends React.Component {
 				<div className="w3-mobile" style={{ width: 100 + '%' }}>
 					<Switch>
 						<Route path="/fixperto/servicios" render={() => (<Servicios history={this.props["history"]} />)} />
+
+						<Route path="/fixperto/servicios-categ" render={() => (<ServiciosCategorias history={this.props["history"]} />)} />
+
+						<Route path="/fixperto/servicios-nueva" render={() => (<ServiciosNuevaSolicitud history={this.props["history"]} />)} />
 
 						<Route path="/fixperto/solicitudes" render={() => (<Solicitudes history={this.props["history"]} />)} />
 
