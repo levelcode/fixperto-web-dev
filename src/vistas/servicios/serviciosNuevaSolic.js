@@ -2,7 +2,7 @@ import React from 'react';
 import Alerta from "../../componentes/alertaVista";
 import { Link } from "react-router-dom";
 
-class Registro extends React.Component {
+class ServiciosNuevaSol extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -103,4 +103,4 @@ class Registro extends React.Component {
 	}
 }
 
-export default Registro;
+export default ServiciosNuevaSol;
