@@ -49,7 +49,7 @@ class Registro extends React.Component {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
 			else {
-				var token = localStorage.getItem("token")
+				/*{var token = localStorage.getItem("token")
 
 				const createFormData = () => {
 
@@ -110,6 +110,9 @@ class Registro extends React.Component {
 							this.props["history"]["push"]("fixperto/codigosms");
 						}
 					})
+					}*/
+
+					this.props["history"]["push"]("fixperto/perfil");
 					
 			}
 		} else {

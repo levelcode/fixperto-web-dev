@@ -785,7 +785,10 @@ h1.titleRegister{
   }
 
   .fondPage .menu {
-    width: 43%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .w3-button{
@@ -850,8 +853,8 @@ h1.titleRegister{
   }
 
   .perfil .btn_close button{
-    width: 50%;
-    left: 25%;
+    width: 70%;
+    left: 15%;
   }
 
   .servicios .buscador input{
@@ -934,6 +937,10 @@ h1.titleRegister{
 
   .solicitudes .serv img.img_mas{
     width: 6%;
+  }
+
+  .fondPage img {
+    width: auto;
   }
 
 }
