@@ -433,6 +433,21 @@ h1.titleRegister{
   margin: auto;
 }
 
+
+.servicios .add_cat p {
+  text-align: center;
+  color: #43AECC;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.servicios .add_cat input {
+  width: 80%;
+  position: relative;
+  left: 10%;
+  border-radius: 0;
+}
+
 .servicios .list_servicios .card_serv{
   width: 80%;
   margin: auto;

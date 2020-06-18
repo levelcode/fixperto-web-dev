@@ -3,6 +3,8 @@ import Alerta from "../../componentes/alertaVista";
 import FileUpload from "../../componentes/fileUpload";
 import httpClient from "../../constantes/axios";
 import axios from "axios";
+import Header from "../../componentes/header";
+import Footer from "../../componentes/footer";
 import { validateEmail, validateName, validatePhone, fechaAutorizada } from "../../constantes/funciones_auxiliares";
 
 class Registro extends React.Component {
@@ -49,6 +51,7 @@ class Registro extends React.Component {
 			else if (!validateName(this.state["name"])) {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
+			
 			else {
 				//	var token = localStorage.getItem("token");
 				const createFormData = () => {
@@ -81,9 +84,11 @@ class Registro extends React.Component {
 							default:
 								break;
 						}
+						
 					});
 					return data;
 				};
+				
 				let me = this;
 				axios({
 					method: 'post',
@@ -117,6 +122,8 @@ class Registro extends React.Component {
 		return (
 			<React.Fragment>
 
+				<Header/>
+
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 
 				<div className="container">
@@ -147,7 +154,7 @@ class Registro extends React.Component {
 							<label>Género*</label>
 							<div>
 								<select className="w3-select w3-border w3-round-large w3-margin-bottom size200" name="gender"
-									value={gender} onChange={(e) => this.setState({ gender: e.target.gender })}>
+									value={gender} onChange={(e) => this.setState({ gender: e.target.value })}>
 									{this.gender_type.map((gender_type, key) => (
 										<option key={key} value={gender_type.id} >{gender_type.denomination}</option>
 									))}
@@ -180,6 +187,8 @@ class Registro extends React.Component {
 						</form>
 					</div>
 				</div>
+
+				<Footer/>
 			</React.Fragment >
 		);
 	}
