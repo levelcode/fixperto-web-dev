@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Route, Switch } from "react-router";
 import SolicitudesProgreso from "./solicitudesProgreso";
-class Perfil extends React.Component {
-	constructor(props) { super(props); this.state = {}; }
+import SolicitudesAgendado from "./solicitudesAgendado";
+import SolicitudesCompletado from "./solicitudesCompletados";
+class Solicitudes extends React.Component {
+
+	constructor(props) { super(props); this.state = { textoAlert: "", showAlert: false, cargador: false, requests: [] } }
+
 	render() {
 		return (
 			<React.Fragment>
@@ -11,17 +15,6 @@ class Perfil extends React.Component {
 
 
 					<div className="perfil solicitudes">
-
-                        <div className="copy w3-row progreso">
-                            <div className="w3-col s3 m1 l3">
-                                <img src="../../assets/iconos/progreso.png" className="img_star" alt="star"></img>
-                            </div>
-
-                            <div className="w3-col s9 m11 l9">
-                                <p>Pronto recibirás una notificación <span>fixperto están evaluando tu servicio</span> </p>
-                                
-                            </div>
-                        </div>
 
 						<div className="w3-row">
 
@@ -41,7 +34,7 @@ class Perfil extends React.Component {
                                             <hr></hr>
 
                                             <div>
-                                                <Link to="/fixperto/perfil/perfil-informacion" className="">
+                                                <Link to="/fixperto/solicitudes/solicitud-agendado" className="">
                                                    Agendados
                                                 </Link>
                                             </div>
@@ -49,7 +42,7 @@ class Perfil extends React.Component {
                                             <hr></hr>
 
                                             <div>
-                                                <Link to="/fixperto/perfil/perfil-informacion" className="">
+                                                <Link to="/fixperto/solicitudes/solicitud-completado" className="">
                                                    Completados
                                                 </Link>
                                             </div>
@@ -67,6 +60,8 @@ class Perfil extends React.Component {
 								<div className="w3-card card_info">
 									<Switch>
 										<Route path="/fixperto/solicitudes/solicitud-progreso" component={SolicitudesProgreso} />
+										<Route path="/fixperto/solicitudes/solicitud-agendado" component={SolicitudesAgendado} />
+										<Route path="/fixperto/solicitudes/solicitud-completado" component={SolicitudesCompletado} />
 									</Switch>
 								</div>
 							</div>
@@ -77,7 +72,7 @@ class Perfil extends React.Component {
 		);
 	}
 }
-export default Perfil;
+export default Solicitudes;
 
 
 

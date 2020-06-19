@@ -2,7 +2,11 @@
 html, body, #root {
 	height: 100%;
 	width: 100%;
-  }
+}
+
+a{
+  text-decoration: none;
+}
 
 .headerFixperto{
   width: 125px;
@@ -398,6 +402,10 @@ h1.titleRegister{
 
 .info_perfil_comp div{
   margin-top: 20px !important;
+}
+
+.info_perfil_comp  p {
+  text-align: center;
 }
 
 
@@ -935,10 +943,14 @@ h1.titleRegister{
     width: 98%;
   }
 
+  .solicitudes .cont_srv{
+    margin-bottom: 20px;
+  }
+
   .solicitudes .progreso img{
-    width: 20%;
-    left: 70%;
-    top: 5px;
+    width: 40%;
+    left: 55%;
+    top: 15px;
   }
 
   .solicitudes .serv img.img_serv{

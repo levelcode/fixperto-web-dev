@@ -29,7 +29,7 @@ class SolicitudesProgreso extends React.Component {
         var typeId = this.state['user'][0]['typeId']
         axios({
             method  : 'post',
-            url     : httpClient.urlBase + '/cliente/getRequestsProgress',
+            url     : httpClient.urlBase + '/cliente/getRequestsScheduled',
             data    : { id : typeId},
             headers : { Accept: 'application/json' }
         })
@@ -76,10 +76,9 @@ class SolicitudesProgreso extends React.Component {
                         </div>
                     }
 
-                    
 
 					<div className="info_perfil_config">
-						<h1 className="titleRegister">En progreso</h1>
+						<h1 className="titleRegister">Agendados</h1>
                         
                         <div className="w3-row serv">
                             {
@@ -104,13 +103,16 @@ class SolicitudesProgreso extends React.Component {
 												</div>
                                             }
                                             <p> <span className="text_blue_dark">{item.service}</span> / {item.category} </p>
-                                            <p>{item.registry_date}</p>
+
+                                            <p>{item.fixperto}</p>
+                                            <p>Fecha agendada: {(item.scheduled_date) ? item.scheduled_date : "Pendiente"}</p>
+
+                    
 
                                             {
-                                                item["oferts"] === 0 &&
-                                                <p>  
-                                                    <img src="../../assets/iconos/esperando.png" className="img_esperando" alt="star"></img>
-                                                    Esperando servicios
+                                                item.emergency === 1 && 
+												<p className="text_blue_dark">
+                                                    Tiempo de respuesta: {item.response_time}
                                                 </p>
                                             }
 

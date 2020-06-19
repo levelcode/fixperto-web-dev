@@ -6,10 +6,46 @@ class ServiciosNuevaSol extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			textoAlert: "", showAlert: false,  detalle: ""
-		}
+		this.state = { 
+            textoAlert      : "", 
+            showAlert       : false, 
+            show_start_date : false, 
+            start_date      : "", 
+            show_hour       : false, 
+            hour            : "", 
+            buttonDisabled  : false, 
+            user            : [], 
+            description     : "", 
+            region          : [], 
+            photos          : [], 
+            emergency       : false,
+            user_name       : "",
+            user_service    : "",
+            user_categoria  : "",
+        };
 	}
+
+    componentDidMount() { 
+        var user = JSON.parse(localStorage.getItem("@USER"))
+        this.state['user'].push(user)
+
+
+        var serv = this.props.history.location
+
+        var user_ser = serv.service[0].denomination
+        this.setState({user_service : user_ser})
+
+        var user_cat = serv.item.denomination
+        this.setState({user_categoria : user_cat})
+
+        var nom = this.state['user'][0]['name']
+        this.setState({user_name : nom});
+
+
+        console.log(serv);
+        
+
+    }
 
 	guardar = () => {
 		let vacios = [];
@@ -18,7 +54,7 @@ class ServiciosNuevaSol extends React.Component {
 
 	render() {
 
-		const { textoAlert, showAlert,  detalle } = this.state;
+		const { textoAlert, showAlert,  description } = this.state;
 
 		return (
 			<React.Fragment>
@@ -33,24 +69,21 @@ class ServiciosNuevaSol extends React.Component {
 						<form className="w3-container">
 
                             <div className="w3-row item">
-                                 <Link to="/fixperto/perfil/perfil-informacion" className="">
-                                    <div className="w3-col s1">
-                                        <img src="../../assets/iconos/services/5.png" className="" alt="1"></img>
-                                    </div>
+                                <div className="w3-col s1">
+                                    <img src="../../assets/iconos/services/5.png" className="" alt="1"></img>
+                                </div>
 
-                                    <div className="w3-col s11 text">
-                                        <Link to="/fixperto/perfil/perfil-informacion" className="">
-                                            <b>Carpinteros</b> / 
-                                            Aluminio
-                                        </Link>
-                                    </div>
-                                 </Link>
+                                <div className="w3-col s11 text">
+                                        <b>{this.state['user_service']}</b> /  
+                                        {this.state['user_categoria']}
+                                </div>
                             </div>
 
                             <div>
-                                <label> <span className="text_blue">Ambar Ballen</span>, escribe el detalle del servicio que necesitas* </label>
-							    <input className="w3-input w3-border w3-round-large" type="text" value={detalle}
-								onChange={(e) => this.setState({ detalle: e.target.value })} />
+                                <label> <span className="text_blue">{this.state['user_name']}</span>, escribe el detalle del servicio que necesitas* </label>
+
+							    <input className="w3-input w3-border w3-round-large" type="text" value={description}
+								onChange={(e) => this.setState({ description: e.target.value })} />
                             </div>
 
                             <div className="ubicacion">

@@ -41,10 +41,13 @@ class ServiciosVista extends React.Component {
         .then(function (responseJson) {
 
             responseJson = responseJson['data']
-            this.setState({ 
+            
+            me.setState({ 
                 services: responseJson.services, 
                 copy: responseJson.services 
             })
+
+            
         })
         .catch((error) => {
             if (error.message === 'Timeout' || error.message === 'Network request failed') {
@@ -58,11 +61,13 @@ class ServiciosVista extends React.Component {
 		this.setState({ search, copy });
 	};
 
-    servicioSelected(item) { 
-        this.props["history"]["push"]("fixperto/servicios");
-    }
+    continuarCateg(item) { 
 
-    keyExtractor = (item, index) => index.toString()
+        this.props.history.push({
+            pathname: '/fixperto/servicios-categ',
+            item
+        })
+    }
 
     addCategory = () => {
         var me = this
@@ -131,145 +136,21 @@ class ServiciosVista extends React.Component {
                             </div>
                         }
 
-                        <div className="ullll">
-                            {this.state.services.map(item => (
-                                <div id={item.id}>{item.denomination}</div>
+                        <div className="w3-row">
+                            {this.state.services.map((item, key )=> (
+                            <div className="w3-col s6 m3 l2" key={key} 
+                                onClick={(e) => {
+									e.preventDefault();
+									this.continuarCateg(item);
+								}}>
+                                <div className="w3-card card_serv">
+                                    <img src={item.icon} className="img_serv" alt=""></img>
+                                    <p>{item.denomination}</p>
+                                </div>
+                            </div>
                             ))}
                         </div>
 
-                        <div className="w3-row">
-                            <div className="w3-col s6 m3 l2">
-                                <Link to="/fixperto/servicios-categ" className="">
-                                    <div className="w3-card card_serv">
-                                        <img src="../../assets/iconos/services/0.png" className="img_serv" alt=""></img>
-                                        <p>Servicios de emergencia</p>
-                                    </div>
-                                </Link>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <Link to="/fixperto/servicios-categ" className="">
-                                    <div className="w3-card card_serv">
-                                        <img src="../../assets/iconos/services/1.png" className="img_serv" alt=""></img>
-                                        <p>Jardineros</p>
-                                    </div>
-                                </Link>
-                                
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/2.png" className="img_serv" alt=""></img>
-                                    <p>Electricistas</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/3.png" className="img_serv" alt=""></img>
-                                    <p>Cerrajeros</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/4.png" className="img_serv" alt=""></img>
-                                    <p>Pintores</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/5.png" className="img_serv" alt=""></img>
-                                    <p>Plomeros</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/6.png" className="img_serv" alt=""></img>
-                                    <p>Albañiles</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/7.png" className="img_serv" alt=""></img>
-                                    <p>Carpinteros</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/8.png" className="img_serv" alt=""></img>
-                                    <p>Impermeabilización</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/0.png" className="img_serv" alt=""></img>
-                                    <p>Servicios de emergencia</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/1.png" className="img_serv" alt=""></img>
-                                    <p>Jardineros</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/2.png" className="img_serv" alt=""></img>
-                                    <p>Electricistas</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/3.png" className="img_serv" alt=""></img>
-                                    <p>Cerrajeros</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/4.png" className="img_serv" alt=""></img>
-                                    <p>Pintores</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/5.png" className="img_serv" alt=""></img>
-                                    <p>Plomeros</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/6.png" className="img_serv" alt=""></img>
-                                    <p>Albañiles</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/7.png" className="img_serv" alt=""></img>
-                                    <p>Carpinteros</p>
-                                </div>
-                            </div>
-
-                            <div className="w3-col s6 m3 l2">
-                                <div className="w3-card card_serv">
-                                    <img src="../../assets/iconos/services/8.png" className="img_serv" alt=""></img>
-                                    <p>Impermeabilización</p>
-                                </div>
-                            </div>
-                        </div>
-                    
                     </div>
 				</div>
 			</React.Fragment >
