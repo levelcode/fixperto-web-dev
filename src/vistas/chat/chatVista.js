@@ -25,6 +25,12 @@ class Chat extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
+				<div className="w3-cell-row w3-margin-bottom">
+					<div className="w3-cell" style={{ width: 35 + "px" }}>
+						<img src="../../assets/chats.png" alt="Norway" />
+					</div>
+					<h2 className="w3-cell w3-margin-left" >Chat</h2>
+				</div>
 				<GiftedChat
 					messages={this.state.messages}
 					onSend={(messages) => this.onSend(messages)}

@@ -16,7 +16,12 @@ class Perfil extends React.Component {
 
 
 					<div className="perfil">
-
+						<div className="w3-cell-row w3-margin-bottom">
+							<div className="w3-cell" style={{ width: 35 + "px" }}>
+								<img src="../../assets/solicitudesUp.png" alt="Norway" />
+							</div>
+							<h2 className="w3-cell" >Perfil</h2>
+						</div>
 						<div className="w3-row">
 
 							<div className="w3-col s12 m5">
@@ -75,7 +80,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/configuracion" className="">
 														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 													</Link>
-													
+
 												</div>
 											</div>
 
@@ -84,10 +89,10 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/cambio_password" className="">Cambiar contraseña</Link>
 												</div>
 												<div className="w3-col s2">
-													<Link to="/fixperto/perfil/cambio_password" className=""> 
+													<Link to="/fixperto/perfil/cambio_password" className="">
 														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 													</Link>
-													
+
 												</div>
 											</div>
 
@@ -111,7 +116,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/fixperto/perfil/quienes_somos" className="">
 														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 													</Link>
-													
+
 												</div>
 											</div>
 
@@ -123,7 +128,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/atencion_cliente" className="">
 														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 													</Link>
-													
+
 												</div>
 											</div>
 
@@ -135,7 +140,7 @@ class Perfil extends React.Component {
 													<Link to="/fixperto/perfil/terminos_condiciones" className="">
 														<img src="../../assets/iconos/continuar.png" className=" img_continuar" alt="continuar"></img>
 													</Link>
-													
+
 												</div>
 											</div>
 										</div>

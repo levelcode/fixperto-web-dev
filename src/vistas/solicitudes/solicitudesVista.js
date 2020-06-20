@@ -11,10 +11,16 @@ class Solicitudes extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
+
 				<div className="container">
 
-
 					<div className="perfil solicitudes">
+						<div className="w3-cell-row w3-margin-bottom">
+							<div className="w3-cell" style={{width:35+"px"}}>
+								<img src="../../assets/solicitudesUp.png" alt="Norway" />
+							</div>
+							<h2 className="w3-cell" >Solicitudes </h2>
+						</div>
 
 						<div className="w3-row">
 
@@ -25,28 +31,28 @@ class Solicitudes extends React.Component {
 									<div>
 										<div className="w3-row list_datos">
 
-                                            <div className="active">
-                                                <Link to="/fixperto/solicitudes/solicitud-progreso" className="">
-                                                   En progreso
+											<div className="active">
+												<Link to="/fixperto/solicitudes/solicitud-progreso" className="">
+													En progreso
                                                 </Link>
-                                            </div>  
+											</div>
 
-                                            <hr></hr>
+											<hr></hr>
 
-                                            <div>
-                                                <Link to="/fixperto/solicitudes/solicitud-agendado" className="">
-                                                   Agendados
+											<div>
+												<Link to="/fixperto/solicitudes/solicitud-agendado" className="">
+													Agendados
                                                 </Link>
-                                            </div>
+											</div>
 
-                                            <hr></hr>
+											<hr></hr>
 
-                                            <div>
-                                                <Link to="/fixperto/solicitudes/solicitud-completado" className="">
-                                                   Completados
+											<div>
+												<Link to="/fixperto/solicitudes/solicitud-completado" className="">
+													Completados
                                                 </Link>
-                                            </div>
-                                            
+											</div>
+
 
 										</div>
 									</div>
@@ -55,8 +61,8 @@ class Solicitudes extends React.Component {
 
 							</div>
 
-							
-                            <div className="w3-col s12 m7">
+
+							<div className="w3-col s12 m7">
 								<div className="w3-card card_info">
 									<Switch>
 										<Route path="/fixperto/solicitudes/solicitud-progreso" component={SolicitudesProgreso} />
