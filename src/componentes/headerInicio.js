@@ -9,9 +9,9 @@ const HeaderInicio = (props) => {
 				</div>
 				<div className="w3-half" ><p /></div>
 				<div className="w3-quarter w3-container w3-center">
-					<b>Iniciar sesión</b>
+					<b onClick={()=>{}}>Home</b>
 					<div className="w3-button w3-round-xlarge w3-margin-left w3-text-white"
-						style={{ backgroundColor: "#43AECC" }} onClick={registrar}>Regístrate</div>
+						style={{ backgroundColor: "#43AECC" }} onClick={()=>{}}>Home</div>
 				</div>
 			</div>
 		</React.Fragment >
