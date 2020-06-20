@@ -22,7 +22,6 @@ class ServiciosVista extends React.Component {
 
     componentDidMount() { 
         var user = JSON.parse(localStorage.getItem("@USER"))
-        this.setState({user})
 
         this.state['user'].push(user)
 

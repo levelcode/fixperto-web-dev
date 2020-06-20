@@ -53,7 +53,6 @@ class Registro extends React.Component {
 			}
 			
 			else {
-				//	var token = localStorage.getItem("token");
 				const createFormData = () => {
 					const data = new FormData();
 					data.append("token", "web");
