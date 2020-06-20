@@ -9,8 +9,8 @@ a{
 }
 
 .headerFixperto{
-  width: 125px;
-  height: 40px;
+  width: auto;
+  height: 30px;
 }
 
 .footerFixperto{
@@ -614,6 +614,29 @@ h1.titleRegister{
   margin-right: 5px;
 }
 
+.image {
+  width: auto;
+}
+
+/*******CSS HEADER*********/
+
+
+
+
+/*******CSS GENERALES*********/
+.imagen-solicitud {
+  width: 30px;
+  height: 30px;
+
+}
+.imagen-icono {
+  width: 15px;
+  height: 15px;
+}
+.imagen-experto {
+  width: 80px;
+  height: 80px;
+}
 
 @media(min-width : 48em){
 
