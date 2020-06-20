@@ -625,17 +625,17 @@ h1.titleRegister{
 
 /*******CSS GENERALES*********/
 .imagen-solicitud {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
 
 }
 .imagen-icono {
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
 }
 .imagen-experto {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
 @media(min-width : 48em){
