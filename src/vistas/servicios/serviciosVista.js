@@ -1,6 +1,5 @@
 import React from 'react';
 import Alerta from "../../componentes/alertaVista";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import httpClient from "../../constantes/axios";
 
@@ -38,22 +37,22 @@ class ServiciosVista extends React.Component {
 			url: httpClient.urlBase + '/services/getServices',
 			headers: { Accept: 'application/json' }
 		})
-			.then(function (responseJson) {
+		.then(function (responseJson) {
 
-				responseJson = responseJson['data']
+			responseJson = responseJson['data']
 
-				me.setState({
-					services: responseJson.services,
-					copy: responseJson.services
-				})
-
-
+			me.setState({
+				services: responseJson.services,
+				copy: responseJson.services
 			})
-			.catch((error) => {
-				if (error.message === 'Timeout' || error.message === 'Network request failed') {
-					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-				}
-			})
+
+
+		})
+		.catch((error) => {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			}
+		})
 	}
 
 	updateSearch = search => {

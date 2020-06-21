@@ -40,12 +40,15 @@ class ConfiguracionVista extends React.Component {
             url: httpClient.urlBase + '/seguridad/setNotification',
 			data : { 
 				id	: id, 
-				notification_chat: (sta["notification_chat"] === true) ? 0 : 1
+				notification: (sta["notification"] === true) ? 0 : 1
 			},
             headers: { Accept: 'application/json' }
         })
         .then(function (responseJson) {
             responseJson = responseJson['data']
+
+			console.log(responseJson);
+			
 
             if (!responseJson.success) {
 				me.setState({ notification: !this.state["notification"] });
@@ -65,6 +68,7 @@ class ConfiguracionVista extends React.Component {
 	setNotificacionesChat = () => {
 		this.setState({ notification_chat: !this.state["notification_chat"] });
 		var sta = Object.assign(this.state);
+		
 		var id 	= this.state['user'][0]['id']
 		var me = this
 
@@ -73,7 +77,7 @@ class ConfiguracionVista extends React.Component {
             url: httpClient.urlBase + '/seguridad/setNotificationChat',
 			data : { 
 				id	: id, 
-				notification	: (sta["notification"] === true) ? 0 : 1
+				notification_chat	: (sta["notification_chat"] === true) ? 0 : 1
 			},
             headers: { Accept: 'application/json' }
         })
@@ -114,12 +118,12 @@ class ConfiguracionVista extends React.Component {
             if (responseJson.success) {
 				var result = responseJson.result;
 
-				console.log(result);
 				
 				me.setState({
 					notification: (result["notification"]) ? true : false,
 					notification_chat: (result["notification_chat"]) ? true : false
 				})
+
 			}
         })
         .catch((error) => {
@@ -128,11 +132,10 @@ class ConfiguracionVista extends React.Component {
 			}
         })
 	}
-	
 
 	render() {
 
-		const { textoAlert, showAlert, notificacion, notificaciones_chat } = this.state;
+		const { textoAlert, showAlert, notification, notification_chat } = this.state;
 
 		return (
 			<React.Fragment>
@@ -147,22 +150,16 @@ class ConfiguracionVista extends React.Component {
                         <p className="w3-padding">Al desactivar las notificaciones no recibirás de primera mano las ofertas de servicios</p>
 
                         <div className="check_config">
-                            <input className="w3-check" type="checkbox" value={notificacion} />
-                            <label>Notificacion</label>
+                            <input className="w3-check" type="checkbox" checked={notification} onChange={(e) => this.setNotificaciones()} />
+                            <label>Notificación</label>
                         </div>
 
                         <hr></hr>
 
                         <div className="check_config">
-                            <input className="w3-check" type="checkbox" value={notificaciones_chat} />
+                            <input className="w3-check" type="checkbox"  checked={notification_chat} onChange={(e) => this.setNotificacionesChat()} />
                             <label>Notificaciones del chat</label>
                         </div>
-
-                        <p><button className="w3-button btn"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            this.continuar();
-                        }}>Guardar</button></p>
 
 					</div>
 				</div>

@@ -23,7 +23,7 @@ class QuienesSomos extends React.Component {
         var me = this
         axios({
 			method  : 'get',
-			url     :"https://backoffice.fixperto.com/wp-json/wp/v2/pages/20",
+			url     :"https://backoffice.fixperto.com/wp-json/wp/v2/pages/16",
 			headers : { Accept: 'application/json' }
 		})
 		.then(function (responseJson) {
@@ -52,7 +52,7 @@ class QuienesSomos extends React.Component {
 
 				<div className="">
 					<div className="info_perfil_config">
-						<h1 className="titleRegister">Términos y condiciones</h1>
+						<h1 className="titleRegister">Quienes Somos</h1>
 
                         <html className="w3-padding">{contenido}</html>
 
