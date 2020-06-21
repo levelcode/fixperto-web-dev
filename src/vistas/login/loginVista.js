@@ -50,12 +50,12 @@ class Login extends React.Component {
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<form>
 					<div className="w3-margin-bottom">
-						<input className="w3-input w3-border w3-round-large" name="email" type="text" placeholder="Email" required
+						<input className="w3-input w3-border icon-email" name="email" type="text" placeholder="Email" required
 							value={email} onChange={(e) => this.setState({ email: e.target.value })} />
 					</div>
 					<br />
-					<div className="w3-margin-bottom">
-						<input className="w3-input w3-border w3-round-large" name="password" type="password" placeholder="Contraseña" required
+					<div className="w3-margin-bottom icons">
+						<input className="w3-input w3-border  icon-clave" name="password" type="password" placeholder="Contraseña" required
 							value={password} onChange={(e) => this.setState({ password: e.target.value })} />
 					</div>
 					<br />

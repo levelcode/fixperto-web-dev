@@ -125,7 +125,7 @@ class Registro extends React.Component {
 
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 
-				<div className="container">
+				<div className="container_web">
 
 					<div className="formRegister">
 						<h1 className="titleRegister">Ingresa tus datos</h1>

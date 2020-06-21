@@ -5,7 +5,7 @@ class Beneficios extends React.Component {
 		return (
 			<React.Fragment>
 
-				<div className="container">
+				<div className="container_web">
 
 					<div className="beneficios">
 						<h1 className="titleRegister">Beneficios</h1>
