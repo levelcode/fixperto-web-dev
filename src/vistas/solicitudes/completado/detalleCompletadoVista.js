@@ -29,7 +29,12 @@ class DetalleCompletado extends React.Component {
 	calificar = () => { this.setState({ isCalificarVisible: true }); }
 	closeCalificar = (status = "") => {
 		if (status === "") { return; }
-		else if (status) { this.setState({ isCalificarVisible: false, calificado: true }); }
+		else if (status) {
+			this.setState({
+				isCalificarVisible: false, calificado: true,
+				showAlert: true, textoAlert: "El experto ha sido calificado"
+			});
+		}
 		else { this.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
 	}
 	render() {
