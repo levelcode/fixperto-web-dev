@@ -5,8 +5,11 @@ import SolicitudesProgreso from "./solicitudesProgreso";
 import SolicitudesAgendado from "./solicitudesAgendado";
 import SolicitudesCompletado from "./solicitudesCompletados";
 class Solicitudes extends React.Component {
-	constructor(props) { super(props); this.state = { textoAlert: "", showAlert: false, cargador: false, requests: [] } }
+	constructor(props) { super(props); this.state = { progreso: true, agendado: false, completado: false } }
+	active = (text) => { let state = {}; Object.keys(this.state).map((key) => state[key] = (key === text)); this.setState(state); }
 	render() {
+		const { progreso, agendado, completado } = this.state;
+		const itemStyle = "active";
 		return (
 			<React.Fragment>
 				<div className="container">
@@ -22,20 +25,20 @@ class Solicitudes extends React.Component {
 								<div className="w3-card card_perfil">
 									<div>
 										<div className="w3-row list_datos">
-											<div className="active">
-												<Link to="/fixperto/solicitudes/solicitud-progreso" className="">
+											<div className={(progreso) ? `${itemStyle}` : ``}>
+												<Link to="/fixperto/solicitudes/solicitud-progreso" onClick={() => this.active("progreso")}>
 													En progreso
                                                 </Link>
 											</div>
 											<hr></hr>
-											<div>
-												<Link to="/fixperto/solicitudes/solicitud-agendado" className="">
+											<div className={(agendado) ? `${itemStyle}` : ``}>
+												<Link to="/fixperto/solicitudes/solicitud-agendado" onClick={() => this.active("agendado")}>
 													Agendados
                                                 </Link>
 											</div>
 											<hr></hr>
-											<div>
-												<Link to="/fixperto/solicitudes/solicitud-completado" className="">
+											<div className={(completado) ? `${itemStyle}` : ``}>
+												<Link to="/fixperto/solicitudes/solicitud-completado" onClick={() => this.active("completado")}>
 													Completados
                                                 </Link>
 											</div>
