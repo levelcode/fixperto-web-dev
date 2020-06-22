@@ -3,9 +3,10 @@ import httpClient from "../../../constantes/axios";
 import Alerta from "../../../componentes/alertaVista";
 import Solicitud from "../../../componentes/solicitud";
 import Experto from "../../../componentes/experto";
+import Calificar from "../../../componentes/calificar";
 import axios from "axios";
 class DetalleCompletado extends React.Component {
-	constructor(props) { super(props); this.state = { id: "", isCalificarVisible: false, isSolicitudVisible: false, showAlert: false, textoAlert: "", request: {}, expert: {}, user: JSON.parse(localStorage.getItem("@USER")) }; }
+	constructor(props) { super(props); this.state = { calificado: false, id: "", isCalificarVisible: false, isSolicitudVisible: false, showAlert: false, textoAlert: "", request: {}, expert: {}, user: JSON.parse(localStorage.getItem("@USER")) }; }
 	componentDidMount() { this.getRequest(""); }
 	UNSAFE_componentWillReceiveProps(next_props) {
 		if (next_props["request"] !== "" && next_props["request"] !== this.state["id"]) { this.getRequest(next_props["request"]); }
@@ -26,13 +27,18 @@ class DetalleCompletado extends React.Component {
 	}
 	verDetalle = () => { this.setState({ isSolicitudVisible: true }); }
 	calificar = () => { this.setState({ isCalificarVisible: true }); }
-	closeCalificar = (status) => { this.setState({ isCalificarVisible: false }); this.props["back"](status); }
+	closeCalificar = (status = "") => {
+		if (status === "") { return; }
+		else if (status) { this.setState({ isCalificarVisible: false, calificado: true }); }
+		else { this.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+	}
 	render() {
-		const { isSolicitudVisible, isCalificarVisible, showAlert, textoAlert, request, expert, id } = this.state;
+		const { calificado, isSolicitudVisible, isCalificarVisible, showAlert, textoAlert, request, expert, id } = this.state;
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
+				<Calificar show={isCalificarVisible} calificador={id} experto={expert} close={(status) => this.closeCalificar(status)} />
 				{id === this.props["request"] && <div>
 					<div className="w3-card">
 						<div className="w3-cell">
@@ -104,8 +110,8 @@ class DetalleCompletado extends React.Component {
 								</div>
 							</div>
 						</div>
-						<div className="w3-button w3-block w3-hover-blue w3-blue w3-section"
-							onClick={() => { this.calificar() }}>Calificar experto</div>
+						{!calificado && <div className="w3-button w3-block w3-hover-blue w3-blue w3-section"
+							onClick={() => { this.calificar() }}>Calificar experto</div>}
 					</div>
 				</div>}
 			</React.Fragment >
