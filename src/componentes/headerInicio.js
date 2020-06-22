@@ -2,7 +2,7 @@ import React from "react";
 const HeaderInicio = (props) => {
 	return (
 		<React.Fragment>
-			<div className="w3-bar w3-cell-row w3-border w3-card padd-general flex-aling">
+			<div className="w3-bar w3-cell-row w3-border w3-card padd-general flex-aling header-blanco">
 				<div className="w3-cell" style={{width:70+"%"}}>
 					<img src="./assets/fixperto1.png" className="headerFixperto" alt="Norway" />
 				</div>

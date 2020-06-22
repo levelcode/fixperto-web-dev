@@ -2,7 +2,7 @@ import React from "react";
 const Footer = (props) => {
 	return (
 		<React.Fragment>
-			<div className="w3-bar fondPage w3-border-top w3-border-blue padd-general flex-aling">
+			<div className="w3-bar fondPage w3-border-top w3-border-blue padd-footer flex-aling-footer">
 				<div className="logo-footer" >
 					<img src="./assets/fixperto.png" className="footerFixperto image" alt="Norway" />
 				</div>

@@ -1,15 +1,18 @@
 
 html, body, #root {
-	height: 100%;
+	height: 100vh;
   width: 100%;
+  font-family: "Raleway"!important;
 
 }
-
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway"!important;
+}
 a{
   text-decoration: none;
 }
 .footerFixperto{
-	width: 135px;
+	width: auto;
 	height: 45px;
 }
 .container_web{
@@ -71,6 +74,7 @@ a{
   flex-direction: row;
   background-color:#273861;
   align-items: center;
+  padding-bottom: 3px;
 }
 
 .fondPage a{
@@ -82,10 +86,7 @@ a{
   color: white !important;
 }
 
-.fondPage img{
-  width: 30px;
-  margin-right: 20px;
-}
+
 
 .blue_menu{
   background-color: #43AECC;
@@ -182,7 +183,7 @@ h1.titleRegister{
 
 .beneficios img{
   position: relative;
-  width: 50%;
+  width: 48%;
   left: 25%;
   margin-bottom: 20px;
 }
@@ -406,20 +407,19 @@ h1.titleRegister{
 
 /***************SERVICIOS******************/
 .servicios{
-  margin-top: 1px;
+
 }
 
 .servicios .buscador{
-  height: 250px;
   width: 100%;
   background-color:#43AECC;
+  border-radius: 8px;
 }
 
 .servicios .buscador h3{
   margin: 0;
   text-align: center;
   position: relative;
-  top: 50px;
   font-size: 20px;
   color: #1a1a1a;
 }
@@ -428,7 +428,6 @@ h1.titleRegister{
   width: 80%;
   margin: auto;
   position: relative;
-  top: 60px;
 }
 
 .servicios .list_servicios{
@@ -462,9 +461,10 @@ h1.titleRegister{
 }
 
 .servicios .list_servicios .card_serv img{
-  width: 40%;
+  width: auto;
+  height: 55px;
   position: relative;
-  left: 30%;
+
   margin-top: 10px;
 }
 
@@ -656,12 +656,11 @@ padding: 0;
 }
 .text-ingreso p {
   font-size: 1.3em;
-  margin: 20px 0 20px;
   padding: 0;
   width: 85%;
   }
-.fondPage .padd-general {
-  padding: 10px 15% 10px 15%;
+.padd-general {
+  padding: 15px 20% 15px 20%;
 }
 .input-registro  {
   border-radius: 0 7px 7px 0;
@@ -684,11 +683,9 @@ padding: 0;
 .icon-clave  {
   border-radius: 10px;
 }
-.logo-footer {
-  width: 65%;
-}
-.apps {
-  width: 35%;
+
+.padd-ingreso {
+  padding: 0 10% 0 10%;
 }
 
 
@@ -712,7 +709,95 @@ padding: 0;
 }
 
 .margin-tb {
-  margin: 10px 0 10px;
+  margin: 20px 0 20px;
+}
+.padd-footer {
+  padding: 0 20% 0 20%;
+}
+.blue {
+  background-color: #43AECC;
+}
+.blue:hover {
+  background-color: #2297B1 !important;
+}
+
+.blue-border {
+  border-color: #43AECC!important;
+}
+.blue-border:hover {
+  background-color: #2297B1 !important;
+}
+.text-blue {
+  color: #43AECC!important;
+}
+.text-blue:hover {
+  color: #ffffff !important;
+}
+.form-ancho {
+  width: 71%;
+}
+.padd-cinco {
+  padding: 5px;
+}
+.cursor {
+  cursor: pointer;
+}
+.apps {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.apps img {
+  margin: 0;
+}
+.apps b {
+  padding-right: 8px;
+}
+.apps p {
+  padding-right: 8px;
+}
+.text-blue-contrasena {
+  color: #43AECC!important;
+}
+.text-blue-contrasena:hover {
+  color: #43AECC!important;
+}
+.logo-footer {
+  width: 50%;
+}
+
+.flex-aling-footer{
+  display: flex;
+  align-items: center;
+}
+.alto {
+  height: 100vh;
+}
+.header-blanco { 
+background-color:#ffffff;
+}
+.titleRegister {
+  font-size: 2.3em;
+}
+.icono-menu {
+  width: 30´x;
+  height: 30px;
+  margin-right: 10px;
+}
+.box-servicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.azul-oscuro {
+  color:#273861!important; 
+}
+
+.azul-oscuro h3 {
+  color:#273861!important; 
 }
 
 
@@ -724,34 +809,50 @@ padding: 0;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width : 768px) {
-
+@media (max-width : 790px) {
+  .flex-aling-footer{
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-footer {
+    text-align: center;
+  }
+  .apps {
+    align-items: center;
+    width: 100%;
+  }
+  .padd-footer {
+    padding-top: 10px;
+    padding: 10px 0 0 0;
+  }
+  .padd-general {
+    padding: 15px;
+  }
+  .padd-ingreso {
+    padding: 5px;
+  }
 }
 @media (max-width : 680px) {
 
 }
 @media (max-width : 560px) {
-  .padd-general {
-    padding-left: 1%;
-    padding-right: 1%;
+ .padd-general {
+    padding-left: 3%;
+    padding-right: 3%;
     }
+    .padd-ingreso {
+      padding: 0;
+  }
+  .padd-ingreso {
+    padding: 0;
+  }
+
+  .form-ancho {
+    width: 90%;
+}
+.margin-tb {
+  margin: 0;
+}
 }
 
 @media (max-width : 480px) {
@@ -803,10 +904,6 @@ padding: 0;
   .fondPage .menu{
     width: 73%;
     margin: auto;
-  }
-
-  .fondPage img{
-    width: 35px;
   }
 
   .perfil .card_info{
@@ -891,16 +988,17 @@ padding: 0;
   }
 
   .servicios .buscador{
-    height: 280px;
+    padding: 10px 0 10px 0;
   }
 
   .servicios .buscador h3{
-    top: 40px;
     font-size: 25px;
   }
 
   .servicios .buscador input{
-    width: 60%;
+    width: 30%;
+    border-radius: 8px;
+    margin: 20px auto 20px;
   }
 
   .servicios .list_servicios{
@@ -982,7 +1080,6 @@ padding: 0;
   }
 
   .servicios .buscador h3{
-    top: 50px;
     font-size: 20px;
   }
 
@@ -1001,8 +1098,6 @@ padding: 0;
     padding: 8px 16px !important;
   }
 
-      padding: 8px 16px;
-
   .seccion_nav{
     height: 100px;
   }
@@ -1017,7 +1112,7 @@ padding: 0;
   }
 
   h1.titleRegister {
-    font-size: 1.5rem;
+    font-size: 2.3em;
   }
 
   .seccion_nav .text_nav button{
@@ -1060,13 +1155,12 @@ padding: 0;
   }
 
   .servicios .buscador input{
-    width: 50%;
-    top: 90px;
+    width: 30%;
   }
 
   .servicios .list_servicios{
     width: 60%;
-    margin-top: 25px;
+    margin: 25px auto;
   }
 
   .servicios .list_servicios .card_serv{

@@ -103,10 +103,12 @@ class ServiciosVista extends React.Component {
 
 				<div className="servicios">
 
-					<div className="buscador">
+					<div className="buscador padd-ingreso">
+					<div className="w3-cell-row">
+							<h1 className="w3-cell aling-center azul-oscuro"><b>Servicios</b></h1>
+						</div>
 						<h3> ¿<b>{this.state['name']}</b>,</h3>
 						<h3>necesitas un experto en.. ?</h3>
-
 						<div>
 							<input className="w3-input" type="text" value={search}
 								onChange={(e) => this.updateSearch(e.target.value)} />
@@ -115,12 +117,7 @@ class ServiciosVista extends React.Component {
 					</div>
 
 					<div className="list_servicios">
-						<div className="w3-cell-row w3-margin-bottom">
-							<div className="w3-cell" style={{ width: 35 + "px" }}>
-								<img src="../../assets/solicitudesUp.png" alt="Norway" />
-							</div>
-							<h2 className="w3-cell" >Servicios</h2>
-						</div>
+
 						{
 							this.state["copy"].length === 0 && this.state["search"] !== "" &&
 							<div className="add_cat">
@@ -147,7 +144,7 @@ class ServiciosVista extends React.Component {
 										e.preventDefault();
 										this.continuarCateg(item);
 									}}>
-									<div className="w3-card card_serv">
+									<div className="w3-card card_serv box-servicio">
 										<img src={item.icon} className="img_serv" alt=""></img>
 										<p>{item.denomination}</p>
 									</div>

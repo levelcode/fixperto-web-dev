@@ -25,25 +25,25 @@ class App extends React.Component {
 
 						<Link to="/fixperto/servicios" className={(servicios) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 							onClick={() => this.active("servicios")}>
-							<img src="/assets/iconos/servicios.png" alt="servicios" />
+							<img src="/assets/iconos/servicios.png" alt="servicios" className="icono-menu" />
 							Servicios
 						</Link>
 
 						<Link to="/fixperto/solicitudes" className={(solicitudes) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 							onClick={() => this.active("solicitudes")}>
-							<img src="/assets/iconos/solicitudes.png" alt="solicitud" />
+							<img src="/assets/iconos/solicitudes.png" alt="solicitud" className="icono-menu"/>
 							Solicitudes
 						</Link>
 
 						<Link to="/fixperto/chat" className={(chat) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 							onClick={() => this.active("chat")}>
-							<img src="/assets/iconos/chat.png" alt="chat" />
+							<img src="/assets/iconos/chat.png" alt="chat"className="icono-menu" />
 							Chat
 						</Link>
 
 						<Link to="/fixperto/perfil" className={(perfil) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 							onClick={() => this.active("perfil")}>
-							<img src="/assets/iconos/perfil.png" alt="perfil" />
+							<img src="/assets/iconos/perfil.png" alt="perfil" className="icono-menu"/>
 							Perfil
 						</Link>
 
