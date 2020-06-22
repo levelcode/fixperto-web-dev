@@ -7,6 +7,21 @@ import SolicitudesCompletado from "./solicitudesCompletados";
 class Solicitudes extends React.Component {
 	constructor(props) { super(props); this.state = { progreso: true, agendado: false, completado: false } }
 	active = (text) => { let state = {}; Object.keys(this.state).map((key) => state[key] = (key === text)); this.setState(state); }
+	componentDidMount() {
+		switch (this.props["history"]["location"]["pathname"]) {
+			case "/fixperto/solicitudes/solicitud-progreso":
+				this.setState({ progreso: true, agendado: false, completado: false });
+				break;
+			case "/fixperto/solicitudes/solicitud-agendado":
+				this.setState({ progreso: false, agendado: true, completado: false });
+				break;
+			case "/fixperto/solicitudes/solicitud-completado":
+				this.setState({ progreso: false, agendado: false, completado: true });
+				break;
+			default:
+				break;
+		}
+	}
 	render() {
 		const { progreso, agendado, completado } = this.state;
 		const itemStyle = "active";
@@ -18,7 +33,7 @@ class Solicitudes extends React.Component {
 							<div className="w3-cell" style={{ width: 35 + "px" }}>
 								<img src="../../assets/solicitudesUp.png" alt="Norway" />
 							</div>
-							<h2 className="w3-cell" >Solicitudes </h2>
+							<h2 className="w3-cell">Solicitudes </h2>
 						</div>
 						<div className="w3-row">
 							<div className="w3-col s12 m5">
