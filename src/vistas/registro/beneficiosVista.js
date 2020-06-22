@@ -1,12 +1,13 @@
 import React from 'react';
+import Header from "../../componentes/header";
+import Footer from "../../componentes/footer";
 class Beneficios extends React.Component {
 	registrarme = () => { this.props["history"]["push"]("registro"); }
 	render() {
 		return (
 			<React.Fragment>
-
+				<Header />
 				<div className="container_web">
-
 					<div className="beneficios">
 						<h1 className="titleRegister">Beneficios</h1>
 						<div className="w3-row">
@@ -49,21 +50,16 @@ class Beneficios extends React.Component {
 									</div>
 								</div>
 							</div>
-
 						</div>
-
 						<div className="w3-row">
 							<p className="p_btn"><button className="w3-button btn"
 								onClick={() => { this.registrarme(); }}>Continuar</button></p>
 						</div>
-
 					</div>
-
-
 				</div>
+				<Footer />
 			</React.Fragment >
 		);
 	}
 }
-
 export default Beneficios;
