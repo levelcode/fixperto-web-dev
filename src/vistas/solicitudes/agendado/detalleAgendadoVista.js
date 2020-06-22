@@ -46,22 +46,25 @@ class DetalleAgendado extends React.Component {
 	}
 	rechazar = () => {
 		let me = this;
-		return axios({
-			method: 'post', url: httpClient.urlBase + '/cliente/refuseOffert',
-			data: { expert: me.state["expert"].id, request: me.state["request"].id }, headers: { Accept: 'application/json' }
-		})
-			.then(function (response) {
-				if (response["data"]["success"]) { me.props["backRechazar"](true); }
-				else { me.props["backRechazar"](false); }
+		if (this.state["fecha_actual"] !== "" && this.state["fecha_agendada"] !== "" && (this.state["fecha_actual"].getTime() < this.state["fecha_agendada"].getTime()))
+			return axios({
+				method: 'post', url: httpClient.urlBase + '/cliente/refuseOffert',
+				data: { expert: me.state["expert"].id, request: me.state["request"].id }, headers: { Accept: 'application/json' }
 			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
-
+				.then(function (response) {
+					if (response["data"]["success"]) { me.props["backRechazar"](true); }
+					else { me.props["backRechazar"](false); }
+				})
+				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	verDetalle = () => { this.setState({ isSolicitudVisible: true }); }
-	servicio = () => { this.setState({ isServicioVisible: true }); }
+	servicio = () => { /*this.setState({ isServicioVisible: true });*/ }
 	problema = () => { this.setState({ isProblemaVisible: true }); }
 	closeProblema = (status) => { this.setState({ isProblemaVisible: false }); this.props["backProblema"](status); }
-	cancelRequest = () => { this.setState({ isCancelVisible: true }); }
+	cancelRequest = () => {
+		if (this.state["fecha_actual"] !== "" && this.state["fecha_agendada"] !== "" && (this.state["fecha_actual"].getTime() < this.state["fecha_agendada"].getTime()))
+			this.setState({ isCancelVisible: true });
+	}
 	closeCancelar = (status) => { this.setState({ isCancelVisible: false }); this.props["backCancelar"](status); }
 	render() {
 		const { fecha_actual, fecha_agendada, isSolicitudVisible, isServicioVisible, isProblemaVisible, isCancelVisible, showAlert, textoAlert, request, expert, id, user } = this.state;
@@ -137,19 +140,15 @@ class DetalleAgendado extends React.Component {
 								</div>
 							</div>
 						</div>
-						<h3 className="w3-center w3-section">
+						<h4 className="w3-center w3-section">
 							Recuerda que todos los servicios solo se pueden cancelar hasta 24 horas antes
-						</h3>
-						<div className="w3-button w3-hover-blue w3-blue  w3-section"
-							onClick={() => {
-								this.verServicio()
-							}}>
+						</h4>
+						<div className="w3-block w3-button w3-hover-blue w3-blue w3-section"
+							onClick={() => { this.servicio() }}>
 							Ver servicio
 						</div>
 						<div className={`w3-block w3-button w3-hover-red w3-red w3-section ${disable}`}
-							onClick={() => {
-								this.rechazar()
-							}}>
+							onClick={() => { this.rechazar() }}>
 							Rechazar servicio
 						</div>
 						<div className={`w3-block w3-button w3-hover-red w3-red w3-section ${disable}`}

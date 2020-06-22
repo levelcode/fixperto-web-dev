@@ -49,7 +49,56 @@ class ServiciosNuevaSol extends React.Component {
 
 	guardar = () => {
 		let vacios = [];
-		if (this.state["detalle"] === "") { vacios.push("  *Nombre y Apellidos"); }
+		if (this.state["region"] === "") { vacios.push("  *Región"); }
+		if (this.state["description"] === "") { vacios.push("  *Descripción de la solicitud"); }
+		if (this.props.history.location["service"]["emergency"]) {
+			if (this.state["start_date"] === "") { vacios.push("  *Fecha"); }
+			if (this.state["hour"] === "") { vacios.push("  *Hora"); }
+		}
+		if (!vacios.length) {
+			const datos = new FormData();
+			for (var x = 0; x < this.state["photos"].length; x++) { datos.append("photos", this.state["photos"][x]); }
+			datos.append("customer", this.state["user"]["typeId"]);
+			datos.append("category", this.props.history.location["category"]["id"]);
+			datos.append("region", this.state["region"])
+			datos.append("emergency", this.props.history.location["service"]["emergency"]);
+			datos.append("description", this.state["description"]);
+			datos.append("start_date", (this.props.history.location["service"]["emergency"]) ? this.state["start_date"] : "");
+			datos.append("hour", (this.props.history.location["service"]["emergency"]) ? this.state["hour"] : "");
+			let me = this;
+			axios({
+				method: 'post', url: httpClient.urlBase + '/cliente/sendRequest',
+				data: datos, headers: { Accept: 'application/json' }
+			})
+				.then(function (response) {
+					let responseJson = response["data"];
+					if (responseJson["success"]) {
+						me.props["history"]["push"]("fixperto/solicitudes/solicitud-progreso");
+					} else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, inténtelo nuevamente" }); }
+				})
+				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
+		}
+		else { return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() }); }
+	}
+	openUbicacion = () => { }
+	addFoto = (foto) => {
+		let photo = foto.target.files[0];
+		this.setState(prevState => ({ photos: [...prevState["photos"].concat(photo)] }));
+		var reader = new FileReader();
+		let me = this;
+		reader.onload = function (e) {
+			let fot = e.target.result;
+			me.setState(prevState => ({ photoss: [...prevState["photoss"].concat(fot)] }));
+		}
+		reader.readAsDataURL(photo);
+	}
+	deleteFoto = (photo) => {
+		let photos = this.state["photos"];
+		let photoss = this.state["photoss"];
+		var i = photoss.indexOf(photo);
+		if (i !== -1) { photos.splice(i, 1); photoss.splice(i, 1); }
+		if (photoss.length > 0) this.setState({ photos, photoss });
+		else this.setState({ photos: [], photoss: [] });
 	}
 
 	render() {
