@@ -29,7 +29,7 @@ class App extends React.Component {
 							Servicios
 						</Link>
 
-						<Link to="/fixperto/solicitudes" className={(solicitudes) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
+						<Link to="/fixperto/solicitudes/solicitud-progreso" className={(solicitudes) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 							onClick={() => this.active("solicitudes")}>
 							<img src="/assets/iconos/solicitudes.png" alt="solicitud" />
 							Solicitudes
