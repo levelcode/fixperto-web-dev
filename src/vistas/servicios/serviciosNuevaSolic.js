@@ -38,7 +38,7 @@ class ServiciosNuevaSol extends React.Component {
 				.then(function (response) {
 					let responseJson = response["data"];
 					if (responseJson["success"]) {
-						this.props["history"]["push"]("fixperto/solicitudes/solicitud-progreso");
+						me.props["history"]["push"]("fixperto/solicitudes/solicitud-progreso");
 					} else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, inténtelo nuevamente" }); }
 				})
 				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
