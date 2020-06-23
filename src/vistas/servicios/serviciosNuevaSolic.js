@@ -70,7 +70,7 @@ class ServiciosNuevaSol extends React.Component {
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-				<div className="">
+				<div className="padd-general">
 					<div className="nueva_solicitud">
 						<h1 className="titleRegister">Nueva solicitud</h1>
 						<div className="w3-container">
@@ -138,8 +138,8 @@ class ServiciosNuevaSol extends React.Component {
 									}
 								</div>
 							</div>
-							<div className="w3-container w3-section">
-								<button className="w3-button w3-hover-blue w3-blue w3-block"
+							<div className="">
+								<button className="w3-button btn"
 									onClick={() => { this.guardar(); }}>
 									Enviar solicitud
 							    </button>

@@ -41,21 +41,21 @@ class ServiciosCateg extends React.Component {
 		const { user_name, service_name, categories, icon_name } = this.state;
 		return (
 			<React.Fragment>
-				<div className="">
+				<div className="padd-general">
 					<div className="info_perfil_comp">
 						<h1 className="titleRegister">Categorías</h1>
 						<p> <b>{user_name}</b>, tu experto en {service_name} es para ... </p>
 						<div className="categorias_serv">
 							{categories.map((item, key) => (
-								<div className="w3-row item" key={key} style={{cursor:"pointer"}}
+								<div className="w3-row item flex-aling" key={key} style={{cursor:"pointer"}}
 									onClick={() => { this.continuarSolicitud(item); }}>
-									<div className="w3-col s3">
+									<div className="w3-col s3 margin-cero">
 										<img src={icon_name} className="" alt={item.denomination}></img>
 									</div>
-									<div className="w3-col s7 text">
+									<div className="w3-col s7 text margin-cero">
 										<p style={{ textAlign: "left" }}>{item.denomination}</p>
 									</div>
-									<div className="w3-col s2">
+									<div className="w3-col s2 margin-cero">
 										<img src="../../assets/iconos/continuar.png" className="img_continue" alt="1"></img>
 									</div>
 								</div>

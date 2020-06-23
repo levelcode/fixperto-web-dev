@@ -498,7 +498,6 @@ h1.titleRegister{
 .categorias_serv .img_continue{
   width: 20%;
   position: relative;
-  top: 10px;
 }
 
 .nueva_solicitud .item{
@@ -800,6 +799,20 @@ background-color:#ffffff;
   color:#273861!important; 
 }
 
+.info_perfil_comp .margin-cero {
+  margin-top: 0!important;
+}
+.nueva_solicitud {
+  padding: 10px 15%;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -940,7 +953,7 @@ background-color:#ffffff;
 
 
   .container{
-    width: 90%;
+    width: 66%;
     margin: auto;
   }
 
@@ -1008,7 +1021,7 @@ background-color:#ffffff;
 
   
   .categorias_serv{
-    width: 50%;
+    width: 70%;
   }
 
   .categorias_serv img{
@@ -1172,7 +1185,7 @@ background-color:#ffffff;
   }
 
   .categorias_serv{
-    width: 30%;
+    width: 60%;
   }
 
   .categorias_serv img{
@@ -1203,12 +1216,15 @@ background-color:#ffffff;
   }
 
   .btn_ubicacion{
-    width: 20%;
-    padding: 8px 16px !important;
+    padding:8px 5px !important
   }
-
+  .btn_ubicacion:hover{
+    background-color:#43aecc!important ;
+    color: #ffffff!important;
+    font-weight: 700;
+    
+  }
   .nueva_solicitud .btn{
-    width: 20% !important;
     padding: 8px 16px !important;
   }
 
