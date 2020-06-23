@@ -29,11 +29,11 @@ class Solicitudes extends React.Component {
 			<React.Fragment>
 				<div className="container">
 					<div className="perfil solicitudes">
-						<div className="w3-cell-row w3-margin-bottom">
+						<div className="w3-cell-row w3-margin-bottom flex-aling">
 							<div className="w3-cell" style={{ width: 35 + "px" }}>
 								<img src="../../assets/solicitudesUp.png" alt="Norway" />
 							</div>
-							<h2 className="w3-cell">Solicitudes </h2>
+							<h2 className="w3-cell azul-oscuro"><b>Solicitudes</b></h2>
 						</div>
 						<div className="w3-row">
 							<div className="w3-col s12 m5">
