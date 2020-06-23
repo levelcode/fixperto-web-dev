@@ -266,10 +266,10 @@ class PerfilAtencionCliente extends React.Component {
                                                 e.preventDefault();
                                                 this.responderTicket();
                                             }}
-                                            className="w3-button w3-indigo w3-hover-indigo w3-round-large">Responder</div>
+                                            className="w3-button btn_oferta w3-round-large">Responder</div>
 
                                             <div onClick={() => this.setState({show_add : false})}
-                                            className="w3-button w3-red w3-hover-red w3-round-large">Cerrar</div>
+                                            className="w3-button btn_cancel w3-round-large">Cerrar</div>
                                     </div>
                                 </div>
                         </div>    

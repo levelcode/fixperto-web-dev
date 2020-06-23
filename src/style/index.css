@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 html, body, #root {
 	height: 100vh;
   width: 100%;
   font-family: "Raleway"!important;
-
 }
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway"!important;
+  font-family: 'Raleway', sans-serif;
 }
 a{
   text-decoration: none;
@@ -302,6 +303,11 @@ h1.titleRegister{
   font-weight: bold;
 }
 
+
+.perfil .card_perfil .list_datos a.active{
+  color: #2297B1;
+}
+
 .perfil .card_perfil .list_datos img{
   width: 15px;
 }
@@ -321,9 +327,7 @@ h1.titleRegister{
   border-radius: 7px;
 }
 
-.info_perfil_config p{
-  text-align: center;
-}
+
 
 .info_perfil_config .check_config{
   padding-left: 20px;
@@ -852,17 +856,6 @@ background-color:#ffffff;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width : 790px) {
   .flex-aling-footer{
     flex-direction: column;
@@ -886,67 +879,27 @@ background-color:#ffffff;
     padding: 5px;
   }
 }
-@media (max-width : 680px) {
 
-}
 @media (max-width : 560px) {
  .padd-general {
     padding-left: 3%;
     padding-right: 3%;
-    }
-    .padd-ingreso {
+  }
+  .padd-ingreso {
       padding: 0;
   }
+
   .padd-ingreso {
     padding: 0;
   }
 
   .form-ancho {
     width: 90%;
+  }
+  .margin-tb {
+    margin: 0;
+  }
 }
-.margin-tb {
-  margin: 0;
-}
-}
-
-@media (max-width : 480px) {
-
-}
-@media (max-width : 380px) {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media(min-width : 48em){
@@ -1162,7 +1115,7 @@ background-color:#ffffff;
   }
 
   h1.titleRegister {
-    font-size: 2.3em;
+    font-size: 2em;
   }
 
   .seccion_nav .text_nav button{
@@ -1274,8 +1227,9 @@ background-color:#ffffff;
   }
 
   .solicitudes .progreso img{
-    width: 40%;
-    left: 55%;
+    width: 50%;
+    left: 25%;
+    top: 10px;
   }
 
   .solicitudes .serv img.img_serv{

@@ -1,9 +1,12 @@
 import React from 'react';
 import Alerta from "../../componentes/alertaVista";
 import axios from "axios";
+import parse from 'html-react-parser';
 
 
 class QuienesSomos extends React.Component {
+
+	
 
 	constructor(props) { 
         super(props); 
@@ -17,6 +20,7 @@ class QuienesSomos extends React.Component {
 		var user = JSON.parse(localStorage.getItem("@USER"))
 		this.state['user'].push(user)
         this.getData()
+		
 	}
 
 	getData = () => {
@@ -29,6 +33,7 @@ class QuienesSomos extends React.Component {
 		.then(function (responseJson) {
 
 			responseJson = responseJson['data']
+			
 			me.setState({ 
                 contenido: responseJson["content"]["rendered"] 
             })
@@ -54,7 +59,7 @@ class QuienesSomos extends React.Component {
 					<div className="info_perfil_config">
 						<h1 className="titleRegister">Quienes Somos</h1>
 
-                        <html className="w3-padding">{contenido}</html>
+                        <div className="w3-padding">{parse(contenido)}</div>
 
 					</div>
 				</div>

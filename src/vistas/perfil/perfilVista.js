@@ -19,9 +19,25 @@ class Perfil extends React.Component {
 			showAlert	: false, 
 			photo		: "", 
 			cliente		: [],
-			name        : ""
+			name        : "", 
+			info 		: true,
+			config   	: false,
+			contraseña  : false,
+			quienes 	: false,
+			atencion 	: false,
+			terminos 	: false,
+			politica 	: false,
+
 		};
 	}
+
+	active = (text) => { 
+		let state = {}; 
+		Object.keys(this.state).map((key) => state[key] = (key === text)); 
+		this.setState(state); 
+	}
+
+
 
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"))
@@ -34,9 +50,39 @@ class Perfil extends React.Component {
 			photo: "https://api.fixperto.com/uploads/registros/cliente/" + user["avatar"]
 		});
 
+		switch (this.props["history"]["location"]["pathname"]) {
+			case "/fixperto/perfil/perfil-informacion":
+				this.setState({ info: true, config: false, contraseña: false, quienes : false, atencion : false, terminos : false, politica : false });
+				break;
+			case "/fixperto/perfil/configuracion":
+				this.setState({ info: false, config: true, contraseña: false, quienes : false, atencion : false, terminos : false, politica : false });
+				break;
+			case "/fixperto/perfil/cambio_password":
+				this.setState({ info: false, config: false, contraseña: true, quienes : false, atencion : false, terminos : false, politica : false });
+				break;
+			case "/fixperto/perfil/quienes_somos":
+				this.setState({ info: false, config: false, contraseña: false, quienes : true, atencion : false, terminos : false, politica : false });
+				break;
+			case "/fixperto/perfil/atencion_cliente":
+				this.setState({ info: false, config: false, contraseña: false, atencion : true, terminos : false, politica : false });
+				break;
+			case "/fixperto/perfil/terminos_condiciones":
+				this.setState({ info: false, config: false, contraseña: false, atencion : false, terminos : true, politica : false });
+				break;
+			case "/fixperto/perfil/politica_privacidad":
+				this.setState({ info: false, config: false, contraseña: false, atencion : false, terminos : false, politica : true });
+				break;
+			default:
+				break;
+		}
+
 	}
 
 	render() {
+
+		const { info, config, contraseña, quienes, atencion, terminos, politica  } = this.state;
+		const itemStyle = "active";
+		
 		return (
 			<React.Fragment>
 				<div className="container">
@@ -75,7 +121,7 @@ class Perfil extends React.Component {
 											
 										</div>
 										<div className="w3-col s10 l7">
-											<h5>¡Hola!</h5>
+											<h2 className="text_blue">¡Hola!</h2>
 											<h6>{this.state['name']}</h6>
 										</div>
 									</div>
@@ -100,7 +146,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/fixperto/perfil/perfil-informacion" className="">Información personal</Link>
+													<Link to="/fixperto/perfil/perfil-informacion" className={(info) ? `${itemStyle}` : ``} onClick={() => this.active("info")}>Información personal</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/fixperto/perfil/perfil-informacion" className="">
@@ -111,7 +157,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/fixperto/perfil/configuracion" className="">Configuración</Link>
+													<Link to="/fixperto/perfil/configuracion" className={(config) ? `${itemStyle}` : ``} onClick={() => this.active("config")}>Configuración</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/fixperto/perfil/configuracion" className="">
@@ -123,7 +169,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/fixperto/perfil/cambio_password" className="">Cambiar contraseña</Link>
+													<Link to="/fixperto/perfil/cambio_password" className={(contraseña) ? `${itemStyle}` : ``} onClick={() => this.active("contraseña")}>Cambiar contraseña</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/fixperto/perfil/cambio_password" className="">
@@ -147,7 +193,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/fixperto/perfil/quienes_somos" className="">Quienes somos</Link>
+													<Link to="/fixperto/perfil/quienes_somos" className={(quienes) ? `${itemStyle}` : ``} onClick={() => this.active("quienes")}>Quienes somos</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/fixperto/perfil/quienes_somos" className="">
@@ -159,7 +205,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/fixperto/perfil/atencion_cliente" className="">Atención al cliente</Link>
+													<Link to="/fixperto/perfil/atencion_cliente" className={(atencion) ? `${itemStyle}` : ``} onClick={() => this.active("atencion")}>Atención al cliente</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/fixperto/perfil/atencion_cliente" className="">
@@ -171,7 +217,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/fixperto/perfil/terminos_condiciones" className="">Términos y condiciones</Link>
+													<Link to="/fixperto/perfil/terminos_condiciones" className={(terminos) ? `${itemStyle}` : ``} onClick={() => this.active("terminos")}>Términos y condiciones</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/fixperto/perfil/terminos_condiciones" className="">
@@ -183,7 +229,7 @@ class Perfil extends React.Component {
 
 											<div className="w3-row list">
 												<div className="w3-col s10">
-													<Link to="/fixperto/perfil/politica_privacidad" className="">Política y privacidad</Link>
+													<Link to="/fixperto/perfil/politica_privacidad" className={(politica) ? `${itemStyle}` : ``} onClick={() => this.active("politica")}>Política y privacidad</Link>
 												</div>
 												<div className="w3-col s2">
 													<Link to="/fixperto/perfil/politica_privacidad" className="">

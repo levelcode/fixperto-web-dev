@@ -1,6 +1,7 @@
 import React from 'react';
 import Alerta from "../../componentes/alertaVista";
 import axios from "axios";
+import parse from 'html-react-parser';
 
 
 class QuienesSomos extends React.Component {
@@ -53,7 +54,7 @@ class QuienesSomos extends React.Component {
 					<div className="info_perfil_config">
 						<h1 className="titleRegister">Política y privacidad</h1>
 
-                        <html className="w3-padding">{contenido}</html>
+                        <html className="w3-padding">{parse(contenido)}</html>
 
 					</div>
 				</div>

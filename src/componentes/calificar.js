@@ -60,7 +60,7 @@ const Calificar = (props) => {
 					</div>
 					<div className="w3-center w3-section w3-container">
 						<button onClick={calificar} disabled={false}
-							className={(evaluation === 0 || commentary === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block w3-indigo w3-hover-indigo w3-round-large"}>Enviar</button>
+							className={(evaluation === 0 || commentary === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block btn w3-round-large"}>Enviar</button>
 					</div>
 				</div>
 			</div>
