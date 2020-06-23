@@ -98,15 +98,15 @@ class DetalleProgreso extends React.Component {
 						{experts.map((experto, i) => (
 							<div className="section_experto" key={i}>
 								<Experto experto={experto} history={this.props["history"]} />
-								<div className="w3-cell-row">
-									<div className="w3-cell w3-button btn_chat"
+								<div className="w3-cell-row w3-row">
+									<div className="w3-cell w3-button btn_chat w3-col m5"
 										onClick={() => {
 											this.props["navigation"].navigate("Chat", {
 												chat: { to: experto, user: this.state["user"], request: request["id"], type: "cliente", offert: true, typeOffert: "progress" }
 											})
 										}}>Chat
-								</div>
-									<div className=" w3-cell w3-button btn_oferta"
+									</div>
+									<div className=" w3-cell w3-button btn_oferta w3-col m7"
 										onClick={() => {
 											this.props["navigation"].navigate("VerOferta", {
 												expert: experto["id"], request: request["id"], type: "progress"

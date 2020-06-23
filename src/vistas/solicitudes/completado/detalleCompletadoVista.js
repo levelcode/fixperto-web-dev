@@ -45,7 +45,7 @@ class DetalleCompletado extends React.Component {
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
 				<Calificar show={isCalificarVisible} calificador={id} experto={expert} close={(status) => this.closeCalificar(status)} />
 				{id === this.props["request"] && <div>
-					<div className="w3-card">
+					<div className="">
 						<div className="w3-cell">
 							<div className="">
 								{(request.icon) ?
@@ -61,7 +61,7 @@ class DetalleCompletado extends React.Component {
 									<div className="w3-cell w3-container">
 										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" />
 									</div>
-									<p className="w3-cell">Servicio de emergencia</p>
+									<p className="w3-cell text_blue">Servicio de emergencia</p>
 								</div>
 							}
 							<div className="w3-margin-bottom w3-container">
@@ -72,19 +72,19 @@ class DetalleCompletado extends React.Component {
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/ubicacion.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">{request["zone"]}</p>
+								<p className="w3-cell"> <b className="text_blue">Ubicación</b> {request["zone"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">Fecha de inicio: {request["registry_date"]}</p>
+								<p className="w3-cell"> <b className="text_blue"> Fecha de inicio:</b> {request["registry_date"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">Fecha de completado: {(request["completed_date"]) ? request["completed_date"] : "Pendiente"}</p>
+								<p className="w3-cell"> <b>Fecha de completado:</b> {(request["completed_date"]) ? request["completed_date"] : "Pendiente"}</p>
 							</div>
 							<div className="w3-margin-bottom" style={{ cursor: "pointer" }} onClick={() => this.verDetalle()}>
 								<div className="w3-cell w3-container">
@@ -94,19 +94,29 @@ class DetalleCompletado extends React.Component {
 							</div>
 						</div>
 					</div>
-					<h1 className="w3-section w3-center titleRegister">Fixperto® contratado</h1>
-					<div className="w3-section">
-						<div className="w3-card" >
+					<div className="w3-section experto_vista">
+						<div className="divider w3-row">
+							<div className="w3-col s3">
+								<div className="divider_line"></div>
+							</div>
+							<div className="w3-col s6">
+							<h3>Fixperto® contratado</h3>
+							</div>
+							<div className="w3-col s3">
+								<div className="divider_line"></div>
+							</div>
+						</div>
+						<div className="section_experto" >
 							<Experto experto={expert} history={this.props["history"]} />
-							<div className="w3-cell-row">
-								<div className="w3-cell w3-button w3-hover-teal w3-teal"
+							<div className="w3-cell-row w3-row">
+								<div className="w3-cell w3-button btn_chat w3-col m5 "
 									onClick={() => {
 										this.props["navigation"].navigate("Chat", {
 											chat: { to: expert, user: this.state["user"], request: request["id"], type: "cliente", offert: true }
 										})
 									}}>Chat
 								</div>
-								<div className=" w3-cell w3-button w3-hover-blue w3-blue"
+								<div className=" w3-cell w3-button btn_oferta w3-col m7"
 									onClick={() => {
 										this.props["navigation"].navigate("VerOferta", {
 											expert: expert["id"], request: request["id"], type: "completed"
@@ -115,7 +125,7 @@ class DetalleCompletado extends React.Component {
 								</div>
 							</div>
 						</div>
-						{!calificado && <div className="w3-button w3-block w3-hover-blue w3-blue w3-section"
+						{!calificado && <div className="w3-button w3-block btn_reportar w3-section"
 							onClick={() => { this.calificar() }}>Calificar experto</div>}
 					</div>
 				</div>}

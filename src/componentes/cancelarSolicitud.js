@@ -63,7 +63,7 @@ const CancelarSolicitud = ({ show, id, close }) => {
 						</div>
 						<div className="w3-center">
 							<button onClick={cancelar} disabled={false}
-								className={(type === "" || texto === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block w3-indigo w3-hover-indigo w3-round-large"}>Enviar</button>
+								className={(type === "" || texto === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block btn w3-round-large"}>Enviar</button>
 						</div>
 					</div>
 				</div>

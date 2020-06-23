@@ -158,20 +158,29 @@ class DetalleAgendado extends React.Component {
 								<p>Recuerda que todos los servicios solo se pueden cancelar hasta 24 horas antes</p>
 							</div>
 						</div>
+
+						<div className="w3-row">
+							<div className="w3-col s12 m6">
+								<div className="w3-block w3-button btn_oferta w3-section"
+									onClick={() => { this.servicio() }}>
+									Ver servicio
+								</div>
+							</div>
+							<div className="w3-col s12 m6">
+								<div className={`w3-block w3-button btn_rechazar w3-section ${disable}`}
+									onClick={() => { this.rechazar() }}>
+									Rechazar servicio
+								</div>
+							</div>
+						</div>
 							
-						<div className="w3-block w3-button w3-hover-blue w3-blue w3-section"
-							onClick={() => { this.servicio() }}>
-							Ver servicio
-						</div>
-						<div className={`w3-block w3-button w3-hover-red w3-red w3-section ${disable}`}
-							onClick={() => { this.rechazar() }}>
-							Rechazar servicio
-						</div>
-						<div className={`w3-block w3-button w3-hover-red w3-red w3-section ${disable}`}
+						
+						
+						<div className={`w3-block w3-button btn_cancel w3-section ${disable}`}
 							onClick={() => { this.cancelRequest() }}>
 							Cancelar solicitud
 				        </div>
-						<div className="w3-block w3-button w3-hover-red w3-red w3-section"
+						<div className="w3-block w3-button btn_reportar w3-section"
 							onClick={() => { this.problema() }}>
 							Reportar problema
 				        </div>

@@ -37,7 +37,7 @@ class Solicitudes extends React.Component {
 						</div>
 						<div className="w3-row">
 							<div className="w3-col s12 m5">
-								<div className="w3-card card_perfil">
+								<div className="w3-card card_perfil card_info">
 									<div>
 										<div className="w3-row list_datos">
 											<div className={(progreso) ? `${itemStyle}` : ``}>

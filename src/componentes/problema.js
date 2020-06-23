@@ -38,7 +38,7 @@ const Problema = ({ show, request, close, user, type_user, typeId }) => {
 		<React.Fragment>
 			<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => setShowAlert(false)} />
 			<div className="w3-modal w3-text-black" style={{ display: (show) ? "flex" : "none" }}>
-				<div className="w3-modal-content w3-animate-top w3-card-2 w3-round-large" style={{ width: 50 + '%' }}>
+				<div className="w3-modal-content w3-animate-top w3-round-large" style={{ width: 50 + '%' }}>
 					<div className="w3-container w3-margin-top w3-margin-bottom">
 						<span onClick={() => close()}
 							className="w3-button w3-display-topright w3-round-small w3-hover-red">&times;</span>
@@ -59,7 +59,7 @@ const Problema = ({ show, request, close, user, type_user, typeId }) => {
 						</div>
 						<div className="w3-center">
 							<button onClick={enviar} disabled={false}
-								className={(type === "" || problem === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block w3-indigo w3-hover-indigo w3-round-large"}>Enviar</button>
+								className={(type === "" || problem === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block btn w3-round-large"}>Enviar</button>
 						</div>
 					</div>
 				</div>

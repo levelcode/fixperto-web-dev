@@ -827,6 +827,10 @@ background-color:#ffffff;
   margin-top: 23px !important;
 }
 
+.w3-tiny{
+  font-size: 12px !important;
+}
+
 
 .section_experto{
   border-bottom: solid #72B330;
@@ -956,10 +960,10 @@ background-color:#ffffff;
     margin: auto;
   }
 
-  .perfil .card_info{
+  .perfil .card_info, .perfil .card_perfil{
     top: 0px;
-    height: 810px;
-    overflow: scroll;
+    height: 700px;
+    overflow-y: scroll;
     margin-bottom: 20px;
   }
 
@@ -1140,10 +1144,6 @@ background-color:#ffffff;
     justify-content: center;
   }
 
-  .w3-button{
-    padding: 5px 70px !important;
-  }
-
   .menu .w3-button{
     padding: 8px 16px !important;
   }
@@ -1310,6 +1310,30 @@ background-color:#ffffff;
     background-color: #2297B1;
     color: white;
     font-size: 1.3rem;
+  }
+
+  .btn_rechazar{
+    background-color: #E2E2E2;
+    color: white;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  .btn_cancel{
+    border: #CE4343 solid;
+    color: #CE4343;
+    font-size: 1.3rem;
+  }
+
+  .btn_reportar{
+    border: #2297B1 solid;
+    color: #2297B1;
+    font-size: 1.3rem;
+  }
+
+  .w3-border-blue, .w3-hover-border-blue:hover {
+    border-bottom: solid #2297B1 !important;
   }
 }
 
