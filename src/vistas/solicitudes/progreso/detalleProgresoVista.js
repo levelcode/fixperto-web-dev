@@ -33,10 +33,13 @@ class DetalleProgreso extends React.Component {
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
+
 				<CancelarSolicitud show={isCancelVisible} id={id} close={(status) => this.closeCancelar(status)} />
+
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
+				
 				{id === this.props["request"] && <div>
-					<div className="w3-section w3-card">
+					<div className="w3-section ">
 						<div className="w3-cell">
 							<div className="">
 								{(request.icon) ?
@@ -52,11 +55,11 @@ class DetalleProgreso extends React.Component {
 									<div className="w3-cell w3-container">
 										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" />
 									</div>
-									<p className="w3-cell">Servicio de emergencia</p>
+									<p className="w3-cell text_blue">Servicio de emergencia</p>
 								</div>
 							}
 							<div className="w3-margin-bottom w3-container">
-								<b className="w3-cell">{request["service"]}</b>
+								<b className="w3-cell text_blue">{request["service"]}</b>
 								<p className="w3-cell">/{request["category"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
@@ -79,20 +82,31 @@ class DetalleProgreso extends React.Component {
 							</div>
 						</div>
 					</div>
-					<h1 className="w3-section w3-center titleRegister">Fixpertos postulados</h1>
-					<div className="w3-section">
+					
+					<div className="w3-section experto_vista">
+						<div className="divider w3-row">
+							<div className="w3-col s3">
+								<div className="divider_line"></div>
+							</div>
+							<div className="w3-col s6">
+							<h3>Fixpertos Postulados</h3>
+							</div>
+							<div className="w3-col s3">
+								<div className="divider_line"></div>
+							</div>
+						</div>
 						{experts.map((experto, i) => (
-							<div className="w3-card" key={i}>
+							<div className="section_experto" key={i}>
 								<Experto experto={experto} history={this.props["history"]} />
 								<div className="w3-cell-row">
-									<div className="w3-cell w3-button w3-hover-teal w3-teal"
+									<div className="w3-cell w3-button btn_chat"
 										onClick={() => {
 											this.props["navigation"].navigate("Chat", {
 												chat: { to: experto, user: this.state["user"], request: request["id"], type: "cliente", offert: true, typeOffert: "progress" }
 											})
 										}}>Chat
 								</div>
-									<div className=" w3-cell w3-button w3-hover-blue w3-blue"
+									<div className=" w3-cell w3-button btn_oferta"
 										onClick={() => {
 											this.props["navigation"].navigate("VerOferta", {
 												expert: experto["id"], request: request["id"], type: "progress"
@@ -103,7 +117,7 @@ class DetalleProgreso extends React.Component {
 							</div>
 						))}
 					</div>
-					<div className="w3-block w3-button w3-hover-red w3-red w3-section"
+					<div className="w3-block  btn_cancelar_solic "
 						onClick={() => { this.cancelRequest() }}>CANCELAR SOLICITUD
 				    </div>
 				</div>}

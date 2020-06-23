@@ -124,7 +124,7 @@ class ServiciosNuevaSol extends React.Component {
 								<div>
 									<input type="file" style={{ width: 0.1 + "px", height: 0.1 + "px", opacity: 0, overflow: "hidden", position: "absolute", zIndex: -1 }}
 										id="img_galeria" onChange={(foto) => { this.addFoto(foto) }} accept="image/png, .jpeg, .jpg, image/gif" />
-									<label className="w3-button btn_ubicacion" htmlFor="img_galeria">Galería</label>
+									<label className="w3-button btn_ubicacion" htmlFor="img_galeria">GALERÍA</label>
 								</div>
 								<div className="w3-row-padding" >
 									{photoss.length > 0 && photoss.map((photo, key) => (

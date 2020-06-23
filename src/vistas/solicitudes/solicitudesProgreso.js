@@ -93,7 +93,7 @@ class SolicitudesProgreso extends React.Component {
 					</div>
 				</div>
 				<div className="" style={{ display: (show_request) ? "block" : "none" }}>
-					<div className="w3-grey w3-cell-row">
+					<div className="w3-cell-row">
 						<div className="w3-cell w3-cell-middle" style={{ width: 35 + "px", cursor: "pointer" }}
 							onClick={() => { this.dselectSolicitud() }}>
 							<img src="../../../assets/iconos/atras30.png" alt="Norway" />

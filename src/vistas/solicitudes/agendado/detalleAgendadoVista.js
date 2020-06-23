@@ -77,7 +77,7 @@ class DetalleAgendado extends React.Component {
 				<Servicio show={isServicioVisible} expert={expert["id"]} request={id} type="accepted" close={() => this.setState({ isServicioVisible: false })} />
 				<Problema show={isProblemaVisible} request={id} user={user.id} type_user={user.type} typeId={user.typeId} close={(status) => this.closeProblema(status)} />
 				{id === this.props["request"] && <div>
-					<div className="w3-card">
+					<div className="">
 						<div className="w3-cell">
 							<div className="">
 								{(request.icon) ?
@@ -93,30 +93,30 @@ class DetalleAgendado extends React.Component {
 									<div className="w3-cell w3-container">
 										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" />
 									</div>
-									<p className="w3-cell">Servicio de emergencia</p>
+									<p className="w3-cell text_blue">Servicio de emergencia</p>
 								</div>
 							}
 							<div className="w3-margin-bottom w3-container">
-								<b className="w3-cell">{request["service"]}</b>
+								<b className="w3-cell text_blue">{request["service"]}</b>
 								<p className="w3-cell">/{request["category"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/ubicacion.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">{request["zone"]}</p>
+								<p className="w3-cell"> <b className="text_blue">Ubicación</b> {request["zone"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">Fecha de inicio: {request["registry_date"]}</p>
+								<p className="w3-cell"> <b className="text_blue">Fecha de inicio: </b> {request["registry_date"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">Fecha agendada: {(request["scheduled_date"]) ? request["scheduled_date"] : "Pendiente"}</p>
+								<p className="w3-cell"> <b className="text_blue">Fecha agendada:</b> {(request["scheduled_date"]) ? request["scheduled_date"] : "Pendiente"}</p>
 							</div>
 							<div className="w3-margin-bottom" style={{ cursor: "pointer" }} onClick={() => this.verDetalle()}>
 								<div className="w3-cell w3-container">
@@ -126,12 +126,22 @@ class DetalleAgendado extends React.Component {
 							</div>
 						</div>
 					</div>
-					<h1 className="w3-section w3-center titleRegister">Fixperto® contratado</h1>
-					<div className="w3-section">
-						<div className="w3-card" >
+					<div className="w3-section experto_vista">
+						<div className="divider w3-row">
+							<div className="w3-col s3">
+								<div className="divider_line"></div>
+							</div>
+							<div className="w3-col s6">
+							<h3>Fixperto®  contratado</h3>
+							</div>
+							<div className="w3-col s3">
+								<div className="divider_line"></div>
+							</div>
+						</div>
+						<div className=" section_experto" >
 							<Experto experto={expert} history={this.props["history"]} />
 							<div className="w3-cell-row">
-								<div className="w3-cell w3-button w3-hover-teal w3-teal"
+								<div className="w3-cell w3-button btn_chat"
 									onClick={() => {
 										this.props["navigation"].navigate("Chat", {
 											chat: { to: expert, user: this.state["user"], request: request["id"], type: "cliente", offert: true }
@@ -140,9 +150,15 @@ class DetalleAgendado extends React.Component {
 								</div>
 							</div>
 						</div>
-						<h4 className="w3-center w3-section">
-							Recuerda que todos los servicios solo se pueden cancelar hasta 24 horas antes
-						</h4>
+						<div className="w3-row copy">
+							<div className="w3-col s3">
+								<img src="../../assets/iconos/alert.png" className=" img_alert" style={{width : 40}} alt="alert"></img>
+							</div>
+							<div className="w3-col s9">
+								<p>Recuerda que todos los servicios solo se pueden cancelar hasta 24 horas antes</p>
+							</div>
+						</div>
+							
 						<div className="w3-block w3-button w3-hover-blue w3-blue w3-section"
 							onClick={() => { this.servicio() }}>
 							Ver servicio

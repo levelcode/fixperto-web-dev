@@ -15,8 +15,9 @@ a{
 	width: auto;
 	height: 45px;
 }
+
 .container_web{
-  width: 60%;
+  width: 90%;
   margin: auto;
 }
 
@@ -254,21 +255,22 @@ h1.titleRegister{
   margin-right: 5px;
 }
 
-.perfil .card_perfil .copy{
+.copy{
   background-color: #ECF7F9;
   padding: 5px;
   margin-top: 20px;
 }
 
-.perfil .card_perfil .copy .img_alert {
+.copy .img_alert {
   width: 50%;
   position: relative;
   left: 25%;
   top: 20px;
 }
 
-.perfil .card_perfil .copy p{
+.copy p{
   color: #43AECC;
+  font-weight: bold;
 }
 
 .perfil .card_perfil .title_datos h2{
@@ -406,9 +408,7 @@ h1.titleRegister{
 
 
 /***************SERVICIOS******************/
-.servicios{
 
-}
 
 .servicios .buscador{
   width: 100%;
@@ -607,6 +607,10 @@ h1.titleRegister{
   margin-right: 5px;
 }
 
+.solicitudes .w3-margin-bottom{
+  margin-bottom: 8px !important;
+}
+
 .image {
   width: auto;
 }
@@ -707,6 +711,7 @@ padding: 0;
 .imagen-experto {
   width: 100px;
   height: 100px;
+  border-radius: 10px;
 }
 .padd-general {
   padding: 15px 20% 10px 20%;
@@ -811,9 +816,36 @@ background-color:#ffffff;
   padding: 10px 15%;
 }
 
+.btn_cancelar_solic{
+  width: 45%;
+  margin: auto;
+  border: #CE4343 solid 2px;
+  padding: 10px 35px !important;
+  color: #CE4343;
+  font-weight: bold;
+  border-radius: 7px;
+  margin-top: 23px !important;
+}
 
 
+.section_experto{
+  border-bottom: solid #72B330;
+  padding-bottom: 10px;
+}
 
+
+.divider .divider_line{
+  border: solid 1px #43adcc;
+  margin-top: 26px;
+  width: 90%;
+}
+
+.divider h3{
+  font-size: 1.5rem;
+  text-align: center;
+  color: #273861;
+  font-weight: bold;
+}
 
 
 
@@ -958,7 +990,7 @@ background-color:#ffffff;
 
 
   .container{
-    width: 66%;
+    width: 90%;
     margin: auto;
   }
 
@@ -1057,11 +1089,11 @@ background-color:#ffffff;
   }
 
   .btn_ubicacion{
-    width: 30%;
+    width: 45%;
   }
 
   .nueva_solicitud .btn{
-    width: 30% !important;
+    width: 45% !important;
   }
 
   
@@ -1262,4 +1294,23 @@ background-color:#ffffff;
   .fondPage img {
     width: auto;
   }
+
+  .experto_vista{
+    width: 80%;
+    margin: auto;
+  }
+
+  .btn_chat{
+    background-color: #ECF7F9;
+    color: #2297B1;
+    font-size: 1.3rem;
+  }
+
+  .btn_oferta{
+    background-color: #2297B1;
+    color: white;
+    font-size: 1.3rem;
+  }
 }
+
+

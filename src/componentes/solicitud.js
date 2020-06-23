@@ -28,7 +28,7 @@ const Solicitud = (props) => {
 						<span onClick={() => { setActualizar(true); props["close"](); }}
 							className="w3-button w3-display-topright w3-round-small w3-hover-red">&times;</span>
 						<br />
-						<div className="w3-section w3-card">
+						<div className="w3-section ">
 							<div className="w3-cell">
 								<div className="">
 									{(request.icon) ?
@@ -44,31 +44,31 @@ const Solicitud = (props) => {
 										<div className="w3-cell w3-container">
 											<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" />
 										</div>
-										<p className="w3-cell">Servicio de emergencia</p>
+										<p className="w3-cell text_blue">Servicio de emergencia</p>
 									</div>
 								}
 								<div className="w3-margin-bottom w3-container">
-									<b className="w3-cell">{request["service"]}</b>
+									<b className="w3-cell text_blue">{request["service"]}</b>
 									<p className="w3-cell">/{request["category"]}</p>
 								</div>
 								<div className="w3-margin-bottom">
 									<div className="w3-cell  w3-container">
 										<img src="../../../../assets/iconos/ubicacion.png" className="imagen-icono" alt="Imagen" />
 									</div>
-									<p className="w3-cell">{request["zone"]}</p>
+									<p className="w3-cell"> <b className="text_blue">Ubicación</b> {request["zone"]}</p>
 								</div>
 								<div className="w3-margin-bottom">
 									<div className="w3-cell  w3-container">
 										<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 									</div>
-									<p className="w3-cell">registro: {request["registry_date"]}</p>
+									<p className="w3-cell"> <b className="text_blue">Registro</b> {request["registry_date"]}</p>
 								</div>
 								<div className="w3-margin-bottom w3-container">
-									<b className="w3-cell">Descripción: </b>
+									<b className="w3-cell text_blue">Descripción: </b>
 									<p className="w3-cell w3-container">{request["description"]}</p>
 								</div>
 								<div className="w3-margin-bottom w3-container">
-									<b className="w3-cell">Dirección: </b>
+									<b className="w3-cell text_blue">Dirección: </b>
 									<p className="w3-cell w3-container">{(request["address"]) ? request["address"] : "Pendiente"}</p>
 								</div>
 							</div>
