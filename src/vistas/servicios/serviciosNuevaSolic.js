@@ -79,7 +79,7 @@ class ServiciosNuevaSol extends React.Component {
 									<img src={this.props.history.location["service"]['icon']} className="" alt="Imagen"></img>
 								</div>
 								<div className="w3-col s11 text">
-									<b>{this.props.history.location["service"]["denomination"]}</b> /
+									<b className="text_blue">{this.props.history.location["service"]["denomination"]}</b> /
                                         {this.props.history.location["category"]["denomination"]}
 								</div>
 							</div>

@@ -1225,8 +1225,8 @@ background-color:#ffffff;
   }
 
   .perfil .btn_close button{
-    width: 70%;
-    left: 15%;
+    width: 100%;
+    left: 0px;
   }
 
   .servicios .buscador input{
@@ -1367,6 +1367,10 @@ background-color:#ffffff;
 
   .w3-border-blue, .w3-hover-border-blue:hover {
     border-bottom: solid #2297B1 !important;
+  }
+
+  .btn, .btn_ubicacion {
+    width: 100%;
   }
 }
 
