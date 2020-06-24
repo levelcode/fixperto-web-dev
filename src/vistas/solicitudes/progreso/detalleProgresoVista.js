@@ -41,7 +41,7 @@ class DetalleProgreso extends React.Component {
 				{id === this.props["request"] && <div>
 					<div className="w3-section detalle_solic">
 						<div className="w3-cell">
-							<div className="w3-card">
+							<div className="w3-card icon_card_detalle">
 								{(request.icon) ?
 									<img src={request.icon} className="imagen-solicitud  " alt="Imagen" />
 									: <img src="../../../../assets/icon.png" className="  " alt="Imagen" />

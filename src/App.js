@@ -21,31 +21,40 @@ class App extends React.Component {
 			<React.Fragment>
 				<Header />
 				<div className="fondPage w3-text-white">
-					<div className="menu">
+					<div className="menu w3-row">
 
-						<Link to="/fixperto/servicios" className={(servicios) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
-							onClick={() => this.active("servicios")}>
-							<img src="/assets/iconos/servicios.png" alt="servicios" className="icono-menu" />
-							Servicios
-						</Link>
 
-						<Link to="/fixperto/solicitudes/solicitud-progreso" className={(solicitudes) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
-							onClick={() => this.active("solicitudes")}>
-							<img src="/assets/iconos/solicitudes.png" alt="solicitud" className="icono-menu"/>
-							Solicitudes
-						</Link>
+						<div className="w3-col s12 m4">
+							<Link to="/fixperto/servicios" className={(servicios) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
+								onClick={() => this.active("servicios")}>
+								<img src="/assets/iconos/servicios.png" alt="servicios" className="icono-menu" />
+								Servicios
+							</Link>
+						</div>
 
-						<Link to="/fixperto/chat" className={(chat) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
+						<div className="w3-col s12 m4">
+							<Link to="/fixperto/solicitudes/solicitud-progreso" className={(solicitudes) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
+								onClick={() => this.active("solicitudes")}>
+								<img src="/assets/iconos/solicitudes.png" alt="solicitud" className="icono-menu"/>
+								Solicitudes
+							</Link>
+						</div>
+
+						<div className="w3-col s12 m4">
+							<Link to="/fixperto/chat" className={(chat) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 							onClick={() => this.active("chat")}>
-							<img src="/assets/iconos/chat.png" alt="chat"className="icono-menu" />
-							Chat
-						</Link>
+								<img src="/assets/iconos/chat.png" alt="chat"className="icono-menu" />
+								Chat
+							</Link>
+						</div>
 
-						<Link to="/fixperto/perfil" className={(perfil) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
+						<div className="w3-col s12 m4">
+							<Link to="/fixperto/perfil/perfil-informacion" className={(perfil) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 							onClick={() => this.active("perfil")}>
-							<img src="/assets/iconos/perfil.png" alt="perfil" className="icono-menu"/>
-							Perfil
-						</Link>
+								<img src="/assets/iconos/perfil.png" alt="perfil" className="icono-menu"/>
+								Perfil
+							</Link>
+						</div>
 
 					</div>
 				</div>

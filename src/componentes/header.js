@@ -16,6 +16,9 @@ const HeaderInicio = (props) => {
 					<div className="w3-cell" style={{width:25+"px"}}>
 						<b onClick={() => { }}>Blog</b>
 					</div>
+					<div className="w3-cell" >
+						<img src="../../assets/iconos/bell.png" style={{width:25+"px", marginLeft : 20}}/>
+					</div>
 				</div>
 			</div>
 		</React.Fragment >

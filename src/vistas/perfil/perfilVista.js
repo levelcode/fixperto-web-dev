@@ -17,65 +17,63 @@ class Perfil extends React.Component {
 		this.state = { 
 			textoAlert	: "", 
 			showAlert	: false, 
-			photo		: "", 
-			cliente		: [],
-			name        : "", 
-			info 		: true,
-			config   	: false,
-			contraseña  : false,
-			quienes 	: false,
-			atencion 	: false,
-			terminos 	: false,
-			politica 	: false,
+			photo		: "https://api.fixperto.com/uploads/registros/cliente/" +  JSON.parse(localStorage.getItem("@USER"))["avatar"],
+			cliente		: JSON.parse(localStorage.getItem("@USER")),
+			rutas 		: {
+				info 		: true,
+				config   	: false,
+				contraseña  : false,
+				quienes 	: false,
+				atencion 	: false,
+				terminos 	: false,
+				politica 	: false,
+			}
+			
 
 		};
 	}
 
 	active = (text) => { 
-		let state = {}; 
-		Object.keys(this.state).map((key) => state[key] = (key === text)); 
-		this.setState(state); 
+		let rutas = this.state['rutas'];
+		Object.keys(rutas).map((key) => { rutas[key] = (key === text)}); 
+		this.setState({rutas}); 
 	}
 
 
-
 	componentDidMount() {
-		var user = JSON.parse(localStorage.getItem("@USER"))
-		this.state['cliente'].push(user)
-
-		var name = user['name']
-		this.setState({name})
-
-		this.setState({
-			photo: "https://api.fixperto.com/uploads/registros/cliente/" + user["avatar"]
-		});
-
+		let rutas = {};
 		switch (this.props["history"]["location"]["pathname"]) {
 			case "/fixperto/perfil/perfil-informacion":
-				this.setState({ info: true, config: false, contraseña: false, quienes : false, atencion : false, terminos : false, politica : false });
+				rutas = { info: true, config: false, contraseña: false, quienes : false, atencion : false, terminos : false, politica : false }
+				this.setState({rutas});
 				break;
 			case "/fixperto/perfil/configuracion":
-				this.setState({ info: false, config: true, contraseña: false, quienes : false, atencion : false, terminos : false, politica : false });
+				rutas = { info: false, config: true, contraseña: false, quienes : false, atencion : false, terminos : false, politica : false }
+				this.setState({rutas});
 				break;
 			case "/fixperto/perfil/cambio_password":
-				this.setState({ info: false, config: false, contraseña: true, quienes : false, atencion : false, terminos : false, politica : false });
+				rutas = { info: false, config: false, contraseña: true, quienes : false, atencion : false, terminos : false, politica : false }
+				this.setState({rutas});
 				break;
 			case "/fixperto/perfil/quienes_somos":
-				this.setState({ info: false, config: false, contraseña: false, quienes : true, atencion : false, terminos : false, politica : false });
+				rutas = { info: false, config: false, contraseña: false, quienes : true, atencion : false, terminos : false, politica : false }
+				this.setState({rutas});
 				break;
 			case "/fixperto/perfil/atencion_cliente":
-				this.setState({ info: false, config: false, contraseña: false, atencion : true, terminos : false, politica : false });
+				rutas = { info: false, config: false, contraseña: false, atencion : true, terminos : false, politica : false }
+				this.setState({rutas});
 				break;
 			case "/fixperto/perfil/terminos_condiciones":
-				this.setState({ info: false, config: false, contraseña: false, atencion : false, terminos : true, politica : false });
+				rutas = { info: false, config: false, contraseña: false, atencion : false, terminos : true, politica : false }
+				this.setState({rutas});
 				break;
 			case "/fixperto/perfil/politica_privacidad":
-				this.setState({ info: false, config: false, contraseña: false, atencion : false, terminos : false, politica : true });
+				rutas = { info: false, config: false, contraseña: false, atencion : false, terminos : false, politica : true }
+				this.setState({rutas});
 				break;
 			default:
 				break;
 		}
-
 	}
 
 	render() {
@@ -92,7 +90,7 @@ class Perfil extends React.Component {
 							<div className="w3-cell" style={{ width: 35 + "px" }}>
 								<img src="../../assets/solicitudesUp.png" alt="Norway" />
 							</div>
-							<h2 className="w3-cell" >Perfil</h2>
+							<h2 className="w3-cell text_blue" >Perfil</h2>
 						</div>
 						<div className="w3-row">
 
@@ -100,7 +98,7 @@ class Perfil extends React.Component {
 								<div className="w3-card card_perfil">
 									<div className="w3-row info_person">
 										<div className="w3-col s12 l5">
-											{ this.state['photo'] == "" ? 
+											{ this.state['photo'] === "" ? 
 												<div className="w3-center img_upl">
 													<img src={this.state['photo']}  style={{width : 100, height:100}}/>
 												</div>
@@ -121,8 +119,11 @@ class Perfil extends React.Component {
 											
 										</div>
 										<div className="w3-col s10 l7">
-											<h2 className="text_blue">¡Hola!</h2>
-											<h6>{this.state['name']}</h6>
+											<h3 className="text_blue">¡Hola!</h3>
+											<h6>{this.state['cliente']['name']}</h6>
+										</div>
+										<div className="w3-row">
+
 										</div>
 									</div>
 
