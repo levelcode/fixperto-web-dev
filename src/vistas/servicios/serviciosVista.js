@@ -105,7 +105,7 @@ class ServiciosVista extends React.Component {
 
 					<div className="buscador padd-ingreso">
 					<div className="w3-cell-row">
-							<h1 className="w3-cell aling-center azul-oscuro"><b>Servicios</b></h1>
+							<h2 className="w3-cell aling-center azul-oscuro"><b>Servicios</b></h2>
 						</div>
 						<h3> ¿<b className="text_blue">{this.state['name']}</b>,</h3>
 						<h3>necesitas un experto en.. ?</h3>

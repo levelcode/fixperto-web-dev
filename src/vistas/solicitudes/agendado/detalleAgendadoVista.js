@@ -77,12 +77,12 @@ class DetalleAgendado extends React.Component {
 				<Servicio show={isServicioVisible} expert={expert["id"]} request={id} type="accepted" close={() => this.setState({ isServicioVisible: false })} />
 				<Problema show={isProblemaVisible} request={id} user={user.id} type_user={user.type} typeId={user.typeId} close={(status) => this.closeProblema(status)} />
 				{id === this.props["request"] && <div>
-					<div className="">
+					<div className="detalle_solic">
 						<div className="w3-cell">
-							<div className="">
+							<div className="w3-card">
 								{(request.icon) ?
-									<img src={request.icon} className="imagen-solicitud  w3-margin-left w3-margin-top" alt="Imagen" />
-									: <img src="../../../../assets/icon.png" className=" w3-margin-left w3-margin-top" alt="Imagen" />
+									<img src={request.icon} className="imagen-solicitud  " alt="Imagen" />
+									: <img src="../../../../assets/icon.png" className="  " alt="Imagen" />
 								}
 							</div>
 						</div>

@@ -22,18 +22,18 @@ const Solicitud = (props) => {
 	return (
 		<React.Fragment>
 			<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => setShowAlert(false)} />
-			<div className="w3-modal w3-text-black" style={{ display: (props["show"]) ? "flex" : "none" }}>
-				<div className="w3-modal-content w3-animate-top w3-round-large" style={{ width: 50 + '%' }}>
-					<div className="w3-container w3-margin-top w3-margin-bottom">
+			<div className="w3-modal w3-text-black solicitudes" style={{ display: (props["show"]) ? "flex" : "none" }}>
+				<div className="w3-modal-content w3-animate-top w3-round-large" style={{ width: 380}}>
+					<div className="w3-container w3-margin-top w3-margin-bottom detalle_solic">
 						<span onClick={() => { setActualizar(true); props["close"](); }}
 							className="w3-button w3-display-topright w3-round-small w3-hover-red">&times;</span>
 						<br />
 						<div className="w3-section ">
 							<div className="w3-cell">
-								<div className="">
+								<div className="w3-card">
 									{(request.icon) ?
-										<img src={request.icon} className="imagen-solicitud  w3-margin-left w3-margin-top" alt="Imagen" />
-										: <img src="../../../../assets/icon.png" className=" w3-margin-left w3-margin-top" alt="Imagen" />
+										<img src={request.icon} className="imagen-solicitud  " alt="Imagen" />
+										: <img src="../../../../assets/icon.png" className=" " alt="Imagen" />
 									}
 								</div>
 							</div>

@@ -57,10 +57,13 @@ class SolicitudeAgendado extends React.Component {
 								requests.length > 0 && requests.map((item, key) => (
 									<div className="cont_srv w3-row" key={key}>
 										<div className="w3-col s2 m3 ">
-											{(item.icon) ?
-												<img src={item.icon} className="img_serv" alt="Imagen" />
-												: <img src="../../../assets/iconos/alert_icon.png" className="img_serv" alt="Imagen" />
-											}
+											<div class="w3-card">
+												{(item.icon) ?
+													<img src={item.icon} className="img_serv" alt="Imagen" />
+													: <img src="../../../assets/iconos/alert_icon.png" className="img_serv" alt="Imagen" />
+												}
+											</div>
+											
 										</div>
 										<div className="w3-col s10 m7 ">
 											{
@@ -80,8 +83,8 @@ class SolicitudeAgendado extends React.Component {
 													Tiempo de respuesta: {item.response_time}
 												</p>
 											}
-											<p style={{ cursor: "pointer" }} onClick={() => { this.selectSolicitud(item) }}>
-												<img src="../../assets/iconos/mas.png" className="img_mas" alt="star"></img>
+											<p className="text_blue_cl" style={{ cursor: "pointer" }} onClick={() => { this.selectSolicitud(item) }}>
+												<img src="../../assets/iconos/mas.png" className="img_mas " alt="star"></img>
                                                 Ver más
                                             </p>
 										</div>
@@ -92,12 +95,12 @@ class SolicitudeAgendado extends React.Component {
 					</div>
 				</div>
 				<div className="" style={{ display: (show_request) ? "block" : "none" }}>
-					<div className="w3-cell-row">
+					<div className="w3-cell-row" style={{backgroundColor : "#E2E2E2", padding : 8}}>
 						<div className="w3-cell w3-cell-middle" style={{ width: 35 + "px", cursor: "pointer" }}
 							onClick={() => { this.deselectSolicitud() }}>
 							<img src="../../../assets/iconos/atras30.png" alt="Norway" />
 						</div>
-						<h2 className="w3-cell w3-center">Solicitud</h2>
+						<h4 className="w3-cell w3-center" style={{color : "#5A5253", fontWeight : "bold",}}>Solicitud</h4>
 					</div>
 					<SolicitudAgendada
 						request={request}

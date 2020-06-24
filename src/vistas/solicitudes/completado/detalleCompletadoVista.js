@@ -45,12 +45,12 @@ class DetalleCompletado extends React.Component {
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
 				<Calificar show={isCalificarVisible} calificador={id} experto={expert} close={(status) => this.closeCalificar(status)} />
 				{id === this.props["request"] && <div>
-					<div className="">
+					<div className="detalle_solic">
 						<div className="w3-cell">
-							<div className="">
+							<div className="w3-card">
 								{(request.icon) ?
-									<img src={request.icon} className="imagen-solicitud  w3-margin-left w3-margin-top" alt="Imagen" />
-									: <img src="../../../../assets/icon.png" className=" w3-margin-left w3-margin-top" alt="Imagen" />
+									<img src={request.icon} className="imagen-solicitud  " alt="Imagen" />
+									: <img src="../../../../assets/icon.png" className="  " alt="Imagen" />
 								}
 							</div>
 						</div>
@@ -65,7 +65,7 @@ class DetalleCompletado extends React.Component {
 								</div>
 							}
 							<div className="w3-margin-bottom w3-container">
-								<b className="w3-cell">{request["service"]}</b>
+								<b className="w3-cell text_blue">{request["service"]}</b>
 								<p className="w3-cell">/{request["category"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
@@ -84,13 +84,13 @@ class DetalleCompletado extends React.Component {
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell"> <b>Fecha de completado:</b> {(request["completed_date"]) ? request["completed_date"] : "Pendiente"}</p>
+								<p className="w3-cell"> <b className="text_blue">Fecha de completado:</b> {(request["completed_date"]) ? request["completed_date"] : "Pendiente"}</p>
 							</div>
 							<div className="w3-margin-bottom" style={{ cursor: "pointer" }} onClick={() => this.verDetalle()}>
 								<div className="w3-cell w3-container">
 									<img src="../../../../assets/iconos/mas.png" className=" imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">Ver detalle</p>
+								<p className="w3-cell text_blue_cl">Ver detalle</p>
 							</div>
 						</div>
 					</div>

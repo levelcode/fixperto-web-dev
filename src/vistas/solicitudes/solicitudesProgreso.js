@@ -56,49 +56,59 @@ class SolicitudesProgreso extends React.Component {
 							{
 								requests.length > 0 &&
 								requests.map((item, key) => (
-									<div className="cont_srv w3-row" key={key}>
-										<div className="w3-col s2 m3 ">
-											{(item.icon) ?
-												<img src={item.icon} className="img_serv" alt="Imagen" />
-												: <img src="../../../assets/iconos/alert_icon.png" className="img_serv" alt="Imagen" />
-											}
-										</div>
-										<div className="w3-col s10 m7 ">
-											{
-												item.emergency === 1 && <div >
-													<p className="text_blue_dark">
-														<img src="../../../assets/iconos/emergencia.png" style={{ width: 18, height: 18, marginTop: -8, marginRight: 10 }} alt="Imagen" />
-                                                        Solicitud de emergencia
-                                                    </p>
+
+									<div>	
+										<div className="cont_srv w3-row" key={key}>
+											<div className="w3-col s2 m3 ">
+												<div class="w3-card">
+													{(item.icon) ?
+														<img src={item.icon} className="img_serv" alt="Imagen" />
+														: <img src="../../../assets/iconos/alert_icon.png" className="img_serv" alt="Imagen" />
+													}
 												</div>
-											}
-											<p> <span className="text_blue_dark">{item.service}</span> / {item.category} </p>
-											<p>{item.registry_date}</p>
-											{
-												item["oferts"] === 0 &&
-												<p>
-													<img src="../../assets/iconos/esperando.png" className="img_esperando" alt="star"></img>
-                                                    Esperando servicios
-                                                </p>
-											}
-											<p style={{ cursor: "pointer" }} onClick={() => { this.selectSolicitud(item.id) }}>
-												<img src="../../assets/iconos/mas.png" className="img_mas" alt="star"></img>
-                                                Ver más
-                                            </p>
+											</div>
+											<div className="w3-col s10 m7 ">
+												{
+													item.emergency === 1 && <div >
+														<p className="text_blue_dark">
+															<img src="../../../assets/iconos/emergencia.png" style={{ width: 18, height: 18, marginTop: -8, marginRight: 10 }} alt="Imagen" />
+															Solicitud de emergencia
+														</p>
+													</div>
+												}
+												<p> <span className="text_blue_dark">{item.service}</span> / {item.category} </p>
+												<p>{item.registry_date}</p>
+												{
+													item["oferts"] === 0 &&
+													<p>
+														<img src="../../assets/iconos/esperando.png" className="img_esperando" alt="star"></img>
+														Esperando servicios
+													</p>
+												}
+												<p className="text_blue_cl" style={{ cursor: "pointer" }} onClick={() => { this.selectSolicitud(item.id) }}>
+													<img src="../../assets/iconos/mas.png" className="img_mas" alt="star"></img>
+													Ver más
+												</p>
+											</div>
 										</div>
+
+										<hr></hr>
 									</div>
+									
+
+									
 								))
 							}
 						</div>
 					</div>
 				</div>
 				<div className="" style={{ display: (show_request) ? "block" : "none" }}>
-					<div className="w3-cell-row">
+					<div className="w3-cell-row" style={{backgroundColor : "#E2E2E2", padding : 8}}>
 						<div className="w3-cell w3-cell-middle" style={{ width: 35 + "px", cursor: "pointer" }}
 							onClick={() => { this.dselectSolicitud() }}>
 							<img src="../../../assets/iconos/atras30.png" alt="Norway" />
 						</div>
-						<h2 className="w3-cell w3-center">Solicitud</h2>
+						<h4 className="w3-cell w3-center" style={{color : "#5A5253", fontWeight : "bold",}}>Solicitud</h4>
 					</div>
 					<SolicitudProgreso request={request} back={(status) => this.back(status)} />
 				</div>

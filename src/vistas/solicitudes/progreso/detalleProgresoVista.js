@@ -39,12 +39,12 @@ class DetalleProgreso extends React.Component {
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
 				
 				{id === this.props["request"] && <div>
-					<div className="w3-section ">
+					<div className="w3-section detalle_solic">
 						<div className="w3-cell">
-							<div className="">
+							<div className="w3-card">
 								{(request.icon) ?
-									<img src={request.icon} className="imagen-solicitud  w3-margin-left w3-margin-top" alt="Imagen" />
-									: <img src="../../../../assets/icon.png" className=" w3-margin-left w3-margin-top" alt="Imagen" />
+									<img src={request.icon} className="imagen-solicitud  " alt="Imagen" />
+									: <img src="../../../../assets/icon.png" className="  " alt="Imagen" />
 								}
 							</div>
 						</div>
@@ -78,7 +78,7 @@ class DetalleProgreso extends React.Component {
 								<div className="w3-cell w3-container">
 									<img src="../../../../assets/iconos/mas.png" className=" imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">Ver detalle</p>
+								<p className="w3-cell text_blue_cl">Ver detalle</p>
 							</div>
 						</div>
 					</div>
