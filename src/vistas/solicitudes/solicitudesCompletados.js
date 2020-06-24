@@ -45,39 +45,44 @@ class SolicitudesCompletado extends React.Component {
 						<div className="w3-row serv">
 							{
 								requests.length > 0 && requests.map((item, key) => (
-									<div className="cont_srv w3-row" key={key}>
-										<div className="w3-col s2 m3 ">
-											<div class="w3-card">
-												{(item.icon) ?
-													<img src={item.icon} className="img_serv" alt="Imagen" />
-													: <img src="../../../assets/iconos/alert_icon.png" className="img_serv" alt="Imagen" />
+									<div className="w3-card cont-card">
+										<div className="cont_srv w3-row" key={key}>
+											<div className="w3-col s2 m3 ">
+												<div class="w3-card icon_card">
+													{(item.icon) ?
+														<img src={item.icon} className="img_serv" alt="Imagen" />
+														: <img src="../../../assets/iconos/alert_icon.png" className="img_serv" alt="Imagen" />
+													}
+												</div>
+											</div>
+											<div className="w3-col s10 m7 ">
+												{
+													item.emergency === 1 && <div >
+														<p className="text_blue">
+															<img src="../../../assets/iconos/emergencia.png" style={{ width: 18, height: 18, marginTop: -8, marginRight: 10 }} alt="Imagen" />
+															Solicitud de emergencia
+														</p>
+													</div>
 												}
+												<p> <span className="text_blue_dark">{item.service}</span> / {item.category} </p>
+												<p>{item.fixperto}</p>
+												<p>Fecha completado : {item.registry_date}</p>
+												{
+													item.emergency === 1 &&
+													<p className="text_blue">
+														Tiempo de respuesta: {item.response_time}
+													</p>
+												}
+												<p className="text_blue_cl" style={{ cursor: "pointer" }} onClick={() => { this.selectSolicitud(item) }}>
+													<img src="../../assets/iconos/mas.png" className="img_mas" alt="star"></img>
+													Ver más
+												</p>
 											</div>
 										</div>
-										<div className="w3-col s10 m7 ">
-											{
-												item.emergency === 1 && <div >
-													<p className="text_blue">
-														<img src="../../../assets/iconos/emergencia.png" style={{ width: 18, height: 18, marginTop: -8, marginRight: 10 }} alt="Imagen" />
-                                                        Solicitud de emergencia
-                                                    </p>
-												</div>
-											}
-											<p> <span className="text_blue_dark">{item.service}</span> / {item.category} </p>
-											<p>{item.fixperto}</p>
-											<p>Fecha completado : {item.registry_date}</p>
-											{
-												item.emergency === 1 &&
-												<p className="text_blue">
-													Tiempo de respuesta: {item.response_time}
-												</p>
-											}
-											<p className="text_blue_cl" style={{ cursor: "pointer" }} onClick={() => { this.selectSolicitud(item) }}>
-												<img src="../../assets/iconos/mas.png" className="img_mas" alt="star"></img>
-                                                Ver más
-                                            </p>
-										</div>
+
+										<hr></hr>
 									</div>
+									
 								))
 							}
 						</div>

@@ -17,23 +17,30 @@ const Experto = ({ experto, history }) => {
 				</div>
 				<div className="w3-cell">
 					<div className="w3-margin-bottom">
-						<div className="w3-cell w3-container">
-							<b >{experto.name}</b>
-							{experto.plan === 1 &&
+						<div className="w3-row">
+							<div className="w3-col s12 m12">
+								{experto.plan === 1 &&
 								<img src="../../../assets/iconos/experto_premium.png" style={{ width: 120 + "px", marginLeft : 10 }} alt="Imagen" />}
-						</div>
-						<div className="w3-row certif">
-							{experto.certification_sena === 1 &&
-								<div className="w3-cell">
-									<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{marginLeft : 10}} />
-								</div>
-							}
-							<div className="w3-cell">
-								<div className="w3-cell w3-container">
-									<img src="../../../assets/iconos/star.png" className="imagen-icono" alt="Imagen" />
-								</div>
-								<p className="w3-cell">	{(experto.evaluation) ? experto.evaluation : 0}	</p>
 							</div>
+							<div className="w3-col s12 m12">
+								<div className="w3-row certif">
+									{experto.certification_sena === 1 &&
+										<div className="">
+											<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{marginLeft : 10}} />
+										</div>
+									}
+									<div className="">
+										<div className="w3-cell w3-container">
+											<img src="../../../assets/iconos/star.png" className="imagen-icono" alt="Imagen" />
+										</div>
+										<p className="w3-cell">	{(experto.evaluation) ? experto.evaluation : 0}	</p>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div className="w3-cell w3-container w3-row">
+							<b style={{marginTop : 10}}>{experto.name}</b>
 						</div>
 						
 					</div>
@@ -41,7 +48,7 @@ const Experto = ({ experto, history }) => {
 						{(experto.type === 0 && experto.salud_pension) &&
 							<div className="w3-cell">
 								<div className="w3-cell w3-container">
-									<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" />
+									<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen"  style={{width : 20, height : 20}}/>
 								</div>
 								<p className="w3-cell">Parafiscales</p>
 							</div>
@@ -49,7 +56,7 @@ const Experto = ({ experto, history }) => {
 						{(experto.type === 0 && experto.arl) &&
 							<div className="w3-cell">
 								<div className="w3-cell w3-container">
-									<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" />
+									<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20}} />
 								</div>
 								<p className="w3-cell">ARL</p>
 							</div>
@@ -58,14 +65,14 @@ const Experto = ({ experto, history }) => {
 					{experto.insured === 1 &&
 						<div className="w3-margin-bottom">
 							<div className="w3-cell w3-container">
-								<img src="../../../assets/iconos/asegurado.png" className="imagen-icono" alt="Imagen" />
+								<img src="../../../assets/iconos/asegurado.png" className="imagen-icono" alt="Imagen"style={{width : 20, height : 20}} />
 							</div>
 							<p className="w3-cell">Asegurado</p>
 						</div>
 					}
 					{(experto["emergency"] === 1) && <div className="w3-margin-bottom" >
 						<div className="w3-cell w3-container">
-							<img src="../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" />
+							<img src="../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20}} />
 						</div>
 						<p className="w3-cell">{response_time}</p>
 					</div>}

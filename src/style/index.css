@@ -101,6 +101,7 @@ a{
 
 .blue_menu{
   background-color: #43AECC;
+  width: 100%;
 }
 
 .blue_menu_dark{
@@ -241,8 +242,8 @@ h1.titleRegister{
   margin: auto;
   border-radius: 10px;
   padding: 20px;
-  margin-top: 30px;
   margin-bottom: 45px;
+  vertical-align: top;
 }
 
 .perfil .card_perfil .info_person{
@@ -336,8 +337,6 @@ h1.titleRegister{
   color: #CE4343;
   border-radius: 7px;
 }
-
-
 
 .info_perfil_config .check_config{
   padding-left: 20px;
@@ -564,7 +563,7 @@ h1.titleRegister{
   position: relative;
   padding: 5px;
   left: 10%;
-  top: 20px;
+  top: 10px;
 }
 
 .solicitudes .progreso p{
@@ -574,12 +573,12 @@ h1.titleRegister{
 }
 
 .solicitudes .list_datos div {
-  padding: 20px;
+  padding: 30px;
+  border-bottom: 1px solid #ccc;
 }
 
 .solicitudes .list_datos div.active {
-  padding: 20px;
-  border-right: 2px solid #43AECC;
+  border-right: 4px solid #43AECC;
 }
 
 .solicitudes .list_datos div.active a{
@@ -591,7 +590,14 @@ h1.titleRegister{
   margin-top: 20px;
 }
 
-.solicitudes .serv .w3-card{
+.solicitudes .cont-card{
+  padding-top: 20px;
+  border-radius: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.solicitudes .serv .icon_card{
   padding: 5px;
   border-radius: 7px;
 }
@@ -621,7 +627,7 @@ h1.titleRegister{
 }
 
 .solicitudes .serv img.img_mas{
-  width: 8%;
+  width:20px;
   position: relative;
   margin-right: 5px;
 }
@@ -630,12 +636,25 @@ h1.titleRegister{
   margin-bottom: 8px !important;
 }
 
-.solicitudes .detalle_solic .w3-card{
+.solicitudes .detalle_solic{
+  padding: 20px;
+  background-color: #F4F4F4;
+}
+
+.solicitudes .detalle_solic .icon_card{
   border-radius: 7px;
   padding: 5px;
   position: relative;
   top: 40px;
 }
+
+.solicitudes .detalle_solic .icon_card_detalle{
+  border-radius: 7px;
+  padding: 5px;
+  position: relative;
+  top: 20px;
+}
+
 
 .image {
   width: auto;
@@ -643,8 +662,10 @@ h1.titleRegister{
 
 .section_experto .certif{
   display: flex;
-  justify-content: flex-start;
-  margin-top: 10px;
+  justify-content: flex-end;
+  margin-top: 0px;
+  position: relative;
+  top: 20px;
 
 }
 
@@ -941,6 +962,7 @@ background-color:#ffffff;
 
   .fondPage a{
     text-align: center;
+    width: 100%;
   }
 
   .fondPage .menu{
@@ -982,7 +1004,7 @@ background-color:#ffffff;
     width: 60%;
   }
 
-  .solicitudes .detalle_solic .w3-card{
+  .solicitudes .detalle_solic .icon_card{
     padding:10px;
     top: 35px;
   }
@@ -1101,13 +1123,12 @@ background-color:#ffffff;
   }
 
   .solicitudes .progreso img{
-    width: 80%;
-    left: 10%;
-    top: 5px
+    width: 60px;
+    left: 20%;
   }
 
-  .solicitudes .serv .w3-card{
-    padding: 15px;
+  .solicitudes .serv .icon_card{
+    padding: 10px;
   }
 
   
@@ -1122,7 +1143,7 @@ background-color:#ffffff;
   }
 
   .solicitudes .serv img.img_mas{
-    width: 9%;
+    width: 20px;
   }
 
 }
@@ -1204,8 +1225,8 @@ background-color:#ffffff;
   }
 
   .perfil .btn_close button{
-    width: 70%;
-    left: 15%;
+    width: 100%;
+    left: 0px;
   }
 
   .servicios .buscador input{
@@ -1278,11 +1299,11 @@ background-color:#ffffff;
   }
 
   .solicitudes .progreso img{
-    width: 70%;
-    left: 15%
+    width: 60px;
+    left: 20%;
   }
 
-  .solicitudes .serv .w3-card {
+  .solicitudes .serv .icon_card {
     width: 80%;
     margin: auto;
     position: relative;
@@ -1290,7 +1311,9 @@ background-color:#ffffff;
   }
 
   .solicitudes .serv img.img_serv{
-    width: 80%;
+    width: 60%;
+    position: relative;
+    left: 20%;
   }
 
   .solicitudes .serv img.img_esperando{
@@ -1298,7 +1321,7 @@ background-color:#ffffff;
   }
 
   .solicitudes .serv img.img_mas{
-    width: 8%;
+    width: 20px;
   }
 
   .fondPage img {
@@ -1344,6 +1367,10 @@ background-color:#ffffff;
 
   .w3-border-blue, .w3-hover-border-blue:hover {
     border-bottom: solid #2297B1 !important;
+  }
+
+  .btn, .btn_ubicacion {
+    width: 100%;
   }
 }
 

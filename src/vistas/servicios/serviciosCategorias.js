@@ -44,7 +44,7 @@ class ServiciosCateg extends React.Component {
 				<div className="padd-general">
 					<div className="info_perfil_comp">
 						<h1 className="titleRegister">Categorías</h1>
-						<p> <b>{user_name}</b>, tu experto en {service_name} es para ... </p>
+						<p> <b className="text_blue">{user_name}</b>, tu experto en {service_name} es para ... </p>
 						<div className="categorias_serv">
 							{categories.map((item, key) => (
 								<div className="w3-row item flex-aling" key={key} style={{cursor:"pointer"}}

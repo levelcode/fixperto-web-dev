@@ -54,7 +54,7 @@ class QuienesSomos extends React.Component {
 					<div className="info_perfil_config">
 						<h1 className="titleRegister">Términos y condiciones</h1>
 
-                        <html className="w3-padding text_left">{parse(contenido)}</html>
+                        <div className="w3-padding text_left">{parse(contenido)}</div>
 
 					</div>
 				</div>
