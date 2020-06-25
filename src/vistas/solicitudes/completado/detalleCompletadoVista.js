@@ -124,7 +124,7 @@ class DetalleCompletado extends React.Component {
 								<div className=" w3-cell w3-button btn_oferta w3-col m7"
 									onClick={() => {
 										this.setState({ isVerOfertaVisible: true })
-									}}>Ver Oferta
+									}}>Ver Servicio
 								</div>
 							</div>
 						</div>

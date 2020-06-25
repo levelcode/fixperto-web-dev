@@ -6,10 +6,12 @@ import Solicitud from "../../../componentes/solicitud";
 import Servicio from "../../../componentes/servicio";
 import Problema from "../../../componentes/problema";
 import Experto from "../../../componentes/experto";
+import VerOferta from "../../../componentes/verOferta";
 import axios from "axios";
 class DetalleAgendado extends React.Component {
 	constructor(props) {
 		super(props); this.state = {
+			isVerOfertaVisible: false,
 			id: "", isCancelVisible: false, isServicioVisible: false, isSolicitudVisible: false, isProblemaVisible: false,
 			showAlert: false, textoAlert: "", request: {}, expert: {}, user: JSON.parse(localStorage.getItem("@USER")),
 			fecha_agendada: "", fecha_actual: "",
@@ -29,14 +31,18 @@ class DetalleAgendado extends React.Component {
 				.then(function (response) {
 					if (response["data"]["success"]) {
 						var responseJson = response["data"];
-						var aux = responseJson.request["hour"].split(":");
-						var from1 = responseJson.request["scheduled_date"].split("/");
-						var fecha_agendada = new Date(from1[2], from1[1] - 1, from1[0]);
-						fecha_agendada.setDate(fecha_agendada.getDate() - 1);
-						fecha_agendada.setHours(aux[0]);
-						fecha_agendada.setMinutes(aux[1]);
-						fecha_agendada.setSeconds(aux[2]);
-						var fecha_actual = new Date(responseJson.request["date"]);
+						var fecha_agendada = "";
+						var fecha_actual = "";
+						if (responseJson.request["hour"] && responseJson.request["scheduled_date"]) {
+							var aux = responseJson.request["hour"].split(":");
+							var from1 = responseJson.request["scheduled_date"].split("/");
+							fecha_agendada = new Date(from1[2], from1[1] - 1, from1[0]);
+							fecha_agendada.setDate(fecha_agendada.getDate() - 1);
+							fecha_agendada.setHours(aux[0]);
+							fecha_agendada.setMinutes(aux[1]);
+							fecha_agendada.setSeconds(aux[2]);
+							fecha_actual = new Date(responseJson.request["date"]);
+						}
 						me.setState({ id, request: responseJson.request, expert: responseJson.expert, fecha_agendada, fecha_actual });
 					}
 					else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
@@ -58,7 +64,6 @@ class DetalleAgendado extends React.Component {
 				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	verDetalle = () => { this.setState({ isSolicitudVisible: true }); }
-	servicio = () => { /*this.setState({ isServicioVisible: true });*/ }
 	problema = () => { this.setState({ isProblemaVisible: true }); }
 	closeProblema = (status) => { this.setState({ isProblemaVisible: false }); this.props["backProblema"](status); }
 	cancelRequest = () => {
@@ -66,8 +71,11 @@ class DetalleAgendado extends React.Component {
 			this.setState({ isCancelVisible: true });
 	}
 	closeCancelar = (status) => { this.setState({ isCancelVisible: false }); this.props["backCancelar"](status); }
+	closeVerOferta = (status = "") => {
+		if (status === "") { this.setState({ isVerOfertaVisible: false }); }
+	}
 	render() {
-		const { fecha_actual, fecha_agendada, isSolicitudVisible, isServicioVisible, isProblemaVisible, isCancelVisible, showAlert, textoAlert, request, expert, id, user } = this.state;
+		const { isVerOfertaVisible, fecha_actual, fecha_agendada, isSolicitudVisible, isServicioVisible, isProblemaVisible, isCancelVisible, showAlert, textoAlert, request, expert, id, user } = this.state;
 		let disable = (fecha_actual !== "" && fecha_agendada !== "") ? (fecha_actual.getTime() < fecha_agendada.getTime()) ? "" : "w3-disabled" : "";
 		return (
 			<React.Fragment>
@@ -76,6 +84,7 @@ class DetalleAgendado extends React.Component {
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
 				<Servicio show={isServicioVisible} expert={expert["id"]} request={id} type="accepted" close={() => this.setState({ isServicioVisible: false })} />
 				<Problema show={isProblemaVisible} request={id} user={user.id} type_user={user.type} typeId={user.typeId} close={(status) => this.closeProblema(status)} />
+				<VerOferta show={isVerOfertaVisible} expert={expert["id"]} request={id} type="accepted" close={(status) => this.closeVerOferta(status)} />
 				{id === this.props["request"] && <div>
 					<div className="detalle_solic">
 						<div className="w3-cell">
@@ -132,7 +141,7 @@ class DetalleAgendado extends React.Component {
 								<div className="divider_line"></div>
 							</div>
 							<div className="w3-col s6">
-							<h3>Fixperto®  contratado</h3>
+								<h3>Fixperto®  contratado</h3>
 							</div>
 							<div className="w3-col s3">
 								<div className="divider_line"></div>
@@ -152,17 +161,16 @@ class DetalleAgendado extends React.Component {
 						</div>
 						<div className="w3-row copy">
 							<div className="w3-col s3">
-								<img src="../../assets/iconos/alert.png" className=" img_alert" style={{width : 40}} alt="alert"></img>
+								<img src="../../assets/iconos/alert.png" className=" img_alert" style={{ width: 40 }} alt="alert"></img>
 							</div>
 							<div className="w3-col s9">
 								<p>Recuerda que todos los servicios solo se pueden cancelar hasta 24 horas antes</p>
 							</div>
 						</div>
-
 						<div className="w3-row">
 							<div className="w3-col s12 m6">
 								<div className="w3-block w3-button btn_oferta w3-section"
-									onClick={() => { this.servicio() }}>
+									onClick={() => { this.setState({ isVerOfertaVisible: true }) }}>
 									Ver servicio
 								</div>
 							</div>
@@ -173,9 +181,6 @@ class DetalleAgendado extends React.Component {
 								</div>
 							</div>
 						</div>
-							
-						
-						
 						<div className={`w3-block w3-button btn_cancel w3-section ${disable}`}
 							onClick={() => { this.cancelRequest() }}>
 							Cancelar solicitud
