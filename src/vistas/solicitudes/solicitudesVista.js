@@ -62,7 +62,7 @@ class Solicitudes extends React.Component {
 								</div>
 							</div>
 							<div className="w3-col s12 m7">
-								<div className="w3-card card_info">
+								<div className="w3-card card_info card_datos">
 									<Switch>
 										<Route path="/fixperto/solicitudes/solicitud-progreso" component={SolicitudesProgreso} />
 										<Route path="/fixperto/solicitudes/solicitud-agendado" component={SolicitudesAgendado} />

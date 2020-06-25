@@ -233,7 +233,6 @@ h1.titleRegister{
   position: relative;
   margin: auto;
   border-radius: 10px;
-  padding: 20px;
 }
 
 .perfil .card_info{
@@ -241,14 +240,17 @@ h1.titleRegister{
   width: 95%;
   margin: auto;
   border-radius: 10px;
-  padding: 20px;
   margin-bottom: 45px;
   vertical-align: top;
 }
 
+.perfil .card_datos{
+  padding: 20px;
+}
+
 .perfil .card_perfil .info_person{
   background-color: #F8F8F8;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
 }
 
@@ -299,8 +301,6 @@ h1.titleRegister{
 }
 
 .perfil .card_perfil .list_datos{
-  width: 90%;
-  margin: auto;
   margin-top : 10px;
 }
 
@@ -519,6 +519,18 @@ h1.titleRegister{
 .nueva_solicitud img{
   width: 100%;
   position: relative;
+}
+
+.nueva_solicitud .img_new{
+  width: 100px;
+}
+
+.nueva_solicitud .img_elim{
+  position: absolute;
+  width: 20px;
+  z-index: 1;
+  margin-left: 90px;
+  margin-top: -5px;
 }
 
 .nueva_solicitud .text a{
@@ -1227,8 +1239,8 @@ background-color:#ffffff;
   }
 
   .perfil .btn_close button{
-    width: 100%;
-    left: 0px;
+    width: 90%;
+    left: 5%;
   }
 
   .servicios .buscador input{
