@@ -600,6 +600,8 @@ h1.titleRegister{
 .solicitudes .serv .icon_card{
   padding: 5px;
   border-radius: 7px;
+  box-shadow:  5px 5px 15px #E2E2E2, 
+             -5px -5px 12px #E2E2E2
 }
 
 .solicitudes .serv img.img_serv{
