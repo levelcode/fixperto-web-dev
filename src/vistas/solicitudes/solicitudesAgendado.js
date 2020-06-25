@@ -56,8 +56,8 @@ class SolicitudeAgendado extends React.Component {
 							{
 								requests.length > 0 && requests.map((item, key) => (
 
-									<div className="w3-card cont-card">
-										<div className="cont_srv w3-row" key={key}>
+									<div className="w3-card cont-card" key={key}>
+										<div className="cont_srv w3-row">
 											<div className="w3-col s2 m3 ">
 												<div className="w3-card icon_card">
 													{(item.icon) ?
