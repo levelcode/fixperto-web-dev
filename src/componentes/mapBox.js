@@ -81,24 +81,33 @@ class MapBox extends React.Component {
 		const { showAlert, textoAlert, routes, selectedItem } = this.state;
 		return (
 			<React.Fragment>
-				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-				<div className="w3-container w3-section">
-					<label>Seleccione una región*</label>
-					<select className="w3-select w3-border w3-round-large" name="type"
-						value={selectedItem} onChange={(e) => this.selectedCity(e.target.value)}>
-						<option value={0} >Seleccione...</option>
-						{routes.map((route, key) => (
-							<option key={key} value={route.id} >{route.title}</option>
-						))}
-					</select>
+				<div className="container_web">
+					<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
+
+					<div className="w3-container w3-section">
+						<label>Seleccione una región*</label>
+						<select className="w3-select w3-border w3-round-large" name="type"
+							value={selectedItem} onChange={(e) => this.selectedCity(e.target.value)}>
+							<option value={0} >Seleccione...</option>
+							{routes.map((route, key) => (
+								<option key={key} value={route.id} >{route.title}</option>
+							))}
+						</select>
+					</div>
+
+					<div ref={this.mapRef} className="mapContainer w3-container" />
+					<div className=" w3-container w3-section">
+						<button className="w3-button btn w3-block"
+							onClick={() => { this.selectedRegion(); }}>
+							Aceptar
+						</button>
+					</div>
+					
+
 				</div>
-				<div ref={this.mapRef} className="mapContainer w3-container" />
-				<div className=" w3-container w3-section">
-					<button className="w3-button btn w3-block"
-						onClick={() => { this.selectedRegion(); }}>
-						Aceptar
-					</button>
-				</div>
+				
+				
+				
 			</React.Fragment >
 		);
 	}

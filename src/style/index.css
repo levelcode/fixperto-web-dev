@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
 /*Estilo del mapa*/
 .mapContainer {
-	   height: 80vh;
-	   width: 100vw;
-	   top: 0;
-	   right: 0;
-	   left: 0;
-	   bottom: 0;
-	}
+  height: 80vh;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
 html, body, #root {
 	height: 100vh;
   width: 100%;
@@ -672,7 +672,7 @@ h1.titleRegister{
   padding: 5px;
   position: relative;
   top: 20px;
-  box-shadow:  5px 5px 15px #E2E2E2, 
+  box-shadow: 5px 5px 15px #E2E2E2, 
              -5px -5px 12px #E2E2E2
 }
 
