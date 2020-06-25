@@ -57,7 +57,7 @@ class SolicitudesProgreso extends React.Component {
 								requests.length > 0 &&
 								requests.map((item, key) => (
 
-									<div className="w3-card cont-card" key={key}>	
+									<div className="w3-card cont-card" key={key}>
 										<div className="cont_srv w3-row" >
 											<div className="w3-col s2 m3 ">
 												<div className="icon_card">
@@ -94,23 +94,24 @@ class SolicitudesProgreso extends React.Component {
 
 										<hr></hr>
 									</div>
-									
 
-									
+
+
 								))
 							}
 						</div>
 					</div>
 				</div>
 				<div className="" style={{ display: (show_request) ? "block" : "none" }}>
-					<div className="w3-cell-row" style={{backgroundColor : "#E2E2E2", padding : 8}}>
+					<div className="w3-cell-row" style={{ backgroundColor: "#E2E2E2", padding: 8 }}>
 						<div className="w3-cell w3-cell-middle" style={{ width: 35 + "px", cursor: "pointer" }}
 							onClick={() => { this.dselectSolicitud() }}>
 							<img src="../../../assets/iconos/atras30.png" alt="Norway" />
 						</div>
-						<h4 className="w3-cell w3-center" style={{color : "#5A5253", fontWeight : "bold",}}>Solicitud</h4>
+						<h4 className="w3-cell w3-center" style={{ color: "#5A5253", fontWeight: "bold", }}>Solicitud</h4>
 					</div>
-					<SolicitudProgreso request={request} back={(status) => this.back(status)} />
+					<SolicitudProgreso request={request} back={(status) => this.back(status)}
+						history={this.props["history"]} activeAgendado={() => this.props["activeAgendado"]()} />
 				</div>
 			</React.Fragment >
 		);
