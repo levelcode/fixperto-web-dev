@@ -1076,7 +1076,7 @@ h1.titleRegister{
     width: 80%!important;
   }
 
-  .modal_problem, .modal_solicitud {
+  .modal_problem{
     width: 80%!important;
   }
 
@@ -1301,6 +1301,11 @@ h1.titleRegister{
 
   .modal_solicitud {
     width: 40% !important;
+  }
+
+  .modal_problem{
+    width: 40%!important;
+    margin-top: 0;
   }
 
   .modal_calificar{
