@@ -9,7 +9,7 @@ class MapBox extends React.Component {
 	mapRef = React.createRef();
 	constructor(props) {
 		super(props);
-		this.state = { center: [-74.081749, 4.6097102], zoom: 5, routes: [], selectedItem: 0, regions: [], selectedRegion: this.props["selectedRegion"] };
+		this.state = { showAlert: false, textoAlert: "", center: [-74.081749, 4.6097102], zoom: 5, routes: [], selectedItem: 0, regions: [], selectedRegion: this.props["selectedRegion"] };
 	}
 	componentDidMount() {
 		const { center, zoom } = this.state;

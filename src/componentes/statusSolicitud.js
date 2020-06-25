@@ -28,7 +28,7 @@ const StatusSolicitud = (props) => {
 							<div className="w3-cell w3-container">
 								<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" />
 							</div>
-							<p className="w3-cell">Fecha de agendada: {(props["request"]["scheduled_date"]) ? props["request"]["scheduled_date"] : "Pendiente"}</p>
+							<p className="w3-cell">Fecha agendada: {(props["request"]["scheduled_date"]) ? props["request"]["scheduled_date"] : "Pendiente"}</p>
 						</div>
 					</div>
 				}
@@ -45,7 +45,7 @@ const StatusSolicitud = (props) => {
 							<div className="w3-cell w3-container">
 								<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" />
 							</div>
-							<p className="w3-cell">Fecha de agendada: {(props["request"]["completed_date"]) ? props["request"]["completed_date"] : "Pendiente"}</p>
+							<p className="w3-cell">Fecha completada: {(props["request"]["completed_date"]) ? props["request"]["completed_date"] : "Pendiente"}</p>
 						</div>
 					</div>
 				}

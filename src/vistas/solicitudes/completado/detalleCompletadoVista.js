@@ -4,9 +4,10 @@ import Alerta from "../../../componentes/alertaVista";
 import Solicitud from "../../../componentes/solicitud";
 import Experto from "../../../componentes/experto";
 import Calificar from "../../../componentes/calificar";
+import VerOferta from "../../../componentes/verOferta";
 import axios from "axios";
 class DetalleCompletado extends React.Component {
-	constructor(props) { super(props); this.state = { calificado: false, id: "", isCalificarVisible: false, isSolicitudVisible: false, showAlert: false, textoAlert: "", request: {}, expert: {}, user: JSON.parse(localStorage.getItem("@USER")) }; }
+	constructor(props) { super(props); this.state = { isVerOfertaVisible: false, calificado: false, id: "", isCalificarVisible: false, isSolicitudVisible: false, showAlert: false, textoAlert: "", request: {}, expert: {}, user: JSON.parse(localStorage.getItem("@USER")) }; }
 	componentDidMount() { this.getRequest(""); }
 	UNSAFE_componentWillReceiveProps(next_props) {
 		if (next_props["request"] !== "" && next_props["request"] !== this.state["id"]) { this.getRequest(next_props["request"]); }
@@ -37,13 +38,17 @@ class DetalleCompletado extends React.Component {
 		}
 		else { this.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
 	}
+	closeVerOferta = (status = "") => {
+		if (status === "") { this.setState({ isVerOfertaVisible: false }); }
+	}
 	render() {
-		const { calificado, isSolicitudVisible, isCalificarVisible, showAlert, textoAlert, request, expert, id } = this.state;
+		const { isVerOfertaVisible, calificado, isSolicitudVisible, isCalificarVisible, showAlert, textoAlert, request, expert, id } = this.state;
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
 				<Calificar show={isCalificarVisible} calificador={id} experto={expert} close={(status) => this.closeCalificar(status)} />
+				<VerOferta show={isVerOfertaVisible} expert={expert["id"]} request={request["id"]} type="completed" close={(status) => this.closeVerOferta(status)} />
 				{id === this.props["request"] && <div>
 					<div className="detalle_solic">
 						<div className="w3-cell">
@@ -100,7 +105,7 @@ class DetalleCompletado extends React.Component {
 								<div className="divider_line"></div>
 							</div>
 							<div className="w3-col s6">
-							<h3>Fixperto® contratado</h3>
+								<h3>Fixperto® contratado</h3>
 							</div>
 							<div className="w3-col s3">
 								<div className="divider_line"></div>
@@ -118,9 +123,7 @@ class DetalleCompletado extends React.Component {
 								</div>
 								<div className=" w3-cell w3-button btn_oferta w3-col m7"
 									onClick={() => {
-										this.props["navigation"].navigate("VerOferta", {
-											expert: expert["id"], request: request["id"], type: "completed"
-										})
+										this.setState({ isVerOfertaVisible: true })
 									}}>Ver Oferta
 								</div>
 							</div>
