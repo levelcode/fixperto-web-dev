@@ -8,13 +8,13 @@ const HeaderInicio = (props) => {
 				</div>
 				<div className="w3-container w3-cell-row text-header">
 					<div className="w3-cell">
-						<b onClick={() => { }}>Home</b>
+						<b onClick={() => { }}> <a href="https://www.fixperto.com/" target="_blank">Home</a> </b>
 					</div>
 					<div className="w3-cell">
 						<p> | </p>
 					</div>
 					<div className="w3-cell" style={{width:25+"px"}}>
-						<b onClick={() => { }}>Blog</b>
+						<b onClick={() => { }}><a href="https://www.fixperto.com/blog/" target="_blank">Blog</a></b>
 					</div>
 					<div className="w3-cell" >
 						<img src="../../assets/iconos/bell.png" style={{width:25+"px", marginLeft : 20}}/>
