@@ -3,7 +3,7 @@ import httpClient from "../constantes/axios";
 import Alerta from "./alertaVista";
 import axios from "axios";
 import mapboxgl from 'mapbox-gl';
-mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWxhaW5jaGFjb24iLCJhIjoiY2tidGlmOWlpMGE0NDJ3cGkxM3VlZ3lwdyJ9.IvvBaCR9SJUnElA6b8kwkw';
 var map = {}
 class MapBox extends React.Component {
 	mapRef = React.createRef();
@@ -13,7 +13,13 @@ class MapBox extends React.Component {
 	}
 	componentDidMount() {
 		const { center, zoom } = this.state;
-		map = new mapboxgl.Map({ container: this.mapRef.current, style: 'mapbox://styles/mapbox/streets-v9', zoom, center });
+		map = new mapboxgl.Map({ 
+			container: this.mapRef.current, 
+			//style: 'mapbox://styles/alainchacon/ckbv0v5xo10g81ipkfh8q6fcp', 
+			style : 'mapbox://styles/alainchacon/ckbv0v5xo10g81ipkfh8q6fcp',
+			zoom, 
+			center 
+		});
 		this.getRegiones();
 	}
 	getRegiones = () => {
@@ -50,7 +56,7 @@ class MapBox extends React.Component {
 					'type': 'fill',
 					'source': region['city'] + "_" + region["id"],
 					'layout': {},
-					'paint': { 'fill-color': '#088', 'fill-opacity': 0.1 }
+					'paint': { 'fill-color': '#2297B1', 'fill-opacity': 0.1 }
 				});
 				map.on('click', region['city'] + "_" + region["id"], function (e) {
 					if (me.state["selectedRegion"]["id"] === e.features[0].properties.id) { me.setState({ selectedRegion: { name: "", id: "" } }); }

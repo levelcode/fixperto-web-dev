@@ -233,6 +233,8 @@ h1.titleRegister{
   position: relative;
   margin: auto;
   border-radius: 10px;
+  padding-bottom: 10px;
+  width: 95%;
 }
 
 .perfil .card_info{
@@ -242,6 +244,14 @@ h1.titleRegister{
   border-radius: 10px;
   margin-bottom: 45px;
   vertical-align: top;
+  padding: 10px;
+  margin-top: 20px;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.list_soli .perfil .card_info{
+  height: auto !important;
 }
 
 .perfil .card_datos{
@@ -431,6 +441,7 @@ h1.titleRegister{
 .servicios .buscador{
   width: 100%;
   background-color:#43AECC;
+  padding: 20px;
 }
 
 .servicios .buscador h3{
@@ -528,6 +539,7 @@ h1.titleRegister{
 
 .nueva_solicitud .img_new{
   width: 100px;
+  margin-bottom: 20px;
 }
 
 .nueva_solicitud .img_elim{
@@ -612,6 +624,7 @@ h1.titleRegister{
   border-radius: 7px;
   padding-left: 20px;
   padding-right: 20px;
+  margin-bottom: 10px;
 }
 
 .solicitudes .serv .icon_card{
@@ -669,11 +682,23 @@ h1.titleRegister{
 
 .solicitudes .detalle_solic .icon_card_detalle{
   border-radius: 7px;
-  padding: 5px;
   position: relative;
   top: 20px;
-  box-shadow: 5px 5px 15px #E2E2E2, 
-             -5px -5px 12px #E2E2E2
+  box-shadow: 5px 5px 15px #E2E2E2, -5px -5px 12px #E2E2E2;
+  margin: auto;
+  margin-bottom: 25px;
+  padding: 5px;
+}
+
+.solicitudes .detalle_solic .icon_card_detalle_modal{
+  border-radius: 7px;
+  position: relative;
+  top: 20px;
+  box-shadow: 5px 5px 15px #E2E2E2, -5px -5px 12px #E2E2E2;
+  margin: auto;
+  margin-bottom: 30px;
+  width: 25%;
+  padding: 10px;
 }
 
 
@@ -719,10 +744,12 @@ h1.titleRegister{
   text-align: center;
 }
 
+
 .flex-aling{
   display: flex;
   align-items: center;
 }
+
 .text-ingreso {
   display: flex;
   flex-direction: column;
@@ -732,19 +759,23 @@ h1.titleRegister{
   margin: 0;
   padding: 0;
 }
+
 .text-ingreso h1 {
-font-size: 2.3em;
-margin: 0;
-padding: 0;
+  font-size: 2.3em;
+  margin: 0;
+  padding: 0;
 }
+
 .text-ingreso p {
   font-size: 1.3em;
   padding: 0;
   width: 85%;
-  }
+}
+
 .padd-general {
   padding: 15px 20% 15px 20%;
 }
+
 .input-registro  {
   border-radius: 0 7px 7px 0;
   border: none;
@@ -752,6 +783,7 @@ padding: 0;
   width: 100%;
   font-size: 10px;
 }
+
 .icon-email {
   border-radius: 10px;
 }
@@ -788,6 +820,7 @@ padding: 0;
   height: 100px;
   border-radius: 10px;
 }
+
 .padd-general {
   padding: 15px 20% 10px 20%;
 }
@@ -795,12 +828,15 @@ padding: 0;
 .margin-tb {
   margin: 20px 0 20px;
 }
+
 .padd-footer {
   padding: 0 20% 0 20%;
 }
+
 .blue {
   background-color: #43AECC;
 }
+
 .blue:hover {
   background-color: #2297B1 !important;
 }
@@ -808,42 +844,54 @@ padding: 0;
 .blue-border {
   border-color: #43AECC!important;
 }
+
 .blue-border:hover {
   background-color: #2297B1 !important;
 }
+
 .text-blue {
   color: #43AECC!important;
 }
+
 .text-blue:hover {
   color: #ffffff !important;
 }
+
 .form-ancho {
   width: 71%;
 }
+
 .padd-cinco {
   padding: 5px;
 }
+
 .cursor {
   cursor: pointer;
 }
+
 .apps {
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
+
 .apps img {
   margin: 0;
 }
+
 .apps b {
   padding-right: 8px;
 }
+
 .apps p {
   padding-right: 8px;
 }
+
 .text-blue-contrasena {
   color: #43AECC!important;
 }
+
 .text-blue-contrasena:hover {
   color: #43AECC!important;
 }
@@ -852,6 +900,7 @@ padding: 0;
   color: #43AECC!important;
   font-weight: bold;
 }
+
 .logo-footer {
   width: 50%;
 }
@@ -860,20 +909,25 @@ padding: 0;
   display: flex;
   align-items: center;
 }
+
 .alto {
   height: 100vh;
 }
+
 .header-blanco { 
-background-color:#ffffff;
+  background-color:#ffffff;
 }
+
 .titleRegister {
   font-size: 2.3em;
 }
+
 .icono-menu {
   width: 30´x;
   height: 30px;
   margin-right: 10px;
 }
+
 .box-servicio {
   display: flex;
   flex-direction: column;
@@ -892,9 +946,10 @@ background-color:#ffffff;
 .info_perfil_comp .margin-cero {
   margin-top: 0!important;
 }
-.nueva_solicitud {
+
+/*.nueva_solicitud {
   padding: 10px 15%;
-}
+}*/
 
 .btn_cancelar_solic{
   width: 100%;
@@ -932,29 +987,43 @@ background-color:#ffffff;
   font-weight: bold;
 }
 
+/***********MODALES*************/
+
+.modal_problem{
+  width: 90% !important;
+  margin: auto;
+}
+
+.modal_solicitud{
+  width: 90% !important;
+  margin: auto;
+}
+
 
 @media (max-width : 790px) {
   .flex-aling-footer{
     flex-direction: column;
     align-items: center;
   }
+
   .logo-footer {
     text-align: center;
   }
+
   .apps {
     align-items: center;
     width: 100%;
   }
+
   .padd-footer {
     padding-top: 10px;
     padding: 10px 0 0 0;
   }
-  .padd-general {
-    padding: 15px;
-  }
+
   .padd-ingreso {
     padding: 5px;
   }
+
 }
 
 @media (max-width : 560px) {
@@ -981,6 +1050,21 @@ background-color:#ffffff;
 
 @media(min-width : 48em){
 
+  .modal_solicitud {
+    width: 50% !important;
+  }
+
+  .solicitudes .detalle_solic .icon_card_detalle_modal {
+    border-radius: 7px;
+    position: relative;
+    top: 20px;
+    box-shadow: 5px 5px 15px #E2E2E2, -5px -5px 12px #E2E2E2;
+    margin: auto;
+    margin-bottom: 30px;
+    width: 40%;
+    padding: 15px;
+  }
+
   .fondPage a{
     text-align: center;
     width: 100%;
@@ -998,6 +1082,8 @@ background-color:#ffffff;
     height: 700px;
     overflow-y: scroll;
     margin-bottom: 20px;
+    padding: 10px;
+    margin-top: 0px;
   }
 
   .container_web{
@@ -1061,7 +1147,7 @@ background-color:#ffffff;
   }
 
   h1.titleRegister {
-    font-size: 1rem;
+    font-size: 2rem;
   }
 
   .perfil{
@@ -1170,6 +1256,10 @@ background-color:#ffffff;
 }
 
 @media(min-width : 80em){
+
+  .modal_solicitud {
+    width: 40% !important;
+  }
 
   .perfil .card_info{
     height: 700px;

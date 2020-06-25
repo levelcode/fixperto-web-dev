@@ -23,21 +23,21 @@ const Solicitud = (props) => {
 		<React.Fragment>
 			<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => setShowAlert(false)} />
 			<div className="w3-modal w3-text-black solicitudes" style={{ display: (props["show"]) ? "flex" : "none" }}>
-				<div className="w3-modal-content w3-animate-top w3-round-large" style={{ width: 380}}>
+				<div className="w3-modal-content w3-animate-top w3-round-large modal_solicitud" >
 					<div className="w3-container w3-margin-top w3-margin-bottom detalle_solic">
 						<span onClick={() => { setActualizar(true); props["close"](); }}
 							className="w3-button w3-display-topright w3-round-small w3-hover-red">&times;</span>
 						<br />
-						<div className="w3-section ">
-							<div className="w3-cell">
-								<div className=" icon_card_detalle">
+						<div className="w3-section w3-row">
+							<div className="w3-cell w3-col s12 m4">
+								<div className=" icon_card_detalle_modal">
 									{(request.icon) ?
 										<img src={request.icon} className="imagen-solicitud  " alt="Imagen" />
 										: <img src="../../../../assets/icon.png" className=" " alt="Imagen" />
 									}
 								</div>
 							</div>
-							<div className="w3-cell">
+							<div className="w3-cell w3-col s12 m8">
 								{
 									request["emergency"] === 1 &&
 									<div className="w3-margin-bottom">
@@ -77,7 +77,7 @@ const Solicitud = (props) => {
 						<div className="w3-row-padding">
 							{request["photos"] && request["photos"].length > 0 && request["photos"].map((photo, key) => (
 								<div className="w3-quarter" key={key}>
-									<img src={"https://api.fixperto.com/uploads/requests/" + photo["image"]} className="imagen-experto" alt="Foto"></img>
+									<img src={"https://api.fixperto.com/uploads/requests/" + photo["image"]} className="imagen-experto" alt="Foto" style={{marginBottom : 10}}></img>
 								</div>
 							))}
 						</div>
