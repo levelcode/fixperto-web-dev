@@ -9,7 +9,8 @@ class SolicitudProgreso extends React.Component {
 			<React.Fragment>
 				<div className="w3-mobile">
 					<div style={{ display: (detalle) ? "block" : "none" }}>
-						<DetalleProgreso request={this.props["request"]} back={(status) => this.props["back"](status)} />
+						<DetalleProgreso request={this.props["request"]} back={(status) => this.props["back"](status)}
+							activeAgendado={() => this.props["activeAgendado"]()} history={this.props["history"]} />
 					</div>
 				</div>
 			</React.Fragment >

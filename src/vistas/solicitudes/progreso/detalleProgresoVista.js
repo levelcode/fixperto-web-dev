@@ -4,9 +4,15 @@ import Alerta from "../../../componentes/alertaVista";
 import CancelarSolicitud from "../../../componentes/cancelarSolicitud";
 import Solicitud from "../../../componentes/solicitud";
 import Experto from "../../../componentes/experto";
+import VerOferta from "../../../componentes/verOferta";
 import axios from "axios";
 class DetalleProgreso extends React.Component {
-	constructor(props) { super(props); this.state = { id: "", isCancelVisible: false, isSolicitudVisible: false, showAlert: false, textoAlert: "", request: {}, experts: [], user: JSON.parse(localStorage.getItem("@USER")) }; }
+	constructor(props) {
+		super(props); this.state = {
+			isVerOfertaVisible: false, id: "", isCancelVisible: false, isSolicitudVisible: false,
+			showAlert: false, textoAlert: "", request: {}, experts: [], idExpert: "", user: JSON.parse(localStorage.getItem("@USER"))
+		};
+	}
 	componentDidMount() { this.getRequest(""); }
 	UNSAFE_componentWillReceiveProps(next_props) {
 		if (next_props["request"] !== "" && next_props["request"] !== this.state["id"]) { this.getRequest(next_props["request"]); }
@@ -28,16 +34,30 @@ class DetalleProgreso extends React.Component {
 	verDetalle = () => { this.setState({ isSolicitudVisible: true }); }
 	cancelRequest = () => { this.setState({ isCancelVisible: true }); }
 	closeCancelar = (status) => { this.setState({ isCancelVisible: false }); this.props["back"](status); }
+	verOferta = (idExpert) => {
+		this.setState({ idExpert });
+		setTimeout(() => { this.setState({ isVerOfertaVisible: true }); }, 1000);
+	}
+	closeVerOferta = (status = "") => {
+		if (status === "") { this.setState({ isVerOfertaVisible: false, idExpert: "" }); }
+		else if (status === "aceptada") {
+			this.setState({ isVerOfertaVisible: false, idExpert: "" });
+			this.props["history"]["push"]("solicitud-agendado");
+			//this.props["activeAgendado"]();
+		}
+		else if (status === "rechazada") {
+			this.getRequest(this.state["id"]);
+			this.setState({ isVerOfertaVisible: false, idExpert: "" });
+		}
+	}
 	render() {
-		const { isSolicitudVisible, isCancelVisible, showAlert, textoAlert, request, experts, id } = this.state;
+		const { isVerOfertaVisible, isSolicitudVisible, isCancelVisible, showAlert, textoAlert, request, experts, id, idExpert } = this.state;
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-
 				<CancelarSolicitud show={isCancelVisible} id={id} close={(status) => this.closeCancelar(status)} />
-
 				<Solicitud show={isSolicitudVisible} request={id} close={() => this.setState({ isSolicitudVisible: false })} />
-				
+				<VerOferta show={isVerOfertaVisible} expert={idExpert} request={this.state["id"]} type="progress" close={(status) => this.closeVerOferta(status)} />
 				{id === this.props["request"] && <div>
 					<div className="w3-section detalle_solic">
 						<div className="w3-cell">
@@ -82,14 +102,13 @@ class DetalleProgreso extends React.Component {
 							</div>
 						</div>
 					</div>
-					
 					<div className="w3-section experto_vista">
 						<div className="divider w3-row">
 							<div className="w3-col s3">
 								<div className="divider_line"></div>
 							</div>
 							<div className="w3-col s6">
-							<h3>Fixpertos Postulados</h3>
+								<h3>Fixpertos Postulados</h3>
 							</div>
 							<div className="w3-col s3">
 								<div className="divider_line"></div>
@@ -108,10 +127,8 @@ class DetalleProgreso extends React.Component {
 									</div>
 									<div className=" w3-cell w3-button btn_oferta w3-col m7"
 										onClick={() => {
-											this.props["navigation"].navigate("VerOferta", {
-												expert: experto["id"], request: request["id"], type: "progress"
-											})
-										}}>Ver Oferta
+											this.verOferta(experto["id"])
+										}}>Ver Servicio
 								</div>
 								</div>
 							</div>
