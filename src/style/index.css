@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
 /*Estilo del mapa*/
 .mapContainer {
-  height: 80vh;
+  height: 300px;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
+  border-radius: 20px;
 }
 
 html, body, #root {
-	height: 100vh;
+	height: 50vh;
   width: 100%;
   font-family: "Raleway"!important;
   background: #F8F8F8;
@@ -999,6 +1000,27 @@ h1.titleRegister{
   margin: auto;
 }
 
+.modal_calificar{
+  width: 90% !important;
+  margin: auto;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.modal_oferta{
+  width: 90% !important;
+  margin: auto;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.modal_oferta .imagen-exp{
+  width: 80%;
+  border-radius: 10px;
+  position: relative;
+  left: 10%
+}
+
 
 @media (max-width : 790px) {
   .flex-aling-footer{
@@ -1051,8 +1073,28 @@ h1.titleRegister{
 @media(min-width : 48em){
 
   .modal_solicitud {
-    width: 50% !important;
+    width: 80%!important;
   }
+
+  .modal_problem, .modal_solicitud {
+    width: 80%!important;
+  }
+
+  .modal_calificar{
+    width: 50% !important;
+    height: 600px;
+  }
+
+  .modal_oferta{
+    width: 70% !important;
+    height: 600px;
+  }
+
+  .modal_oferta .imagen-exp{
+    width: 60%;
+    left: 20%
+  }
+
 
   .solicitudes .detalle_solic .icon_card_detalle_modal {
     border-radius: 7px;
@@ -1259,6 +1301,23 @@ h1.titleRegister{
 
   .modal_solicitud {
     width: 40% !important;
+  }
+
+  .modal_calificar{
+    width: 35% !important;
+    height: 550px;
+    margin-top: -20px;
+  }
+
+  .modal_oferta{
+    width: 30% !important;
+    height: 500px;
+    margin-top: 0;
+  }
+
+  .modal_oferta .imagen-exp{
+    width: 60%;
+    left: 20%
   }
 
   .perfil .card_info{

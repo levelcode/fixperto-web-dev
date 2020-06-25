@@ -29,7 +29,7 @@ class VerOferta extends React.Component {
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<div className="w3-modal w3-text-black" style={{ display: (this.props["show"]) ? "flex" : "none" }}>
-					<div className="w3-modal-content w3-animate-top w3-card-2 w3-round-large" style={{ width: 50 + '%' }}>
+					<div className="w3-modal-content w3-animate-top w3-card-2 w3-round-large modal_oferta">
 						<span onClick={() => this.close()}
 							className="w3-button w3-display-topright w3-round-small w3-hover-red">&times;</span>
 						<br />
@@ -53,7 +53,7 @@ class VerOferta extends React.Component {
 								<p texto="Antes de aceptar el servicio le recomendamos que su experto ingrese toda la información de la propuesta" />
 							</div>
 						}
-						<h1 className="w3-center titleRegister">Propuesta del servicio</h1>
+						<h3 className="text_blue" style={{textAlign : "left", marginLeft : 15}}>Propuesta del servicio</h3>
 						<div className="w3-container">
 							<div className="w3-margin-bottom">
 								<b className="w3-cell text_blue">Descripción: </b>

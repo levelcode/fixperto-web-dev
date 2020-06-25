@@ -27,7 +27,7 @@ const Calificar = (props) => {
 		<React.Fragment>
 			<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => setShowAlert(false)} />
 			<div className="w3-modal w3-text-black" style={{ display: (props["show"]) ? "flex" : "none" }}>
-				<div className="w3-modal-content w3-animate-top w3-round-large" style={{ width: 50 + '%', marginTop : -50 }}>
+				<div className="w3-modal-content w3-animate-top w3-round-large modal_calificar" >
 					<div className="w3-container w3-margin-top w3-margin-bottom">
 
 						<span onClick={() => props["close"]()}

@@ -15,7 +15,6 @@ class MapBox extends React.Component {
 		const { center, zoom } = this.state;
 		map = new mapboxgl.Map({ 
 			container: this.mapRef.current, 
-			//style: 'mapbox://styles/alainchacon/ckbv0v5xo10g81ipkfh8q6fcp', 
 			style : 'mapbox://styles/alainchacon/ckbv0v5xo10g81ipkfh8q6fcp',
 			zoom, 
 			center 
@@ -38,36 +37,61 @@ class MapBox extends React.Component {
 		}
 	}
 	createCoordinates = (selectedItem) => {
-		var me = this;
-		let coordinates = [];
-		function create(coor) { coor.map((co, ind) => coordinates.push([co["longitude"], co["latitude"]])); return coordinates; }
-		selectedItem["regions"].map((region, ind) => {
-			if (!map.getSource(region['city'] + "_" + region["id"])) {
-				map.addSource(region['city'] + "_" + region["id"], {
-					'type': 'geojson',
-					'data': {
-						'type': 'Feature',
-						'properties': { name: region["name"], id: region["id"] },
-						'geometry': { 'type': 'Polygon', 'coordinates': [create(region["coordinates"])] }
+		selectedItem.regions.map(r => {
+			let key = `${r.city}_${r.id}`;
+
+			if (!map.getSource(key)) {
+				map.addSource(key, {
+					type: "geojson",
+					data: {
+						type: "FeatureCollection",
+						features: [{
+							type: "Feature",
+							properties: {
+								key, name: r.name, id: r.id
+							},
+							geometry: {
+								type: "Polygon",
+								coordinates: [r.coordinates.concat(r.coordinates.slice(0, 1)).map(c => [c.longitude, c.latitude])]
+							}
+						}]
 					}
 				});
+
 				map.addLayer({
-					'id': region['city'] + "_" + region["id"],
-					'type': 'fill',
-					'source': region['city'] + "_" + region["id"],
-					'layout': {},
-					'paint': { 'fill-color': '#2297B1', 'fill-opacity': 0.1 }
+					id: `${key}-fill`,
+					type: "fill",
+					source: key,
+					paint: {"fill-color": "#43AECC", "fill-opacity": 0}
 				});
-				map.on('click', region['city'] + "_" + region["id"], function (e) {
-					if (me.state["selectedRegion"]["id"] === e.features[0].properties.id) { me.setState({ selectedRegion: { name: "", id: "" } }); }
-					else { me.setState({ selectedRegion: e.features[0].properties }); }
-					new mapboxgl.Popup()
-						.setLngLat(e.lngLat)
-						.setHTML(e.features[0].properties.name)
-						.addTo(map);
+
+				map.addLayer({
+					id: `${key}-line`,
+					type: "line",
+					source: key,
+					paint: {"line-width": 2, "line-color": "#43AECC"}
+				});
+
+				map.on('click', `${key}-fill`, e => {
+					if (this.state.selectedRegion.id === e.features[0].properties.id) {
+						this.setState({ selectedRegion: { name: "", id: "" } });
+						map.setPaintProperty(`${key}-fill`, "fill-opacity", 0);
+					} else {
+						if (this.state.selectedRegion.key) {
+							map.setPaintProperty(`${this.state.selectedRegion.key}-fill`, "fill-opacity", 0);	
+						}
+
+						this.setState({ selectedRegion: e.features[0].properties });
+						map.setPaintProperty(`${key}-fill`, "fill-opacity", 0.3);
+
+						new mapboxgl.Popup()
+							.setLngLat(e.lngLat)
+							.setHTML(e.features[0].properties.name)
+							.addTo(map);
+					}
 				});
 			}
-		})
+		});
 	}
 	selectedCity = id => {
 		if (id !== 0) {
@@ -99,6 +123,7 @@ class MapBox extends React.Component {
 								<option key={key} value={route.id} >{route.title}</option>
 							))}
 						</select>
+						<p className="text_blue">Selecciona el area <img src="../../assets/iconos/click.png" style={{ width : 25, height : 25}} /> </p>
 					</div>
 
 					<div ref={this.mapRef} className="mapContainer w3-container" />
