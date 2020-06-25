@@ -285,6 +285,7 @@ h1.titleRegister{
 .copy p{
   color: #43AECC;
   font-weight: bold;
+  padding-right: 5px;
 }
 
 .perfil .card_perfil .title_datos h2{
@@ -306,6 +307,10 @@ h1.titleRegister{
 
 .perfil .card_perfil .list_datos .list{
   margin-top : 13px;
+}
+
+.perfil .card_perfil .list_datos .list{
+  padding-left: 50px;
 }
 
 .perfil .card_perfil .list_datos a{
@@ -667,6 +672,8 @@ h1.titleRegister{
   padding: 5px;
   position: relative;
   top: 20px;
+  box-shadow:  5px 5px 15px #E2E2E2, 
+             -5px -5px 12px #E2E2E2
 }
 
 
