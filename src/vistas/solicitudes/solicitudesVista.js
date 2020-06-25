@@ -38,7 +38,7 @@ class Solicitudes extends React.Component {
 							<h2 className="w3-cell azul-oscuro"><b>Solicitudes</b></h2>
 						</div>
 						<div className="w3-row">
-							<div className="w3-col s12 m5">
+							<div className="w3-col s12 m5 list_soli">
 								<div className="w3-card card_perfil card_info">
 									<div>
 										<div className="w3-row list_datos">
@@ -61,7 +61,7 @@ class Solicitudes extends React.Component {
 									</div>
 								</div>
 							</div>
-							<div className="w3-col s12 m7">
+							<div className="w3-col s12 m7 ">
 								<div className="w3-card card_info card_datos">
 									<Switch>
 										<Route path="/fixperto/solicitudes/solicitud-progreso" component={SolicitudesProgreso} />

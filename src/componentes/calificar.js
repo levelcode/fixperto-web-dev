@@ -29,11 +29,14 @@ const Calificar = (props) => {
 			<div className="w3-modal w3-text-black" style={{ display: (props["show"]) ? "flex" : "none" }}>
 				<div className="w3-modal-content w3-animate-top w3-round-large" style={{ width: 50 + '%', marginTop : -50 }}>
 					<div className="w3-container w3-margin-top w3-margin-bottom">
+
 						<span onClick={() => props["close"]()}
 							className="w3-button w3-display-topright w3-round-small w3-hover-red">&times;
 						</span>
+
 						<br />
 						<div className="w3-section w3-container "><Experto experto={props["experto"]} /></div>
+
 						<div className="w3-section">
 							<label className="">¿Cómo te fue con el servicio?*</label>
 							<ReactStars
@@ -43,6 +46,7 @@ const Calificar = (props) => {
 								onChange={(value) => setEvaluation(value)}
 							/>
 						</div>
+
 						<div>
 							<label className="">¿Cuál fue el precio del servicio?</label>
 							<div>
@@ -52,12 +56,15 @@ const Calificar = (props) => {
 						</div>
 						
 						<p className="w3-tiny" >Este valor no es obligatorio pero será de gran utilidad para crear una guía de precios</p>
+
 						<div className="w3-section">
 							<label className="">Dejar un comentario*</label>
 							<textarea className="w3-input w3-border w3-round-large w3-margin-bottom" value={commentary}
 								onChange={(e) => setCommentary(e.target.value)} />
 						</div>
+
 					</div>
+					
 					<div className="w3-center w3-section w3-container">
 						<button onClick={calificar} disabled={false}
 							className={(evaluation === 0 || commentary === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block btn w3-round-large"}>Enviar</button>

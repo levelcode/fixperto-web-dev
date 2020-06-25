@@ -17,7 +17,7 @@ const HeaderInicio = (props) => {
 						<b onClick={() => { }}><a href="https://www.fixperto.com/blog/" target="_blank">Blog</a></b>
 					</div>
 					<div className="w3-cell" >
-						<img src="../../assets/iconos/bell.png" style={{width:25+"px", marginLeft : 20}}/>
+						<img src="../../assets/iconos/bell.png" style={{width:25+"px", marginLeft : 10}}/>
 					</div>
 				</div>
 			</div>

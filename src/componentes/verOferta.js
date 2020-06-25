@@ -81,40 +81,39 @@ class VerOferta extends React.Component {
 								<p texto="Antes de aceptar el servicio le recomendamos que su experto ingrese toda la información de la propuesta" />
 							</div>
 						}
-						<h4 className="w3-center">Propuesta del servcio</h4>
+						<h1 className="w3-center titleRegister">Propuesta del servicio</h1>
 						<div className="w3-container">
 							<div className="w3-margin-bottom">
-								<b className="w3-cell">Descripción: </b>
-								<p className="w3-cell">{offert["observations"]}</p>
+								<b className="w3-cell text_blue">Descripción: </b>
+								<p className="w3-cell"> {offert["observations"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
-								<b className="w3-cell">Fecha: </b>
-								<p className="w3-cell">{(offert["start_date"]) ? offert["start_date"] : "Pendiente"}</p>
+								<b className="w3-cell text_blue" >Fecha: </b>
+								<p className="w3-cell"> {(offert["start_date"]) ? offert["start_date"] : "Pendiente"}</p>
 							</div>
 							<div className="">
-								<b className="w3-cell">Hora: </b>
-								<p className="w3-cell">{(offert["hour"]) ? offert["hour"] : "Pendiente"}</p>
+								<b className="w3-cell text_blue">Hora: </b>
+								<p className="w3-cell"> {(offert["hour"]) ? offert["hour"] : "Pendiente"}</p>
 							</div>
 						</div>
 						{
 							offert["collaborator"] !== null &&
 							<div className="w3-container w3-section">
 								<div className="w3-margin-bottom">
-									<b>Persona que realizará el trabajo:</b>
+									<b className="text_blue">Persona que realizará el trabajo:</b>
 								</div>
 								<div className="w3-row">
-									<div className="w3-cell">
-										<img src={"https://api.fixperto.com/uploads/registros/empresa/collaborators/" + offert["col_photo"]} className="imagen-experto" alt="Colaborador" />
+									<div className="w3-col s4 m4">
+										<img src={"https://api.fixperto.com/uploads/registros/empresa/collaborators/" + offert["col_photo"]} className="imagen-exp" alt="Colaborador" />
 									</div>
-									<div className="w3-cell w3-container">
-										<b className="">{offert["col_name"]}</b>
+									<div className="w3-col s8 m8 w3-container">
+										<b className="text_blue">{offert["col_name"]}</b>
 										<div className="">
-											<b className="w3-cell">Cédula: </b>
-											<p className="w3-cell">{offert["col_number"]}</p>
+											
+											<p className="w3-row"> <b className="w3-cell text_blue">Cédula: </b> {offert["col_number"]}</p>
 										</div>
 										<div className="">
-											<b className="w3-cell">Teléfono: </b>
-											<p className="w3-cell">{offert["col_phone"]}</p>
+											<p className="w3-row"> <b className="w3-cell text_blue">Teléfono: </b> {offert["col_phone"]}</p>
 										</div>
 									</div>
 								</div>
