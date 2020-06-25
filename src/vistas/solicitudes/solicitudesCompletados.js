@@ -45,10 +45,10 @@ class SolicitudesCompletado extends React.Component {
 						<div className="w3-row serv">
 							{
 								requests.length > 0 && requests.map((item, key) => (
-									<div className="w3-card cont-card">
-										<div className="cont_srv w3-row" key={key}>
+									<div key={key} className="w3-card cont-card">
+										<div className="cont_srv w3-row">
 											<div className="w3-col s2 m3 ">
-												<div class="w3-card icon_card">
+												<div className="w3-card icon_card">
 													{(item.icon) ?
 														<img src={item.icon} className="img_serv" alt="Imagen" />
 														: <img src="../../../assets/iconos/alert_icon.png" className="img_serv" alt="Imagen" />
@@ -82,19 +82,19 @@ class SolicitudesCompletado extends React.Component {
 
 										<hr></hr>
 									</div>
-									
+
 								))
 							}
 						</div>
 					</div>
 				</div>
 				<div className="" style={{ display: (show_request) ? "block" : "none" }}>
-					<div className="w3-cell-row" style={{backgroundColor : "#E2E2E2", padding : 8}}>
+					<div className="w3-cell-row" style={{ backgroundColor: "#E2E2E2", padding: 8 }}>
 						<div className="w3-cell w3-cell-middle" style={{ width: 35 + "px", cursor: "pointer" }}
 							onClick={() => { this.deselectSolicitud() }}>
 							<img src="../../../assets/iconos/atras30.png" alt="Norway" />
 						</div>
-						<h4 className="w3-cell w3-center" style={{color : "#5A5253", fontWeight : "bold",}}>Solicitud</h4>
+						<h4 className="w3-cell w3-center" style={{ color: "#5A5253", fontWeight: "bold", }}>Solicitud</h4>
 					</div>
 					<SolicitudCompletado request={request} solicitud={solicitud} back={(status) => this.back(status)} />
 				</div>
