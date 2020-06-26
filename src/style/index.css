@@ -1168,7 +1168,7 @@ h1.titleRegister{
 
   .perfil .card_info, .perfil .card_perfil{
     top: 0px;
-    height: 700px;
+    height: 700px !important;
     overflow-y: scroll;
     margin-bottom: 20px;
     padding: 10px;
