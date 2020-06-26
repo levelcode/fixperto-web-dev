@@ -41,6 +41,7 @@ class DetalleCompletado extends React.Component {
 	closeVerOferta = (status = "") => {
 		if (status === "") { this.setState({ isVerOfertaVisible: false }); }
 	}
+	chat = (datos) => { this.props.history.push({ pathname: '/fixperto/chat', datos }) }
 	render() {
 		const { isVerOfertaVisible, calificado, isSolicitudVisible, isCalificarVisible, showAlert, textoAlert, request, expert, id } = this.state;
 		return (
@@ -116,9 +117,7 @@ class DetalleCompletado extends React.Component {
 							<div className="w3-cell-row w3-row">
 								<div className="w3-cell w3-button btn_chat w3-col m5 "
 									onClick={() => {
-										this.props["navigation"].navigate("Chat", {
-											chat: { to: expert, user: this.state["user"], request: request["id"], type: "cliente", offert: true }
-										})
+										this.chat({ to: expert, request: request["id"] })
 									}}>Chat
 								</div>
 								<div className=" w3-cell w3-button btn_oferta w3-col m7"

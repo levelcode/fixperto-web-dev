@@ -96,7 +96,11 @@ class SolicitudesCompletado extends React.Component {
 						</div>
 						<h4 className="w3-cell w3-center" style={{ color: "#5A5253", fontWeight: "bold", }}>Solicitud</h4>
 					</div>
-					<SolicitudCompletado request={request} solicitud={solicitud} back={(status) => this.back(status)} />
+					<SolicitudCompletado
+						request={request}
+						solicitud={solicitud}
+						history={this.props["history"]}
+						back={(status) => this.back(status)} />
 				</div>
 			</React.Fragment >
 		);

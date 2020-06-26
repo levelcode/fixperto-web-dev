@@ -20,6 +20,7 @@ class SolicitudAgendada extends React.Component {
 					</div>
 					<div style={{ display: (detalle) ? "block" : "none" }}>
 						<DetalleAgendado request={this.props["request"]}
+							history={this.props["history"]}
 							backCancelar={(status) => this.props["backCancelar"](status)}
 							backRechazar={(status) => this.props["backRechazar"](status)}
 							backProblema={(status) => this.props["backProblema"](status)}
