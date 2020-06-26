@@ -991,6 +991,34 @@ h1.titleRegister{
   font-weight: bold;
 }
 
+
+/*************CHAT**************/
+
+.card_chat_1{
+  position: relative;
+  width: 95%;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 45px;
+  vertical-align: top;
+}
+
+.card_chat_1 ul{
+  border-radius: 10px;
+}
+
+.card_chat_1 ul li {
+  padding: 15px;
+}
+
+.card_chat_1 .img_chat_icon{
+  width: 40px;
+  height: 40px;
+}
+
+.card_chat_1 .text_name{
+  font-size: 1rem !important;
+}
 /***********MODALES*************/
 
 .modal_problem{
@@ -1082,6 +1110,10 @@ h1.titleRegister{
 
 
 @media(min-width : 48em){
+
+  .card_chat_1 ul {
+    height: 700px;
+  }
 
   .section_experto .certif{
     top: 20px;

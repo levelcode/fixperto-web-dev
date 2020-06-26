@@ -106,68 +106,99 @@ class Chat extends React.Component {
 	}
 	render() {
 		const { showAlert, textoAlert, chats, showChat, messages, to, request, isVerOfertaVisible } = this.state;
+
 		var user = { id: JSON.parse(localStorage.getItem("@USER"))["id"] || -1 };
+
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
+
 				<VerOferta show={isVerOfertaVisible} expert={to["id"]} request={request} close={(status) => this.closeVerOferta(status)} />
-				<div className="">
-					<div className="w3-cell" style={{ width: 35 + "px" }}>
-						<img src="../../assets/chats.png" alt="Norway" />
-					</div>
-					<h2 className="w3-cell w3-margin-left">Chat</h2>
-				</div>
-				<div className="w3-row">
-					<div className="w3-cell w3-container" style={{ width: 40 + "vw", height: 65 + "vh" }}>
-						<ul className="w3-ul w3-card-2">
-							{chats.map((chat, key) => (
-								<li key={key} className="w3-bar" style={{ cursor: "pointer" }} onClick={() => { this.showChat(chat) }}>
-									<div className="w3-cell">
-										<img src={
-											(chat.type === "profesional") ? "https://api.fixperto.com/uploads/registros/profesional/" + chat["avatar"] :
-												"https://api.fixperto.com/uploads/registros/empresa/" + chat["avatar"]
-										}
-											className="w3-circle w3-hide-small imagen-icono" alt="Icono" />
-									</div>
-									<div className="w3-cell w3-container">
-										<span className="w3-large">{chat["name"]}</span><br />
-										<span>{chat["denomination"]}</span>
-									</div>
-								</li>
-							))}
-						</ul>
-					</div>
-					{showChat && <div className="w3-cell">
-						<div className="w3-card">
-							<Experto experto={to} history={this.props["history"]} />
+
+				<div className="container">
+
+					<div className="perfil">
+						<div className="w3-cell-row w3-margin-bottom">
+							<div className="w3-cell" style={{ width: 35 + "px"  }}>
+								<img src="../../assets/chats.png" alt="Norway" />
+							</div>
+							<h2 className="w3-cell text_blue" style={{position : "relative", left : 10}}>Chat</h2>
 						</div>
-						<div className="w3-block w3-button btn_oferta"
-							onClick={() => { this.setState({ isVerOfertaVisible: true }) }}>
-							Ver servicio
-						</div>
-						<div className="w3-center w3-section">
-							<b>Nuestros Fixpertos® están atentos a tus necesidades para solucionarlas pronto</b>
-						</div>
-						<div className="" style={{ width: 60 + "vw", height: 40 + "vh" }}>
-							<GiftedChat
-								messages={messages}
-								onSend={(messages) => this.onSend(messages)}
-								user={user}
-								placeholder="Mensaje..."
-								renderSend={(props) => {
-									return (
-										<Send {...props}>
-											<div style={{ marginRight: 10, marginBottom: 10 }}>
-												<b>Enviar</b>
+						<div className="w3-row">
+
+							<div className="w3-col s12 m5">
+								<div className="w3-card card_chat_1">
+									<ul className="w3-ul w3-card-2">
+										{chats.map((chat, key) => (
+											<li key={key} className="w3-bar" style={{ cursor: "pointer" }} onClick={() => { this.showChat(chat) }}>
+												<div className="w3-cell">
+													<img src={
+														(chat.type === "profesional") ? "https://api.fixperto.com/uploads/registros/profesional/" + chat["avatar"] :
+															"https://api.fixperto.com/uploads/registros/empresa/" + chat["avatar"]
+													}
+														className="w3-circle img_chat_icon" alt="Icono" />
+												</div>
+												<div className="w3-cell w3-container">
+													<span className="w3-large text_blue text_name">{chat["name"]}</span><br />
+													<span className="text_name">{chat["denomination"]}</span>
+												</div>
+											</li>
+										))}
+									</ul>
+								</div>
+
+							</div>
+
+							<div className="w3-col s12 m7">
+								<div className="w3-card card_info">
+									{showChat && <div className="w3-row">
+										<div className="w3-block w3-button btn_oferta"
+											onClick={() => { this.setState({ isVerOfertaVisible: true }) }}>
+											Ver servicio
+										</div>
+
+										<div className="w3-card section_experto" style={{padding : 20}}>
+											<Experto experto={to} history={this.props["history"]} />
+										</div>
+
+										<div className="w3-row copy">
+											<div className="w3-col s3">
+												<img src="../../assets/iconos/alert.png" style={{width : 40, height : 40, position : "relative", left : 30 + "%", top : 15}} alt="alert"></img>
 											</div>
-										</Send>
-									)
-								}}
-							/>
+											<div className="w3-col s9">
+												<p>Nuestros Fixpertos® están atentos a tus necesidades para solucionarlas pronto</p>
+											</div>
+										</div>
+
+										<div className="" style={{ width: 100 + "%", height: 40 + "vh" }}>
+											<GiftedChat
+												messages={messages}
+												onSend={(messages) => this.onSend(messages)}
+												user={user}
+												placeholder="Mensaje..."
+												renderSend={(props) => {
+													return (
+														<Send {...props}>
+															<div style={{ marginRight: 10, marginBottom: 10 }}>
+																<b>Enviar</b>
+															</div>
+														</Send>
+													)
+												}}
+											/>
+										</div>
+
+										
+										
+									</div>
+									}
+								</div>
+							</div>
+
 						</div>
 					</div>
-					}
 				</div>
+
 			</React.Fragment>
 		);
 	}
