@@ -251,6 +251,10 @@ h1.titleRegister{
   overflow-y: scroll;
 }
 
+.perfil .card_perfil{
+  height: auto !important;
+}
+
 .list_soli .perfil .card_info{
   height: auto !important;
 }
@@ -712,8 +716,7 @@ h1.titleRegister{
   justify-content: flex-end;
   margin-top: 0px;
   position: relative;
-  top: 20px;
-
+  top: 0px;
 }
 
 /*******CSS HEADER*********/
@@ -998,6 +1001,8 @@ h1.titleRegister{
 .modal_solicitud{
   width: 90% !important;
   margin: auto;
+  margin-top: 0px;
+
 }
 
 .modal_calificar{
@@ -1019,6 +1024,12 @@ h1.titleRegister{
   border-radius: 10px;
   position: relative;
   left: 10%
+}
+
+.modal_alerta{
+  width: 80% !important;
+  margin: auto;
+  margin-top: 0px;
 }
 
 
@@ -1071,6 +1082,10 @@ h1.titleRegister{
 
 
 @media(min-width : 48em){
+
+  .section_experto .certif{
+    top: 20px;
+  }
 
   .modal_solicitud {
     width: 80%!important;

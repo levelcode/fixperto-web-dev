@@ -20,7 +20,7 @@ const Experto = ({ experto, history }) => {
 						<div className="w3-row">
 							<div className="w3-col s12 m12">
 								{experto.plan === 1 &&
-								<img src="../../../assets/iconos/experto_premium.png" style={{ width: 120 + "px", marginLeft : 10 }} alt="Imagen" />}
+								<img src="../../../assets/iconos/experto_premium.png" style={{ width:90 + "px", marginLeft : 8 }} alt="Imagen" />}
 							</div>
 							<div className="w3-col s12 m12">
 								<div className="w3-row certif">

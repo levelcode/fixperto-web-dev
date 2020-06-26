@@ -9,6 +9,7 @@ class ServiciosCateg extends React.Component {
 			service_name: "", icon_name: ""
 		}
 	}
+
 	componentDidMount() {
 		this.setState({
 			user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
@@ -17,6 +18,7 @@ class ServiciosCateg extends React.Component {
 		});
 		this.getCategoriesByService();
 	}
+
 	getCategoriesByService = () => {
 		var url = "";
 		if (this.props.history.location.item['emergency'] === 0) { url = "/services/getCategoriesByService"; }

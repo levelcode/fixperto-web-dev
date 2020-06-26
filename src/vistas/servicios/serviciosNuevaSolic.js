@@ -12,7 +12,16 @@ class ServiciosNuevaSol extends React.Component {
 			region: { name: "", id: "" }, photos: [], photoss: [], emergency: false,
 		};
 	}
-	componentDidMount() { }
+
+	componentDidMount(){
+		console.log(this.props.history);
+	}
+
+	/*UNSAFE_componentWillReceiveProps(next_props) { 
+		console.log();
+		
+	}*/
+
 	guardar = () => {
 		let vacios = [];
 		if (this.state["region"]["id"] === "") { vacios.push("  *Región"); }

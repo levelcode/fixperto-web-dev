@@ -3,8 +3,25 @@ import httpClient from "../constantes/axios";
 import Alerta from "./alertaVista";
 import axios from "axios";
 class VerOferta extends React.Component {
-	constructor(props) { super(props); this.state = { address: "", showDir: false, mostrar: false, showAlert: false, textoAlert: "", offert: {}, solicitud: {} }; }
-	UNSAFE_componentWillReceiveProps(next_props) { if (next_props["show"] && next_props["expert"] !== "") { this.getOffert(); } }
+	constructor(props) { 
+		super(props); 
+		this.state = { 
+			address: "", 
+			showDir: false, 
+			mostrar: false, 
+			showAlert: false, 
+			textoAlert: "", 
+			offert: {}, 
+			solicitud: {}
+		}; 
+	}
+
+	UNSAFE_componentWillReceiveProps(next_props) { 
+		if (next_props["show"] && next_props["expert"] !== "") { 
+			this.getOffert(); 
+		}
+	}
+
 	getOffert = () => {
 		let me = this;
 		me.setState({ mostrar: false });
