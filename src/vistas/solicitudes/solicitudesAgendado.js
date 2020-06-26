@@ -110,6 +110,7 @@ class SolicitudeAgendado extends React.Component {
 					<SolicitudAgendada
 						request={request}
 						solicitud={solicitud}
+						history={this.props["history"]}
 						backCancelar={(status) => this.backCancelar(status)}
 						backRechazar={(status) => this.backRechazar(status)}
 						backProblema={(status) => this.backProblema(status)}

@@ -74,6 +74,7 @@ class DetalleAgendado extends React.Component {
 	closeVerOferta = (status = "") => {
 		if (status === "") { this.setState({ isVerOfertaVisible: false }); }
 	}
+	chat = (datos) => { this.props.history.push({ pathname: '/fixperto/chat', datos }) }
 	render() {
 		const { isVerOfertaVisible, fecha_actual, fecha_agendada, isSolicitudVisible, isServicioVisible, isProblemaVisible, isCancelVisible, showAlert, textoAlert, request, expert, id, user } = this.state;
 		let disable = (fecha_actual !== "" && fecha_agendada !== "") ? (fecha_actual.getTime() < fecha_agendada.getTime()) ? "" : "w3-disabled" : "";
@@ -152,9 +153,7 @@ class DetalleAgendado extends React.Component {
 							<div className="w3-cell-row">
 								<div className="w3-cell w3-button btn_chat"
 									onClick={() => {
-										this.props["navigation"].navigate("Chat", {
-											chat: { to: expert, user: this.state["user"], request: request["id"], type: "cliente", offert: true }
-										})
+										this.chat({ to: expert, request: request["id"] })
 									}}>Chat
 								</div>
 							</div>

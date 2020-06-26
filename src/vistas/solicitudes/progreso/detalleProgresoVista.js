@@ -50,6 +50,7 @@ class DetalleProgreso extends React.Component {
 			this.setState({ isVerOfertaVisible: false, idExpert: "" });
 		}
 	}
+	chat = (datos) => { this.props.history.push({ pathname: '/fixperto/chat', datos }) }
 	render() {
 		const { isVerOfertaVisible, isSolicitudVisible, isCancelVisible, showAlert, textoAlert, request, experts, id, idExpert } = this.state;
 		return (
@@ -120,12 +121,10 @@ class DetalleProgreso extends React.Component {
 								<div className="w3-cell-row w3-row">
 									<div className="w3-cell w3-button btn_chat w3-col m5"
 										onClick={() => {
-											this.props["navigation"].navigate("Chat", {
-												chat: { to: experto, user: this.state["user"], request: request["id"], type: "cliente", offert: true, typeOffert: "progress" }
-											})
+											this.chat({ to: experto, request: request["id"], typeOffert: "progress" })
 										}}>Chat
 									</div>
-									<div className=" w3-cell w3-button btn_oferta w3-col m7"
+									<div className="w3-cell w3-button btn_oferta w3-col m7"
 										onClick={() => {
 											this.verOferta(experto["id"])
 										}}>Ver Servicio

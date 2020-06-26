@@ -19,7 +19,11 @@ class SolicitudCompletada extends React.Component {
 							onClick={() => this.active("status")} >Status</div>
 					</div>
 					<div style={{ display: (detalle) ? "block" : "none" }}>
-						<DetalleCompletado request={this.props["request"]} back={(status) => this.props["back"](status)} />
+						<DetalleCompletado
+							request={this.props["request"]}
+							back={(status) => this.props["back"](status)}
+							history={this.props["history"]}
+						/>
 					</div>
 					<div style={{ display: (status) ? "block" : "none" }}>
 						<Status request={this.props["solicitud"]} type="completed" />
