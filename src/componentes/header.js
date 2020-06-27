@@ -1,5 +1,5 @@
 import React from "react";
-const HeaderInicio = (props) => {
+const Header = (props) => {
 	return (
 		<React.Fragment>
 			<div className="w3-bar w3-cell-row w3-border w3-card padd-general flex-aling">
@@ -24,4 +24,4 @@ const HeaderInicio = (props) => {
 		</React.Fragment >
 	);
 }
-export default HeaderInicio;
+export default Header;
