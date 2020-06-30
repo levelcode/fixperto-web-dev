@@ -42,96 +42,115 @@ class Fixperto extends React.Component {
 			<React.Fragment>
 				<HeaderExperto history={this.props["history"]} />
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-				<div className="w3-section w3-container w3-center">
-					<div className="w3-cell-row w3-margin-bottom flex-aling">
-						<div className="w3-cell" style={{ width: 35 + "px" }}>
-							<img src="../../assets/solicitudesUp.png" alt="Norway" />
-						</div>
-						<h2 className="w3-cell azul-oscuro"><b>Historial de servicios</b></h2>
-					</div>
-					<div className="w3-row">
-						<div className="w3-cell w3-center w3-container">
-							<div className="w3-cell w3-section" style={{ width: 20 + "%" }}>
-								<img className="imagen-experto"
-									src={"https://api.fixperto.com/uploads/registros/" + JSON.parse(localStorage.getItem("@USER"))["type"] + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]} alt="Imagen">
-								</img>
+
+				<div className="container">
+
+					<div className="perfil">
+						<div className="w3-cell-row w3-margin-bottom">
+							<div className="w3-cell" style={{ width: 35 + "px" }}>
+								<img src="../../assets/solicitudesUp.png" alt="Norway" />
 							</div>
-							<h4 className="azul-oscuro"><b>¡Hola!</b></h4>
-							<h3 className="w3-margin-bottom azul-oscuro"><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
+							<h2 className="w3-cell text_blue" >Historial de servicios</h2>
 						</div>
-						<div className="w3-cell w3-container">
-							{services.length > 0 && services.map((item, key) => {
-								let myRef = React.createRef();
-								let ref = React.createRef();
-								return <div key={key} className="w3-card w3-margin-bottom w3-row w3-white">
-									<div className="w3-section">
-										<div ref={refs => ref = refs} className="w3-cell w3-section w3-container" style={{ cursor: "pointer" }} onClick={() => { this.openStatus(myRef, ref) }}><h1 >+</h1></div>
-										<div className="w3-cell w3-card">
-											<div className="w3-container w3-section">
-												{(item.icon) ?
-													<img src={item.icon} className="img_serv" alt="Imagen" />
-													: <img src="../../assets/iconos/alert_icon.png" className="imagen-experto" alt="Imagen" />
-												}
-											</div>
+						<div className="w3-row">
+
+							<div className="w3-col s12 m5">
+								<div className="w3-card card_perfil">
+									<div className="w3-cell w3-center w3-container">
+										<div className="w3-cell w3-section img_fixperto">
+											<img className="imagen-experto"
+												src={"https://api.fixperto.com/uploads/registros/" + JSON.parse(localStorage.getItem("@USER"))["type"] + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]} alt="Imagen">
+											</img>
 										</div>
-										<div className="w3-cell w3-container">
-											<p> <span className="text_blue_dark w3-margin-bottom">{item.denomination}</span> </p>
-											{
-												item.emergency === 1 && <div >
-													<p className="text_blue_dark w3-margin-bottom">
-														<img src="../../assets/iconos/emergencia.png" style={{ width: 18, height: 18, marginTop: -8, marginRight: 10 }} alt="Imagen" />
-											Servicio de emergencia
-											</p>
-												</div>
-											}
-											<div className="w3-margin-bottom">
-												<div className="w3-cell">
-													<img src="../../assets/iconos/ubicacion.png" className="imagen-icono" alt="Imagen" />
-												</div>
-												<p className="w3-cell"> {item["zone"]}</p>
-											</div>
-										</div>
-									</div>
-									<div ref={refs => myRef = refs} style={{ display: "none", backgroundColor: "#F0F0F0" }} className="w3-section" >
-										<div className="">
-											<div className="w3-cell w3-container">
-												<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
-											</div>
-											<h5 className="w3-cell text_blue">Creación de solicitud</h5>
-											<div className="w3-white">
-												<div className="w3-cell w3-container">
-													<img src="../..//assets/iconos/activo.png" className="imagen-icono" alt="Imagen" />
-												</div>
-												<p className="w3-cell">Fecha de inicio: {item["registry_date"]}</p>
-											</div>
-										</div>
-										<div className="">
-											<div className="w3-cell w3-container">
-												<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
-											</div>
-											<h5 className="w3-cell text_blue">Solicitud agendada</h5>
-											<div className="w3-white">
-												<div className="w3-cell w3-container">
-													<img src="../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" />
-												</div>
-												<p className="w3-cell">Fecha agendada: {(item["start_date"]) ? item["start_date"] : "Pendiente"}</p>
-											</div>
-										</div>
-										<div className="">
-											<div className="w3-cell w3-container">
-												<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
-											</div>
-											<h5 className="w3-cell text_blue">Solicitud completada</h5>
-											<div className="w3-white">
-												<div className="w3-cell w3-container">
-													<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" />
-												</div>
-												<p className="w3-cell">Fecha completada: {(item["end_date"]) ? item["end_date"] : "Pendiente"}</p>
-											</div>
-										</div>
+										<h4 className="azul-oscuro"><b>¡Hola!</b></h4>
+										<h3 className="w3-margin-bottom azul-oscuro"><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
+
+										<hr></hr>
 									</div>
 								</div>
-							})}
+							</div>
+
+							<div className="w3-col s12 m7">
+								<div className="w3-card card_info">
+									<div className="w3-row">
+										{services.length > 0 && services.map((item, key) => {
+											let myRef = React.createRef();
+											let ref = React.createRef();
+											return <div key={key} className="w3-card card_fixperto">
+												<div className="w3-row">
+													<div ref={refs => ref = refs} className="w3-col s1" style={{ cursor: "pointer" }} onClick={() => { this.openStatus(myRef, ref) }}>
+														<h1>+</h1>
+													</div>
+													<div className="w3-col s4">
+														<div className="w3-row ">
+															{(item.icon) ?
+																<img src={item.icon} className="img_serv icon-card" alt="Imagen" />
+																: <img src="../../assets/iconos/alert_icon.png" className="imagen-experto" alt="Imagen" />
+															}
+														</div>
+													</div>
+													<div className="w3-col s7">
+														<p className="text_blue"> <span className="text_blue_dark w3-margin-bottom">{item.denomination}</span> </p>
+														{
+															item.emergency === 1 && <div >
+																<p className="text_blue w3-margin-bottom">
+																	<img src="../../assets/iconos/emergencia.png" style={{ width: 18, height: 18, marginTop: -8, marginRight: 10 }} alt="Imagen" />
+														Servicio de emergencia
+														</p>
+															</div>
+														}
+														<div className="w3-margin-bottom">
+															<div className="w3-cell">
+																<img src="../../assets/iconos/ubicacion.png" className="imagen-icono" alt="Imagen" />
+															</div>
+															<p className="w3-cell"> {item["zone"]}</p>
+														</div>
+													</div>
+												</div>
+												<div ref={refs => myRef = refs} style={{ display: "none", backgroundColor: "#F0F0F0" }} className="w3-section" >
+													<div className="row">
+													
+														<div className="w3-cell w3-container">
+															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{marginTop : 10}}  />
+														</div>
+														<h5 className="w3-cell text_blue w3-padding">Creación de solicitud</h5>
+														<div className="w3-white w3-padding">
+															<div className="w3-cell w3-container">
+																<img src="../..//assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
+															</div>
+															<p className="w3-cell">Fecha de inicio: {item["registry_date"]}</p>
+														</div>
+													</div>
+													<div className="">
+														<div className="w3-cell w3-container">
+															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{marginTop : 10}} />
+														</div>
+														<h5 className="w3-cell text_blue w3-padding">Solicitud agendada</h5>
+														<div className="w3-white w3-padding">
+															<div className="w3-cell w3-container">
+																<img src="../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
+															</div>
+															<p className="w3-cell">Fecha agendada: {(item["start_date"]) ? item["start_date"] : "Pendiente"}</p>
+														</div>
+													</div>
+													<div className="">
+														<div className="w3-cell w3-container">
+															<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{marginTop : 10}}/>
+														</div>
+														<h5 className="w3-cell text_blue w3-padding">Solicitud completada</h5>
+														<div className="w3-white w3-padding">
+															<div className="w3-cell w3-container">
+																<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
+															</div>
+															<p className="w3-cell">Fecha completada: {(item["end_date"]) ? item["end_date"] : "Pendiente"}</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										})}
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
