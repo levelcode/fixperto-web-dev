@@ -68,16 +68,18 @@ class Fixperto extends React.Component {
 										<br></br>
 
 										<hr></hr>
+
+										<br></br>
 										
 										<div className="w3-row plan_fixperto">
-											<div className="w3-col s3">
+											<div className="w3-col s4">
 												<img src={(JSON.parse(localStorage.getItem("@USER"))["planUri"] === "regalo") ?
 													"../../assets/iconos/regalo.png" : (JSON.parse(localStorage.getItem("@USER"))["planUri"] === "oro") ?
 													"../../assets/iconos/oro.png" :
 													"../../assets/iconos/bronce.png"
 												} style={{ width: 60, height: 60, padding : 5, marginTop : 5 }} />
 											</div>
-											<div className="w3-col s9 texto_fixperto">
+											<div className="w3-col s8 texto_fixperto">
 												<p className="text_blue" style={{textAlign : "left", fontSize : 18}}>Plan actual:</p>
 												<p style={{ color: "#273861", textAlign : "left", fontSize : 16 }}>Plan {(JSON.parse(localStorage.getItem("@USER"))["planUri"] === "regalo") ? "bienvenida" : JSON.parse(localStorage.getItem("@USER"))["planUri"]}</p>
 											</div>
