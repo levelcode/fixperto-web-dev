@@ -828,13 +828,27 @@ h1.titleRegister{
 }
 
 .card_fixperto .icon-card{
-  box-shadow: 5px 5px 15px #4b4242, -5px -5px 12px #E2E2E2;
+  box-shadow: 5px 5px 15px #ddd, -5px -5px 12px #E2E2E2;
   width: 50%;
   border-radius: 7px;
   padding: 15px;
   position: relative;
   left: 25%;
   margin-top: 10px;
+}
+
+.plan_fixperto{
+  border: solid 2px #4caf50;
+  border-radius: 3px;
+}
+
+.plan_fixperto p{
+  margin: auto;
+}
+
+.texto_fixperto{
+  background-color: #D9F5BB;
+  padding: 10px;
 }
 
 /*******CSS GENERALES*********/
