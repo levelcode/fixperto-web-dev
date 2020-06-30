@@ -38,8 +38,10 @@ class ServiciosVista extends React.Component {
 			headers: { Accept: 'application/json' }
 		})
 		.then(function (responseJson) {
-
 			responseJson = responseJson['data']
+
+			console.log(responseJson);
+			
 
 			me.setState({
 				services: responseJson.services,
