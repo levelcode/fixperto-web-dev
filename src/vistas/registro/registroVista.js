@@ -105,7 +105,7 @@ class Registro extends React.Component {
 							}
 						}
 					})
-					.catch(function (response) {
+					.catch(function (response) {console.log(response);
 						me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
 					});
 

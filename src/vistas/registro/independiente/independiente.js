@@ -10,7 +10,7 @@ class Independiente extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showAlert: false, textoAlert: "", term_condition: false,
+			showAlert: false, textoAlert: "", term_condition: false, experiencia: 1,
 			type: "numeric", photo: "", name: "", email: "", identification_type: 1, number: "", birth_date: "",
 			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: ""
 		}
@@ -26,6 +26,8 @@ class Independiente extends React.Component {
 	}
 	identification_type = [{ id: 1, denomination: 'Cédula de ciudadanía' }, { id: 2, denomination: 'Pasaporte' }, { id: 3, denomination: 'Cédula de extranjería' }];
 	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
+	experiencia = [{ id: 1, denomination: 'Menos de un año' }, { id: 2, denomination: 'Un año' }, { id: 3, denomination: 'De 2 a 3 años' }
+		, { id: 4, denomination: 'De 5 a 5 años' }, { id: 5, denomination: 'De 5 a 10 años' }, { id: 6, denomination: 'Más de 10 años' }];
 	continuar = () => {
 		let vacios = [];
 		if (this.state["photo"] === "") { vacios.push("  *Foto"); }
@@ -88,6 +90,9 @@ class Independiente extends React.Component {
 								if (this.state["fotocopy"] !== "")
 									data.append("documentos", this.state["fotocopy"]);
 								break;
+							case "experiencia":
+								data.append("experiencia", this.state["experiencia"]);
+								break;
 							case "phone":
 								data.append("phone", this.state["phone"]);
 								break;
@@ -129,7 +134,7 @@ class Independiente extends React.Component {
 		}
 	}
 	render() {
-		const { showAlert, textoAlert, name, email, identification_type, number, birth_date, gender,
+		const { showAlert, textoAlert, name, email, identification_type, number, birth_date, gender, experiencia,
 			phone, password, repeat_password, term_condition, coupon, coupon_number } = this.state;
 		return (
 			<React.Fragment>
@@ -176,6 +181,15 @@ class Independiente extends React.Component {
 							<div className="w3-margin-bottom"><label>Fotocopia del documento de identificación*</label></div>
 							<div className="w3-center img_upl">
 								<FileUpload id="fotocopy" onChange={(fotocopy) => { this.setState({ fotocopy }) }} />
+							</div>
+							<label>Experiencia*</label>
+							<div>
+								<select className="w3-select w3-border w3-round-large w3-margin-bottom size200" name="experiencia"
+									value={experiencia} onChange={(e) => this.setState({ experiencia: e.target.value })}>
+									{this.experiencia.map((experiencia, key) => (
+										<option key={key} value={experiencia.id} >{experiencia.denomination}</option>
+									))}
+								</select>
 							</div>
 							<div className="w3-margin-bottom">
 								<label>Teléfono*</label>
