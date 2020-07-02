@@ -35,23 +35,23 @@ class App extends React.Component {
 						<div className="w3-col s12 m4">
 							<Link to="/fixperto/solicitudes/solicitud-progreso" className={(solicitudes) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
 								onClick={() => this.active("solicitudes")}>
-								<img src="/assets/iconos/solicitudes.png" alt="solicitud" className="icono-menu"/>
+								<img src="/assets/iconos/solicitudes.png" alt="solicitud" className="icono-menu" />
 								Solicitudes
 							</Link>
 						</div>
 
 						<div className="w3-col s12 m4">
 							<Link to="/fixperto/chat" className={(chat) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
-							onClick={() => this.active("chat")}>
-								<img src="/assets/iconos/chat.png" alt="chat"className="icono-menu" />
+								onClick={() => this.active("chat")}>
+								<img src="/assets/iconos/chat.png" alt="chat" className="icono-menu" />
 								Chat
 							</Link>
 						</div>
 
 						<div className="w3-col s12 m4">
 							<Link to="/fixperto/perfil/perfil-informacion" className={(perfil) ? `blue_menu ${itemStyle}` : `blue_menu_dark ${itemStyle}`}
-							onClick={() => this.active("perfil")}>
-								<img src="/assets/iconos/perfil.png" alt="perfil" className="icono-menu"/>
+								onClick={() => this.active("perfil")}>
+								<img src="/assets/iconos/perfil.png" alt="perfil" className="icono-menu" />
 								Perfil
 							</Link>
 						</div>
@@ -66,7 +66,7 @@ class App extends React.Component {
 
 						<Route path="/fixperto/servicios-nueva" render={() => (<ServiciosNuevaSolicitud history={this.props["history"]} />)} />
 
-						<Route path="/fixperto/solicitudes" render={() => (<Solicitudes history={this.props["history"]} />)} />
+						<Route path="/fixperto/solicitudes" render={() => (<Solicitudes history={this.props["history"]} active={() => { this.active("solicitudes") }} />)} />
 
 						<Route path="/fixperto/chat" render={() => (<Chat history={this.props["history"]} />)} />
 
