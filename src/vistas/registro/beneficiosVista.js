@@ -19,8 +19,7 @@ class Beneficios extends React.Component {
 									</div>
 
 									<div className="col s12 text_ben">
-										<p>Cotizaciones gratis e ilimitadas.</p>
-										<p>Hasta 5 fixpertos disponibles en tu zona para atender tu servicio.</p>
+										<p>Consultas gratis e ilimitadas.</p>
 									</div>
 								</div>
 							</div>
@@ -32,8 +31,7 @@ class Beneficios extends React.Component {
 									</div>
 
 									<div className="col s12 text_ben">
-										<p>Sistema de valoración (Reviews) para la mejor elección.</p>
-										<p>Fixperto te acompañará en el proceso realizado por la plataforma</p>
+										<p>Sistema de calificación del fixperto por recomendacioens y opiniones de clientes para una mejor elección </p>
 									</div>
 								</div>
 							</div>
@@ -46,7 +44,6 @@ class Beneficios extends React.Component {
 
 									<div className="w3-col s12 text_ben">
 										<p>Cuenta personalizada, control e historial de tus servicios.</p>
-										<p>Validamos los datos personales y judiciales del experto.</p>
 									</div>
 								</div>
 							</div>

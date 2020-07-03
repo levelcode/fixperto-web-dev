@@ -31,9 +31,9 @@ const Experto = ({ experto, history }) => {
 									}
 									<div className="">
 										<div className="w3-cell w3-container">
-											<img src="../../../assets/iconos/star.png" className="imagen-icono" alt="Imagen" />
+											<img src="../../../assets/iconos/star.png" className="imagen-icono" style={{width : 18, height : 18}} alt="Imagen" />
 										</div>
-										<p className="w3-cell">	{(experto.evaluation) ? experto.evaluation : 0}	</p>
+										<p className="w3-cell " style={{width : 10, fontSize : 15}}>	{(experto.evaluation) ? experto.evaluation : 'Sin calificación'} </p>
 									</div>
 								</div>
 							</div>

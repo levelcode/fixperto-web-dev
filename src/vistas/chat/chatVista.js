@@ -166,7 +166,7 @@ class Chat extends React.Component {
 												<img src="../../assets/iconos/alert.png" style={{width : 40, height : 40, position : "relative", left : 30 + "%", top : 15}} alt="alert"></img>
 											</div>
 											<div className="w3-col s9">
-												<p>Nuestros Fixpertos® están atentos a tus necesidades para solucionarlas pronto</p>
+												<p>Nuestros Fixpertos están atentos a tus necesidades para solucionarlas pronto</p>
 											</div>
 										</div>
 

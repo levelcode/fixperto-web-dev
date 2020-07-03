@@ -46,7 +46,7 @@ class SolicitudesProgreso extends React.Component {
 								<img src="../../assets/iconos/progreso.png" className="img_star" alt="star"></img>
 							</div>
 							<div className="w3-col s9 m11 l9">
-								<p>Pronto recibirás una notificación <span>fixperto están evaluando tu servicio</span> </p>
+								<p>Pronto recibirás una notificación <span>Nuestros expertos están evaluando tu servicio</span> </p>
 							</div>
 						</div>
 					}

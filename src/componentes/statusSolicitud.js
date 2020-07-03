@@ -13,7 +13,7 @@ const StatusSolicitud = (props) => {
 					<div className="w3-cell w3-container">
 						<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" />
 					</div>
-					<p className="w3-cell">Fecha de inicio: {props["request"]["registry_date"]}</p>
+					<p className="w3-cell">Fecha de solicitud del servicio: {props["request"]["registry_date"]}</p>
 				</div>
 				<br />
 				{
@@ -28,7 +28,7 @@ const StatusSolicitud = (props) => {
 							<div className="w3-cell w3-container">
 								<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" />
 							</div>
-							<p className="w3-cell">Fecha agendada: {(props["request"]["scheduled_date"]) ? props["request"]["scheduled_date"] : "Pendiente"}</p>
+							<p className="w3-cell">Fecha del servicio: {(props["request"]["scheduled_date"]) ? props["request"]["scheduled_date"] : "Pendiente"}</p>
 						</div>
 					</div>
 				}

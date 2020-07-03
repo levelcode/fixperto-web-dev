@@ -120,13 +120,13 @@ class DetalleAgendado extends React.Component {
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell"> <b className="text_blue">Fecha de inicio: </b> {request["registry_date"]}</p>
+								<p className="w3-cell"> <b className="text_blue">Fecha de solicitud del servicio: </b> {request["registry_date"]}</p>
 							</div>
 							<div className="w3-margin-bottom">
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell"> <b className="text_blue">Fecha agendada:</b> {(request["scheduled_date"]) ? request["scheduled_date"] : "Pendiente"}</p>
+								<p className="w3-cell"> <b className="text_blue">Fecha del servicio:</b> {(request["scheduled_date"]) ? request["scheduled_date"] : "Pendiente"}</p>
 							</div>
 							<div className="w3-margin-bottom" style={{ cursor: "pointer" }} onClick={() => this.verDetalle()}>
 								<div className="w3-cell w3-container">
@@ -142,7 +142,7 @@ class DetalleAgendado extends React.Component {
 								<div className="divider_line"></div>
 							</div>
 							<div className="w3-col s6">
-								<h3>Fixperto®  contratado</h3>
+								<h3>Fixperto contratado</h3>
 							</div>
 							<div className="w3-col s3">
 								<div className="divider_line"></div>

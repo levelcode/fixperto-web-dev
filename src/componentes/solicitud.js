@@ -61,7 +61,7 @@ const Solicitud = (props) => {
 									<div className="w3-cell  w3-container">
 										<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 									</div>
-									<p className="w3-cell"> <b className="text_blue">Registro</b> {request["registry_date"]}</p>
+									<p className="w3-cell"> <b className="text_blue">Fecha solicitud</b> {request["registry_date"]}</p>
 								</div>
 								<div className="w3-margin-bottom w3-container">
 									<b className="w3-cell text_blue">Descripción: </b>

@@ -93,7 +93,7 @@ class DetalleProgreso extends React.Component {
 								<div className="w3-cell  w3-container">
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
-								<p className="w3-cell">Fecha de inicio: {request["registry_date"]}</p>
+								<p className="w3-cell">Fecha de solicitud del servicio: {request["registry_date"]}</p>
 							</div>
 							<div className="w3-margin-bottom" style={{ cursor: "pointer" }} onClick={() => this.verDetalle()}>
 								<div className="w3-cell w3-container">
@@ -132,10 +132,13 @@ class DetalleProgreso extends React.Component {
 								</div>
 							</div>
 						))}
+
+						<div className="w3-block  btn_cancelar_solic "
+							onClick={() => { this.cancelRequest() }}>CANCELAR SOLICITUD
+				    	</div>
+
 					</div>
-					<div className="w3-block  btn_cancelar_solic "
-						onClick={() => { this.cancelRequest() }}>CANCELAR SOLICITUD
-				    </div>
+					
 				</div>}
 			</React.Fragment >
 		);

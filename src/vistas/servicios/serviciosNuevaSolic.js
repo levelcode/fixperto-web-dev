@@ -88,12 +88,12 @@ class ServiciosNuevaSol extends React.Component {
 								</div>
 								{(this.props.history.location["service"]['emergency']) ? <div className="">
 									<div className="">
-										<label>Fecha</label>
+										<label>Fecha de prestación del servicio</label>
 										<input className="w3-input w3-border w3-round-large" type="date" value={start_date}
 											onChange={(e) => this.setState({ start_date: e.target.value })} />
 									</div>
 									<div className="">
-										<label>Hora</label>
+										<label>Hora (militar)</label>
 										<input className="w3-input w3-border w3-round-large" type="time" value={hour}
 											onChange={(e) => this.setState({ hour: e.target.value })} />
 									</div>
@@ -101,7 +101,7 @@ class ServiciosNuevaSol extends React.Component {
 									: ""
 								}
 								<div>
-									<label> <span className="text_blue">{user['name']}</span>, escribe el detalle del servicio que necesitas* </label>
+									<label> <span className="text_blue">{user['name']}</span>, a continuación has una descripción detallada del servicio a solicitar, por ejemplo metros  cuadrados, espacio del servicio (sala, cocina…), si es para tu casa, conjunto, empresa, se lo más específico posible será de gran ayuda para brindarte la asesoría y cotización más precisa.* </label>
 									<textarea className="w3-input w3-border w3-round-large" value={description}
 										onChange={(e) => this.setState({ description: e.target.value })} />
 								</div>

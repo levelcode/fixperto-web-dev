@@ -109,8 +109,8 @@ class ServiciosVista extends React.Component {
 					<div className="w3-cell-row">
 							<h2 className="w3-cell aling-center azul-oscuro"><b>Servicios</b></h2>
 						</div>
-						<h3> ¿<b className="text_blue">{this.state['name']}</b>,</h3>
-						<h3>necesitas un experto en.. ?</h3>
+						<h3> <b className="text_blue">{this.state['name']}</b></h3>
+						<h3> ¿necesitas un experto en... ?</h3>
 						<div>
 							<input className="w3-input" type="text" value={search} placeholder="Buscar"
 								onChange={(e) => this.updateSearch(e.target.value)} />

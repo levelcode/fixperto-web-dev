@@ -139,7 +139,7 @@ class Fixperto extends React.Component {
 															<div className="w3-cell w3-container">
 																<img src="../..//assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
 															</div>
-															<p className="w3-cell">Fecha de inicio: {item["registry_date"]}</p>
+															<p className="w3-cell">Fecha de solicitud del servicio: {item["registry_date"]}</p>
 														</div>
 													</div>
 													<div className="">
@@ -151,7 +151,7 @@ class Fixperto extends React.Component {
 															<div className="w3-cell w3-container">
 																<img src="../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
 															</div>
-															<p className="w3-cell">Fecha agendada: {(item["start_date"]) ? item["start_date"] : "Pendiente"}</p>
+															<p className="w3-cell">Fecha del servicio: {(item["start_date"]) ? item["start_date"] : "Pendiente"}</p>
 														</div>
 													</div>
 													<div className="">

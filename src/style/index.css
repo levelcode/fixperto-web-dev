@@ -1425,7 +1425,7 @@ h1.titleRegister{
   }
 
   .btn_cancelar_solic{
-    width: 80%;
+    width: 100%;
   }
 
   .servicios .buscador h3{
@@ -1616,10 +1616,9 @@ h1.titleRegister{
   }
 
   .btn_rechazar{
-    background-color: #E2E2E2;
-    color: white;
+    background-color: #ce4342;
+    color: white !important;
     font-size: 1.3rem;
-    color: #1a1a1a;
     text-align: center;
   }
 
