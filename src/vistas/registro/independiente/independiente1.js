@@ -54,7 +54,7 @@ class Independiente1 extends React.Component {
 	educational_level = [
 		{ id: 1, denomination: 'Bachiller' }, { id: 2, denomination: 'Técnico' },
 		{ id: 3, denomination: 'Tecnólogo' }, { id: 4, denomination: 'Profesional' },
-		{ id: 5, denomination: 'Especialista' }, { id: 6, denomination: 'Empírico' },
+		{ id: 5, denomination: 'Especialista' },
 		{ id: 7, denomination: 'No aplica' }
 	];
 	almacenarCert = () => {
@@ -144,7 +144,7 @@ class Independiente1 extends React.Component {
 							onChange={(e) => this.setState({ profile_description: e.target.value })} />
 					</div>
 					<div className="w3-margin-bottom">
-						<label>Nivel educacional*</label>
+						<label>Nivel educativo*</label>
 						<select className="w3-select w3-border w3-round-large size200" name="educational_level"
 							value={educational_level} onChange={(e) => this.setState({ educational_level: e.target.value })}>
 							{this.educational_level.map((level, key) => (
@@ -207,7 +207,7 @@ class Independiente1 extends React.Component {
 						</div>
 					</div>
 					<div className="w3-margin-bottom w3-border" style={{ padding: 10 + "px" }}>
-						<label>Adjunta tus trabajos</label>
+						<label>Adjunta las fotos de tus proyectos</label>
 						<button className="w3-button w3-circle w3-blue w3-margin-left"
 							onClick={() => { this.setState({ isModalVisible: true }); }}>
 							+

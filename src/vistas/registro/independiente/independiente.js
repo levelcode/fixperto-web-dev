@@ -179,7 +179,7 @@ class Independiente extends React.Component {
 								</select>
 							</div>
 							<div className="w3-margin-bottom"><label>Fotocopia del documento de identificación*</label></div>
-							<div className="w3-center img_upl">
+							<div className="w3-center img_upl" style={{width : 23 + "%"}}>
 								<FileUpload id="fotocopy" onChange={(fotocopy) => { this.setState({ fotocopy }) }} />
 							</div>
 							<label>Experiencia*</label>
@@ -215,6 +215,13 @@ class Independiente extends React.Component {
 									onChange={(e) => this.setState({ term_condition: e.target.value })} />
 								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones</a> </label>
 							</div>
+
+							<div className="w3-margin-bottom">
+								<input className="w3-check" type="checkbox" value={term_condition}
+									onChange={(e) => this.setState({ term_condition: e.target.value })} />
+								<label className="labelCheck">Bajo la política y privacidad  <a href="#">autorizo el uso de mis datos personales</a> </label>
+							</div>
+
 							<div>
 								<button className="w3-button btn w3-block"
 									onClick={(e) => { e.preventDefault(); this.continuar(); }}>Continuar</button>

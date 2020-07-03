@@ -126,7 +126,7 @@ class CodigoSms extends React.Component {
 
 				<div className="container">
 
-					<div className="codigo">
+					<div className="codigo container_web">
 
 						{this.state.showCahngePhone ? (
 							<div className="w3-row"  >
@@ -140,7 +140,7 @@ class CodigoSms extends React.Component {
 								</div>
 
 								<p className="p_btn">
-									<button className="w3-button btn"
+									<button className="w3-button btn" style={{width : 40 + "%"}}
 										onClick={(e) => {
 											e.preventDefault();
 											this.shangePhone();
@@ -153,7 +153,7 @@ class CodigoSms extends React.Component {
 										onClick={(e) => {
 											e.preventDefault();
 											this.setState({ showCahngePhone: false });
-										}}>Regresar
+										}}>REGRESAR
 									</button>
 								</p>
 							</div>
@@ -173,7 +173,7 @@ class CodigoSms extends React.Component {
 
 									<div className="w3-row">
 										<p className="p_btn">
-											<button className="w3-button btn"
+											<button className="w3-button btn" style={{width : 40 + "%"}}
 												onClick={(e) => {
 													e.preventDefault();
 													this.enviar();
@@ -181,11 +181,11 @@ class CodigoSms extends React.Component {
 										</button>
 										</p>
 
-										<p>No recibiste el código
+										<p>No recibiste el código 
 										<a href="#" onClick={(e) => {
 												e.preventDefault();
 												this.reenviar();
-											}}>Reenviar</a></p>
+											}}> Reenviar</a></p>
 
 										<p>
 											<a href="#" onClick={(e) => {

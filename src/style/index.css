@@ -1403,6 +1403,12 @@ h1.titleRegister{
     margin-top: 0;
   }
 
+  .modal_alerta {
+    width: 30% !important;
+    margin: auto;
+    margin-top: 0px;
+  }
+
   .modal_calificar{
     width: 35% !important;
     height: 550px;

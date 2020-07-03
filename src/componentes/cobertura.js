@@ -116,11 +116,11 @@ class Cobertura extends React.Component {
 							)
 						})}
 					</ul>
-					<div className="w3-bar" style={{ display: (showSelect) ? "block" : "none" }}>
+					<div className="w3-bar" style={{ display: (showSelect) ? "flex" : "none", }}>
 						{routes.map((route, ind) => {
 							let ref = React.createRef();
 							return (
-								<button key={ind} ref={refs => ref = refs} style={{ cursor: "pointer" }}
+								<button key={ind} ref={refs => ref = refs} style={{ cursor: "pointer", width : 100 + "%" }}
 									className="testbtn w3-bar-item w3-border tablink" onClick={() => {
 										var i, x, tablinks;
 										x = document.getElementsByClassName("tablink");

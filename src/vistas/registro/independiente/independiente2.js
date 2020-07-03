@@ -36,13 +36,13 @@ class Independiente2 extends React.Component {
 					<h1 className="titleRegister">Paso 3 de 5</h1>
 					<h3 className="w3-center">Cobertura</h3>
 					<div className="w3-margin-bottom w3-center">
-						<label>Elige las regiones donde ofreces tus servicios*</label>
+						<label>Elige las ciudades donde ofreces tus servicios*</label>
 						<Cobertura selectedRegion={regionsSelected}
 							add={(elemento) => { this.addRegion(elemento); }}
 							remove={(elemento) => { this.removeRegion(elemento); }} />
 					</div>
 					<div>
-						<button className={(regionsSelected.length) ? "w3-button btn w3-block" : "w3-button btn w3-block w3-disabled"}
+						<button style={{width : 50 + "%" , marginLeft : 25 + "%"}} className={(regionsSelected.length) ? "w3-button btn " : "w3-button btn w3-disabled"}
 							onClick={() => { this.continuar(); }}>Continuar</button>
 					</div>
 				</div>
