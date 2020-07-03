@@ -9,14 +9,15 @@ class ServiciosCateg extends React.Component {
 			service_name: "", icon_name: ""
 		}
 	}
-
 	componentDidMount() {
-		this.setState({
-			user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
-			service_name: this.props.history.location.item['denomination'],
-			icon_name: this.props.history.location.item['icon']
-		});
-		this.getCategoriesByService();
+		if (this.props["history"]["location"]["item"]) {
+			this.setState({
+				user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
+				service_name: this.props.history.location.item['denomination'],
+				icon_name: this.props.history.location.item['icon']
+			});
+			this.getCategoriesByService();
+		}
 	}
 
 	getCategoriesByService = () => {
@@ -49,7 +50,7 @@ class ServiciosCateg extends React.Component {
 						<p> <b className="text_blue">{user_name}</b>, tu experto en {service_name} es para ... </p>
 						<div className="categorias_serv">
 							{categories.map((item, key) => (
-								<div className="w3-row item flex-aling" key={key} style={{cursor:"pointer"}}
+								<div className="w3-row item flex-aling" key={key} style={{ cursor: "pointer" }}
 									onClick={() => { this.continuarSolicitud(item); }}>
 									<div className="w3-col s3 margin-cero">
 										<img src={icon_name} className="" alt={item.denomination}></img>

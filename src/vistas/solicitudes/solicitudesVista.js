@@ -7,8 +7,8 @@ import SolicitudesCompletado from "./solicitudesCompletados";
 class Solicitudes extends React.Component {
 	constructor(props) { super(props); this.state = { progreso: true, agendado: false, completado: false } }
 	active = (text) => { let state = {}; Object.keys(this.state).map((key) => state[key] = (key === text)); this.setState(state); }
-
 	componentDidMount() {
+		this.props["active"]();
 		switch (this.props["history"]["location"]["pathname"]) {
 			case "/fixperto/solicitudes/solicitud-progreso":
 				this.setState({ progreso: true, agendado: false, completado: false });
@@ -23,7 +23,6 @@ class Solicitudes extends React.Component {
 				break;
 		}
 	}
-	
 	render() {
 		const { progreso, agendado, completado } = this.state;
 		const itemStyle = "active";

@@ -12,6 +12,8 @@ const validateName = name => { let reg = /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?
 
 const validatePhone = phone => { let reg = /^[0-9]{7,10}$/; return reg.test(phone); };
 
+const validateNumber = number => { let reg = /^[0-9]{7,11}$/; return reg.test(number); };
+
 const formatDate = date => {
 	let today = new Date(date);
 	return today.getDate() + "/" + parseInt(today.getMonth() + 1) + "/" + today.getFullYear();
@@ -42,4 +44,4 @@ const fechaAutorizada = () => {
 	return ano + "-" + mes + "-" + dia;
 }
 
-export { redondeo, convertDate, validateEmail, validateName, validatePhone, formatDate, convertDateTime, convertHourUpdate, formatHour, fechaAutorizada } 
+export { redondeo, convertDate, validateEmail, validateName, validatePhone, validateNumber, formatDate, convertDateTime, convertHourUpdate, formatHour, fechaAutorizada } 

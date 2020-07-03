@@ -39,7 +39,7 @@ class ServiciosNuevaSol extends React.Component {
 				.then(function (response) {
 					let responseJson = response["data"];
 					if (responseJson["success"]) {
-						me.props["history"]["push"]("fixperto/solicitudes/solicitud-progreso");
+						me.props["history"]["push"]("solicitudes/solicitud-progreso");
 					} else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, inténtelo nuevamente" }); }
 				})
 				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
@@ -139,7 +139,7 @@ class ServiciosNuevaSol extends React.Component {
 											<div className="w3-quarter" key={key}>
 												<div className="w3-row ">
 													<div style={{ cursor: "pointer" }} onClick={() => { this.deleteFoto(photo) }}>
-														<img src="../../../assets/iconos/eliminar.png" className="img_elim"/>
+														<img src="../../../assets/iconos/eliminar.png" className="img_elim" />
 													</div>
 													<img src={photo} className="imagen-experto img_new" alt="Foto"></img>
 												</div>

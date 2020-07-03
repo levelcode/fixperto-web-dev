@@ -38,6 +38,7 @@ class Fixperto extends React.Component {
 	}
 	render() {
 		const { showAlert, textoAlert, services } = this.state;
+		var type = (JSON.parse(localStorage.getItem("@USER"))["type"] === "empresa") ? "empresa" : "profesional";
 		return (
 			<React.Fragment>
 				<HeaderExperto history={this.props["history"]} />
@@ -59,32 +60,32 @@ class Fixperto extends React.Component {
 									<div className="w3-cell w3-center w3-container">
 										<div className="w3-cell w3-section img_fixperto">
 											<img className="imagen-experto"
-												src={"https://api.fixperto.com/uploads/registros/" + JSON.parse(localStorage.getItem("@USER"))["type"] + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]} alt="Imagen">
+												src={"https://api.fixperto.com/uploads/registros/" + type + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]} alt="Imagen">
 											</img>
 										</div>
 										<h4 className="azul-oscuro"><b>¡Hola!</b></h4>
-										<h3 className="w3-margin-bottom azul-oscuro" style={{textTransform : "capitalize", fontSize : 30}}><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
+										<h3 className="w3-margin-bottom azul-oscuro" style={{ textTransform: "capitalize", fontSize: 30 }}><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
 
 										<br></br>
 
 										<hr></hr>
 
 										<br></br>
-										
+
 										<div className="w3-row plan_fixperto">
 											<div className="w3-col s4">
 												<img src={(JSON.parse(localStorage.getItem("@USER"))["planUri"] === "regalo") ?
 													"../../assets/iconos/regalo.png" : (JSON.parse(localStorage.getItem("@USER"))["planUri"] === "oro") ?
-													"../../assets/iconos/oro.png" :
-													"../../assets/iconos/bronce.png"
-												} style={{ width: 60, height: 60, padding : 5, marginTop : 5 }} />
+														"../../assets/iconos/oro.png" :
+														"../../assets/iconos/bronce.png"
+												} style={{ width: 60, height: 60, padding: 5, marginTop: 5 }} alt="Plan" />
 											</div>
 											<div className="w3-col s8 texto_fixperto">
-												<p className="text_blue" style={{textAlign : "left", fontSize : 18}}>Plan actual:</p>
-												<p style={{ color: "#273861", textAlign : "left", fontSize : 16 }}>Plan {(JSON.parse(localStorage.getItem("@USER"))["planUri"] === "regalo") ? "bienvenida" : JSON.parse(localStorage.getItem("@USER"))["planUri"]}</p>
+												<p className="text_blue" style={{ textAlign: "left", fontSize: 18 }}>Plan actual:</p>
+												<p style={{ color: "#273861", textAlign: "left", fontSize: 16 }}>Plan {(JSON.parse(localStorage.getItem("@USER"))["planUri"] === "regalo") ? "bienvenida" : JSON.parse(localStorage.getItem("@USER"))["planUri"]}</p>
 											</div>
 										</div>
-							
+
 
 
 									</div>
@@ -130,38 +131,38 @@ class Fixperto extends React.Component {
 												</div>
 												<div ref={refs => myRef = refs} style={{ display: "none", backgroundColor: "#F0F0F0" }} className="w3-section" >
 													<div className="row">
-													
+
 														<div className="w3-cell w3-container">
-															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{marginTop : 10}}  />
+															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{ marginTop: 10 }} />
 														</div>
 														<h5 className="w3-cell text_blue w3-padding">Creación de solicitud</h5>
 														<div className="w3-white w3-padding">
 															<div className="w3-cell w3-container">
-																<img src="../..//assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
+																<img src="../..//assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, position: "relative", left: -15 }} />
 															</div>
 															<p className="w3-cell">Fecha de solicitud del servicio: {item["registry_date"]}</p>
 														</div>
 													</div>
 													<div className="">
 														<div className="w3-cell w3-container">
-															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{marginTop : 10}} />
+															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{ marginTop: 10 }} />
 														</div>
 														<h5 className="w3-cell text_blue w3-padding">Solicitud agendada</h5>
 														<div className="w3-white w3-padding">
 															<div className="w3-cell w3-container">
-																<img src="../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
+																<img src="../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, position: "relative", left: -15 }} />
 															</div>
 															<p className="w3-cell">Fecha del servicio: {(item["start_date"]) ? item["start_date"] : "Pendiente"}</p>
 														</div>
 													</div>
 													<div className="">
 														<div className="w3-cell w3-container">
-															<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{marginTop : 10}}/>
+															<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{ marginTop: 10 }} />
 														</div>
 														<h5 className="w3-cell text_blue w3-padding">Solicitud completada</h5>
 														<div className="w3-white w3-padding">
 															<div className="w3-cell w3-container">
-																<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20, position : "relative", left : -15}} />
+																<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, position: "relative", left: -15 }} />
 															</div>
 															<p className="w3-cell">Fecha completada: {(item["end_date"]) ? item["end_date"] : "Pendiente"}</p>
 														</div>
