@@ -10,7 +10,7 @@ class Independiente extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showAlert: false, textoAlert: "", term_condition: false, politicas_privacidad : false, experiencia: 1,
+			showAlert: false, textoAlert: "", term_condition: false, politicas_privacidad: false, experiencia: 1,
 			type: "numeric", photo: "", name: "", email: "", identification_type: 1, number: "", birth_date: "",
 			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: ""
 		}
@@ -40,12 +40,12 @@ class Independiente extends React.Component {
 		if (this.state["password"] === "") { vacios.push("  *Contraseña"); }
 		if ((this.state["coupon"] === true && this.state["coupon_number"] === "")) { vacios.push("  *Cupón"); }
 
-		if (this.state["term_condition"] === false) { 
-			vacios.push("  *Términos y condiciones"); 
+		if (this.state["term_condition"] === false) {
+			vacios.push("  *Términos y condiciones");
 		}
 
-		if (this.state["politicas_privacidad"] === false) { 
-			vacios.push("  *Politicas y privacidad"); 
+		if (this.state["politicas_privacidad"] === false) {
+			vacios.push("  *Politicas y privacidad");
 		}
 
 		if (!vacios.length) {
@@ -143,7 +143,7 @@ class Independiente extends React.Component {
 	}
 	render() {
 		const { showAlert, textoAlert, name, email, identification_type, number, birth_date, gender, experiencia,
-			phone, password, repeat_password, term_condition, politicas_privacidad,  coupon, coupon_number } = this.state;
+			phone, password, repeat_password, term_condition, politicas_privacidad, coupon, coupon_number } = this.state;
 		return (
 			<React.Fragment>
 				<Header />
@@ -187,7 +187,7 @@ class Independiente extends React.Component {
 								</select>
 							</div>
 							<div className="w3-margin-bottom"><label>Fotocopia del documento de identificación*</label></div>
-							<div className="w3-center img_upl" style={{width : 23 + "%"}}>
+							<div className="w3-center img_upl" style={{ width: 23 + "%" }}>
 								<FileUpload id="fotocopy" onChange={(fotocopy) => { this.setState({ fotocopy }) }} />
 							</div>
 							<label>Experiencia*</label>
@@ -213,8 +213,8 @@ class Independiente extends React.Component {
 							<input className="w3-input w3-border w3-round-large w3-margin-bottom" type="password" value={repeat_password}
 								onChange={(e) => this.setState({ repeat_password: e.target.value })} />
 
-							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
-							
+							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 12, color: "gray", fontWeight: "bold", marginBottom: 10, fontFamily: 'Montserrat' }}>Nota: * (Campo obligatorio)</p>
+
 							<input className="w3-check w3-margin-bottom" type="checkbox" value={coupon}
 								onChange={(e) => { this.setState({ coupon: (e.target.value === "false") ? true : false }) }} />
 							<label className="labelCheck">¿Tienes un cupón de referido?</label>
