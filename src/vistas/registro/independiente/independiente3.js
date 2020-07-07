@@ -32,19 +32,19 @@ class Independiente3 extends React.Component {
 					<h3 className="w3-center">Seguridad Social</h3>
 					<label>Fecha arl*</label>
 					<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_arl}
-						max={new Date()}
+						min={new Date()}
 						onChange={(e) => this.setState({ date_arl: e.target.value })} />
 					<div className="w3-center img_upl">
 						<FileUpload id="arl" texto="ARL" onChange={(arl) => { this.setState({ arl }); }} />
 					</div>
 					<label>Fecha salud pensión*</label>
 					<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_salud_pension}
-						max={new Date()}
+						min={new Date()}
 						onChange={(e) => this.setState({ date_salud_pension: e.target.value })} />
 					<div className="w3-center img_upl">
 						<FileUpload id="salud_pension" texto="Salud Pensión" onChange={(salud_pension) => { this.setState({ salud_pension }); }} />
 					</div>
-					<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
+					<p style={{ textAlign: "left", marginLeft: 0, fontSize: 12, color: "gray", fontWeight: "bold", marginBottom: 10, fontFamily: 'Montserrat' }}>Nota: * (Campo obligatorio)</p>
 					<div>
 						<button className="w3-button btn w3-block" onClick={() => { this.continuar(); }}>Continuar</button>
 					</div>
