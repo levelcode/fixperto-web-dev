@@ -36,7 +36,12 @@ class Independiente1 extends React.Component {
 			data: { selected: false }, headers: { Accept: 'application/json' }
 		})
 			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { me.setState({ categories, certification_type: responseJson["data"].certification_type }); }
+				if (responseJson["data"]["success"]) { 
+					me.setState({ 
+						categories, 
+						certification_type: responseJson["data"].certification_type 
+					}); 
+				}
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
 			})
 			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
@@ -58,6 +63,7 @@ class Independiente1 extends React.Component {
 		{ id: 7, denomination: 'No aplica' }
 	];
 	almacenarCert = () => {
+		
 		if (this.state["type"] !== 0 && this.state["certification"] !== "") {
 			let me = this
 			var reader = new FileReader();
@@ -69,6 +75,7 @@ class Independiente1 extends React.Component {
 					}));
 			}
 			reader.readAsDataURL(this.state["certification"]);
+			this.setState({ certification : "" })
 		}
 	}
 	deleteCert(certification) {
@@ -89,6 +96,7 @@ class Independiente1 extends React.Component {
 					}));
 			}
 			reader.readAsDataURL(this.state["photo"]);
+			this.setState({ photo  : ""})
 		}
 	}
 	deleteJob(job) {
@@ -163,15 +171,17 @@ class Independiente1 extends React.Component {
 							onClick={() => { this.setState({ isModalVisibleCert: true }); }}>
 							+
 							</button>
-						<div className="w3-row-padding" >
+						<div className="w3-row-padding" style={{marginTop : 15}} >
 							{certifications.length > 0 && certifications.map((cert, key) => {
 								return <div className="w3-quarter" key={key}>
 									<div className="w3-row">
 										<div className="w3-center" style={{ cursor: "pointer" }} onClick={() => { this.deleteCert(cert); }}>
-											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" />
+											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" style={{position : "absolute", marginTop : -10, marginLeft : -15}} />
 										</div>
+										
 										<img src={cert["certificationBold"]} className="imagen-experto img_new" alt="Foto"></img>
-										<label>{cert["cert_type"]}</label>
+										<p className="text_blue">{cert["cert_type"]}</p>
+										
 									</div>
 								</div>
 							})
@@ -212,15 +222,16 @@ class Independiente1 extends React.Component {
 							onClick={() => { this.setState({ isModalVisible: true }); }}>
 							+
 							</button>
-						<div className="w3-row-padding" >
+						<div className="w3-row-padding" style={{marginTop : 15}} >
 							{jobs.length > 0 && jobs.map((job, key) => {
 								return <div className="w3-quarter" key={key}>
 									<div className="w3-row">
 										<div className="w3-center" style={{ cursor: "pointer" }} onClick={() => { this.deleteJob(job); }}>
-											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" />
+											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" style={{position : "absolute", marginTop : -10, marginLeft : -15}}/>
 										</div>
 										<img src={job["photoBold"]} className="imagen-experto img_new" alt="Foto"></img>
-										<label>{job["name"]}</label>
+										<p className="text_blue">{job["name"]}</p>
+										
 									</div>
 								</div>
 							})
