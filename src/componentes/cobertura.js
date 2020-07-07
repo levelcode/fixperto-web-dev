@@ -9,7 +9,7 @@ class Cobertura extends React.Component {
 	mapRef = React.createRef();
 	constructor(props) {
 		super(props);
-		this.state = { showSelect: false, routes: [], center: [-74.081749, 4.6097102], zoom: 5, regions: [] };
+		this.state = { showSelect: true, routes: [], center: [-74.081749, 4.6097102], zoom: 5, regions: [] };
 	}
 	componentDidMount() {
 		const { center, zoom } = this.state;
@@ -86,7 +86,7 @@ class Cobertura extends React.Component {
 	selectedCity = selectedItem => {
 		this.setState({ center: [selectedItem["coordinate"]["longitude"], selectedItem["coordinate"]["latitude"]] });
 		this.createCoordinates(selectedItem);
-		map.jumpTo({ 'center': [selectedItem["coordinate"]["longitude"], selectedItem["coordinate"]["latitude"]], 'zoom': 8 });
+		map.jumpTo({ 'center': [selectedItem["coordinate"]["longitude"], selectedItem["coordinate"]["latitude"]], 'zoom': 9 });
 	}
 	confirmar = () => {
 		if (this.props["selectedRegion"].length > 0) { this.setState({ showSelect: false }); }

@@ -34,7 +34,7 @@ class Independiente2 extends React.Component {
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<div className="container_web">
 					<h1 className="titleRegister">Paso 3 de 5</h1>
-					<h3 className="w3-center">Cobertura</h3>
+					<h3 className="w3-center" style={{margin : 0}}>Cobertura</h3>
 					<div className="w3-margin-bottom w3-center">
 						<label>Elige las ciudades donde ofreces tus servicios*</label>
 						<Cobertura selectedRegion={regionsSelected}

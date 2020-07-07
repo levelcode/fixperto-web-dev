@@ -20,7 +20,7 @@ const FileUpload = (props) => {
 					<input type="file" style={{ width: 0.1 + "px", height: 0.1 + "px", opacity: 0, overflow: "hidden", position: "absolute", zIndex: -1 }}
 						id={(props["id"]) ? props["id"] : "file_upload"} onChange={onChange} accept="image/png, .jpeg, .jpg, image/gif" />
 					<div style={{ backgroundColor: "#DDDDDD", cursor: "pointer", width: 100 + "px", margin: "auto" }}>
-						<label htmlFor={(props["id"]) ? props["id"] : "file_upload"} style={{ color: "#676767" }}>{(props["texto"]) ? props["texto"] : "Imagen"}</label>
+						<label htmlFor={(props["id"]) ? props["id"] : "file_upload"} style={{ color: "#676767", cursor : "pointer" }}>{(props["texto"]) ? props["texto"] : "Imagen"}</label>
 					</div>
 				</div>
 			</form>
