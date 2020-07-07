@@ -153,7 +153,7 @@ class Independiente1 extends React.Component {
 						</select>
 					</div>
 					<div className="w3-margin-bottom">
-						<label>Titulo profesión*</label>
+						<label>Titulo profesional </label>
 						<input className="w3-input w3-border w3-round-large" type="text" value={title}
 							onChange={(e) => this.setState({ title: e.target.value })} />
 					</div>

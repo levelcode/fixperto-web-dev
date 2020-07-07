@@ -18,7 +18,7 @@ class Seleccionador extends React.Component {
 								<div className="w3-cell"><label>{selected["label"]}</label></div>
 								<div className="w3-cell" style={{ cursor: "pointer" }} onClick={() => { this.remove(selected) }}>
 									<img src="../../assets/iconos/eliminar.png"
-										style={{ width: 15 + "px", height: 15 + "px" }}
+										style={{ width: 15 + "px", height: 15 + "px", marginLeft : 5 }}
 										alt="Imagen" />
 								</div>
 							</li>
@@ -31,26 +31,27 @@ class Seleccionador extends React.Component {
 							let myRef = React.createRef();
 							let ref = React.createRef();
 							return <li key={key}>
-								<div className="w3-row">
-									<div className="w3-cell w3-left"><b >{item["grouped"]}</b></div>
-									<div className="w3-cell w3-right" ref={refs => ref = refs} style={{ cursor: "pointer" }}
-										onClick={() => {
-											if (myRef.style.display === "none") {
-												myRef.style.display = "block";
-												ref.removeChild(ref.childNodes[0]);
-												var x = document.createElement("div");
-												var textnode = document.createTextNode("-");
-												x.appendChild(textnode);
-												ref.appendChild(x);
-											} else {
-												myRef.style.display = "none";
-												var y = document.createElement("div");
-												ref.removeChild(ref.childNodes[0]);
-												var text = document.createTextNode("+");
-												y.appendChild(text);
-												ref.appendChild(y);
-											}
-										}} ><div >+</div>
+								<div className="w3-row" 
+									onClick={() => {
+										if (myRef.style.display === "none") {
+											myRef.style.display = "block";
+											ref.removeChild(ref.childNodes[0]);
+											var x = document.createElement("div");
+											var textnode = document.createTextNode("-");
+											x.appendChild(textnode);
+											ref.appendChild(x);
+										} else {
+											myRef.style.display = "none";
+											var y = document.createElement("div");
+											ref.removeChild(ref.childNodes[0]);
+											var text = document.createTextNode("+");
+											y.appendChild(text);
+											ref.appendChild(y);
+										}
+									}}>
+									<div className="w3-cell w3-left"><b>{item["grouped"]}</b></div>
+									<div className="w3-cell w3-right" ref={refs => ref = refs} style={{ cursor: "pointer" }}>
+										<div>+</div>
 									</div>
 								</div>
 								<ul ref={refs => myRef = refs} style={{ display: "none", backgroundColor: "#F0F0F0" }} className="w3-ul w3-border" >
@@ -61,7 +62,7 @@ class Seleccionador extends React.Component {
 													if (e.target.checked) { this.add(elemento); }
 													else { this.remove(elemento); }
 												}} />
-												<label>{elemento["label"]}</label>
+												<label> {elemento["label"]}</label>
 											</li>
 										)
 									})}
