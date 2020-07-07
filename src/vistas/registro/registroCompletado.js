@@ -5,12 +5,13 @@ import Footer from "../../componentes/footer";
 import httpClient from "../../constantes/axios";
 import axios from "axios";
 class RegistroCompletado extends React.Component {
-	constructor(props) { super(props); this.state = { showAlert: false, labeloAlert: "" }; }
+	constructor(props) { super(props); this.state = { showAlert: false, textoAlert: "" }; }
 	registrar = () => {
+		let me = this;
 		var expert = JSON.parse(localStorage.getItem("@USER"))["typeId"];
 		let method = (JSON.parse(localStorage.getItem("@USER"))["type"] === "empresa") ? "/fixpertoEmpresa/addEmpresaContinue" : "/fixpertoProfesional/addProfesionalContinue";
 		const createFormData = () => {
-			let informacion = this.props["history"]["location"]["informacion"];
+			let informacion = me.props["history"]["location"]["informacion"];
 			const data = new FormData();
 			data.append("expert", expert);
 			Object.keys(informacion).forEach(key => {
@@ -43,25 +44,23 @@ class RegistroCompletado extends React.Component {
 				}
 			});
 			return data;
-		}; let me = this;
+		};
 		axios({
 			method: 'post', url: httpClient.urlBase + method,
 			data: createFormData(), headers: { Accept: 'application/json' }
 		})
 			.then(function (response) {
-				console.log("then: " + response);
 				let responseJson = response["data"];
 				if (responseJson["success"]) { me.props["history"]["push"]("fixpertos"); }
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
 			})
-			.catch(function (response) { console.log("catch: " + response); me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	render() {
-		const { showAlert, labeloAlert } = this.state;
+		const { showAlert, textoAlert } = this.state;
 		return (
 			<React.Fragment>
 				<Header />
-				<Alerta showAlert={showAlert} labeloAlert={labeloAlert} close={() => this.setState({ showAlert: false })} />
+				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<div className="container_web w3-center">
 					<h1 className="titleRegister">Paso 5 de 5</h1>
 					<div className="w3-margin-bottom">
