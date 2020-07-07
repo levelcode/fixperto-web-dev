@@ -55,7 +55,7 @@ class RegistroCompletado extends React.Component {
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
 			})
 			.catch(function (response) {
-				me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+				me.registrar();
 			});
 	}
 	render() {
