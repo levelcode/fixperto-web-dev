@@ -249,6 +249,9 @@ class Independiente1 extends React.Component {
 							</div>
 						</div>
 					</div>
+
+					<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
+					
 					<div>
 						<button className="w3-button btn w3-block"
 							onClick={() => { this.continuar(); }}>Continuar</button>

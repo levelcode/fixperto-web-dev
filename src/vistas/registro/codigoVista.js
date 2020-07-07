@@ -181,11 +181,11 @@ class CodigoSms extends React.Component {
 										</button>
 										</p>
 
-										<p>No recibiste el código 
+										<p>Si no recibiste el código clic en 
 										<a href="#" onClick={(e) => {
 												e.preventDefault();
 												this.reenviar();
-											}}> Reenviar</a></p>
+											}}>  Reenviar</a></p>
 
 										<p>
 											<a href="#" onClick={(e) => {

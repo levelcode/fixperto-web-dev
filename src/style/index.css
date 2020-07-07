@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap');
+
 /*Estilo del mapa*/
 .mapContainer {
   height: 300px;
@@ -317,7 +319,7 @@ h1.titleRegister{
 }
 
 .perfil .card_perfil .list_datos{
-  margin-top : 10px;
+  margin-top : -10px;
 }
 
 .perfil .card_perfil .list_datos .list{

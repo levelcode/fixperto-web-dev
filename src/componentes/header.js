@@ -8,7 +8,7 @@ const Header = (props) => {
 				</div>
 				<div className="w3-container w3-cell-row text-header">
 					<div className="w3-cell">
-						<a href="https://www.fixperto.com/"><b>Home</b></a>
+						<a href="https://www.fixperto.com/"><b>Inicio</b></a>
 					</div>
 					<div className="w3-cell">
 						<p> | </p>

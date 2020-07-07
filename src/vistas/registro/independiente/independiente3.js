@@ -44,6 +44,7 @@ class Independiente3 extends React.Component {
 					<div className="w3-center img_upl">
 						<FileUpload id="salud_pension" texto="Salud Pensión" onChange={(salud_pension) => { this.setState({ salud_pension }); }} />
 					</div>
+					<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
 					<div>
 						<button className="w3-button btn w3-block" onClick={() => { this.continuar(); }}>Continuar</button>
 					</div>

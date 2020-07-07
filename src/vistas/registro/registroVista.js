@@ -137,8 +137,6 @@ class Registro extends React.Component {
 
 						<form className="w3-container">
 
-							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "red", fontWeight : "bold", marginBottom : 10}}>Nota: * (Campo obligatorio)</p>
-
 							<label>Nombre y apellido*</label>
 							<input className="w3-input w3-border w3-round-large" type="text" value={name}
 								onChange={(e) => this.setState({ name: e.target.value })} />
@@ -175,16 +173,18 @@ class Registro extends React.Component {
 							<input className="w3-input w3-border w3-round-large" type="password" value={repeat_password}
 								onChange={(e) => this.setState({ repeat_password: e.target.value })} />
 
+							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
+
 							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 15}}>
 								<input className="w3-check" type="checkbox" value={term_condition}
 								onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones</a> </label>
+								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones.</a> </label>
 							</p>
 
 							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 15}}>
 								<input className="w3-check" type="checkbox" value={term_condition}
 								onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Bajo la política y privacidad <a href="#">autorizo el uso de mis datos personales</a> </label>
+								<label className="labelCheck">Bajo la política y privacidad <a href="#">autorizo el uso de mis datos personales.</a> </label>
 							</p>
 							
 

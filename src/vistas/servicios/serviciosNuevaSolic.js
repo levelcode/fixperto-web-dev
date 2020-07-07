@@ -93,7 +93,7 @@ class ServiciosNuevaSol extends React.Component {
 											onChange={(e) => this.setState({ start_date: e.target.value })} />
 									</div>
 									<div className="">
-										<label>Hora (militar)</label>
+										<label>Hora</label>
 										<input className="w3-input w3-border w3-round-large" type="time" value={hour}
 											onChange={(e) => this.setState({ hour: e.target.value })} />
 									</div>

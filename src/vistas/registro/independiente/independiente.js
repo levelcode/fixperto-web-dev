@@ -196,12 +196,17 @@ class Independiente extends React.Component {
 								<input className="w3-input w3-border w3-round-large" type="number" value={phone}
 									onChange={(e) => this.setState({ phone: e.target.value })} />
 							</div>
+
 							<label>Contraseña*</label>
 							<input className="w3-input w3-border w3-round-large w3-margin-bottom" type="password" value={password}
 								onChange={(e) => this.setState({ password: e.target.value })} />
+
 							<label>Confirmar contraseña*</label>
 							<input className="w3-input w3-border w3-round-large w3-margin-bottom" type="password" value={repeat_password}
 								onChange={(e) => this.setState({ repeat_password: e.target.value })} />
+
+							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
+							
 							<input className="w3-check w3-margin-bottom" type="checkbox" value={coupon}
 								onChange={(e) => { this.setState({ coupon: (e.target.value === "false") ? true : false }) }} />
 							<label className="labelCheck">¿Tienes un cupón de referido?</label>
@@ -213,13 +218,13 @@ class Independiente extends React.Component {
 							<div className="w3-margin-bottom">
 								<input className="w3-check" type="checkbox" value={term_condition}
 									onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones</a> </label>
+								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones.</a> </label>
 							</div>
 
 							<div className="w3-margin-bottom">
 								<input className="w3-check" type="checkbox" value={term_condition}
 									onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Bajo la política y privacidad  <a href="#">autorizo el uso de mis datos personales</a> </label>
+								<label className="labelCheck">Bajo la política y privacidad  <a href="#">autorizo el uso de mis datos personales.</a> </label>
 							</div>
 
 							<div>

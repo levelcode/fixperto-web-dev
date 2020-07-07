@@ -115,7 +115,7 @@ class MapBox extends React.Component {
 					<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 
 					<div className="w3-container w3-section">
-						<label>Seleccione una región*</label>
+						<label>Seleccione una ciudad*</label>
 						<select className="w3-select w3-border w3-round-large" name="type"
 							value={selectedItem} onChange={(e) => this.selectedCity(e.target.value)}>
 							<option value={0} >Seleccione...</option>
@@ -123,7 +123,7 @@ class MapBox extends React.Component {
 								<option key={key} value={route.id} >{route.title}</option>
 							))}
 						</select>
-						<p className="text_blue">Selecciona el area <img src="../../assets/iconos/click.png" style={{ width : 25, height : 25}} /> </p>
+						<p className="text_blue" style={{marginBottom : -10}} >Selecciona el area <img src="../../assets/iconos/click.png" style={{ width : 25, height : 25}} /> </p>
 					</div>
 
 					<div ref={this.mapRef} className="mapContainer w3-container" />

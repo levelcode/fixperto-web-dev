@@ -53,7 +53,7 @@ class Solicitudes extends React.Component {
 											</div>
 											<div className={(completado) ? `${itemStyle}` : ``}>
 												<Link to="/fixperto/solicitudes/solicitud-completado" onClick={() => this.active("completado")}>
-													Completados
+													Finalizados
                                                 </Link>
 											</div>
 										</div>

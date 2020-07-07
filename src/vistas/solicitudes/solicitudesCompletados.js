@@ -41,7 +41,7 @@ class SolicitudesCompletado extends React.Component {
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<div className="solicitudes" style={{ display: (!show_request) ? "block" : "none" }} >
 					<div className="info_perfil_config">
-						<h1 className="titleRegister">Completados</h1>
+						<h1 className="titleRegister">Finalizados</h1>
 						<div className="w3-row serv">
 							{
 								requests.length > 0 && requests.map((item, key) => (

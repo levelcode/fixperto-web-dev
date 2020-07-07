@@ -112,14 +112,6 @@ class RegistroCompletado extends React.Component {
 						</div>
 						<div className="w3-row w3-margin-bottom">
 							<div className="w3-cell">
-								<img src="../../../assets/iconos/respaldo.png" style={{ height: 25, width: 25 }} alt="Icono" />
-							</div>
-							<div className="w3-cell w3-container">
-								<label>Respaldo en el servicio al cliente inmediato por chat interno.</label>
-							</div>
-						</div>
-						<div className="w3-row w3-margin-bottom">
-							<div className="w3-cell">
 								<img src="../../../assets/iconos/capacitaciones.png" style={{ height: 25, width: 25 }} alt="Icono" />
 							</div>
 							<div className="w3-cell w3-container">
