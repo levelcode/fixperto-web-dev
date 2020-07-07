@@ -49,11 +49,12 @@ class RegistroCompletado extends React.Component {
 			data: createFormData(), headers: { Accept: 'application/json' }
 		})
 			.then(function (response) {
+				console.log("then: " + response);
 				let responseJson = response["data"];
 				if (responseJson["success"]) { me.props["history"]["push"]("fixpertos"); }
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
 			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
+			.catch(function (response) { console.log("catch: " + response); me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	render() {
 		const { showAlert, labeloAlert } = this.state;

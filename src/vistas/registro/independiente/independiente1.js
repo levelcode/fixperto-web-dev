@@ -101,7 +101,6 @@ class Independiente1 extends React.Component {
 		let vacios = [];
 		if (!this.state["categoriesSelected"].length) { vacios.push("  *Categoría"); }
 		if (this.state["profile_description"] === "") { vacios.push("  *Descripción"); }
-		if (this.state["title"] === "") { vacios.push("  *Título"); }
 		if (vacios.length) {
 			return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() });
 		}
@@ -114,12 +113,13 @@ class Independiente1 extends React.Component {
 			informacion["categoriesSelected"] = categories;
 			informacion["profile_description"] = this.state["profile_description"];
 			informacion["educational_level"] = this.state["educational_level"];
-			informacion["title"] = this.state["title"];
+			if (this.state["title"] !== "")
+				informacion["title"] = this.state["title"];
 			if (this.state["certifications"].length > 0)
 				informacion["certifications"] = this.state["certifications"];
 			if (this.state["jobs"].length > 0)
 				informacion["jobs"] = this.state["jobs"];
-				this.props["history"]["push"]({pathname:"independiente2", informacion});
+			this.props["history"]["push"]({ pathname: "independiente2", informacion });
 		}
 	}
 	render() {
@@ -250,8 +250,8 @@ class Independiente1 extends React.Component {
 						</div>
 					</div>
 
-					<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
-					
+					<p style={{ textAlign: "left", marginLeft: 0, fontSize: 12, color: "gray", fontWeight: "bold", marginBottom: 10, fontFamily: 'Montserrat' }}>Nota: * (Campo obligatorio)</p>
+
 					<div>
 						<button className="w3-button btn w3-block"
 							onClick={() => { this.continuar(); }}>Continuar</button>
