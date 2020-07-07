@@ -46,7 +46,7 @@ class RegistroCompletado extends React.Component {
 			return data;
 		};
 		axios({
-			method: 'post', url: httpClient.urlBase + method,
+			method: 'post', url: httpClient.urlBase + '/fixpertoProfesional/addProfesionalContinue',
 			data: createFormData(), headers: { Accept: 'application/json' }
 		})
 			.then(function (response) {
@@ -54,6 +54,9 @@ class RegistroCompletado extends React.Component {
 				if (responseJson["success"]) { me.props["history"]["push"]("fixpertos"); }
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
 			})
+			.catch(function (response) {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+			});
 	}
 	render() {
 		const { showAlert, textoAlert } = this.state;
