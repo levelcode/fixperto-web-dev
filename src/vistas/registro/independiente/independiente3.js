@@ -21,7 +21,7 @@ class Independiente3 extends React.Component {
 			informacion["salud_pension"] = this.state["salud_pension"];
 		this.props["history"]["push"]({ pathname: "completado", informacion });
 	}
-	
+
 	render() {
 		const { showAlert, textoAlert, date_arl, date_salud_pension } = this.state;
 		return (
@@ -36,15 +36,14 @@ class Independiente3 extends React.Component {
 						<div style={{width : 50 + "%", margin : "auto"}}>
 							<label>Fecha vencimiento ARL*</label>
 							<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_arl}
-								max={new Date()}
-								onChange={(e) => this.setState({ date_arl: e.target.value })} />
+								onChange={(e) => this.setState({ date_arl: e.target.value })} min={new Date()} />
 							<div className="w3-center img_upl" style={{marginBottom : 20, position : "relative", left : 0, width : 110}}>
 								<FileUpload id="arl" texto="ARL" onChange={(arl) => { this.setState({ arl }); }} />
 							</div>
 
 							<label>Fecha de vencimiento Salud y Pensión*</label>
 								<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_salud_pension}
-									max={new Date()}
+									min={new Date()}
 									onChange={(e) => this.setState({ date_salud_pension: e.target.value })} />
 								<div className="w3-center img_upl" style={{marginBottom : 15, position : "relative", left : 0, width : 110}}>
 									<FileUpload id="salud_pension" texto="Salud Pensión" onChange={(salud_pension) => { this.setState({ salud_pension }); }} />
