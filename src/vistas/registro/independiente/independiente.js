@@ -28,7 +28,7 @@ class Independiente extends React.Component {
 	identification_type = [{ id: 1, denomination: 'Cédula de ciudadanía' }, { id: 2, denomination: 'Pasaporte' }, { id: 3, denomination: 'Cédula de extranjería' }];
 	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
 	experiencia = [{ id: 1, denomination: 'Menos de un año' }, { id: 2, denomination: 'Un año' }, { id: 3, denomination: 'De 2 a 3 años' }
-		, { id: 4, denomination: 'De 5 a 5 años' }, { id: 5, denomination: 'De 5 a 10 años' }, { id: 6, denomination: 'Más de 10 años' }];
+		, { id: 4, denomination: 'De 3 a 5 años' }, { id: 5, denomination: 'De 5 a 10 años' }, { id: 6, denomination: 'Más de 10 años' }];
 	continuar = () => {
 		let vacios = [];
 		if (this.state["photo"] === "") { vacios.push("  *Foto"); }

@@ -9,9 +9,6 @@ class Fixperto extends React.Component {
 	
 	componentDidMount() { 
 		this.getServices(); 
-
-		console.log(JSON.parse(localStorage.getItem("@USER")));
-		
 	}
 
 	getServices = () => {
