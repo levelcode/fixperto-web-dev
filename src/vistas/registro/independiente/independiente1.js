@@ -142,7 +142,7 @@ class Independiente1 extends React.Component {
 					<h1 className="titleRegister">Paso 2 de 5</h1>
 					<h3 className="w3-center">Perfil profesional</h3>
 					<div className="w3-margin-bottom">
-						<label>Elige las categorías a las que perteneces*</label>
+						<label>Selecciona las actividades en las que eres un experto*</label>
 						<Seleccionador items={categories} selectedItems={categoriesSelected}
 							add={(elemento) => { this.addCategory(elemento) }}
 							remove={(elemento) => { this.removeCategory(elemento) }} />

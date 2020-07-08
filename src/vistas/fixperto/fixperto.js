@@ -6,7 +6,15 @@ import FooterApp from "../../componentes/footerApp";
 import axios from "axios";
 class Fixperto extends React.Component {
 	constructor(props) { super(props); this.state = { services: [], showAlert: false, textoAlert: "" }; }
-	componentDidMount() { this.getServices(); }
+	
+	componentDidMount() { 
+		this.getServices(); 
+		var status = JSON.parse(localStorage.getItem("@USER"))['planStatus'];
+
+		console.log(status);
+		
+	}
+
 	getServices = () => {
 		let me = this;
 		return axios({
