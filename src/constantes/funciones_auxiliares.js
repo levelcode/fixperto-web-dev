@@ -44,4 +44,12 @@ const fechaAutorizada = () => {
 	return ano + "-" + mes + "-" + dia;
 }
 
-export { redondeo, convertDate, validateEmail, validateName, validatePhone, validateNumber, formatDate, convertDateTime, convertHourUpdate, formatHour, fechaAutorizada } 
+const fechaActual = () => {
+	var fecha = new Date(); 
+	let ano = fecha.getFullYear();
+	let mes = (parseInt(fecha.getMonth() + 1) < 10) ? "0" + parseInt(fecha.getMonth() + 1) : parseInt(fecha.getMonth() + 1)
+	let dia = (fecha.getDate() < 10) ? "0" + fecha.getDate() : fecha.getDate();
+	return ano + "-" + mes + "-" + dia;
+}
+
+export { redondeo, convertDate, validateEmail, validateName, validatePhone, validateNumber, formatDate, convertDateTime, convertHourUpdate, formatHour, fechaAutorizada, fechaActual } 

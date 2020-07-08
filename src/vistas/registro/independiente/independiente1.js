@@ -12,8 +12,8 @@ class Independiente1 extends React.Component {
 		this.state = {
 			showAlert: false, textoAlert: "",
 			categories: [], categoriesSelected: [], profile_description: "",
-			educational_level: 1, title: "", isModalVisibleCert: false, certifications: [], certification_type: [], type: 1, certification: "", cert_type: "", jobs: [], emergency: false,
-			isModalVisible: false, photo: "", name: ""
+			educational_level: 1, title: "", isModalVisibleCert: false, certifications: [], certification_type: [], type: 0, certification: "", cert_type: "", jobs: [], emergency: false,
+			isModalVisible: false, photo: "", name: "", clear : true, clearT : true
 		}
 	}
 	componentDidMount() { this.getServicesConcatCategories(); }
@@ -71,11 +71,12 @@ class Independiente1 extends React.Component {
 				me.setState(prevState => (
 					{
 						certifications: prevState["certifications"].concat({ certificationBold: e.target.result, certification: me.state["certification"], type: me.state["type"], cert_type: me.state["cert_type"] }),
-						isModalVisibleCert: false, certification: "", type: 1, cert_type: ""
+						isModalVisibleCert: false, certification: "", type: 0, cert_type: "",
+						clear : true
 					}));
 			}
 			reader.readAsDataURL(this.state["certification"]);
-			this.setState({ certification : "" })
+			
 		}
 	}
 	deleteCert(certification) {
@@ -92,7 +93,7 @@ class Independiente1 extends React.Component {
 				me.setState(prevState => (
 					{
 						jobs: prevState["jobs"].concat({ photoBold: e.target.result, name: me.state["name"], photo: me.state["photo"] }),
-						isModalVisible: false, photo: "", name: ""
+						isModalVisible: false, photo: "", name: "", clearT : true
 					}));
 			}
 			reader.readAsDataURL(this.state["photo"]);
@@ -132,7 +133,7 @@ class Independiente1 extends React.Component {
 	}
 	render() {
 		const { showAlert, textoAlert, categories, categoriesSelected, profile_description, educational_level, title, isModalVisibleCert, certifications, isModalVisible,
-			jobs, photo, name, type, certification, certification_type } = this.state;
+			jobs, photo, name, type, certification, certification_type, clear, clearT } = this.state;
 		return (
 			<React.Fragment>
 				<Header />
@@ -196,21 +197,26 @@ class Independiente1 extends React.Component {
 									<div className="w3-center">
 										<div className="w3-margin-bottom">
 											<label>Certificado*</label>
-											<FileUpload id="certification" onChange={(certification) => { this.setState({ certification }); }} />
+											<FileUpload id="certification" clear={clear} onChange={(certification) => { this.setState({ certification, clear : false }); }} />
 										</div>
 										<div className="w3-margin-bottom">
 											<label>Tipo de certificación*</label>
 											<select className="w3-select w3-border w3-round-large size200" name="certification_type"
 												value={type} onChange={(e) => {
-													this.setState({ type: e.target.value, cert_type: certification_type.find(cert => cert["id"].toString() === e.target.value)["denomination"] });
+													if(e.target.value !== 0){
+														this.setState({ type: e.target.value, cert_type: certification_type.find(cert => cert["id"].toString() === e.target.value)["denomination"] });
+													}
 												}}>
+												<option value={0}>Seleccione...</option>
 												{certification_type.map((type, key) => (
 													<option key={key} value={type.id} >{type.denomination}</option>
 												))}
 											</select>
 										</div>
-										<button onClick={() => { this.almacenarCert(); }}
-											className={(certification === "" || type === "") ? "w3-button w3-disabled w3-block w3-round-large btn" : "w3-button w3-block btn w3-round-large"}>Agregar</button>
+										<button onClick={() => { 
+											this.almacenarCert(); 
+										}}
+											className={(certification === "" || type === "" || type === 0) ? "w3-button w3-disabled w3-block w3-round-large btn" : "w3-button w3-block btn w3-round-large"}>Agregar</button>
 									</div>
 								</div>
 							</div>
@@ -246,7 +252,7 @@ class Independiente1 extends React.Component {
 									<div className="w3-center">
 										<div className="w3-margin-bottom">
 											<label>Imagen del trabajo*</label>
-											<FileUpload id="job" onChange={(photo) => { this.setState({ photo }); }} />
+											<FileUpload id="job" clear={clearT}  onChange={(photo) => { this.setState({ photo, clearT : false }); }} />
 										</div>
 										<div className="w3-margin-bottom">
 											<label>Nombre del trabajo*</label>

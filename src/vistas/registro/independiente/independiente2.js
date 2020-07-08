@@ -37,7 +37,7 @@ class Independiente2 extends React.Component {
 					<h3 className="w3-center" style={{margin : 0}}>Cobertura</h3>
 					<div className="w3-margin-bottom w3-center">
 						<label>Elige las ciudades donde ofreces tus servicios*</label>
-						<Cobertura selectedRegion={regionsSelected}
+						<Cobertura selectedRegion={regionsSelected} visible={true}
 							add={(elemento) => { this.addRegion(elemento); }}
 							remove={(elemento) => { this.removeRegion(elemento); }} />
 					</div>

@@ -3,6 +3,8 @@ import App from './App';
 import Beneficios from "./vistas/registro/beneficiosVista";
 import Tipo from "./vistas/registro/tipoVista";
 import Registro from "./vistas/registro/registroVista";
+import Terminos from "./vistas/perfil/perfilTerminos";
+import Politicas from "./vistas/perfil/perfilPolitica";
 import Independiente from "./vistas/registro/independiente/independiente";
 import Independiente1 from "./vistas/registro/independiente/independiente1";
 import Independiente2 from "./vistas/registro/independiente/independiente2";
@@ -23,5 +25,7 @@ const rutas = [
 	{ path: "/fixperto", text: 'App', component: App },
 	{ path: "/fixpertos", text: 'App', component: Fixperto },
 	{ path: "/codigosms", text: 'Codigo Sms', component: CodigoVista },
+	{ path: "/terminos", text: 'Terminos y condiciones', component: Terminos },
+	{ path: "/politicas", text: 'Politicas y Privacidad', component: Politicas },
 ];
 export default rutas;

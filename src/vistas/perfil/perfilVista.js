@@ -132,7 +132,7 @@ class Perfil extends React.Component {
 											<img src="../../assets/iconos/alert.png" className=" img_alert" alt="alert"></img>
 										</div>
 										<div className="w3-col s9">
-											<p>Completa todos los datos de tu perfil</p>
+											<p>Modifica los datos de tu perfil</p>
 										</div>
 									</div>
 

@@ -3,8 +3,9 @@ import Alerta from "../../../componentes/alertaVista";
 import Header from "../../../componentes/header";
 import Footer from "../../../componentes/footer";
 import FileUpload from "../../../componentes/fileUpload";
+import { fechaActual } from "../../../constantes/funciones_auxiliares";
 class Independiente3 extends React.Component {
-	constructor(props) { super(props); this.state = { showAlert: false, textoAlert: "", arl: "", date_arl: "", salud_pension: "", date_salud_pension: "" }; }
+	constructor(props) { super(props); this.state = { showAlert: false, textoAlert: "", arl: "", date_arl: "", salud_pension: "", date_salud_pension: "", clearA : true, clearS : true }; }
 	convertDateTime = date => {
 		var fecha = new Date(date);
 		return fecha.toISOString().split('T')[0] + ' ' + fecha.toTimeString().split(' ')[0];
@@ -23,7 +24,7 @@ class Independiente3 extends React.Component {
 	}
 
 	render() {
-		const { showAlert, textoAlert, date_arl, date_salud_pension } = this.state;
+		const { showAlert, textoAlert, date_arl, date_salud_pension, clearA, clearS } = this.state;
 		return (
 			<React.Fragment>
 				<Header />
@@ -36,17 +37,17 @@ class Independiente3 extends React.Component {
 						<div style={{width : 50 + "%", margin : "auto"}}>
 							<label>Fecha vencimiento ARL*</label>
 							<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_arl}
-								onChange={(e) => this.setState({ date_arl: e.target.value })} min={new Date()} />
+								onChange={(e) => this.setState({ date_arl: e.target.value })} min={fechaActual()} />
 							<div className="w3-center img_upl" style={{marginBottom : 20, position : "relative", left : 0, width : 110}}>
-								<FileUpload id="arl" texto="ARL" onChange={(arl) => { this.setState({ arl }); }} />
+								<FileUpload id="arl" texto="ARL" clear={clearA} onChange={(arl) => { this.setState({ arl, clearA : false }); }} />
 							</div>
 
 							<label>Fecha de vencimiento Salud y Pensión*</label>
 								<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_salud_pension}
-									min={new Date()}
+									min={fechaActual()}
 									onChange={(e) => this.setState({ date_salud_pension: e.target.value })} />
 								<div className="w3-center img_upl" style={{marginBottom : 15, position : "relative", left : 0, width : 110}}>
-									<FileUpload id="salud_pension" texto="Salud Pensión" onChange={(salud_pension) => { this.setState({ salud_pension }); }} />
+									<FileUpload id="salud_pension" clear={clearS} texto="Salud Pensión" onChange={(salud_pension) => { this.setState({ salud_pension, clearS : false }); }} />
 								</div>
 								<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
 								<div>

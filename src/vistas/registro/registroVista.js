@@ -5,6 +5,7 @@ import httpClient from "../../constantes/axios";
 import axios from "axios";
 import Header from "../../componentes/header";
 import Footer from "../../componentes/footer";
+import { Link } from "react-router-dom";
 import { validateEmail, validateName, validatePhone, fechaAutorizada } from "../../constantes/funciones_auxiliares";
 
 class Registro extends React.Component {
@@ -12,7 +13,7 @@ class Registro extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false
+			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, clear : true
 		}
 	}
 
@@ -116,7 +117,7 @@ class Registro extends React.Component {
 	}
 	render() {
 
-		const { textoAlert, showAlert, name, email, birth_date, gender, phone, password, repeat_password, term_condition } = this.state;
+		const { textoAlert, showAlert, name, email, birth_date, gender, phone, password, repeat_password, term_condition, clear } = this.state;
 
 		return (
 			<React.Fragment>
@@ -132,7 +133,7 @@ class Registro extends React.Component {
 						<p>Eres muy importante para nosotros, regálanos tus datos de contacto.</p>
 
 						<div className="w3-center img_upl">
-							<FileUpload onChange={(photo) => { this.setState({ photo }) }} />
+							<FileUpload id="id_foto_cliente" clear={clear} onChange={(photo) => { this.setState({ photo, clear : false }) }} />
 						</div>
 
 						<form className="w3-container">
@@ -178,13 +179,13 @@ class Registro extends React.Component {
 							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 15}}>
 								<input className="w3-check" type="checkbox" value={term_condition}
 								onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones.</a> </label>
+								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link  to="/terminos" target="_blank">Términos y conciones.</Link> </label>
 							</p>
 
 							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 15}}>
 								<input className="w3-check" type="checkbox" value={term_condition}
 								onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Bajo la política y privacidad <a href="#">autorizo el uso de mis datos personales.</a> </label>
+								<label className="labelCheck">Bajo la política y privacidad <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link>  </label>
 							</p>
 							
 

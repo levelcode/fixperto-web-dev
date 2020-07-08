@@ -9,7 +9,7 @@ class Cobertura extends React.Component {
 	mapRef = React.createRef();
 	constructor(props) {
 		super(props);
-		this.state = { showSelect: true, routes: [], center: [-74.081749, 4.6097102], zoom: 5, regions: [] };
+		this.state = { showSelect : (this.props['visible']) ? true : false, routes: [], center: [-74.081749, 4.6097102], zoom: 5, regions: [] };
 	}
 	componentDidMount() {
 		const { center, zoom } = this.state;

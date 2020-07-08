@@ -123,7 +123,7 @@ class MapBox extends React.Component {
 								<option key={key} value={route.id} >{route.title}</option>
 							))}
 						</select>
-						<p className="text_blue" style={{marginBottom : -10}} >Selecciona el area <img src="../../assets/iconos/click.png" style={{ width : 25, height : 25}} /> </p>
+						<p className="text_blue" style={{marginBottom : -10}} >Selecciona el área <img src="../../assets/iconos/click.png" style={{ width : 25, height : 25}} /> </p>
 					</div>
 
 					<div ref={this.mapRef} className="mapContainer w3-container" />

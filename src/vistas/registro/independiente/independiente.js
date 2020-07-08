@@ -3,6 +3,7 @@ import Alerta from "../../../componentes/alertaVista";
 import Header from "../../../componentes/header";
 import Footer from "../../../componentes/footer";
 import FileUpload from "../../../componentes/fileUpload";
+import { Link } from "react-router-dom";
 import { validateEmail, validateName, validateNumber, validatePhone, fechaAutorizada } from "../../../constantes/funciones_auxiliares";
 import httpClient from "../../../constantes/axios";
 import axios from "axios";
@@ -12,7 +13,7 @@ class Independiente extends React.Component {
 		this.state = {
 			showAlert: false, textoAlert: "", term_condition: false, politicas_privacidad: false, experiencia: 1,
 			type: "numeric", photo: "", name: "", email: "", identification_type: 1, number: "", birth_date: "",
-			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: ""
+			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: "", clear :  true, clearF : true
 		}
 	}
 	formatDate = date => {
@@ -143,7 +144,7 @@ class Independiente extends React.Component {
 	}
 	render() {
 		const { showAlert, textoAlert, name, email, identification_type, number, birth_date, gender, experiencia,
-			phone, password, repeat_password, term_condition, politicas_privacidad, coupon, coupon_number } = this.state;
+			phone, password, repeat_password, term_condition, politicas_privacidad, coupon, coupon_number, clear, clearF } = this.state;
 		return (
 			<React.Fragment>
 				<Header />
@@ -152,7 +153,7 @@ class Independiente extends React.Component {
 					<div className="formRegister">
 						<h1 className="titleRegister">Paso 1 de 5</h1>
 						<div className="w3-center img_upl">
-							<FileUpload id="photo" onChange={(photo) => { this.setState({ photo }) }} />
+							<FileUpload id="photo" clear={clear} onChange={(photo) => { this.setState({ photo, clear : false }) }} />
 						</div>
 						<div className="w3-container">
 							<label>Nombre y apellido*</label>
@@ -188,7 +189,7 @@ class Independiente extends React.Component {
 							</div>
 							<div className="w3-margin-bottom"><label>Fotocopia del documento de identificación*</label></div>
 							<div className="w3-center img_upl" style={{ width: 23 + "%" }}>
-								<FileUpload id="fotocopy" onChange={(fotocopy) => { this.setState({ fotocopy }) }} />
+								<FileUpload clear={clearF} id="fotocopy" onChange={(fotocopy) => { this.setState({ fotocopy, clearF : false }) }} />
 							</div>
 							<label>Experiencia*</label>
 							<div>
@@ -226,13 +227,13 @@ class Independiente extends React.Component {
 							<div className="w3-margin-bottom">
 								<input className="w3-check" type="checkbox" value={term_condition}
 									onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <a href="#">Términos y conciones.</a> </label>
+								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link  to="/terminos" target="_blank">Términos y conciones.</Link> </label>
 							</div>
 
 							<div className="w3-margin-bottom">
 								<input className="w3-check" type="checkbox" value={politicas_privacidad}
 									onChange={(e) => this.setState({ politicas_privacidad: e.target.value })} />
-								<label className="labelCheck">Bajo la política y privacidad  <a href="#">autorizo el uso de mis datos personales.</a> </label>
+								<label className="labelCheck">Bajo la política y privacidad  <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link> </label>
 							</div>
 
 							<div>
