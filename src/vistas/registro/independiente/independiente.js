@@ -13,7 +13,7 @@ class Independiente extends React.Component {
 		this.state = {
 			showAlert: false, textoAlert: "", term_condition: false, politicas_privacidad: false, experiencia: 1,
 			type: "numeric", photo: "", name: "", email: "", identification_type: 1, number: "", birth_date: "",
-			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: "", clear :  true, clearF : true
+			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: "", clear: true, clearF: true
 		}
 	}
 	formatDate = date => {
@@ -126,7 +126,7 @@ class Independiente extends React.Component {
 					.then(function (response) {
 						let responseJson = response["data"];
 						if (responseJson["success"]) {
-							localStorage.setItem("@USER", JSON.stringify({ insured: 1, plan: 0, userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, avatar: responseJson.user.avatar, name: me.state["name"], email: me.state["email"], token: "web", notification: true, notification_chat: true, codigo: responseJson.user.codigo, cant_fitcoints: responseJson.user.fitcoints, type: "independiente", planId: responseJson.user.planId, planUri: "regalo", planEnd: responseJson.user.planEnd, planPrice: false, planStatus: "active", code_number: responseJson.user.code_number }));
+							localStorage.setItem("@USER", JSON.stringify({ active: 0, insured: 1, plan: 0, userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, avatar: responseJson.user.avatar, name: me.state["name"], email: me.state["email"], token: "web", notification: true, notification_chat: true, codigo: responseJson.user.codigo, cant_fitcoints: responseJson.user.fitcoints, type: "independiente", planId: responseJson.user.planId, planUri: "regalo", planEnd: responseJson.user.planEnd, planPrice: false, planStatus: "active", code_number: responseJson.user.code_number }));
 							me.props["history"]["push"]("codigosms");
 						} else {
 							if (responseJson["existe"]) {
@@ -153,7 +153,7 @@ class Independiente extends React.Component {
 					<div className="formRegister">
 						<h1 className="titleRegister">Paso 1 de 5</h1>
 						<div className="w3-center img_upl">
-							<FileUpload id="photo" clear={clear} onChange={(photo) => { this.setState({ photo, clear : false }) }} />
+							<FileUpload id="photo" clear={clear} onChange={(photo) => { this.setState({ photo, clear: false }) }} />
 						</div>
 						<div className="w3-container">
 							<label>Nombre y apellido*</label>
@@ -189,7 +189,7 @@ class Independiente extends React.Component {
 							</div>
 							<div className="w3-margin-bottom"><label>Fotocopia del documento de identificación*</label></div>
 							<div className="w3-center img_upl" style={{ width: 23 + "%" }}>
-								<FileUpload clear={clearF} id="fotocopy" onChange={(fotocopy) => { this.setState({ fotocopy, clearF : false }) }} />
+								<FileUpload clear={clearF} id="fotocopy" onChange={(fotocopy) => { this.setState({ fotocopy, clearF: false }) }} />
 							</div>
 							<label>Experiencia*</label>
 							<div>
@@ -227,7 +227,7 @@ class Independiente extends React.Component {
 							<div className="w3-margin-bottom">
 								<input className="w3-check" type="checkbox" value={term_condition}
 									onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link  to="/terminos" target="_blank">Términos y conciones.</Link> </label>
+								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link to="/terminos" target="_blank">Términos y conciones.</Link> </label>
 							</div>
 
 							<div className="w3-margin-bottom">
