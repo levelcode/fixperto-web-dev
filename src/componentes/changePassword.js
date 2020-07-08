@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { validateEmail } from "../constantes/funciones_auxiliares";
 import Alerta from "./alertaVista";
+import httpClient from "../constantes/axios";
+import axios from "axios";
 const ChangePassword = (props) => {
 	const [showAlert, setShowAlert] = useState(false);
 	const [textoAlert, setTextoAlert] = useState("");
@@ -11,12 +13,75 @@ const ChangePassword = (props) => {
 		if (!props["change"]) {
 			if (email === "") { setTextoAlert("Por favor introduzca el correo"); setShowAlert(true); }
 			else if (!validateEmail(email)) { setTextoAlert("Correo inválido. Por favor verifíquelo"); setShowAlert(true); }
-			else { }
+			else {
+				return axios({
+					method: 'post',
+					url: httpClient.urlBase + '/seguridad/olvidoPassword',
+					data: { email: email }, headers: { Accept: 'application/json' }
+				})
+					.then(function (response) {
+						let responseJson = response["data"];
+						if (responseJson["success"]) {
+							if (responseJson.emailSend === true) {
+								setTextoAlert("Le fue enviado su nueva contraseña al correo especificado");
+								setShowAlert(true);
+								setEmail("");
+								props["close"]();
+							}
+							else {
+								setTextoAlert("Ha ocurrido un problema, inténtelo nuevamente");
+								setShowAlert(true);
+							}
+						}
+						else {
+							if (responseJson.noExiste) {
+								setTextoAlert("No existe registro con el correo especificado, por favor revíselo");
+								setShowAlert(true);
+							}
+							else {
+								setTextoAlert("Ha ocurrido un problema, inténtelo nuevamente");
+								setShowAlert(true);
+							}
+						}
+					})
+			}
 		} else {
 			if (pass === "") { setTextoAlert("Por favor introduzca la contraseña"); setShowAlert(true); }
 			else if (pass === "" || new_pass === "") { setTextoAlert("Por favor introduzca la confirmación de la contraseña"); setShowAlert(true); }
 			else if (pass !== new_pass) { setTextoAlert("Contraseñas distintas. Por favor verifiquélas"); setShowAlert(true); }
-			else { }
+			else {
+				return axios({
+					method: 'post',
+					url: httpClient.urlBase + '/seguridad/shangePassword',
+					data: { id: props["id"], pass: pass, new_pass: new_pass }, headers: { Accept: 'application/json' }
+				})
+					.then(function (response) {
+						let responseJson = response["data"];
+						if (responseJson["success"]) {
+							if (responseJson.emailSend === true) {
+								setTextoAlert("Contraseña cambiada");
+								setShowAlert(true);
+								setPass("");
+								setNew_pass("");
+								props["close"]();
+							}
+							else {
+								setTextoAlert("Ha ocurrido un problema, inténtelo nuevamente");
+								setShowAlert(true);
+							}
+						}
+						else {
+							if (responseJson.passIncorrecto) {
+								setTextoAlert("Contraseña actual incorrecta, por favor corríjala");
+								setShowAlert(true);
+							}
+							else {
+								setTextoAlert("Ha ocurrido un problema, inténtelo nuevamente");
+								setShowAlert(true);
+							}
+						}
+					})
+			}
 		}
 	}
 	return (

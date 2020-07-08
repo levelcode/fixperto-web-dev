@@ -54,7 +54,7 @@ class Login extends React.Component {
 		const { showChangePassword, email, password, showAlert, textoAlert } = this.state;
 		return (
 			<React.Fragment>
-				<ChangePassword show={showChangePassword} change close={() => this.setState({ showChangePassword: false })} />
+				<ChangePassword show={showChangePassword} close={() => this.setState({ showChangePassword: false })} />
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<form className="form-ancho">
 					<div className="w3-margin-bottom">
