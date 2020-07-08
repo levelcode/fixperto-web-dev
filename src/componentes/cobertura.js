@@ -109,7 +109,7 @@ class Cobertura extends React.Component {
 									<div className="w3-cell"><label>{selected["name"]}</label></div>
 									<div className="w3-cell" style={{ cursor: "pointer" }} onClick={() => { this.props["remove"](selected) }}>
 										<img src="../../assets/iconos/eliminar.png"
-											style={{ width: 15 + "px", height: 15 + "px" }}
+											style={{ width: 15 + "px", height: 15 + "px" , marginLeft : 5 }}
 											alt="Imagen" />
 									</div>
 								</li>

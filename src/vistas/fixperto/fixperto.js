@@ -92,9 +92,18 @@ class Fixperto extends React.Component {
 								</div>
 							</div>
 
-							<div className="w3-col s12 m7">
+							<div className="w3-col s12 m7 solicitudes">
 								<div className="w3-card card_info">
 									<div className="w3-row">
+										{
+											services.length  == 0 &&
+											<div className="copy w3-row progreso">
+												<div className="w3-col s12">
+													<p style={{textAlign : "center"}}>Estás a punto de ser un fixperto, hemos recibido tu información y estamos en proceso de validación. Tu activación en plataforma quedará en aproximadamente 24 horas. </p>
+												</div>
+											</div>
+										}
+
 										{services.length > 0 && services.map((item, key) => {
 											let myRef = React.createRef();
 											let ref = React.createRef();

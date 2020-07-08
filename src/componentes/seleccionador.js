@@ -37,15 +37,15 @@ class Seleccionador extends React.Component {
 											myRef.style.display = "block";
 											ref.removeChild(ref.childNodes[0]);
 											var x = document.createElement("div");
-											var textnode = document.createTextNode("-");
-											x.appendChild(textnode);
+											var textnode =  "<div><span class='mas_categor'> - <span></div>";
+											x.innerHTML = textnode
 											ref.appendChild(x);
 										} else {
 											myRef.style.display = "none";
 											var y = document.createElement("div");
 											ref.removeChild(ref.childNodes[0]);
-											var text = document.createTextNode("+");
-											y.appendChild(text);
+											var text = "<div><span class='mas_categor'> + <span></div>";
+											y.innerHTML = text;
 											ref.appendChild(y);
 										}
 									}}>
