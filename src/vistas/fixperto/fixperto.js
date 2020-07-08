@@ -9,9 +9,8 @@ class Fixperto extends React.Component {
 	
 	componentDidMount() { 
 		this.getServices(); 
-		var status = JSON.parse(localStorage.getItem("@USER"))['planStatus'];
 
-		console.log(status);
+		console.log(JSON.parse(localStorage.getItem("@USER")));
 		
 	}
 
@@ -47,6 +46,7 @@ class Fixperto extends React.Component {
 	render() {
 		const { showAlert, textoAlert, services } = this.state;
 		var type = (JSON.parse(localStorage.getItem("@USER"))["type"] === "empresa") ? "empresa" : "profesional";
+		var active = JSON.parse(localStorage.getItem("@USER"))['active'];
 		return (
 			<React.Fragment>
 				<HeaderExperto history={this.props["history"]} />
@@ -104,12 +104,22 @@ class Fixperto extends React.Component {
 								<div className="w3-card card_info">
 									<div className="w3-row">
 										{
-											services.length  == 0 &&
+											(active  === 0) ?
 											<div className="copy w3-row progreso">
 												<div className="w3-col s12">
 													<p style={{textAlign : "center"}}>Estás a punto de ser un fixperto, hemos recibido tu información y estamos en proceso de validación. Tu activación en plataforma quedará en aproximadamente 24 horas. </p>
 												</div>
 											</div>
+											: 
+												(active  === 1 && services.length == 0 ) ?
+													<div className="copy w3-row progreso">
+														<div className="w3-col s12">
+															<p style={{textAlign : "center"}}>Bienvenido ya eres parte de fixperto. </p>
+														</div>
+													</div>
+												: 
+
+												<div></div>
 										}
 
 										{services.length > 0 && services.map((item, key) => {
