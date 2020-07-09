@@ -73,7 +73,10 @@ class Fixperto extends React.Component {
 
 										<div className="w3-row copy">
 											<div className="w3-col s3">
-												<img src="../../assets/iconos/alert.png" className=" img_alert" alt="alert" style={{marginTop : 20}}></img>
+												<div>
+													<img src="../../assets/iconos/alert.png" className=" img_alert" alt="alert" style={{width : 35, marginTop : 5}}></img>
+												</div>
+												
 											</div>
 											<div className="w3-col s9">
 												<p>Para interactuar y disfrutar de todas las funciones de fixperto descarga la app en: 
