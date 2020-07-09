@@ -62,14 +62,32 @@ class Fixperto extends React.Component {
 
 							<div className="w3-col s12 m5">
 								<div className="w3-card card_perfil">
-									<div className="w3-cell w3-center w3-container">
-										<div className="w3-cell w3-section img_fixperto">
-											<img className="imagen-experto"
+									<div className="w3-row">
+										<div className="w3-row">
+											<img className="" style={{position : "relative", width : 40 + "%", left : 30 + "%"}}
 												src={"https://api.fixperto.com/uploads/registros/" + type + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]} alt="Imagen">
 											</img>
 										</div>
-										<h4 className="azul-oscuro"><b>¡Hola!</b></h4>
-										<h3 className="w3-margin-bottom azul-oscuro" style={{ textTransform: "capitalize", fontSize: 30 }}><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
+										<h4 className="azul-oscuro" style={{textAlign : "center", fontSize : 30}}><b>¡Hola!</b></h4>
+										<h3 className="w3-margin-bottom azul-oscuro" style={{ textTransform: "capitalize", fontSize: 30, textAlign : "center" }}><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
+
+										<div className="w3-row copy">
+											<div className="w3-col s3">
+												<img src="../../assets/iconos/alert.png" className=" img_alert" alt="alert" style={{marginTop : 20}}></img>
+											</div>
+											<div className="w3-col s9">
+												<p>Para interactuar y disfrutar de todas las funciones de fixperto descarga la app en: 
+													<a href="https://www.apple.com/co/ios/app-store/" target="_blank">
+														<img src="../../assets/iconos/apple.png" alt="alert" style={{width : 20, height :20,marginLeft : 5}}></img>
+													</a>
+													
+													<a href="https://play.google.com/store?hl=es_CO" target="_blank">
+														<img src="../../assets/iconos/google-play.png" alt="alert" style={{width : 20, height : 20, marginLeft : 5}}></img>
+													</a>
+													
+												</p>
+											</div>
+										</div>
 
 										<br></br>
 
