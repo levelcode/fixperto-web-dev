@@ -177,7 +177,7 @@ class Registro extends React.Component {
 									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
 								}}>
 									<img src="../../assets/iconos/show_hide_password.png"
-										style={{ width: 35 + "px", height: 25 + "px", position: "absolute", marginTop: 7, marginLeft: -45 }}
+										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 10, marginLeft: -45 }}
 										alt="Mostrar" />
 								</div>
 							</div>
@@ -193,7 +193,7 @@ class Registro extends React.Component {
 									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
 								}}>
 									<img src="../../assets/iconos/show_hide_password.png"
-										style={{ width: 35 + "px", height: 25 + "px", position: "absolute", marginTop: 7, marginLeft: -45 }}
+										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 10, marginLeft: -45 }}
 										alt="Mostrar" />
 								</div>
 							</div>
