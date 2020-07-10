@@ -7,12 +7,18 @@ const FooterApp = (props) => {
 					<img src="../../assets/fixperto.png" className="footerFixperto image" alt="Norway" />
 				</div>
 				<div className="w3-half w3-right w3-section w3-text-white apps">
-					<b>Descarga fixperto</b>
-					<div>
-						<img src="../../assets/google_play.png" className="footerFixperto" alt="Norway" />
-						<img src="../../assets/app_store.png" className="footerFixperto" alt="Norway" />
+					<div className="w3-row">
+						<div style={{ marginBottom: 10 + "px" }}>
+							<b>Descarga fixperto</b>
+						</div>
+						<div className="w3-cell">
+							<img src="../../assets/google-play.png" className="footerFixperto" alt="Norway" />
+						</div>
+						<div className="w3-cell w3-container">
+							<img src="../../assets/app-store.png" className="footerFixperto" alt="Norway" />
+						</div>
+						<p style={{ fontSize: 10 + "px" }}>2020 fixperto Todos los derechos reservados</p>
 					</div>
-					<p style={{ fontSize: 10 + "px" }}>2020 fixperto Todos los derechos reservados</p>
 				</div>
 			</div>
 		</React.Fragment >
