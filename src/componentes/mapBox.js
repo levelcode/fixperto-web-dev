@@ -13,11 +13,11 @@ class MapBox extends React.Component {
 	}
 	componentDidMount() {
 		const { center, zoom } = this.state;
-		map = new mapboxgl.Map({ 
-			container: this.mapRef.current, 
-			style : 'mapbox://styles/alainchacon/ckbv0v5xo10g81ipkfh8q6fcp',
-			zoom, 
-			center 
+		map = new mapboxgl.Map({
+			container: this.mapRef.current,
+			style: 'mapbox://styles/alainchacon/ckbv0v5xo10g81ipkfh8q6fcp',
+			zoom,
+			center
 		});
 		this.getRegiones();
 	}
@@ -62,14 +62,14 @@ class MapBox extends React.Component {
 					id: `${key}-fill`,
 					type: "fill",
 					source: key,
-					paint: {"fill-color": "#43AECC", "fill-opacity": 0}
+					paint: { "fill-color": "#43AECC", "fill-opacity": 0 }
 				});
 
 				map.addLayer({
 					id: `${key}-line`,
 					type: "line",
 					source: key,
-					paint: {"line-width": 2, "line-color": "#43AECC"}
+					paint: { "line-width": 2, "line-color": "#43AECC" }
 				});
 
 				map.on('click', `${key}-fill`, e => {
@@ -78,7 +78,7 @@ class MapBox extends React.Component {
 						map.setPaintProperty(`${key}-fill`, "fill-opacity", 0);
 					} else {
 						if (this.state.selectedRegion.key) {
-							map.setPaintProperty(`${this.state.selectedRegion.key}-fill`, "fill-opacity", 0);	
+							map.setPaintProperty(`${this.state.selectedRegion.key}-fill`, "fill-opacity", 0);
 						}
 
 						this.setState({ selectedRegion: e.features[0].properties });
@@ -123,7 +123,7 @@ class MapBox extends React.Component {
 								<option key={key} value={route.id} >{route.title}</option>
 							))}
 						</select>
-						<p className="text_blue" style={{marginBottom : -10}} >Selecciona el área <img src="../../assets/iconos/click.png" style={{ width : 25, height : 25}} /> </p>
+						<p className="text_blue" style={{ marginBottom: -10 }} >Selecciona el área <img src="../../assets/iconos/click.png" style={{ width: 25, height: 25 }} alt="Area" /> </p>
 					</div>
 
 					<div ref={this.mapRef} className="mapContainer w3-container" />
@@ -133,12 +133,12 @@ class MapBox extends React.Component {
 							Aceptar
 						</button>
 					</div>
-					
+
 
 				</div>
-				
-				
-				
+
+
+
 			</React.Fragment >
 		);
 	}

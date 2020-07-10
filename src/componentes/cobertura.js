@@ -9,7 +9,7 @@ class Cobertura extends React.Component {
 	mapRef = React.createRef();
 	constructor(props) {
 		super(props);
-		this.state = { showSelect : (this.props['visible']) ? true : false, routes: [], center: [-74.081749, 4.6097102], zoom: 5, regions: [] };
+		this.state = { showSelect: (this.props['visible']) ? true : false, routes: [], center: [-74.081749, 4.6097102], zoom: 5, regions: [] };
 	}
 	componentDidMount() {
 		const { center, zoom } = this.state;
@@ -109,7 +109,7 @@ class Cobertura extends React.Component {
 									<div className="w3-cell"><label>{selected["name"]}</label></div>
 									<div className="w3-cell" style={{ cursor: "pointer" }} onClick={() => { this.props["remove"](selected) }}>
 										<img src="../../assets/iconos/eliminar.png"
-											style={{ width: 15 + "px", height: 15 + "px" , marginLeft : 5 }}
+											style={{ width: 15 + "px", height: 15 + "px", marginLeft: 5 }}
 											alt="Imagen" />
 									</div>
 								</li>
@@ -120,7 +120,7 @@ class Cobertura extends React.Component {
 						{routes.map((route, ind) => {
 							let ref = React.createRef();
 							return (
-								<button key={ind} ref={refs => ref = refs} style={{ cursor: "pointer", width : 100 + "%" }}
+								<button key={ind} ref={refs => ref = refs} style={{ cursor: "pointer", width: 100 + "%" }}
 									className="testbtn w3-bar-item w3-border tablink" onClick={() => {
 										var i, x, tablinks;
 										x = document.getElementsByClassName("tablink");
@@ -134,6 +134,7 @@ class Cobertura extends React.Component {
 						})}
 					</div>
 					<div style={{ display: (showSelect) ? "block" : "none" }} ref={this.mapRef} className="mapContainer w3-container" />
+					<label>Toca las zonas donde quieres prestar tus servicios.</label>
 					<button style={{ display: (showSelect) ? "block" : "none" }} onClick={() => { this.confirmar(); }}
 						className="w3-button w3-block btn w3-round-large">Confirmar</button>
 				</div>
