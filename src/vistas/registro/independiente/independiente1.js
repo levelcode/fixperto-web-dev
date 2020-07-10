@@ -177,10 +177,9 @@ class Independiente1 extends React.Component {
 					</div>
 					<div className="w3-margin-bottom w3-border" style={{ padding: 10 + "px" }}>
 						<label>Adjunta tus certificaciones o cursos tomados</label>
-						<button className="w3-button w3-circle w3-blue w3-margin-left"
-							onClick={() => { this.setState({ isModalVisibleCert: true }); }}>
-							+
-							</button>
+						<span onClick={() => { this.setState({ isModalVisibleCert: true }); }}
+							style={{ fontSize: 20 + "px" }}
+							className="w3-button w3-circle w3-blue w3-margin-left">+</span>
 						<div className="w3-row-padding" style={{ marginTop: 15 }} >
 							{certifications.length > 0 && certifications.map((cert, key) => {
 								return <div className="w3-quarter" key={key}>
@@ -234,6 +233,7 @@ class Independiente1 extends React.Component {
 					<div className="w3-margin-bottom w3-border" style={{ padding: 10 + "px" }}>
 						<label>Adjunta las fotos de tus proyectos</label>
 						<button className="w3-button w3-circle w3-blue w3-margin-left"
+							style={{ fontSize: 20 + "px" }}
 							onClick={() => { this.setState({ isModalVisible: true }); }}>
 							+
 							</button>
