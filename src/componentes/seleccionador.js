@@ -96,7 +96,7 @@ class Seleccionador extends React.Component {
 										this.props["add"]({ label: "Mi categoría no existe", value: "0key" });
 									}
 								}} />
-							<label className="labelCheck">Mi categoría no existe</label>
+							<label className="labelCheck w3-margin-left">Mi categoría no existe</label>
 							{this.state["showSugerir"] && <div className="w3-margin-bottom w3-margin-top" >
 								<label >Agrega los servicios que no aparecen en la lista</label>
 								<textarea autoFocus={true} className="w3-input w3-border w3-round-large"
