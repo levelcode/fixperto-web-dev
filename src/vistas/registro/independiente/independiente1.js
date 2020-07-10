@@ -11,9 +11,9 @@ class Independiente1 extends React.Component {
 		super(props);
 		this.state = {
 			showAlert: false, textoAlert: "",
-			categories: [], categoriesSelected: [], profile_description: "",
+			categories: [], categoriesSelected: [], profile_description: "", category_proposal: "",
 			educational_level: 1, title: "", isModalVisibleCert: false, certifications: [], certification_type: [], type: 0, certification: "", cert_type: "", jobs: [], emergency: false,
-			isModalVisible: false, photo: "", name: "", clear : true, clearT : true
+			isModalVisible: false, photo: "", name: "", clear: true, clearT: true
 		}
 	}
 	componentDidMount() { this.getServicesConcatCategories(); }
@@ -36,11 +36,11 @@ class Independiente1 extends React.Component {
 			data: { selected: false }, headers: { Accept: 'application/json' }
 		})
 			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { 
-					me.setState({ 
-						categories, 
-						certification_type: responseJson["data"].certification_type 
-					}); 
+				if (responseJson["data"]["success"]) {
+					me.setState({
+						categories,
+						certification_type: responseJson["data"].certification_type
+					});
 				}
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
 			})
@@ -63,7 +63,7 @@ class Independiente1 extends React.Component {
 		{ id: 7, denomination: 'No aplica' }
 	];
 	almacenarCert = () => {
-		
+
 		if (this.state["type"] !== 0 && this.state["certification"] !== "") {
 			let me = this
 			var reader = new FileReader();
@@ -72,11 +72,11 @@ class Independiente1 extends React.Component {
 					{
 						certifications: prevState["certifications"].concat({ certificationBold: e.target.result, certification: me.state["certification"], type: me.state["type"], cert_type: me.state["cert_type"] }),
 						isModalVisibleCert: false, certification: "", type: 0, cert_type: "",
-						clear : true
+						clear: true
 					}));
 			}
 			reader.readAsDataURL(this.state["certification"]);
-			
+
 		}
 	}
 	deleteCert(certification) {
@@ -93,11 +93,11 @@ class Independiente1 extends React.Component {
 				me.setState(prevState => (
 					{
 						jobs: prevState["jobs"].concat({ photoBold: e.target.result, name: me.state["name"], photo: me.state["photo"] }),
-						isModalVisible: false, photo: "", name: "", clearT : true
+						isModalVisible: false, photo: "", name: "", clearT: true
 					}));
 			}
 			reader.readAsDataURL(this.state["photo"]);
-			this.setState({ photo  : ""})
+			this.setState({ photo: "" })
 		}
 	}
 	deleteJob(job) {
@@ -120,6 +120,9 @@ class Independiente1 extends React.Component {
 			}
 			let informacion = {};
 			informacion["categoriesSelected"] = categories;
+			if (this.state["category_proposal"] !== "") {
+				informacion["category_proposal"] = this.state["category_proposal"];
+			}
 			informacion["profile_description"] = this.state["profile_description"];
 			informacion["educational_level"] = this.state["educational_level"];
 			if (this.state["title"] !== "")
@@ -133,7 +136,7 @@ class Independiente1 extends React.Component {
 	}
 	render() {
 		const { showAlert, textoAlert, categories, categoriesSelected, profile_description, educational_level, title, isModalVisibleCert, certifications, isModalVisible,
-			jobs, photo, name, type, certification, certification_type, clear, clearT } = this.state;
+			jobs, photo, name, type, certification, certification_type, clear, clearT, category_proposal } = this.state;
 		return (
 			<React.Fragment>
 				<Header />
@@ -143,9 +146,15 @@ class Independiente1 extends React.Component {
 					<h3 className="w3-center">Perfil profesional</h3>
 					<div className="w3-margin-bottom">
 						<label>Selecciona las actividades en las que eres un experto*</label>
-						<Seleccionador items={categories} selectedItems={categoriesSelected}
+						<Seleccionador
+							items={categories}
+							selectedItems={categoriesSelected}
 							add={(elemento) => { this.addCategory(elemento) }}
-							remove={(elemento) => { this.removeCategory(elemento) }} />
+							remove={(elemento) => { this.removeCategory(elemento) }}
+							cp={(category_proposal) => { this.setState({ category_proposal }) }}
+							category_proposal={category_proposal}
+							deselectNoExiste={(categoriesSelected) => { this.setState({ categoriesSelected }) }}
+						/>
 					</div>
 					<div className="w3-margin-bottom">
 						<label> Describe tu perfil*</label>
@@ -172,17 +181,17 @@ class Independiente1 extends React.Component {
 							onClick={() => { this.setState({ isModalVisibleCert: true }); }}>
 							+
 							</button>
-						<div className="w3-row-padding" style={{marginTop : 15}} >
+						<div className="w3-row-padding" style={{ marginTop: 15 }} >
 							{certifications.length > 0 && certifications.map((cert, key) => {
 								return <div className="w3-quarter" key={key}>
 									<div className="w3-row">
 										<div className="w3-center" style={{ cursor: "pointer" }} onClick={() => { this.deleteCert(cert); }}>
-											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" style={{position : "absolute", marginTop : -10, marginLeft : -15}} />
+											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" style={{ position: "absolute", marginTop: -10, marginLeft: -15 }} />
 										</div>
-										
+
 										<img src={cert["certificationBold"]} className="imagen-experto img_new" alt="Foto"></img>
 										<p className="text_blue">{cert["cert_type"]}</p>
-										
+
 									</div>
 								</div>
 							})
@@ -197,13 +206,13 @@ class Independiente1 extends React.Component {
 									<div className="w3-center">
 										<div className="w3-margin-bottom">
 											<label>Certificado*</label>
-											<FileUpload id="certification" clear={clear} onChange={(certification) => { this.setState({ certification, clear : false }); }} />
+											<FileUpload id="certification" clear={clear} onChange={(certification) => { this.setState({ certification, clear: false }); }} />
 										</div>
 										<div className="w3-margin-bottom">
 											<label>Tipo de certificación*</label>
 											<select className="w3-select w3-border w3-round-large size200" name="certification_type"
 												value={type} onChange={(e) => {
-													if(e.target.value !== 0){
+													if (e.target.value !== 0) {
 														this.setState({ type: e.target.value, cert_type: certification_type.find(cert => cert["id"].toString() === e.target.value)["denomination"] });
 													}
 												}}>
@@ -213,8 +222,8 @@ class Independiente1 extends React.Component {
 												))}
 											</select>
 										</div>
-										<button onClick={() => { 
-											this.almacenarCert(); 
+										<button onClick={() => {
+											this.almacenarCert();
 										}}
 											className={(certification === "" || type === "" || type === 0) ? "w3-button w3-disabled w3-block w3-round-large btn" : "w3-button w3-block btn w3-round-large"}>Agregar</button>
 									</div>
@@ -228,16 +237,16 @@ class Independiente1 extends React.Component {
 							onClick={() => { this.setState({ isModalVisible: true }); }}>
 							+
 							</button>
-						<div className="w3-row-padding" style={{marginTop : 15}} >
+						<div className="w3-row-padding" style={{ marginTop: 15 }} >
 							{jobs.length > 0 && jobs.map((job, key) => {
 								return <div className="w3-quarter" key={key}>
 									<div className="w3-row">
 										<div className="w3-center" style={{ cursor: "pointer" }} onClick={() => { this.deleteJob(job); }}>
-											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" style={{position : "absolute", marginTop : -10, marginLeft : -15}}/>
+											<img src="../../../../assets/iconos/eliminar.png" className="imagen-icono" alt="Eliminar" style={{ position: "absolute", marginTop: -10, marginLeft: -15 }} />
 										</div>
 										<img src={job["photoBold"]} className="imagen-experto img_new" alt="Foto"></img>
 										<p className="text_blue">{job["name"]}</p>
-										
+
 									</div>
 								</div>
 							})
@@ -252,7 +261,7 @@ class Independiente1 extends React.Component {
 									<div className="w3-center">
 										<div className="w3-margin-bottom">
 											<label>Imagen del trabajo*</label>
-											<FileUpload id="job" clear={clearT}  onChange={(photo) => { this.setState({ photo, clearT : false }); }} />
+											<FileUpload id="job" clear={clearT} onChange={(photo) => { this.setState({ photo, clearT: false }); }} />
 										</div>
 										<div className="w3-margin-bottom">
 											<label>Nombre del trabajo*</label>
