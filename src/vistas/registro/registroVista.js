@@ -13,7 +13,7 @@ class Registro extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, clear : true
+			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, clear: true
 		}
 	}
 
@@ -52,7 +52,7 @@ class Registro extends React.Component {
 			else if (!validateName(this.state["name"])) {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
-			
+
 			else {
 				const createFormData = () => {
 					const data = new FormData();
@@ -84,11 +84,11 @@ class Registro extends React.Component {
 							default:
 								break;
 						}
-						
+
 					});
 					return data;
 				};
-				
+
 				let me = this;
 				axios({
 					method: 'post',
@@ -122,7 +122,7 @@ class Registro extends React.Component {
 		return (
 			<React.Fragment>
 
-				<Header/>
+				<Header />
 
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 
@@ -133,7 +133,7 @@ class Registro extends React.Component {
 						<p>Eres muy importante para nosotros, regálanos tus datos de contacto.</p>
 
 						<div className="w3-center img_upl">
-							<FileUpload id="id_foto_cliente" clear={clear} onChange={(photo) => { this.setState({ photo, clear : false }) }} />
+							<FileUpload id="id_foto_cliente" clear={clear} onChange={(photo) => { this.setState({ photo, clear: false }) }} />
 						</div>
 
 						<form className="w3-container">
@@ -167,27 +167,50 @@ class Registro extends React.Component {
 								onChange={(e) => this.setState({ phone: e.target.value })} />
 
 							<label>Contraseña*</label>
-							<input className="w3-input w3-border w3-round-large" type="password" value={password}
-								onChange={(e) => this.setState({ password: e.target.value })} />
+							<div className="w3-row">
+								<div className="w3-col" style={{ width: 99 + "%" }}>
+									<input id="myPass" className="w3-input w3-border w3-round-large" type="password" value={password}
+										onChange={(e) => this.setState({ password: e.target.value })} />
+								</div>
+								<div className="w3-rest" style={{ cursor: "pointer", width: 5 + "px" }} onClick={() => {
+									var x = document.getElementById("myPass");
+									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
+								}}>
+									<img src="../../assets/iconos/show_hide_password.png"
+										style={{ width: 35 + "px", height: 25 + "px", position: "absolute", marginTop: 7, marginLeft: -45 }}
+										alt="Mostrar" />
+								</div>
+							</div>
 
 							<label>Repetir contraseña*</label>
-							<input className="w3-input w3-border w3-round-large" type="password" value={repeat_password}
-								onChange={(e) => this.setState({ repeat_password: e.target.value })} />
+							<div className="w3-row">
+								<div className="w3-col" style={{ width: 99 + "%" }}>
+									<input id="myRep_Pass" className="w3-input w3-border w3-round-large" type="password" value={repeat_password}
+										onChange={(e) => this.setState({ repeat_password: e.target.value })} />
+								</div>
+								<div className="w3-rest" style={{ cursor: "pointer", width: 5 + "px" }} onClick={() => {
+									var x = document.getElementById("myRep_Pass");
+									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
+								}}>
+									<img src="../../assets/iconos/show_hide_password.png"
+										style={{ width: 35 + "px", height: 25 + "px", position: "absolute", marginTop: 7, marginLeft: -45 }}
+										alt="Mostrar" />
+								</div>
+							</div>
+							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 12, color: "gray", fontWeight: "bold", marginBottom: 10, fontFamily: 'Montserrat' }}>Nota: * (Campo obligatorio)</p>
 
-							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 12, color : "gray", fontWeight : "bold", marginBottom : 10, fontFamily : 'Montserrat'}}>Nota: * (Campo obligatorio)</p>
-
-							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 15}}>
+							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 15 }}>
 								<input className="w3-check" type="checkbox" value={term_condition}
-								onChange={(e) => this.setState({ term_condition: e.target.value })} />
-								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link  to="/terminos" target="_blank">Términos y conciones.</Link> </label>
+									onChange={(e) => this.setState({ term_condition: e.target.value })} />
+								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link to="/terminos" target="_blank">Términos y conciones.</Link> </label>
 							</p>
 
-							<p style={{ textAlign : "left", marginLeft : 0, fontSize : 15}}>
+							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 15 }}>
 								<input className="w3-check" type="checkbox" value={term_condition}
-								onChange={(e) => this.setState({ term_condition: e.target.value })} />
+									onChange={(e) => this.setState({ term_condition: e.target.value })} />
 								<label className="labelCheck">Bajo la política y privacidad <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link>  </label>
 							</p>
-							
+
 
 							<p><button className="w3-button btn"
 								onClick={(e) => {
@@ -199,7 +222,7 @@ class Registro extends React.Component {
 					</div>
 				</div>
 
-				<Footer/>
+				<Footer />
 			</React.Fragment >
 		);
 	}

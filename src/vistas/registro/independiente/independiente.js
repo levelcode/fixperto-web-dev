@@ -205,14 +205,37 @@ class Independiente extends React.Component {
 								<input className="w3-input w3-border w3-round-large" type="number" value={phone}
 									onChange={(e) => this.setState({ phone: e.target.value })} />
 							</div>
-
 							<label>Contraseña*</label>
-							<input className="w3-input w3-border w3-round-large w3-margin-bottom" type="password" value={password}
-								onChange={(e) => this.setState({ password: e.target.value })} />
+							<div className="w3-row w3-margin-bottom">
+								<div className="w3-col" style={{ width: 99 + "%" }}>
+									<input id="myPass" className="w3-input w3-border w3-round-large" type="password" value={password}
+										onChange={(e) => this.setState({ password: e.target.value })} />
+								</div>
+								<div className="w3-rest" style={{ cursor: "pointer", width: 5 + "px" }} onClick={() => {
+									var x = document.getElementById("myPass");
+									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
+								}}>
+									<img src="../../../assets/iconos/show_hide_password.png"
+										style={{ width: 35 + "px", height: 25 + "px", position: "absolute", marginTop: 7, marginLeft: -45 }}
+										alt="Mostrar" />
+								</div>
+							</div>
 
-							<label>Confirmar contraseña*</label>
-							<input className="w3-input w3-border w3-round-large w3-margin-bottom" type="password" value={repeat_password}
-								onChange={(e) => this.setState({ repeat_password: e.target.value })} />
+							<label>Repetir contraseña*</label>
+							<div className="w3-row w3-margin-bottom">
+								<div className="w3-col" style={{ width: 99 + "%" }}>
+									<input id="myRep_Pass" className="w3-input w3-border w3-round-large" type="password" value={repeat_password}
+										onChange={(e) => this.setState({ repeat_password: e.target.value })} />
+								</div>
+								<div className="w3-rest" style={{ cursor: "pointer", width: 5 + "px" }} onClick={() => {
+									var x = document.getElementById("myRep_Pass");
+									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
+								}}>
+									<img src="../../../assets/iconos/show_hide_password.png"
+										style={{ width: 35 + "px", height: 25 + "px", position: "absolute", marginTop: 7, marginLeft: -45 }}
+										alt="Mostrar" />
+								</div>
+							</div>
 
 							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 12, color: "gray", fontWeight: "bold", marginBottom: 10, fontFamily: 'Montserrat' }}>Nota: * (Campo obligatorio)</p>
 
