@@ -175,13 +175,13 @@ class Independiente1 extends React.Component {
 						<input className="w3-input w3-border w3-round-large" type="text" value={title}
 							onChange={(e) => this.setState({ title: e.target.value })} />
 					</div>
-					<div className="w3-margin-bottom w3-border" style={{ padding: 10 + "px" }}>
+					<div className="w3-margin-bottom w3-border" style={{ padding: 5 + "px" }}>
 						<label>Adjunta tus certificaciones o cursos tomados</label>
 						<span onClick={() => { this.setState({ isModalVisibleCert: true }); }}
-							className="w3-button w3-circle w3-blue w3-margin-left"
-							style={{ paddingRight: 20 + "px", paddingLeft: 20 + "px", fontSize: 40 + "px", paddingBottom: 0 + "px", paddingTop: 0 + "px" }}>
+							className="w3-circle w3-blue w3-margin-left"
+							style={{ cursor: "pointer", fontSize: 40 + "px", paddingLeft: 15 + "px", paddingRight: 15 + "px", verticalAlign: "middle" }}>
 							+
-						</span>
+					    </span>
 						<div className="w3-row-padding" style={{ marginTop: 15 }} >
 							{certifications.length > 0 && certifications.map((cert, key) => {
 								return <div className="w3-quarter" key={key}>
@@ -232,11 +232,11 @@ class Independiente1 extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div className="w3-margin-bottom w3-border" style={{ padding: 10 + "px" }}>
+					<div className="w3-margin-bottom w3-border" style={{ padding: 5 + "px" }}>
 						<label>Adjunta las fotos de tus proyectos</label>
 						<span onClick={() => { this.setState({ isModalVisible: true }); }}
-							className="w3-button w3-circle w3-blue w3-margin-left"
-							style={{ paddingRight: 20 + "px", paddingLeft: 20 + "px", fontSize: 40 + "px", paddingBottom: 0 + "px", paddingTop: 0 + "px" }}>
+							className="w3-circle w3-blue w3-margin-left"
+							style={{ cursor: "pointer", fontSize: 40 + "px", paddingLeft: 15 + "px", paddingRight: 15 + "px", verticalAlign: "middle" }}>
 							+
 						</span>
 						<div className="w3-row-padding" style={{ marginTop: 15 }} >
