@@ -5,8 +5,7 @@ class ServiciosCateg extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			textoAlert: "", showAlert: false, categories: [], user_name: "",
-			service_name: "", icon_name: ""
+			textoAlert: "", showAlert: false, categories: [], user_name: "", service_name: "", icon_name: ""
 		}
 	}
 	componentDidMount() {
@@ -17,9 +16,8 @@ class ServiciosCateg extends React.Component {
 				icon_name: this.props.history.location.item['icon']
 			});
 			this.getCategoriesByService();
-		}
+		} else { this.props.history.push({ pathname: '/fixperto/servicios' }); }
 	}
-
 	getCategoriesByService = () => {
 		var url = "";
 		if (this.props.history.location.item['emergency'] === 0) { url = "/services/getCategoriesByService"; }
