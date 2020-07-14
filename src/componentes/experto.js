@@ -25,13 +25,13 @@ const Experto = ({ experto, history }) => {
 							<div className="w3-col s12 m12">
 								<div className="w3-row certif">
 										<div className="">
-											<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{position : "relative", left: 13}} />
+											<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{position : "relative", left: 22}} />
 										</div>
 									<div className="">
-										<div className="w3-cell w3-container">
+										<div className="w3-cell w3-container" style={{position : "relative", left : 10}}>
 											<img src="../../../assets/iconos/star.png" className="imagen-icono" style={{width : 18, height : 18}} alt="Imagen" />
 										</div>
-										<p className="w3-cell " style={{position : "relative", width : 10,  fontSize : 9}}>	{(!experto.evaluation) ? experto.evaluation : 'Sin calificación'} </p>
+										<p className="w3-cell " style={{position : "relative", width : 10,  fontSize : 13}}>	{(experto.evaluation) ? experto.evaluation : 'Sin calificación'} </p>
 									</div>
 								</div>
 							</div>
