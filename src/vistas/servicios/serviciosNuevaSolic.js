@@ -37,14 +37,16 @@ class ServiciosNuevaSol extends React.Component {
 			axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/sendRequest',
 				data: datos, headers: { Accept: 'application/json' }
-			})
-				.then(function (response) {
-					let responseJson = response["data"];
-					if (responseJson["success"]) {
-						me.props["history"]["push"]("solicitudes/solicitud-progreso");
-					} else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, inténtelo nuevamente" }); }
-				})
-				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
+			}).then(function (response) {
+				let responseJson = response["data"];
+				if (responseJson["success"]) {
+					me.props["history"]["push"]("solicitudes/solicitud-progreso");
+				} else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, inténtelo nuevamente" }); }
+			}).catch(function (response) {
+				if (response.message === 'Timeout' || response.message === 'Network request failed') {
+					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+				} else { }
+			});
 		}
 		else { return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() }); }
 	}

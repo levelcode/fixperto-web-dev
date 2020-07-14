@@ -21,7 +21,8 @@ class Login extends React.Component {
 				return axios({
 					method: 'post',
 					url: httpClient.urlBase + '/seguridad/login',
-					data: { email: this.state["email"], password: this.state["password"] }, headers: { Accept: 'application/json' }
+					data: { email: this.state["email"], password: this.state["password"] },
+					headers: { Accept: 'application/json' }
 				})
 					.then(function (response) {
 						let responseJson = response["data"];
@@ -44,7 +45,9 @@ class Login extends React.Component {
 						}
 					})
 					.catch(function (response) {
-						me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+						if (response.message === 'Timeout' || response.message === 'Network request failed') {
+							me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+						}
 					});
 			}
 		}
@@ -90,5 +93,4 @@ class Login extends React.Component {
 		);
 	}
 }
-
 export default Login;
