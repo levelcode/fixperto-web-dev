@@ -180,7 +180,7 @@ class Fixperto extends React.Component {
 														<div className="w3-cell w3-container">
 															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{ marginTop: 10 }} />
 														</div>
-														<h5 className="w3-cell text_blue w3-padding">Creación de solicitud</h5>
+														<h4 className="w3-cell text_blue w3-padding">Creación de solicitud</h4>
 														<div className="w3-white w3-padding">
 															<div className="w3-cell w3-container">
 																<img src="../..//assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, position: "relative", left: -15 }} />
@@ -192,7 +192,7 @@ class Fixperto extends React.Component {
 														<div className="w3-cell w3-container">
 															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{ marginTop: 10 }} />
 														</div>
-														<h5 className="w3-cell text_blue w3-padding">Solicitud agendada</h5>
+														<h4 className="w3-cell text_blue w3-padding">Solicitud agendada</h4>
 														<div className="w3-white w3-padding">
 															<div className="w3-cell w3-container">
 																<img src="../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, position: "relative", left: -15 }} />
@@ -204,7 +204,7 @@ class Fixperto extends React.Component {
 														<div className="w3-cell w3-container">
 															<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{ marginTop: 10 }} />
 														</div>
-														<h5 className="w3-cell text_blue w3-padding">Solicitud completada</h5>
+														<h4 className="w3-cell text_blue w3-padding">Solicitud completada</h4>
 														<div className="w3-white w3-padding">
 															<div className="w3-cell w3-container">
 																<img src="../../../../assets/iconos/activo.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, position: "relative", left: -15 }} />

@@ -65,7 +65,7 @@ class DetalleCompletado extends React.Component {
 								request["emergency"] === 1 &&
 								<div className="w3-margin-bottom">
 									<div className="w3-cell w3-container">
-										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" />
+										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{marginTop : -13}} />
 									</div>
 									<p className="w3-cell text_blue">Servicio de emergencia</p>
 								</div>

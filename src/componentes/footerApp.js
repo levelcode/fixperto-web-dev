@@ -12,10 +12,15 @@ const FooterApp = (props) => {
 							<b>Descarga fixperto</b>
 						</div>
 						<div className="w3-cell">
-							<img src="../../assets/google-play.png" className="footerFixperto" alt="Norway" />
+							<a href="https://play.google.com/store/apps/details?id=com.shiftactive.fixperto&hl=es_CO" target="_blank">
+								<img src="./assets/google-play.png" className="footerFixperto" alt="Norway" />
+							</a>
+							
 						</div>
 						<div className="w3-cell w3-container">
-							<img src="../../assets/app-store.png" className="footerFixperto" alt="Norway" />
+							<a href="https://www.apple.com/co/ios/app-store/" target="_blank">
+								<img src="./assets/app-store.png" className="footerFixperto" alt="Norway" />
+							</a>
 						</div>
 						<p style={{ fontSize: 10 + "px" }}>2020 fixperto Todos los derechos reservados</p>
 					</div>

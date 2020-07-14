@@ -24,16 +24,14 @@ const Experto = ({ experto, history }) => {
 							</div>
 							<div className="w3-col s12 m12">
 								<div className="w3-row certif">
-									{experto.certification_sena === 1 &&
 										<div className="">
-											<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{marginLeft : 10}} />
+											<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{position : "relative", left: 13}} />
 										</div>
-									}
 									<div className="">
 										<div className="w3-cell w3-container">
 											<img src="../../../assets/iconos/star.png" className="imagen-icono" style={{width : 18, height : 18}} alt="Imagen" />
 										</div>
-										<p className="w3-cell " style={{width : 10, fontSize : 15}}>	{(experto.evaluation) ? experto.evaluation : 'Sin calificación'} </p>
+										<p className="w3-cell " style={{position : "relative", width : 10,  fontSize : 9}}>	{(!experto.evaluation) ? experto.evaluation : 'Sin calificación'} </p>
 									</div>
 								</div>
 							</div>
@@ -48,7 +46,7 @@ const Experto = ({ experto, history }) => {
 						{(experto.type === 0 && experto.salud_pension) &&
 							<div className="w3-cell">
 								<div className="w3-cell w3-container">
-									<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen"  style={{width : 20, height : 20}}/>
+									<img src="../../../assets/iconos/check.png" className="imagen-icono" alt="Imagen"  style={{width : 20, height : 20}}/>
 								</div>
 								<p className="w3-cell">Parafiscales</p>
 							</div>
@@ -56,7 +54,7 @@ const Experto = ({ experto, history }) => {
 						{(experto.type === 0 && experto.arl) &&
 							<div className="w3-cell">
 								<div className="w3-cell w3-container">
-									<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20}} />
+									<img src="../../../assets/iconos/check.png" className="imagen-icono" alt="Imagen" style={{width : 20, height : 20}} />
 								</div>
 								<p className="w3-cell">ARL</p>
 							</div>

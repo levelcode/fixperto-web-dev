@@ -24,7 +24,7 @@ const Solicitud = (props) => {
 			<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => setShowAlert(false)} />
 			<div className="w3-modal w3-text-black solicitudes" style={{ display: (props["show"]) ? "flex" : "none" }}>
 				<div className="w3-modal-content w3-animate-top w3-round-large modal_solicitud" >
-					<div className="w3-container w3-margin-top w3-margin-bottom detalle_solic">
+					<div className="w3-container  detalle_solic">
 						<span onClick={() => { setActualizar(true); props["close"](); }}
 							className="w3-button w3-display-topright w3-round-small w3-hover-red">&times;</span>
 						<br />
@@ -42,7 +42,7 @@ const Solicitud = (props) => {
 									request["emergency"] === 1 &&
 									<div className="w3-margin-bottom">
 										<div className="w3-cell w3-container">
-											<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" />
+											<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{marginTop : -13}} />
 										</div>
 										<p className="w3-cell text_blue">Servicio de emergencia</p>
 									</div>

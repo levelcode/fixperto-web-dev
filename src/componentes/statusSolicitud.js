@@ -39,7 +39,7 @@ const StatusSolicitud = (props) => {
 							<div className="w3-cell w3-container">
 								<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 							</div>
-							<h3 className="w3-cell text_blue">Solicitud completada</h3>
+							<h4 className="w3-cell text_blue">Solicitud completada</h4>
 						</div>
 						<div className="w3-margin-bottom">
 							<div className="w3-cell w3-container">
