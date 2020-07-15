@@ -65,9 +65,19 @@ class Login extends React.Component {
 							value={email} onChange={(e) => this.setState({ email: e.target.value })} />
 					</div>
 					<br />
-					<div className="w3-margin-bottom icons">
-						<input className="w3-input w3-border  icon-clave" name="password" type="password" placeholder="Contraseña" required
-							value={password} onChange={(e) => this.setState({ password: e.target.value })} />
+					<div className="w3-row">
+						<div className="w3-col" style={{ width: 99 + "%" }}>
+							<input id="myPassInit" className="w3-input w3-border icon-clave" name="password" type="password" placeholder="Contraseña" required
+								value={password} onChange={(e) => this.setState({ password: e.target.value })} />
+						</div>
+						<div className="w3-rest" style={{ cursor: "pointer", width: 1 + "px" }} onClick={() => {
+							var x = document.getElementById("myPassInit");
+							if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
+						}}>
+							<img src="../../../assets/iconos/show_hide_password.png"
+								style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 10, marginLeft: -45 }}
+								alt="Mostrar" />
+						</div>
 					</div>
 					<br />
 					<div className="w3-row cursor">
