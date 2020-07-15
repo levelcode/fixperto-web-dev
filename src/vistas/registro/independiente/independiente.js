@@ -40,15 +40,8 @@ class Independiente extends React.Component {
 		if (this.state["birth_date"] === "") { vacios.push("  *Fecha de nacimiento"); }
 		if (this.state["password"] === "") { vacios.push("  *Contraseña"); }
 		if ((this.state["coupon"] === true && this.state["coupon_number"] === "")) { vacios.push("  *Cupón"); }
-
-		if (this.state["term_condition"] === false) {
-			vacios.push("  *Términos y condiciones");
-		}
-
-		if (this.state["politicas_privacidad"] === false) {
-			vacios.push("  *Politicas y privacidad");
-		}
-
+		if (this.state["term_condition"] === false) { vacios.push("  *Términos y condiciones"); }
+		if (this.state["politicas_privacidad"] === false) { vacios.push("  *Politicas y privacidad"); }
 		if (!vacios.length) {
 			if (this.state["password"] !== this.state["repeat_password"]) {
 				return this.setState({ showAlert: true, textoAlert: "Contraseña distinta a su confirmación" });
@@ -122,21 +115,21 @@ class Independiente extends React.Component {
 					method: 'post',
 					url: httpClient.urlBase + '/fixpertoProfesional/addProfesional',
 					data: createFormData(), headers: { Accept: 'application/json' }
-				})
-					.then(function (response) {
-						let responseJson = response["data"];
-						if (responseJson["success"]) {
-							localStorage.setItem("@USER", JSON.stringify({ active: 0, insured: 1, plan: 0, userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, avatar: responseJson.user.avatar, name: me.state["name"], email: me.state["email"], token: "web", notification: true, notification_chat: true, codigo: responseJson.user.codigo, cant_fitcoints: responseJson.user.fitcoints, type: "independiente", planId: responseJson.user.planId, planUri: "regalo", planEnd: responseJson.user.planEnd, planPrice: false, planStatus: "active", code_number: responseJson.user.code_number }));
-							me.props["history"]["push"]("codigosms");
-						} else {
-							if (responseJson["existe"]) {
-								me.setState({ showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
-							}
+				}).then(function (response) {
+					let responseJson = response["data"];
+					if (responseJson["success"]) {
+						localStorage.setItem("@USER", JSON.stringify({ active: 0, insured: 1, plan: 0, userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, avatar: responseJson.user.avatar, name: me.state["name"], email: me.state["email"], token: "web", notification: true, notification_chat: true, codigo: responseJson.user.codigo, cant_fitcoints: responseJson.user.fitcoints, type: "independiente", planId: responseJson.user.planId, planUri: "regalo", planEnd: responseJson.user.planEnd, planPrice: false, planStatus: "active", code_number: responseJson.user.code_number }));
+						me.props["history"]["push"]("codigosms");
+					} else {
+						if (responseJson["existe"]) {
+							me.setState({ showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
 						}
-					})
-					.catch(function (response) {
-						me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
-					});
+					}
+				}).catch(function (response) {
+					if (response.message === 'Timeout' || response.message === 'Network request failed') {
+						me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+					}
+				});
 			}
 		} else {
 			return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() });
@@ -220,7 +213,6 @@ class Independiente extends React.Component {
 										alt="Mostrar" />
 								</div>
 							</div>
-
 							<label>Repetir contraseña*</label>
 							<div className="w3-row w3-margin-bottom">
 								<div className="w3-col" style={{ width: 99 + "%" }}>
@@ -236,9 +228,7 @@ class Independiente extends React.Component {
 										alt="Mostrar" />
 								</div>
 							</div>
-
 							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 12, color: "gray", fontWeight: "bold", marginBottom: 10, fontFamily: 'Montserrat' }}>Nota: * (Campo obligatorio)</p>
-
 							<input className="w3-check w3-margin-bottom" type="checkbox" value={coupon}
 								onChange={(e) => { this.setState({ coupon: (e.target.value === "false") ? true : false }) }} />
 							<label className="labelCheck">¿Tienes un cupón de referido?</label>
@@ -249,19 +239,17 @@ class Independiente extends React.Component {
 							</div>}
 							<div className="w3-margin-bottom">
 								<input className="w3-check" type="checkbox" value={term_condition}
-									onChange={(e) => this.setState({ term_condition: e.target.value })} />
+									onChange={(e) => this.setState({ term_condition: !term_condition })} />
 								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link to="/terminos" target="_blank">Términos y conciones.</Link> </label>
 							</div>
-
 							<div className="w3-margin-bottom">
 								<input className="w3-check" type="checkbox" value={politicas_privacidad}
-									onChange={(e) => this.setState({ politicas_privacidad: e.target.value })} />
-								<label className="labelCheck">Bajo la política y privacidad  <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link> </label>
+									onChange={(e) => this.setState({ politicas_privacidad: !politicas_privacidad })} />
+								<label className="labelCheck">Bajo la política y privacidad <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link> </label>
 							</div>
-
 							<div>
 								<button className="w3-button btn w3-block"
-									onClick={(e) => { e.preventDefault(); this.continuar(); }}>Continuar</button>
+									onClick={() => { this.continuar(); }}>Continuar</button>
 							</div>
 						</div>
 					</div>

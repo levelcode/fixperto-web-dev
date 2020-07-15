@@ -7,28 +7,22 @@ import Header from "../../componentes/header";
 import Footer from "../../componentes/footer";
 import { Link } from "react-router-dom";
 import { validateEmail, validateName, validatePhone, fechaAutorizada } from "../../constantes/funciones_auxiliares";
-
 class Registro extends React.Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
-			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, clear: true
+			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, politicas_privacidad: false, clear: true
 		}
 	}
-
-
 	formatDate = date => {
 		let today = new Date(date);
 		let fecha = today.getDate() + "/" + parseInt(today.getMonth() + 1) + "/" + today.getFullYear();
 		return fecha;
 	}
-
 	convertDateTime = date => {
 		var fecha = new Date(date);
 		return fecha.toISOString().split('T')[0] + ' ' + fecha.toTimeString().split(' ')[0];
 	}
-
 	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
 	continuar = () => {
 		let vacios = [];
@@ -39,6 +33,7 @@ class Registro extends React.Component {
 		if (this.state["phone"] === "") { vacios.push("  *Teléfono"); }
 		if (this.state["password"] === "") { vacios.push("  *Contraseña"); }
 		if (this.state["term_condition"] === false) { vacios.push("  *Términos y condiciones"); }
+		if (this.state["politicas_privacidad"] === false) { vacios.push("  *Política y privacidad"); }
 		if (!vacios.length) {
 			if (this.state["password"] !== this.state["repeat_password"]) {
 				return this.setState({ showAlert: true, textoAlert: "Contraseña distinta a su confirmación" });
@@ -52,7 +47,6 @@ class Registro extends React.Component {
 			else if (!validateName(this.state["name"])) {
 				return this.setState({ showAlert: true, textoAlert: "Nombre y apellido, por favor verifíquelo" });
 			}
-
 			else {
 				const createFormData = () => {
 					const data = new FormData();
@@ -84,73 +78,58 @@ class Registro extends React.Component {
 							default:
 								break;
 						}
-
 					});
 					return data;
 				};
-
 				let me = this;
 				axios({
 					method: 'post',
 					url: httpClient.urlBase + '/seguridad/addCliente',
 					data: createFormData(), headers: { Accept: 'application/json' }
-				})
-					.then(function (response) {
-						let responseJson = response["data"];
-						if (responseJson["success"]) {
-							localStorage.setItem("@USER", JSON.stringify({ userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, type: "cliente", avatar: responseJson.user.avatar, notification: true, notification_chat: true, name: me.state["name"], email: me.state["email"], token: me.state["token"], code_number: responseJson.user.code_number }));
-							me.props["history"]["push"]("codigosms");
-						} else {
-							if (responseJson["existe"]) {
-								me.setState({ showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
-							}
+				}).then(function (response) {
+					let responseJson = response["data"];
+					if (responseJson["success"]) {
+						localStorage.setItem("@USER", JSON.stringify({ userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, type: "cliente", avatar: responseJson.user.avatar, notification: true, notification_chat: true, name: me.state["name"], email: me.state["email"], token: me.state["token"], code_number: responseJson.user.code_number }));
+						me.props["history"]["push"]("codigosms");
+					} else {
+						if (responseJson["existe"]) {
+							me.setState({ showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
 						}
-					})
-					.catch(function (response) {
-						me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
-					});
-
+					}
+				}).catch(function (response) {
+					if (response.message === 'Timeout' || response.message === 'Network request failed') {
+						me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+					}
+				});
 			}
 		} else {
 			return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() });
 		}
 	}
 	render() {
-
-		const { textoAlert, showAlert, name, email, birth_date, gender, phone, password, repeat_password, term_condition, clear } = this.state;
-
+		const { textoAlert, showAlert, name, email, birth_date, gender, phone, password, repeat_password, term_condition, politicas_privacidad, clear } = this.state;
 		return (
 			<React.Fragment>
-
 				<Header />
-
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-
 				<div className="container_web">
-
 					<div className="formRegister">
 						<h1 className="titleRegister">Ingresa tus datos</h1>
 						<p>Eres muy importante para nosotros, regálanos tus datos de contacto.</p>
-
 						<div className="w3-center img_upl">
 							<FileUpload id="id_foto_cliente" clear={clear} onChange={(photo) => { this.setState({ photo, clear: false }) }} />
 						</div>
-
 						<form className="w3-container">
-
 							<label>Nombre y apellido*</label>
 							<input className="w3-input w3-border w3-round-large" type="text" value={name}
 								onChange={(e) => this.setState({ name: e.target.value })} />
-
 							<label>Correo*</label>
 							<input className="w3-input w3-border w3-round-large" type="text" value={email}
 								onChange={(e) => this.setState({ email: e.target.value })} />
-
 							<label>Fecha de nacimiento*</label>
 							<input className="w3-input w3-border w3-round-large size200" type="date" value={birth_date}
 								max={fechaAutorizada()}
 								onChange={(e) => this.setState({ birth_date: e.target.value })} />
-
 							<label>Género*</label>
 							<div>
 								<select className="w3-select w3-border w3-round-large w3-margin-bottom size200" name="gender"
@@ -160,12 +139,9 @@ class Registro extends React.Component {
 									))}
 								</select>
 							</div>
-
-
 							<label>Teléfono*</label>
 							<input className="w3-input w3-border w3-round-large" type="number" value={phone}
 								onChange={(e) => this.setState({ phone: e.target.value })} />
-
 							<label>Contraseña*</label>
 							<div className="w3-row">
 								<div className="w3-col" style={{ width: 99 + "%" }}>
@@ -181,7 +157,6 @@ class Registro extends React.Component {
 										alt="Mostrar" />
 								</div>
 							</div>
-
 							<label>Repetir contraseña*</label>
 							<div className="w3-row">
 								<div className="w3-col" style={{ width: 99 + "%" }}>
@@ -198,34 +173,27 @@ class Registro extends React.Component {
 								</div>
 							</div>
 							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 12, color: "gray", fontWeight: "bold", marginBottom: 10, fontFamily: 'Montserrat' }}>Nota: * (Campo obligatorio)</p>
-
 							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 15 }}>
 								<input className="w3-check" type="checkbox" value={term_condition}
-									onChange={(e) => this.setState({ term_condition: e.target.value })} />
+									onChange={(e) => this.setState({ term_condition: !term_condition })} />
 								<label className="labelCheck">Haciendo click en esta casilla estoy aceptando <Link to="/terminos" target="_blank">Términos y conciones.</Link> </label>
 							</p>
-
 							<p style={{ textAlign: "left", marginLeft: 0, fontSize: 15 }}>
-								<input className="w3-check" type="checkbox" value={term_condition}
-									onChange={(e) => this.setState({ term_condition: e.target.value })} />
+								<input className="w3-check" type="checkbox" value={politicas_privacidad}
+									onChange={(e) => this.setState({ politicas_privacidad: !politicas_privacidad })} />
 								<label className="labelCheck">Bajo la política y privacidad <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link>  </label>
 							</p>
-
-
 							<p><button className="w3-button btn"
 								onClick={(e) => {
 									e.preventDefault();
 									this.continuar();
 								}}>Continuar</button></p>
-
 						</form>
 					</div>
 				</div>
-
 				<Footer />
 			</React.Fragment >
 		);
 	}
 }
-
 export default Registro;
