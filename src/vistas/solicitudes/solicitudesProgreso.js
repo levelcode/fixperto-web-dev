@@ -14,17 +14,15 @@ class SolicitudesProgreso extends React.Component {
 		axios({
 			method: 'post', url: httpClient.urlBase + '/cliente/getRequestsProgress',
 			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json' }
+		}).then(function (responseJson) {
+			responseJson = responseJson['data'];
+			if (responseJson.success) { me.setState({ requests: responseJson.requests }); }
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
+		}).catch((error) => {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			} else { me.getRequests(); }
 		})
-			.then(function (responseJson) {
-				responseJson = responseJson['data'];
-				if (responseJson.success) { me.setState({ requests: responseJson.requests }); }
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
-			})
-			.catch((error) => {
-				if (error.message === 'Timeout' || error.message === 'Network request failed') {
-					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-				}
-			})
 	}
 	back = (status = "") => {
 		if (status === "") { return; }
@@ -56,7 +54,6 @@ class SolicitudesProgreso extends React.Component {
 							{
 								requests.length > 0 &&
 								requests.map((item, key) => (
-
 									<div className="w3-card cont-card" key={key}>
 										<div className="cont_srv w3-row" >
 											<div className="w3-col s2 m3 ">
@@ -91,12 +88,8 @@ class SolicitudesProgreso extends React.Component {
 												</p>
 											</div>
 										</div>
-
 										<hr></hr>
 									</div>
-
-
-
 								))
 							}
 						</div>

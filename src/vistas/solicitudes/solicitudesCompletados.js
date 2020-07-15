@@ -15,17 +15,15 @@ class SolicitudesCompletado extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/cliente/getRequestsCompleted',
 			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json' }
+		}).then(function (responseJson) {
+			responseJson = responseJson['data'];
+			if (responseJson.success) { me.setState({ requests: responseJson.requests }); }
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
+		}).catch((error) => {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			} else { me.getRequests(); }
 		})
-			.then(function (responseJson) {
-				responseJson = responseJson['data'];
-				if (responseJson.success) { me.setState({ requests: responseJson.requests }); }
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
-			})
-			.catch((error) => {
-				if (error.message === 'Timeout' || error.message === 'Network request failed') {
-					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-				}
-			})
 	}
 	back = (status = "") => {
 		if (status === "") { return; }
@@ -79,10 +77,8 @@ class SolicitudesCompletado extends React.Component {
 												</p>
 											</div>
 										</div>
-
 										<hr></hr>
 									</div>
-
 								))
 							}
 						</div>
