@@ -46,7 +46,7 @@ class ServiciosNuevaSol extends React.Component {
 			}).catch(function (response) {
 				if (response.message === 'Timeout' || response.message === 'Network request failed') {
 					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-				} else { }
+				} else { /*me.guardar();*/ }
 			});
 		}
 		else { return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() }); }
