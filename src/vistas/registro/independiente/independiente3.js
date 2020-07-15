@@ -22,7 +22,6 @@ class Independiente3 extends React.Component {
 			informacion["salud_pension"] = this.state["salud_pension"];
 		this.props["history"]["push"]({ pathname: "completado", informacion });
 	}
-
 	render() {
 		const { showAlert, textoAlert, date_arl, date_salud_pension, clearA, clearS } = this.state;
 		return (
@@ -31,8 +30,7 @@ class Independiente3 extends React.Component {
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<div className="container_web">
 					<h1 className="titleRegister">Paso 4 de 5</h1>
-					<h3 className="w3-center">Seguridad Social</h3>
-					
+					<h3 className="w3-center">Seguridad Social</h3>					
 					<div className="w3-row">
 						<div style={{width : 50 + "%", margin : "auto"}}>
 							<label>Fecha vencimiento ARL*</label>
@@ -41,7 +39,6 @@ class Independiente3 extends React.Component {
 							<div className="w3-center img_upl" style={{marginBottom : 20, position : "relative", left : 0, width : 110}}>
 								<FileUpload id="arl" texto="ARL" clear={clearA} onChange={(arl) => { this.setState({ arl, clearA : false }); }} />
 							</div>
-
 							<label>Fecha de vencimiento Salud y Pensión*</label>
 								<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_salud_pension}
 									min={fechaActual()}
@@ -54,9 +51,7 @@ class Independiente3 extends React.Component {
 									<button className="w3-button btn w3-block" onClick={() => { this.continuar(); }}>Continuar</button>
 								</div>
 						</div>
-					</div>
-					
-					
+					</div>					
 				</div>
 				<Footer />
 			</React.Fragment >
