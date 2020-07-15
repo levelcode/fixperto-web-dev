@@ -46,7 +46,7 @@ class ServiciosNuevaSol extends React.Component {
 			}).catch(function (response) {
 				if (response.message === 'Timeout' || response.message === 'Network request failed') {
 					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-				} else { /*me.guardar();*/ }
+				} else { me.props["history"]["push"]("solicitudes/solicitud-progreso"); }
 			});
 		}
 		else { return this.setState({ showAlert: true, textoAlert: "Los siguientes campos son obligatorios: " + vacios.toString() }); }
@@ -83,15 +83,14 @@ class ServiciosNuevaSol extends React.Component {
 							<h1 className="titleRegister">Nueva solicitud</h1>
 							<div className="w3-container">
 								<div className="w3-row item">
-									<div className="w3-col s1">
+									<div className="w3-cell">
 										<img src={this.props.history.location["service"]['icon']} className="" alt="Imagen"></img>
 									</div>
-									<div className="w3-col s11 text">
+									<div className="w3-cell text">
 										<p style={{ margin: "auto", position: "relative", left: -30 }}>
 											<b>{this.props.history.location["service"]["denomination"]}</b> /
                                         	{this.props.history.location["category"]["denomination"]}
 										</p>
-
 									</div>
 								</div>
 								{(this.props.history.location["service"]['emergency']) ? <div className="">

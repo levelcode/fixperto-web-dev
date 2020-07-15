@@ -2,6 +2,29 @@ import React from 'react';
 import Alerta from "../../componentes/alertaVista";
 import axios from "axios";
 import httpClient from "../../constantes/axios";
+class Categorias extends React.Component {
+	constructor(props) { super(props); this.state = { isShown: true }; }
+	render() {
+		return (
+			<div className="">
+				<div className="w3-border w3-white"
+					onClick={() => { this.setState({ isShown: !this.state["isShown"] }); }}
+					style={{ padding: 5, cursor: "pointer" }}>
+					<b>{this.props["item"]["grouped"]}</b>
+				</div>
+				<ul style={{ cursor: "pointer", display: (this.state["isShown"]) ? "block" : "none" }} className="w3-ul w3-border" >
+					{this.props["item"]["elementos"].map((elem, k) => {
+						return (<li
+							key={k}
+							onClick={() => { this.props["categorySelect"](elem, this.props["item"]); }} >
+							<div className=""><label>{elem["label"]}</label></div>
+						</li>)
+					})}
+				</ul>
+			</div>
+		)
+	}
+}
 class ServiciosVista extends React.Component {
 	constructor(props) {
 		super(props);
@@ -16,11 +39,13 @@ class ServiciosVista extends React.Component {
 		var me = this;
 		axios({
 			method: 'post',
-			url: httpClient.urlBase + '/services/getServices',
+			url: httpClient.urlBase + '/services/getServicess',
 			headers: { 'Content-Type': 'text/plain' }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
-			me.setState({ services: responseJson.services, copy: responseJson.services });
+			let categories = responseJson.categories;
+			categories.unshift(responseJson.categoriesEmergency);
+			me.setState({ services: categories, copy: categories });
 		}).catch((error) => {
 			if (error.message === 'Timeout' || error.message === 'Network request failed') {
 				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
@@ -28,10 +53,18 @@ class ServiciosVista extends React.Component {
 		})
 	}
 	updateSearch = search => {
-		let copy = this.state["services"].filter(service => (service["denomination"].toLowerCase()).indexOf(search.toLowerCase()) !== -1);
+		let copy = []
+		this.state["services"].map((service, ind) => {
+			let cop = [];
+			cop = service["elementos"].filter(elemento => (elemento["label"].toLowerCase()).indexOf(search.toLowerCase()) !== -1);
+			if (cop.length > 0) { service["elementos"] = cop; copy.push(service); };
+		});
 		this.setState({ search, copy });
 	};
-	continuarCateg(item) { this.props.history.push({ pathname: '/fixperto/servicios-categ', item }); }
+	continuarCateg(item) {
+		item["denomination"] = item["grouped"];
+		this.props.history.push({ pathname: '/fixperto/servicios-categ', item });
+	}
 	addCategory = () => {
 		var me = this;
 		axios({
@@ -52,8 +85,13 @@ class ServiciosVista extends React.Component {
 			}
 		})
 	}
+	categorySelect = (category, service) => {
+		service["denomination"] = service["grouped"];
+		this.setState({ search: "" });
+		this.props.history.push({ pathname: '/fixperto/servicios-nueva', category, service });
+	}
 	render() {
-		const { textoAlert, showAlert, search, new_categori } = this.state;
+		const { search, copy, new_categori } = this.state;
 		return (
 			<React.Fragment>
 				<div className="servicios">
@@ -69,33 +107,33 @@ class ServiciosVista extends React.Component {
 						</div>
 					</div>
 					<div className="list_servicios">
-						{
-							this.state["copy"].length === 0 && this.state["search"] !== "" &&
-							<div className="add_cat">
-								<p>Escribe aquí la categoría que estás buscando : </p>
-								<input className="w3-round-large" type="text" value={new_categori}
-									onChange={(e) => this.setState({ new_categori: e.target.value })} />
-								<p className="p_btn">
-									<button className="w3-button btn"
-										onClick={(e) => {
-											e.preventDefault();
-											this.addCategory();
-										}}>Enviar
-									</button>
-								</p>
+						{(search !== "") ?
+							(copy.length === 0) ?
+								<div className="add_cat">
+									<p>Escribe aquí la categoría que estás buscando : </p>
+									<input className="w3-round-large" type="text" value={new_categori}
+										onChange={(e) => this.setState({ new_categori: e.target.value })} />
+									<p className="p_btn">
+										<button className="w3-button btn" onClick={() => { this.addCategory(); }}>Enviar</button>
+									</p>
+								</div>
+								: <div className="w3-section">
+									{copy.map((item, i) => {
+										return <Categorias key={i} item={item} categorySelect={(category, service) => { this.categorySelect(category, service) }} user={this.state["user"]} />
+									})}
+								</div>
+							: <div className="w3-row">
+								{this.state.services.map((item, key) => (
+									<div className="w3-col s6 m3 l2" key={key}
+										onClick={() => { this.continuarCateg(item); }}>
+										<div className="w3-card card_serv box-servicio">
+											<img src={item.icon} className="img_serv" alt=""></img>
+											<p>{item.grouped}</p>
+										</div>
+									</div>
+								))}
 							</div>
 						}
-						<div className="w3-row">
-							{this.state.services.map((item, key) => (
-								<div className="w3-col s6 m3 l2" key={key}
-									onClick={() => { this.continuarCateg(item); }}>
-									<div className="w3-card card_serv box-servicio">
-										<img src={item.icon} className="img_serv" alt=""></img>
-										<p>{item.denomination}</p>
-									</div>
-								</div>
-							))}
-						</div>
 					</div>
 				</div>
 			</React.Fragment >
