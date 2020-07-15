@@ -3,6 +3,7 @@ import Alerta from "../../componentes/alertaVista";
 import httpClient from "../../constantes/axios";
 import axios from "axios";
 import MapBox from "../../componentes/mapBox";
+import { fechaActual } from "../../constantes/funciones_auxiliares";
 class ServiciosNuevaSol extends React.Component {
 	constructor(props) {
 		super(props);
@@ -86,18 +87,18 @@ class ServiciosNuevaSol extends React.Component {
 										<img src={this.props.history.location["service"]['icon']} className="" alt="Imagen"></img>
 									</div>
 									<div className="w3-col s11 text">
-										<p style={{ margin : "auto", position: "relative", left : -30}}>
+										<p style={{ margin: "auto", position: "relative", left: -30 }}>
 											<b>{this.props.history.location["service"]["denomination"]}</b> /
                                         	{this.props.history.location["category"]["denomination"]}
 										</p>
-										
+
 									</div>
 								</div>
 								{(this.props.history.location["service"]['emergency']) ? <div className="">
 									<div className="">
 										<label>Fecha de prestación del servicio</label>
 										<input className="w3-input w3-border w3-round-large" type="date" value={start_date}
-											onChange={(e) => this.setState({ start_date: e.target.value })} />
+											min={fechaActual()} onChange={(e) => this.setState({ start_date: e.target.value })} />
 									</div>
 									<div className="">
 										<label>Hora</label>
@@ -109,22 +110,22 @@ class ServiciosNuevaSol extends React.Component {
 								}
 								<div>
 									<label> <span className="text_blue">{user['name']}</span>, a continuación has una descripción detallada del servicio a solicitar, por ejemplo metros  cuadrados, espacio del servicio (sala, cocina…), si es para tu casa, conjunto, empresa, se lo más específico posible será de gran ayuda para brindarte la asesoría y cotización más precisa.* </label>
-									<textarea className="w3-input w3-border w3-round-large" value={description} style={{marginTop : 10}}
+									<textarea className="w3-input w3-border w3-round-large" value={description} style={{ marginTop: 10 }}
 										onChange={(e) => this.setState({ description: e.target.value })} />
 								</div>
 								<div className="ubicacion w3-margin-top">
 									<label className="text_blue">
-										<img src="../../assets/iconos/ubicacion.png" className="" alt="1" style={{width : 25, marginRight : 10}}></img>
+										<img src="../../assets/iconos/ubicacion.png" className="" alt="1" style={{ width: 25, marginRight: 10 }}></img>
                                     Ubicación *
                                 	</label>
 									<label> Con esta información ubicaremos los expertos en tu zona</label>
 									{
 										(region["id"] !== "") && <div className="">
-											<p style={{marginLeft : 35}}><b >{region["name"]}</b></p>
+											<p style={{ marginLeft: 35 }}><b >{region["name"]}</b></p>
 										</div>
 									}
 									<div>
-										<button className="w3-button btn_ubicacion"  style={{marginTop: 5}}
+										<button className="w3-button btn_ubicacion" style={{ marginTop: 5 }}
 											onClick={() => { this.setState({ showMapBox: true }) }}>
 											ELEGIR UBICACIÓN
 									</button>
@@ -132,12 +133,12 @@ class ServiciosNuevaSol extends React.Component {
 								</div>
 								<div className="ubicacion  w3-margin-top">
 									<label>
-										<img src="../../assets/iconos/fotos.png" className="" alt="1" style={{width : 25, marginRight : 10}}></img>
+										<img src="../../assets/iconos/fotos.png" className="" alt="1" style={{ width: 25, marginRight: 10 }}></img>
                                     Comparte tus fotos *
                                 	</label>
 									<label> Esta información es de utilidad para los expertos</label>
 									<div>
-										<input type="file" style={{ width: 0.1 + "px", height: 0.1 + "px", opacity: 0, overflow: "hidden", position: "absolute", zIndex: -1, marginTop : 5 }}
+										<input type="file" style={{ width: 0.1 + "px", height: 0.1 + "px", opacity: 0, overflow: "hidden", position: "absolute", zIndex: -1, marginTop: 5 }}
 											id="img_galeria" onChange={(foto) => { this.addFoto(foto) }} accept="image/png, .jpeg, .jpg, image/gif" />
 										<label className="w3-button btn_ubicacion" htmlFor="img_galeria">GALERÍA</label>
 									</div>
