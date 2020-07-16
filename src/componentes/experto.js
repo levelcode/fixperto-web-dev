@@ -31,10 +31,10 @@ const Experto = ({ experto, history }) => {
 					})
 				} setJobs(jobs); setComments(responseJson.comments); setExpert(responseJson.expert); setShowExpert(true);
 			}
-		else { /*setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true);*/ }
+			else { /*setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true);*/ }
 		}).catch(function (response) {
 			if (response.message === 'Timeout' || response.message === 'Network request failed') {
-			//	setTextoAlert("Problemas de conexión."); setShowAlert(true);
+				//	setTextoAlert("Problemas de conexión."); setShowAlert(true);
 			} //else { getDatos() }
 		});
 	}
@@ -144,7 +144,7 @@ const Experto = ({ experto, history }) => {
 								{(experto.type === 0 && (experto.salud_pension || experto.arl)) &&
 									<div className="w3-margin-bottom">
 										<b style={{}}>Seguridad social</b>
-										<div className="w3-cell-row w3-margin-bottom">
+										<div className="w3-row">
 											{(experto.type === 0 && experto.salud_pension) &&
 												<div className="w3-cell">
 													<div className="w3-cell">
@@ -156,7 +156,7 @@ const Experto = ({ experto, history }) => {
 											{(experto.type === 0 && experto.arl) &&
 												<div className="w3-cell">
 													<div className="w3-cell">
-														<img src="../../../assets/iconos/check.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, marginRight: 5 + "px" }} />
+														<img src="../../../assets/iconos/check.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, marginLeft: 10 + "px", marginRight: 5 + "px" }} />
 													</div>
 													<p className="w3-cell">ARL</p>
 												</div>
@@ -173,10 +173,8 @@ const Experto = ({ experto, history }) => {
 									</div>
 								}
 								{expert.certification_sena === 1 &&
-									<div><b style={{}}>Certificaciones</b></div>
-								}
-								{expert.certification_sena === 1 &&
-									<div className="w3-row">
+									<div className="">
+										<b style={{}}>Certificaciones</b>
 										<div className="w3-cell">
 											<img src="../../../assets/iconos/certificado.png" className="imagen-icono" alt="Imagen" style={{ width: 20, height: 20, marginRight: 5 + "px" }} />
 										</div>
