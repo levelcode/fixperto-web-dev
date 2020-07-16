@@ -73,7 +73,7 @@ class Perfil extends React.Component {
 							<div className="w3-cell" style={{ width: 35 + "px" }}>
 								<img src="../../assets/solicitudesUp.png" alt="Norway" />
 							</div>
-							<h2 className="w3-cell text_blue" >Perfil</h2>
+							<h2 className="w3-cell text_blue">Perfil</h2>
 						</div>
 						<div className="w3-row">
 							<div className="w3-col s12 m5">
@@ -87,12 +87,11 @@ class Perfil extends React.Component {
 												: <form>
 													<div>
 														<img src={this.state['photo']} style={{ width: 100, height: 100 }} />
-
 														<CargarImagenes mod={(photo, name) => {
 															this.setState({ photo });
-															var user = JSON.parse(localStorage.getItem("@USER"))
+															var user = JSON.parse(localStorage.getItem("@USER"));
 															user['avatar'] = name;
-															localStorage.setItem("@USER", JSON.stringify(user))
+															localStorage.setItem("@USER", JSON.stringify(user));
 														}
 														} />
 													</div>

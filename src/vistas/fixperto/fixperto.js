@@ -6,22 +6,20 @@ import FooterApp from "../../componentes/footerApp";
 import axios from "axios";
 class Fixperto extends React.Component {
 	constructor(props) { super(props); this.state = { services: [], showAlert: false, textoAlert: "" }; }
-	
-	componentDidMount() { 
-		this.getServices(); 
-	}
-
+	componentDidMount() { this.getServices(); }
 	getServices = () => {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/fixperto/getOffertsCompleted',
 			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json' }
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { me.setState({ services: responseJson["data"].services }); }
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+		}).catch((error) => {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			} else { me.getServices(); }
 		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { me.setState({ services: responseJson["data"].services }); }
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	openStatus = (myRef, ref) => {
 		if (myRef.style.display === "none") {
@@ -48,56 +46,45 @@ class Fixperto extends React.Component {
 			<React.Fragment>
 				<HeaderExperto history={this.props["history"]} />
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-
 				<div className="container">
-
 					<div className="perfil">
 						<div className="w3-cell-row w3-margin-bottom">
 							<div className="w3-cell" style={{ width: 35 + "px" }}>
 								<img src="../../assets/solicitudesUp.png" alt="Norway" />
 							</div>
-							<h2 className="w3-cell text_blue" >Historial de servicios</h2>
+							<h2 className="w3-cell text_blue">Historial de servicios</h2>
 						</div>
 						<div className="w3-row">
-
 							<div className="w3-col s12 m5">
 								<div className="w3-card card_perfil">
 									<div className="w3-row">
 										<div className="w3-row">
-											<img className="" style={{position : "relative", width : 40 + "%", left : 30 + "%"}}
+											<img className="" style={{ position: "relative", width: 40 + "%", left: 30 + "%" }}
 												src={"https://api.fixperto.com/uploads/registros/" + type + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]} alt="Imagen">
 											</img>
 										</div>
-										<h4 className="azul-oscuro" style={{textAlign : "center", fontSize : 30}}><b>¡Hola!</b></h4>
-										<h3 className="w3-margin-bottom azul-oscuro" style={{ textTransform: "capitalize", fontSize: 30, textAlign : "center" }}><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
-
+										<h4 className="azul-oscuro" style={{ textAlign: "center", fontSize: 30 }}><b>¡Hola!</b></h4>
+										<h3 className="w3-margin-bottom azul-oscuro" style={{ textTransform: "capitalize", fontSize: 30, textAlign: "center" }}><b>{JSON.parse(localStorage.getItem("@USER"))["name"]}</b></h3>
 										<div className="w3-row copy">
 											<div className="w3-col s3">
 												<div>
-													<img src="../../assets/iconos/alert.png" className=" img_alert" alt="alert" style={{width : 35, marginTop : 5}}></img>
+													<img src="../../assets/iconos/alert.png" className=" img_alert" alt="alert" style={{ width: 35, marginTop: 5 }}></img>
 												</div>
-												
 											</div>
 											<div className="w3-col s9">
-												<p>Para interactuar y disfrutar de todas las funciones de fixperto descarga la app en: 
+												<p>Para interactuar y disfrutar de todas las funciones de fixperto descarga la app en:
 													<a href="https://www.apple.com/co/ios/app-store/" target="_blank">
-														<img src="../../assets/iconos/apple.png" alt="alert" style={{width : 20, height :20,marginLeft : 5}}></img>
+														<img src="../../assets/iconos/apple.png" alt="alert" style={{ width: 20, height: 20, marginLeft: 5 }}></img>
 													</a>
-													
 													<a href="https://play.google.com/store/apps/details?id=com.shiftactive.fixperto&hl=es_CO" target="_blank">
-														<img src="../../assets/iconos/google-play.png" alt="alert" style={{width : 20, height : 20, marginLeft : 5}}></img>
+														<img src="../../assets/iconos/google-play.png" alt="alert" style={{ width: 20, height: 20, marginLeft: 5 }}></img>
 													</a>
-													
 												</p>
 											</div>
 										</div>
-
 										<br></br>
-
 										<hr></hr>
-
 										<br></br>
-
 										<div className="w3-row plan_fixperto">
 											<div className="w3-col s4">
 												<img src={(JSON.parse(localStorage.getItem("@USER"))["planUri"] === "regalo") ?
@@ -111,35 +98,29 @@ class Fixperto extends React.Component {
 												<p style={{ color: "#273861", textAlign: "left", fontSize: 16 }}>Plan {(JSON.parse(localStorage.getItem("@USER"))["planUri"] === "regalo") ? "bienvenida" : JSON.parse(localStorage.getItem("@USER"))["planUri"]}</p>
 											</div>
 										</div>
-
-
-
 									</div>
 								</div>
 							</div>
-
 							<div className="w3-col s12 m7 solicitudes">
 								<div className="w3-card card_info">
 									<div className="w3-row">
 										{
-											(!active || active  === 0) ?
-											<div className="copy w3-row progreso">
-												<div className="w3-col s12">
-													<p style={{textAlign : "center"}}>Estás a punto de ser un fixperto, hemos recibido tu información y estamos en proceso de validación. Tu activación en plataforma quedará en aproximadamente 24 horas. </p>
+											(!active || active === 0) ?
+												<div className="copy w3-row progreso">
+													<div className="w3-col s12">
+														<p style={{ textAlign: "center" }}>Estás a punto de ser un fixperto, hemos recibido tu información y estamos en proceso de validación. Tu activación en plataforma quedará en aproximadamente 24 horas. </p>
+													</div>
 												</div>
-											</div>
-											: 
-												(active  === 1 && services.length == 0 ) ?
+												:
+												(active === 1 && services.length == 0) ?
 													<div className="copy w3-row progreso">
 														<div className="w3-col s12">
-															<p style={{textAlign : "center"}}>Bienvenido ya eres parte de fixperto. </p>
+															<p style={{ textAlign: "center" }}>Bienvenido ya eres parte de fixperto. </p>
 														</div>
 													</div>
-												: 
-
-												<div></div>
+													:
+													<div></div>
 										}
-
 										{services.length > 0 && services.map((item, key) => {
 											let myRef = React.createRef();
 											let ref = React.createRef();
@@ -176,7 +157,6 @@ class Fixperto extends React.Component {
 												</div>
 												<div ref={refs => myRef = refs} style={{ display: "none", backgroundColor: "#F0F0F0" }} className="w3-section" >
 													<div className="row">
-
 														<div className="w3-cell w3-container">
 															<img src="../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" style={{ marginTop: 10 }} />
 														</div>
