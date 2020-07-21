@@ -6,7 +6,7 @@ class PerfilAtencionCliente extends React.Component {
 		super(props);
 		this.state = {
 			textoAlert: "", showAlert: false, show_add: false, show_view: false,
-			user: {}, status: [], types: [], tickets: [],
+			user: JSON.parse(localStorage.getItem("@USER")), status: [], types: [], tickets: [],
 			description: "", type: 1, name_user: "", response: "",
 			ticket: { id: "", type_customer_support: "", status: "", date_registry: "", descriptions: [] }
 		}
@@ -23,7 +23,7 @@ class PerfilAtencionCliente extends React.Component {
 			data: { user: id },
 			headers: { Accept: 'application/json' }
 		}).then(function (responseJson) {
-			responseJson = responseJson['data']; console.log(responseJson);
+			responseJson = responseJson['data'];
 			if (responseJson.success) {
 				me.setState({
 					show_view: false, status: responseJson.status, types: responseJson.types, tickets: responseJson.tickets,
