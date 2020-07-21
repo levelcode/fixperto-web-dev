@@ -5,6 +5,15 @@ import Cobertura from "../../../componentes/cobertura";
 import Footer from "../../../componentes/footer";
 class Independiente2 extends React.Component {
 	constructor(props) { super(props); this.state = { showAlert: false, textoAlert: "", regionsSelected: [] }; }
+	componentDidMount() {
+		var user = JSON.parse(localStorage.getItem("@USER"));
+		if (!Object.keys(user).length) { this.props["history"]["push"]("ingreso"); }
+		else {
+			if (user["type"] === "cliente") {
+				localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("ingreso");
+			}
+		}
+	}
 	addRegion = (elemento) => {
 		this.setState(prevState => ({ regionsSelected: [...prevState["regionsSelected"].concat(elemento)] }));
 	}
@@ -34,7 +43,7 @@ class Independiente2 extends React.Component {
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				<div className="container_web">
 					<h1 className="titleRegister">Paso 3 de 5</h1>
-					<h3 className="w3-center" style={{margin : 0}}>Cobertura</h3>
+					<h3 className="w3-center" style={{ margin: 0 }}>Cobertura</h3>
 					<div className="w3-margin-bottom w3-center">
 						<label>Elige las ciudades donde ofreces tus servicios*</label>
 						<Cobertura selectedRegion={regionsSelected} visible={true}
@@ -42,7 +51,7 @@ class Independiente2 extends React.Component {
 							remove={(elemento) => { this.removeRegion(elemento); }} />
 					</div>
 					<div>
-						<button style={{width : 50 + "%" , marginLeft : 25 + "%"}} className={(regionsSelected.length) ? "w3-button btn " : "w3-button btn w3-disabled"}
+						<button style={{ width: 50 + "%", marginLeft: 25 + "%" }} className={(regionsSelected.length) ? "w3-button btn " : "w3-button btn w3-disabled"}
 							onClick={() => { this.continuar(); }}>Continuar</button>
 					</div>
 				</div>

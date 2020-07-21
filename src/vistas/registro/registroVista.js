@@ -14,6 +14,12 @@ class Registro extends React.Component {
 			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, politicas_privacidad: false, clear: true
 		}
 	}
+	componentDidMount() {
+		var user = JSON.parse(localStorage.getItem("@USER"));
+		if (Object.keys(user).length) {
+			localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("ingreso");
+		}
+	}
 	formatDate = date => {
 		let today = new Date(date);
 		let fecha = today.getDate() + "/" + parseInt(today.getMonth() + 1) + "/" + today.getFullYear();

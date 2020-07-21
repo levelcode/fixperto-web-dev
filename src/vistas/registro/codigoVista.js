@@ -12,6 +12,10 @@ class CodigoSms extends React.Component {
 			isModalVisibleShangePhone: false, new_phone: "", showCahngePhone: false
 		}
 	}
+	componentDidMount() {
+		var user = JSON.parse(localStorage.getItem("@USER"));
+		if (!Object.keys(user).length) { this.props["history"]["push"]("ingreso"); }
+	}
 	enviar = () => {
 		var user = JSON.parse(localStorage.getItem("@USER"));
 		let vacios = [];

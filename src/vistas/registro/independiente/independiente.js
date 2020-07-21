@@ -16,6 +16,12 @@ class Independiente extends React.Component {
 			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: "", clear: true, clearF: true
 		}
 	}
+	componentDidMount() {
+		var user = JSON.parse(localStorage.getItem("@USER"));
+		if (Object.keys(user).length) {
+			localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("ingreso");
+		}
+	}
 	formatDate = date => {
 		let today = new Date(date);
 		let fecha = today.getDate() + "/" + parseInt(today.getMonth() + 1) + "/" + today.getFullYear();
