@@ -17,7 +17,21 @@ class ServiciosCateg extends React.Component {
 				icon_name: this.props.history.location.item['icon']
 			});
 			this.getCategoriesByService();
-		} else { this.props.history.push({ pathname: '/fixperto/servicios' }); }
+		} else {
+			this.props.history.location.item = {
+				id: 1,
+				icon: "https://api.fixperto.com/uploads/categories/1.png",
+				grouped: "Jardineros",
+				emergency: 0
+			}
+			this.setState({
+				user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
+				service_name: this.props.history.location.item['denomination'],
+				icon_name: this.props.history.location.item['icon']
+			});
+			this.getCategoriesByService();
+			//this.props.history.push({ pathname: '/fixperto/servicios' });
+		}
 	}
 	getCategoriesByService = () => {
 		var url = "";
