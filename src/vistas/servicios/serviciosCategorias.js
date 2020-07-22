@@ -9,6 +9,7 @@ class ServiciosCateg extends React.Component {
 		}
 	}
 	componentDidMount() {
+		console.log(this.props)
 		if (this.props["history"]["location"]["item"]) {
 			this.setState({
 				user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
