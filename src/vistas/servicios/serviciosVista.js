@@ -110,7 +110,7 @@ class ServiciosVista extends React.Component {
 						{(search !== "") ?
 							(copy.length === 0) ?
 								<div className="add_cat">
-									<p>Escribe aquí la categoría que estás buscando : </p>
+									<p>Tu búsqueda no arrojó resultados, escribe aquí la categoría que estas buscando</p>
 									<input className="w3-round-large" type="text" value={new_categori}
 										onChange={(e) => this.setState({ new_categori: e.target.value })} />
 									<p className="p_btn">
