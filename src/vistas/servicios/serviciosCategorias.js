@@ -22,6 +22,7 @@ class ServiciosCateg extends React.Component {
 				id: 1,
 				icon: "https://api.fixperto.com/uploads/categories/1.png",
 				grouped: "Jardineros",
+				denomination: "Jardineros",
 				emergency: 0
 			}
 			this.setState({
