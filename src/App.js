@@ -62,7 +62,7 @@ class App extends React.Component {
 				<div className="w3-mobile" style={{ width: 100 + '%' }}>
 					<Switch>
 						<Route path="/fixperto/servicios" render={() => (<Servicios history={this.props["history"]} />)} />
-						<Route path="/fixperto/servicios-categ/:service" render={() => (<ServiciosCategorias history={this.props["history"]} />)} />
+						<Route path="/fixperto/servicios-categ" render={() => (<ServiciosCategorias history={this.props["history"]} />)} />
 						<Route path="/fixperto/servicios-nueva" render={() => (<ServiciosNuevaSolicitud history={this.props["history"]} />)} />
 						<Route path="/fixperto/solicitudes" render={() => (<Solicitudes history={this.props["history"]} active={() => { this.active("solicitudes") }} />)} />
 						<Route path="/fixperto/chat" render={() => (<Chat history={this.props["history"]} />)} />
