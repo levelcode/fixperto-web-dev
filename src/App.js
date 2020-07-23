@@ -11,7 +11,7 @@ import ServiciosNuevaSolicitud from "./vistas/servicios/serviciosNuevaSolic";
 import Solicitudes from "./vistas/solicitudes/solicitudesVista";
 class App extends React.Component {
 	constructor(props) { super(props); this.state = { servicios: true, solicitudes: false, chat: false, perfil: false }; }
-	componentDidMount() {console.log(this.props);
+	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
 		if (!Object.keys(user).length) { this.props["history"]["push"]("ingreso"); }
 		else {
@@ -62,7 +62,7 @@ class App extends React.Component {
 				<div className="w3-mobile" style={{ width: 100 + '%' }}>
 					<Switch>
 						<Route path="/fixperto/servicios" render={() => (<Servicios history={this.props["history"]} />)} />
-						<Route path="/fixperto/servicios-categ" render={() => (<ServiciosCategorias history={this.props["history"]} />)} />
+						<Route path="/fixperto/servicios-categ/:service" render={() => (<ServiciosCategorias history={this.props["history"]} />)} />
 						<Route path="/fixperto/servicios-nueva" render={() => (<ServiciosNuevaSolicitud history={this.props["history"]} />)} />
 						<Route path="/fixperto/solicitudes" render={() => (<Solicitudes history={this.props["history"]} active={() => { this.active("solicitudes") }} />)} />
 						<Route path="/fixperto/chat" render={() => (<Chat history={this.props["history"]} />)} />
