@@ -11,7 +11,7 @@ import ServiciosNuevaSolicitud from "./vistas/servicios/serviciosNuevaSolic";
 import Solicitudes from "./vistas/solicitudes/solicitudesVista";
 class App extends React.Component {
 	constructor(props) { super(props); this.state = { servicios: true, solicitudes: false, chat: false, perfil: false }; }
-	componentDidMount() {
+	componentDidMount() {console.log(this.props);
 		var user = JSON.parse(localStorage.getItem("@USER"));
 		if (!Object.keys(user).length) { this.props["history"]["push"]("ingreso"); }
 		else {
