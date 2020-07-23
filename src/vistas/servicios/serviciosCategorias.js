@@ -18,7 +18,7 @@ class ServiciosCateg extends React.Component {
 			});
 			this.getCategoriesByService();
 		} else {
-			/*this.props.history.location.item = {
+			this.props.history.location.item = {
 				id: 1,
 				icon: "https://api.fixperto.com/uploads/categories/1.png",
 				grouped: "Jardineros",
@@ -30,8 +30,8 @@ class ServiciosCateg extends React.Component {
 				service_name: this.props.history.location.item['denomination'],
 				icon_name: this.props.history.location.item['icon']
 			});
-			this.getCategoriesByService();*/
-			this.props.history.push({ pathname: '/fixperto/servicios' });
+			this.getCategoriesByService();
+			//this.props.history.push({ pathname: '/fixperto/servicios' });
 		}
 	}
 	getCategoriesByService = () => {
