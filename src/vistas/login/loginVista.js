@@ -35,7 +35,12 @@ class Login extends React.Component {
 								var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));
 								if (Object.keys(item).length) {
 									localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
-									me.props["history"]["push"]({ pathname: 'fixperto/servicios-categ', item });
+									let denomination = item['denomination'].split("/");
+									me.props["history"]["push"]({
+										pathname: 'fixperto/servicios-nueva',
+										category: { id: item['id'], denomination: denomination[1], },
+										service: { icon: item['icon'], denomination: denomination[0], emergency: item['emergency'] }
+									});
 								}
 								else { me.props["history"]["push"]("fixperto/servicios"); }
 							}
