@@ -10,32 +10,48 @@ class ServiciosCateg extends React.Component {
 		}
 	}
 	componentDidMount() {
-		if (this.props["location"] && this.props["location"]["search"] !== "") {
-			const parsed = queryString.parse(this.props["location"]["search"]);
-			console.log(parsed);
-		}
-		else if (this.props["history"]["location"]["item"]) {
-			this.setState({
-				user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
-				service_name: this.props.history.location.item['denomination'],
-				icon_name: this.props.history.location.item['icon']
-			});
-			this.getCategoriesByService();
-		} else {
-			this.props.history.location.item = {
-				id: 1,
-				icon: "https://api.fixperto.com/uploads/categories/1.png",
-				grouped: "Jardineros",
-				denomination: "Jardineros",
-				emergency: 0
+		var user = JSON.parse(localStorage.getItem("@USER"));
+		if (!Object.keys(user).length) {
+			if (this.props["location"] && this.props["location"]["search"] !== "") {
+				let parsed = queryString.parse(this.props["location"]["search"]);
+				localStorage.setItem("@SEARCHCAT", JSON.stringify(parsed));
 			}
-			this.setState({
-				user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
-				service_name: this.props.history.location.item['denomination'],
-				icon_name: this.props.history.location.item['icon']
-			});
-			this.getCategoriesByService();
-			//this.props.history.push({ pathname: '/fixperto/servicios' });
+			this.props["history"]["push"]("ingreso");
+		}
+		else {
+			if (user["type"] !== "cliente") {
+				localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+				localStorage.setItem("@USER", JSON.stringify({}));
+				this.props["history"]["push"]("ingreso");
+			}
+			else {
+				if (this.props["location"] && this.props["location"]["search"] !== "") {
+					const parsed = queryString.parse(this.props["location"]["search"]);
+					if (parsed["service"]) {
+						this.props.history.location.item = {
+							id: parsed["service"]['id'],
+							icon: parsed["service"]['icon'],
+							grouped: parsed["service"]['denomination'],
+							denomination: parsed["service"]['denomination'],
+							emergency: parsed["service"]['emergency']
+						}
+						this.setState({
+							user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
+							service_name: parsed["service"]['denomination'],
+							icon_name: parsed["service"]['icon']
+						});
+						this.getCategoriesByService();
+					}
+				}
+				else if (this.props["history"]["location"]["item"]) {
+					this.setState({
+						user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
+						service_name: this.props.history.location.item['denomination'],
+						icon_name: this.props.history.location.item['icon']
+					});
+					this.getCategoriesByService();
+				}
+			}
 		}
 	}
 	getCategoriesByService = () => {
