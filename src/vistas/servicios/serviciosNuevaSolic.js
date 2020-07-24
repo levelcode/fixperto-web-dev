@@ -4,6 +4,7 @@ import httpClient from "../../constantes/axios";
 import axios from "axios";
 import MapBox from "../../componentes/mapBox";
 import { fechaActual } from "../../constantes/funciones_auxiliares";
+const queryString = require('query-string');
 class ServiciosNuevaSol extends React.Component {
 	constructor(props) {
 		super(props);
