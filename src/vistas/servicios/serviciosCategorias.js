@@ -17,13 +17,13 @@ class ServiciosCateg extends React.Component {
 				parsed["service"]=JSON.parse(parsed["service"]);
 				localStorage.setItem("@SEARCHCAT", JSON.stringify(parsed["service"]));
 			}
-			this.props["history"]["push"]("ingreso");
+			this.props["history"]["go"]("ingreso");
 		}
 		else {
 			if (user["type"] !== "cliente") {
 				localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
 				localStorage.setItem("@USER", JSON.stringify({}));
-				this.props["history"]["push"]("ingreso");
+				this.props["history"]["go"]("ingreso");
 			}
 			else {
 				if (this.props["location"] && this.props["location"]["search"] !== "") {
