@@ -11,7 +11,7 @@ const routes = (
 	<Router history={historia}>
 		<Switch>
 			{rutas.map((route, i) => (
-				<Route key={i} path={route.path} render={() => (<route.component history={historia} rutes={route.sub_routes} />)} />
+				<Route key={i} path={route.path} render={(props) => (<route.component {...props} history={historia} rutes={route.sub_routes} />)} />
 			))}
 			<Redirect from="/" to="/ingreso" />
 		</Switch>
