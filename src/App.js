@@ -63,7 +63,7 @@ class App extends React.Component {
 					<Switch>
 						<Route path="/fixperto/servicios" render={() => (<Servicios history={this.props["history"]} />)} />
 						<Route path="/fixperto/servicios-categ" render={() => (<ServiciosCategorias history={this.props["history"]} />)} />
-						<Route path="/fixperto/servicios-cat/:service" render={(props) => (<ServiciosCategorias {...props} history={this.props["history"]} />)} />
+						<Route path="/fixperto/servicios-cat" render={(props) => (<ServiciosCategorias {...props} history={this.props["history"]} />)} />
 						<Route path="/fixperto/servicios-nueva" render={() => (<ServiciosNuevaSolicitud history={this.props["history"]} />)} />
 						<Route path="/fixperto/solicitudes" render={() => (<Solicitudes history={this.props["history"]} active={() => { this.active("solicitudes") }} />)} />
 						<Route path="/fixperto/chat" render={() => (<Chat history={this.props["history"]} />)} />
