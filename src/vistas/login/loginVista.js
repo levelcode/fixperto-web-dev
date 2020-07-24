@@ -32,8 +32,8 @@ class Login extends React.Component {
 							socket.on('connect', () => { socket.emit('cliente', { id: user["id"] }); });
 							if (user["validate_number"] === 0) { me.props["history"]["push"]("codigosms"); }
 							else {
-								var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));
 								if (Object.keys(item).length) {
+									var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));
 									localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
 									let denomination = item['denomination'].split("/");
 									me.props["history"]["push"]({
