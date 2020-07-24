@@ -14,7 +14,7 @@ class ServiciosNuevaSol extends React.Component {
 			region: { name: "", id: "" }, photos: [], photoss: [], emergency: false,
 		};
 	}
-	componentDidMount() {
+	componentDidMount() {console.log(this.props)
 		var user = JSON.parse(localStorage.getItem("@USER"));
 		if (!Object.keys(user).length) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
