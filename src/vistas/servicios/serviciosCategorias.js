@@ -9,7 +9,7 @@ class ServiciosCateg extends React.Component {
 			textoAlert: "", showAlert: false, categories: [], user_name: "", service_name: "", icon_name: ""
 		}
 	}
-	componentDidMount() {console.log(this.props)
+	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
 		if (!Object.keys(user).length) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
@@ -29,7 +29,6 @@ class ServiciosCateg extends React.Component {
 				if (this.props["location"] && this.props["location"]["search"] !== "") {
 					let parsed = queryString.parse(this.props["location"]["search"]);
 					parsed["service"]=JSON.parse(parsed["service"]);
-					console.log(parsed);
 					if (parsed["service"]) {
 						this.props.history.location.item = {
 							id: parsed["service"]['id'],
