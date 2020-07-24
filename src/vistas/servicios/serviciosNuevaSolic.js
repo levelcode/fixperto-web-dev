@@ -14,7 +14,43 @@ class ServiciosNuevaSol extends React.Component {
 		};
 	}
 	componentDidMount() {
-		if (!this.props["history"]["location"]["category"]) { this.props.history.push({ pathname: '/fixperto/servicios' }); }
+		var user = JSON.parse(localStorage.getItem("@USER"));
+		if (!Object.keys(user).length) {
+			if (this.props["location"] && this.props["location"]["search"] !== "") {
+				let parsed = queryString.parse(this.props["location"]["search"]);
+				parsed["service"] = JSON.parse(parsed["service"]);
+				localStorage.setItem("@SEARCHCAT", JSON.stringify(parsed["service"]));
+			}
+			this.props["history"]["push"]("/ingreso");
+		}
+		else {
+			if (user["type"] !== "cliente") {
+				localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+				localStorage.setItem("@USER", JSON.stringify({}));
+				this.props["history"]["push"]("/ingreso");
+			}
+			else {
+				if (this.props["location"] && this.props["location"]["search"] !== "") {
+					let parsed = queryString.parse(this.props["location"]["search"]);
+					parsed["service"] = JSON.parse(parsed["service"]);
+					if (parsed["service"]) {
+						let denomination = parsed["service"]['denomination'].split("/");
+						this.props.history.location.service = {
+							icon: parsed["service"]['icon'],
+							denomination: denomination[0],
+							emergency: parsed["service"]['emergency']
+						}
+						this.props.history.location.category = {
+							id: parsed["service"]['id'],
+							denomination: denomination[1],
+						}
+					}
+				}
+				else {
+					if (!this.props["history"]["location"]["category"]) { this.props.history.push({ pathname: '/fixperto/servicios' }); }
+				}
+			}
+		}
 	}
 	guardar = () => {
 		let vacios = [];
