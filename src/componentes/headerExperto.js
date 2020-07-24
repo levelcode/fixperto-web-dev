@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const HeaderExperto = (props) => {
 	const cerrarSesion = () => {
 		localStorage.setItem("@USER", JSON.stringify({}));
+		localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
 		props.history.push({ pathname: '/ingreso' });
 	}
 	return (

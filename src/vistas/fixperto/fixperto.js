@@ -47,6 +47,7 @@ class Fixperto extends React.Component {
 			ref.appendChild(y);
 		}
 	}
+	onError = () => { window.location.reload(false); }
 	render() {
 		const { showAlert, textoAlert, services } = this.state;
 		var type = (JSON.parse(localStorage.getItem("@USER"))["type"] === "empresa") ? "empresa" : "profesional";
@@ -69,7 +70,9 @@ class Fixperto extends React.Component {
 									<div className="w3-row">
 										<div className="w3-row">
 											<img className="" style={{ position: "relative", width: 40 + "%", left: 30 + "%" }}
-												src={"https://api.fixperto.com/uploads/registros/" + type + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]} alt="Imagen">
+												src={httpClient.urlBase + "/uploads/registros/" + type + "/" + JSON.parse(localStorage.getItem("@USER"))["avatar"]}
+												onError={this.onError}
+												alt="Imagen">
 											</img>
 										</div>
 										<h4 className="azul-oscuro" style={{ textAlign: "center", fontSize: 30 }}><b>¡Hola!</b></h4>

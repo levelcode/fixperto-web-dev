@@ -62,6 +62,7 @@ class Perfil extends React.Component {
 		}
 	}
 	actualizar = () => { this.setState({ cliente: JSON.parse(localStorage.getItem("@USER")) }); }
+	onError = () => { window.location.reload(false); }
 	render() {
 		const { info, config, contraseña, quienes, atencion, terminos, politica } = this.state;
 		const itemStyle = "active";
@@ -82,11 +83,13 @@ class Perfil extends React.Component {
 										<div className="w3-col s12 l5">
 											{this.state['photo'] === "" ?
 												<div className="w3-center img_upl">
-													<img src={this.state['photo']} style={{ width: 100, height: 100, objectFit : "cover" }} />
+													<img src={this.state['photo']} style={{ width: 100, height: 100, objectFit: "cover" }} />
 												</div>
 												: <form>
 													<div>
-														<img src={this.state['photo']} style={{ width: 100, height: 100, objectFit : "cover" }} />
+														<img src={this.state['photo']} style={{ width: 100, height: 100, objectFit: "cover" }}
+															onError={this.onError}
+														/>
 														<CargarImagenes mod={(photo, name) => {
 															this.setState({ photo });
 															var user = JSON.parse(localStorage.getItem("@USER"));
