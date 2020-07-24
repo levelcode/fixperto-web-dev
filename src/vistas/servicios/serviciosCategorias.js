@@ -9,9 +9,9 @@ class ServiciosCateg extends React.Component {
 			textoAlert: "", showAlert: false, categories: [], user_name: "", service_name: "", icon_name: ""
 		}
 	}
-	componentDidMount() {console.log(this.props, location, history)
-	/*	if () {
-			const parsed = queryString.parse(location.search);
+	componentDidMount() {
+		if (this.props["location"] && this.props["location"]["search"] !== "") {
+			const parsed = queryString.parse(this.props["location"]["search"]);
 			console.log(parsed);
 		}
 		else if (this.props["history"]["location"]["item"]) {
@@ -36,7 +36,7 @@ class ServiciosCateg extends React.Component {
 			});
 			this.getCategoriesByService();
 			//this.props.history.push({ pathname: '/fixperto/servicios' });
-		}*/
+		}
 	}
 	getCategoriesByService = () => {
 		var url = "";
