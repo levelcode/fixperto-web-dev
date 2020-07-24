@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import httpClient from "../../constantes/axios";
+const queryString = require('query-string');
 class ServiciosCateg extends React.Component {
 	constructor(props) {
 		super(props);
@@ -8,9 +9,12 @@ class ServiciosCateg extends React.Component {
 			textoAlert: "", showAlert: false, categories: [], user_name: "", service_name: "", icon_name: ""
 		}
 	}
-	componentDidMount() {
-		console.log(this.props)
-		if (this.props["history"]["location"]["item"]) {
+	componentDidMount() {console.log(this.props, location, history)
+	/*	if () {
+			const parsed = queryString.parse(location.search);
+			console.log(parsed);
+		}
+		else if (this.props["history"]["location"]["item"]) {
 			this.setState({
 				user_name: JSON.parse(localStorage.getItem("@USER"))["name"],
 				service_name: this.props.history.location.item['denomination'],
@@ -32,7 +36,7 @@ class ServiciosCateg extends React.Component {
 			});
 			this.getCategoriesByService();
 			//this.props.history.push({ pathname: '/fixperto/servicios' });
-		}
+		}*/
 	}
 	getCategoriesByService = () => {
 		var url = "";
