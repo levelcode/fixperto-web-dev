@@ -9,7 +9,7 @@ class ServiciosCateg extends React.Component {
 			textoAlert: "", showAlert: false, categories: [], user_name: "", service_name: "", icon_name: ""
 		}
 	}
-	componentDidMount() {
+	componentDidMount() {console.log(this.props)
 		var user = JSON.parse(localStorage.getItem("@USER"));
 		if (!Object.keys(user).length) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
