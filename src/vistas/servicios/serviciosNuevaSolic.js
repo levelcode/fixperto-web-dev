@@ -36,7 +36,7 @@ class ServiciosNuevaSol extends React.Component {
 					let parsed = queryString.parse(this.props["location"]["search"]);
 					parsed["service"] = JSON.parse(parsed["service"]);
 					if (parsed["service"]) {
-						let denomination = parsed["service"]['denomination'].split("/");console.log(denomination)
+						let denomination = parsed["service"]['label'].split("/");
 						this.props.history.location.service = {
 							icon: parsed["service"]['icon'],
 							denomination: denomination[0],
