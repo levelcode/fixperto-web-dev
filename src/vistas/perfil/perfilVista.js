@@ -203,6 +203,7 @@ class Perfil extends React.Component {
 										<button className="w3-button "
 											onClick={() => {
 												localStorage.setItem("@USER", JSON.stringify({}));
+												localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
 												this.props.history.push({ pathname: '/ingreso', });
 											}}> CERRAR SESIÓN</button>
 									</div>
