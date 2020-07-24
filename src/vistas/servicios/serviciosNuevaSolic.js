@@ -12,9 +12,11 @@ class ServiciosNuevaSol extends React.Component {
 			showMapBox: false, textoAlert: "", showAlert: false, start_date: new Date(), hour: "", buttonDisabled: false,
 			user: JSON.parse(localStorage.getItem("@USER")), description: "",
 			region: { name: "", id: "" }, photos: [], photoss: [], emergency: false,
+			icon_mame: "", serv_den: "", cat_den: ""
 		};
 	}
-	componentDidMount() {console.log(this.props)
+	componentDidMount() {
+		console.log(this.props)
 		var user = JSON.parse(localStorage.getItem("@USER"));
 		if (!Object.keys(user).length) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
@@ -45,10 +47,22 @@ class ServiciosNuevaSol extends React.Component {
 							id: parsed["service"]['id'],
 							denomination: denomination[1],
 						}
+						this.setState({
+							icon_mame: parsed["service"]['icon'],
+							serv_den: denomination[0],
+							cat_den: denomination[1],
+							emergency: parsed["service"]['emergency']
+						});
 					}
 				}
 				else {
 					if (!this.props["history"]["location"]["category"]) { this.props.history.push({ pathname: '/fixperto/servicios' }); }
+					else this.setState({
+						icon_mame: this.props["history"]["location"]["category"]['icon'],
+						emergency: this.props["history"]["location"]["service"]["emergency"],
+						serv_den: this.props["history"]["location"]["service"]["denomination"],
+						cat_den: this.props["history"]["location"]["category"]["denomination"]
+					});
 				}
 			}
 		}
@@ -109,7 +123,7 @@ class ServiciosNuevaSol extends React.Component {
 	}
 	selectRegion = region => { this.setState({ region, showMapBox: false }) };
 	render() {
-		const { showMapBox, textoAlert, showAlert, description, user, photoss, start_date, hour, region } = this.state;
+		const { emergency, showMapBox, textoAlert, showAlert, description, user, photoss, start_date, hour, region, icon_mame, serv_den, cat_den } = this.state;
 		return (
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
@@ -121,16 +135,16 @@ class ServiciosNuevaSol extends React.Component {
 							<div className="w3-container">
 								<div className="w3-row item">
 									<div className="w3-cell">
-										<img src={this.props.history.location["service"]['icon']} className="" alt="Imagen"></img>
+										<img src={icon_mame} className="" alt="Imagen"></img>
 									</div>
 									<div className="w3-cell text">
 										<p style={{ margin: "auto", position: "relative", left: -30 }}>
-											<b>{this.props.history.location["service"]["denomination"]}</b> /
-                                        	{this.props.history.location["category"]["denomination"]}
+											<b>{serv_den}</b> /
+                                        	{cat_den}
 										</p>
 									</div>
 								</div>
-								{(this.props.history.location["service"]['emergency']) ? <div className="">
+								{(emergency) ? <div className="">
 									<div className="">
 										<label>Fecha de prestación del servicio</label>
 										<input className="w3-input w3-border w3-round-large" type="date" value={start_date}
