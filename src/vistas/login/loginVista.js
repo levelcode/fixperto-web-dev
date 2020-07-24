@@ -33,7 +33,7 @@ class Login extends React.Component {
 							if (user["validate_number"] === 0) { me.props["history"]["push"]("codigosms"); }
 							else {
 								if (Object.keys(item).length) {
-									var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));
+									var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));console.log(item);
 									localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
 									let denomination = item['label'].split("/");
 									me.props["history"]["push"]({
