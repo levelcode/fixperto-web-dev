@@ -27,6 +27,7 @@ class ServiciosCateg extends React.Component {
 			else {
 				if (this.props["location"] && this.props["location"]["search"] !== "") {
 					const parsed = queryString.parse(this.props["location"]["search"]);
+					console.log(parsed);
 					if (parsed["service"]) {
 						this.props.history.location.item = {
 							id: parsed["service"]['id'],
