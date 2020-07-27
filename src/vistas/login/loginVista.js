@@ -45,7 +45,7 @@ class Login extends React.Component {
 								}
 								else if (Object.keys(item).length === 0 && Object.keys(cat_add).length > 0) {
 									localStorage.setItem("@CAT_ADD", JSON.stringify({}));
-									me.props["history"]["push"]({ pathname: 'fixperto/servicios', cat_add: JSON.parse(cat_add) });
+									me.props["history"]["push"]({ pathname: 'fixperto/servicios', cat_add });
 								}
 								else { me.props["history"]["push"]("fixperto/servicios"); }
 							}
