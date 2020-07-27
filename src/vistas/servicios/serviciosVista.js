@@ -48,7 +48,7 @@ class ServiciosVista extends React.Component {
 			categories.unshift(responseJson.categoriesEmergency);
 			me.setState({ services: categories, copy: categories });
 			if (me.props["history"]["location"]["cat_add"] && me.props["history"]["location"]["cat_add"] !== "") {
-				me.updateSearch(this.props["history"]["location"]["cat_add"]);
+				me.updateSearch(me.props["history"]["location"]["cat_add"]);
 				me.props["history"]["location"]["cat_add"] = "";
 			}
 		}).catch((error) => {
