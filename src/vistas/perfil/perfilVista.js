@@ -62,7 +62,7 @@ class Perfil extends React.Component {
 		}
 	}
 	actualizar = () => { this.setState({ cliente: JSON.parse(localStorage.getItem("@USER")) }); }
-onError = () => { /*window.location.reload(false);*/ }
+	onError = () => { /*window.location.reload(false);*/ }
 	render() {
 		const { info, config, contraseña, quienes, atencion, terminos, politica } = this.state;
 		const itemStyle = "active";
@@ -207,6 +207,7 @@ onError = () => { /*window.location.reload(false);*/ }
 											onClick={() => {
 												localStorage.setItem("@USER", JSON.stringify({}));
 												localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+												localStorage.setItem("@CAT_ADD", JSON.stringify({}));
 												this.props.history.push({ pathname: '/ingreso', });
 											}}> CERRAR SESIÓN</button>
 									</div>

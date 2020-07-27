@@ -33,7 +33,14 @@ class ServiciosVista extends React.Component {
 		}
 	}
 	componentDidMount() {
-		var user = JSON.parse(localStorage.getItem("@USER")); this.setState({ user, name: user["name"] }); this.getServices();
+		var user = JSON.parse(localStorage.getItem("@USER"));
+		if (this.props["history"]["location"]["cat_add"]) {
+			this.setState({ user, name: user["name"], search: this.props["history"]["location"]["cat_add"] });
+		}
+		else {
+			this.setState({ user, name: user["name"] });
+		}
+		this.getServices();
 	}
 	getServices = () => {
 		var me = this;

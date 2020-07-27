@@ -4,6 +4,7 @@ const HeaderExperto = (props) => {
 	const cerrarSesion = () => {
 		localStorage.setItem("@USER", JSON.stringify({}));
 		localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+		localStorage.setItem("@CAT_ADD", JSON.stringify({}));
 		props.history.push({ pathname: '/ingreso' });
 	}
 	return (

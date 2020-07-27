@@ -33,16 +33,22 @@ class Login extends React.Component {
 							if (user["validate_number"] === 0) { me.props["history"]["push"]("codigosms"); }
 							else {
 								var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));
-								if (Object.keys(item).length) {
-									localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
-									let denomination = item['label'].split("/");
-									me.props["history"]["push"]({
-										pathname: 'fixperto/servicios-nueva',
-										category: { id: item['id'], denomination: denomination[1], },
-										service: { icon: item['icon'], denomination: denomination[0], emergency: item['emergency'] }
-									});
-								}
-								else { me.props["history"]["push"]("fixperto/servicios"); }
+								var cat_add = JSON.parse(localStorage.getItem("@CAT_ADD"));
+								console.log(item, Object.keys(item).length, cat_add, Object.keys(cat_add).length)
+								/*	if (Object.keys(item).length > 0 && Object.keys(cat_add).length === 0) {
+										localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+										let denomination = item['label'].split("/");
+										me.props["history"]["push"]({
+											pathname: 'fixperto/servicios-nueva',
+											category: { id: item['id'], denomination: denomination[1], },
+											service: { icon: item['icon'], denomination: denomination[0], emergency: item['emergency'] }
+										});
+									}
+									else if (Object.keys(item).length === 0 && Object.keys(cat_add).length > 0) {
+										localStorage.setItem("@CAT_ADD", JSON.stringify({}));
+										me.props["history"]["push"]({ pathname: 'fixperto/servicios', cat_add: JSON.parse(cat_add) });
+									}
+									else { me.props["history"]["push"]("fixperto/servicios"); }*/
 							}
 						}
 						else {

@@ -20,22 +20,31 @@ class ServiciosNuevaSol extends React.Component {
 		if (Object.keys(user).length === 0) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
 				let parsed = queryString.parse(this.props["location"]["search"]);
-				parsed["service"] = JSON.parse(parsed["service"]);
-				localStorage.setItem("@SEARCHCAT", JSON.stringify(parsed["service"]));
+				if (parsed["service"]) {
+					localStorage.setItem("@CAT_ADD", JSON.stringify({}));
+					parsed["service"] = JSON.parse(parsed["service"]);
+					localStorage.setItem("@SEARCHCAT", JSON.stringify(parsed["service"]));
+				}
+				else if (parsed["cat_add"]) {
+					localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+					localStorage.setItem("@CAT_ADD", parsed["cat_add"]);
+				}
 			}
 			this.props["history"]["push"]("/ingreso");
 		}
 		else {
 			if (user["type"] !== "cliente") {
 				localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+				localStorage.setItem("@CAT_ADD", JSON.stringify({}));
 				localStorage.setItem("@USER", JSON.stringify({}));
 				this.props["history"]["push"]("/ingreso");
 			}
 			else {
 				if (this.props["location"] && this.props["location"]["search"] !== "") {
 					let parsed = queryString.parse(this.props["location"]["search"]);
-					parsed["service"] = JSON.parse(parsed["service"]);
 					if (parsed["service"]) {
+						localStorage.setItem("@CAT_ADD", JSON.stringify({}));
+						parsed["service"] = JSON.parse(parsed["service"]);
 						let denomination = parsed["service"]['label'].split("/");
 						this.props.history.location.service = {
 							icon: parsed["service"]['icon'],
@@ -52,6 +61,11 @@ class ServiciosNuevaSol extends React.Component {
 							cat_den: denomination[1],
 							emergency: parsed["service"]['emergency']
 						});
+					}
+					else if (parsed["cat_add"]) {
+						localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+						localStorage.setItem("@CAT_ADD", parsed["cat_add"]);
+						this.props.history.push({ pathname: '/fixperto/servicios', cat_add: parsed["cat_add"] });
 					}
 				}
 				else {
