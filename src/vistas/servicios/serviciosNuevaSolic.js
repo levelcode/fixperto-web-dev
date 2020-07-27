@@ -17,7 +17,7 @@ class ServiciosNuevaSol extends React.Component {
 	}
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (!Object.keys(user).length) {
+		if (Object.keys(user).length === 0) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
 				let parsed = queryString.parse(this.props["location"]["search"]);
 				parsed["service"] = JSON.parse(parsed["service"]);
