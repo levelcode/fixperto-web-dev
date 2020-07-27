@@ -39,7 +39,7 @@ class ServiciosNuevaSol extends React.Component {
 				localStorage.setItem("@USER", JSON.stringify({}));
 				this.props["history"]["push"]("/ingreso");
 			}
-			else {
+			else {console.log(this.props)
 				if (this.props["location"] && this.props["location"]["search"] !== "") {
 					let parsed = queryString.parse(this.props["location"]["search"]);
 					if (parsed["service"]) {
