@@ -71,7 +71,7 @@ class ServiciosNuevaSol extends React.Component {
 				else {
 					if (!this.props["history"]["location"]["category"]) { this.props.history.push({ pathname: '/fixperto/servicios' }); }
 					else this.setState({
-						icon_mame: this.props["history"]["location"]["category"]['icon'],
+						icon_mame: this.props["history"]["location"]["service"]['icon'],
 						emergency: this.props["history"]["location"]["service"]["emergency"],
 						serv_den: this.props["history"]["location"]["service"]["denomination"],
 						cat_den: this.props["history"]["location"]["category"]["denomination"]
