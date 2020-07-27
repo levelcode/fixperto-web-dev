@@ -14,7 +14,7 @@ class CodigoSms extends React.Component {
 	}
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (!Object.keys(user).length) { this.props["history"]["push"]("ingreso"); }
+		if (Object.keys(user).length===0) { this.props["history"]["push"]("/ingreso"); }
 	}
 	enviar = () => {
 		var user = JSON.parse(localStorage.getItem("@USER"));

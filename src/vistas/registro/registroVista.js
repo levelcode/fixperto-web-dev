@@ -16,8 +16,8 @@ class Registro extends React.Component {
 	}
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (Object.keys(user).length) {
-			localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("ingreso");
+		if (Object.keys(user).length > 0) {
+			localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("/ingreso");
 		}
 	}
 	formatDate = date => {

@@ -18,10 +18,10 @@ class Independiente1 extends React.Component {
 	}
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (!Object.keys(user).length) { this.props["history"]["push"]("ingreso"); }
+		if (Object.keys(user).length===0) { this.props["history"]["push"]("/ingreso"); }
 		else {
 			if (user["type"] === "cliente") {
-				localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("ingreso");
+				localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("/ingreso");
 			}
 			else { this.getServicesConcatCategories(); }
 		}
