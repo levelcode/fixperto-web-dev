@@ -10,7 +10,6 @@ class Seleccionador extends React.Component {
 		selectedItems.splice(i, 1);
 		this.props["deselectNoExiste"](selectedItems);
 	}
-	rend
 	render() {
 		return (
 			<React.Fragment>

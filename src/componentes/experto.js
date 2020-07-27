@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import httpClient from "../constantes/axios";
 import axios from "axios";
-//import Alerta from "./alertaVista";
+import Alerta from "./alertaVista";
 const Experto = ({ experto, history }) => {
 	const [showExpert, setShowExpert] = useState(false);
-	//const [showAlert, setShowAlert] = useState(false);
-	//const [textoAlert, setTextoAlert] = useState("");
+	const [showAlert, setShowAlert] = useState(false);
+	const [textoAlert, setTextoAlert] = useState("");
 	const [expert, setExpert] = useState({});
 	const [jobs, setJobs] = useState([]);
 	const [comments, setComments] = useState([]);
@@ -31,11 +31,11 @@ const Experto = ({ experto, history }) => {
 					})
 				} setJobs(jobs); setComments(responseJson.comments); setExpert(responseJson.expert); setShowExpert(true);
 			}
-			else { /*setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true);*/ }
-		}).catch(function (response) {
-			if (response.message === 'Timeout' || response.message === 'Network request failed') {
-				//	setTextoAlert("Problemas de conexión."); setShowAlert(true);
-			} //else { getDatos() }
+			else { setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				setTextoAlert("Problemas de conexión."); setShowAlert(true);
+			}
 		});
 	}
 	return (

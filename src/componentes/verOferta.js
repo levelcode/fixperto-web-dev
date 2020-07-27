@@ -3,39 +3,37 @@ import httpClient from "../constantes/axios";
 import Alerta from "./alertaVista";
 import axios from "axios";
 class VerOferta extends React.Component {
-	constructor(props) { 
-		super(props); 
-		this.state = { 
-			address: "", 
-			showDir: false, 
-			mostrar: false, 
-			showAlert: false, 
-			textoAlert: "", 
-			offert: {}, 
+	constructor(props) {
+		super(props);
+		this.state = {
+			address: "",
+			showDir: false,
+			mostrar: false,
+			showAlert: false,
+			textoAlert: "",
+			offert: {},
 			solicitud: {}
-		}; 
+		};
 	}
-
-	UNSAFE_componentWillReceiveProps(next_props) { 
-		if (next_props["show"] && next_props["expert"] !== "") { 
-			this.getOffert(); 
-		}
+	UNSAFE_componentWillReceiveProps(next_props) {
+		if (next_props["show"] && next_props["expert"] !== "") { this.getOffert(); }
 	}
-
 	getOffert = () => {
 		let me = this;
 		me.setState({ mostrar: false });
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/fixperto/getOffert',
 			data: { expert: me.props["expert"], request: me.props["request"] }, headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) {
-					me.setState({ mostrar: true, offert: responseJson["data"].offert, solicitud: responseJson["data"].solicitud });
-				}
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) {
+				me.setState({ mostrar: true, offert: responseJson["data"].offert, solicitud: responseJson["data"].solicitud });
+			}
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+			}
+		});
 	}
 	formato = fecha => { if (fecha) { let hora = fecha.split(":"); return hora[0] + "h " + hora[1] + " min"; } else return ""; }
 	aceptar = () => {
@@ -48,24 +46,28 @@ class VerOferta extends React.Component {
 				request: me.props["request"],
 				collaborator: me.state["offert"]["collaborator"]
 			}, headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { me.setState({ showDir: false, address: "" }); me.props["close"]("aceptada"); }
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { me.setState({ showDir: false, address: "" }); me.props["close"]("aceptada"); }
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+			}
+		});
 	}
 	rechazar = () => {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/cliente/refuseOffert',
 			data: { expert: me.props["expert"], request: me.props["request"] }, headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { me.setState({ showDir: false, address: "" }); me.props["close"]("rechazada"); }
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { me.setState({ showDir: false, address: "" }); me.props["close"]("rechazada"); }
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión." });
+			}
+		});
 	}
 	close = () => { this.setState({ showDir: false, address: "" }); this.props["close"](); }
 	render() {
@@ -98,7 +100,7 @@ class VerOferta extends React.Component {
 								<p texto="Antes de aceptar el servicio le recomendamos que su experto ingrese toda la información de la propuesta" />
 							</div>
 						}
-						<h3 className="text_blue" style={{textAlign : "left", marginLeft : 15}}>Propuesta del servicio</h3>
+						<h3 className="text_blue" style={{ textAlign: "left", marginLeft: 15 }}>Propuesta del servicio</h3>
 						<div className="w3-container">
 							<div className="w3-margin-bottom">
 								<b className="w3-cell text_blue">Descripción: </b>
@@ -126,7 +128,7 @@ class VerOferta extends React.Component {
 									<div className="w3-col s8 m8 w3-container">
 										<b className="text_blue">{offert["col_name"]}</b>
 										<div className="">
-											
+
 											<p className="w3-row"> <b className="w3-cell text_blue">Cédula: </b> {offert["col_number"]}</p>
 										</div>
 										<div className="">

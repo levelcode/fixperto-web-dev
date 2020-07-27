@@ -47,7 +47,7 @@ class Fixperto extends React.Component {
 			ref.appendChild(y);
 		}
 	}
-	onError = () => { window.location.reload(false); }
+	onError = () => { /*window.location.reload(false);*/ }
 	render() {
 		const { showAlert, textoAlert, services } = this.state;
 		var type = (JSON.parse(localStorage.getItem("@USER"))["type"] === "empresa") ? "empresa" : "profesional";

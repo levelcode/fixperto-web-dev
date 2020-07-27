@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-
 const FileUpload = (props) => {
 	const [file, setFile] = useState("");
-
 	const onChange = e => {
 		props["onChange"](e.target.files[0]);
 		var reader = new FileReader();
 		reader.onload = function (e) { setFile(e.target.result); }
 		reader.readAsDataURL(e.target.files[0]);
 	}
-
 	return (
 		<React.Fragment>
 			<form >

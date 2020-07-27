@@ -13,12 +13,14 @@ const Problema = ({ show, request, close, user, type_user, typeId }) => {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/getProblemType',
 			headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { setProblems(responseJson["data"].problems); }
-				else { setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true); }
-			})
-			.catch(function (response) { setTextoAlert("Problemas de conexión."); setShowAlert(true); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { setProblems(responseJson["data"].problems); }
+			else { setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				setTextoAlert("Problemas de conexión."); setShowAlert(true);
+			}
+		});
 	}
 	if (!problems.length) { getProblemsType(); }
 	const enviar = () => {
@@ -27,12 +29,14 @@ const Problema = ({ show, request, close, user, type_user, typeId }) => {
 			url: httpClient.urlBase + '/seguridad/reportProblem',
 			data: { problem, type, request, user, type_user, typeId },
 			headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { close(true); }
-				else { close(false); }
-			})
-			.catch(function (response) { setTextoAlert("Problemas de conexión."); setShowAlert(true); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { close(true); }
+			else { close(false); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				setTextoAlert("Problemas de conexión."); setShowAlert(true);
+			}
+		});
 	}
 	return (
 		<React.Fragment>

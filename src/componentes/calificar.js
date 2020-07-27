@@ -16,12 +16,14 @@ const Calificar = (props) => {
 			url: httpClient.urlBase + '/cliente/ratingExpert',
 			data: { evaluation, cost, commentary, calificador: props["calificador"], calificado: props["experto"]["id"] },
 			headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { props["close"](true); }
-				else { props["close"](false); }
-			})
-			.catch(function (response) { setTextoAlert("Problemas de conexión."); setShowAlert(true); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { props["close"](true); }
+			else { props["close"](false); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				setTextoAlert("Problemas de conexión."); setShowAlert(true);
+			}
+		});
 	}
 	return (
 		<React.Fragment>
@@ -54,7 +56,7 @@ const Calificar = (props) => {
 									onChange={(e) => setCost(e.target.value)} />
 							</div>
 						</div>
-						
+
 						<p className="w3-tiny" >Este valor no es obligatorio pero será de gran utilidad para crear una guía de precios</p>
 
 						<div className="w3-section">
@@ -64,7 +66,7 @@ const Calificar = (props) => {
 						</div>
 
 					</div>
-					
+
 					<div className="w3-center w3-section w3-container">
 						<button onClick={calificar} disabled={false}
 							className={(evaluation === 0 || commentary === "") ? "w3-button w3-disabled w3-block w3-round-large w3-indigo " : "w3-button w3-block btn w3-round-large"}>Enviar</button>

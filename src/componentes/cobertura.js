@@ -30,8 +30,10 @@ class Cobertura extends React.Component {
 					if (responseJson["data"]["success"]) { me.setState({ routes: responseJson["data"].regions }); }
 					else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
 				})
-				.catch(function (response) {
-					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+				.catch(function (error) {
+					if (error.message === 'Timeout' || error.message === 'Network request failed') {
+						me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+					}
 				});
 		}
 	}

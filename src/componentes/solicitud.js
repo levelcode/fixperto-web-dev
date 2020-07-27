@@ -11,12 +11,14 @@ const Solicitud = (props) => {
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/seguridad/getRequest',
 			data: { id: props["request"] }, headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { setRequest(responseJson["data"]["request"]); setActualizar(false); }
-				else { setTextoAlert("Ha ocurrido un erro, intente nuevamente"); setShowAlert(true); }
-			})
-			.catch(function (response) { setTextoAlert("Problemas de conexión."); setShowAlert(true); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { setRequest(responseJson["data"]["request"]); setActualizar(false); }
+			else { setTextoAlert("Ha ocurrido un erro, intente nuevamente"); setShowAlert(true); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				setTextoAlert("Problemas de conexión."); setShowAlert(true);
+			}
+		});
 	}
 	if (props["show"] && actualizar) { getRequest(); }
 	return (
@@ -42,7 +44,7 @@ const Solicitud = (props) => {
 									request["emergency"] === 1 &&
 									<div className="w3-margin-bottom">
 										<div className="w3-cell w3-container">
-											<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{marginTop : -13}} />
+											<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{ marginTop: -13 }} />
 										</div>
 										<p className="w3-cell text_blue">Servicio de emergencia</p>
 									</div>
@@ -77,7 +79,7 @@ const Solicitud = (props) => {
 						<div className="w3-row-padding">
 							{request["photos"] && request["photos"].length > 0 && request["photos"].map((photo, key) => (
 								<div className="w3-quarter" key={key}>
-									<img src={"https://api.fixperto.com/uploads/requests/" + photo["image"]} className="imagen-experto" alt="Foto" style={{marginBottom : 10}}></img>
+									<img src={"https://api.fixperto.com/uploads/requests/" + photo["image"]} className="imagen-experto" alt="Foto" style={{ marginBottom: 10 }}></img>
 								</div>
 							))}
 						</div>

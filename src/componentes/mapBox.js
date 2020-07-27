@@ -26,20 +26,21 @@ class MapBox extends React.Component {
 			let me = this;
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/seguridad/getRegions', headers: { Accept: 'application/json' }
-			})
-				.then(function (responseJson) {
-					if (responseJson["data"]["success"]) {
-						me.setState({ routes: responseJson["data"]["regions"] });
-					}
-					else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, intente nuevamente" }); }
-				})
-				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión" }); });
+			}).then(function (responseJson) {
+				if (responseJson["data"]["success"]) {
+					me.setState({ routes: responseJson["data"]["regions"] });
+				}
+				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, intente nuevamente" }); }
+			}).catch(function (error) {
+				if (error.message === 'Timeout' || error.message === 'Network request failed') {
+					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+				}
+			});
 		}
 	}
 	createCoordinates = (selectedItem) => {
 		selectedItem.regions.map(r => {
 			let key = `${r.city}_${r.id}`;
-
 			if (!map.getSource(key)) {
 				map.addSource(key, {
 					type: "geojson",
@@ -57,21 +58,18 @@ class MapBox extends React.Component {
 						}]
 					}
 				});
-
 				map.addLayer({
 					id: `${key}-fill`,
 					type: "fill",
 					source: key,
 					paint: { "fill-color": "#43AECC", "fill-opacity": 0 }
 				});
-
 				map.addLayer({
 					id: `${key}-line`,
 					type: "line",
 					source: key,
 					paint: { "line-width": 2, "line-color": "#43AECC" }
 				});
-
 				map.on('click', `${key}-fill`, e => {
 					if (this.state.selectedRegion.id === e.features[0].properties.id) {
 						this.setState({ selectedRegion: { name: "", id: "" } });
@@ -80,10 +78,8 @@ class MapBox extends React.Component {
 						if (this.state.selectedRegion.key) {
 							map.setPaintProperty(`${this.state.selectedRegion.key}-fill`, "fill-opacity", 0);
 						}
-
 						this.setState({ selectedRegion: e.features[0].properties });
 						map.setPaintProperty(`${key}-fill`, "fill-opacity", 0.3);
-
 						new mapboxgl.Popup()
 							.setLngLat(e.lngLat)
 							.setHTML(e.features[0].properties.name)

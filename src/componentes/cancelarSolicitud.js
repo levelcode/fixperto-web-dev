@@ -8,20 +8,19 @@ const CancelarSolicitud = ({ show, id, close }) => {
 	const [cancellations, setCancellations] = useState([]);
 	const [texto, setTexto] = useState("");
 	const [type, setType] = useState(1);
-
 	const getCancelType = () => {
 		return axios({
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/getCancelType',
 			headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { setCancellations(responseJson["data"].cancellations); }
-				else { setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true); }
-			})
-			.catch(function (response) {
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { setCancellations(responseJson["data"].cancellations); }
+			else { setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
 				setTextoAlert("Problemas de conexión."); setShowAlert(true);
-			});
+			}
+		});
 	}
 	if (!cancellations.length) { getCancelType(); }
 	const cancelar = () => {
@@ -30,12 +29,14 @@ const CancelarSolicitud = ({ show, id, close }) => {
 			url: httpClient.urlBase + '/cliente/cancelRequest',
 			data: { texto: texto, type: type, id },
 			headers: { Accept: 'application/json' }
-		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { close(true); }
-				else { close(false); }
-			})
-			.catch(function (response) { setTextoAlert("Problemas de conexión."); setShowAlert(true); });
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { close(true); }
+			else { close(false); }
+		}).catch(function (error) {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				setTextoAlert("Problemas de conexión."); setShowAlert(true);
+			}
+		});
 	}
 	return (
 		<React.Fragment>

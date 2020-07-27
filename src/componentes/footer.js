@@ -14,8 +14,7 @@ const Footer = (props) => {
 						<div className="w3-cell">
 							<a href="https://play.google.com/store/apps/details?id=com.shiftactive.fixperto&hl=es_CO" target="_blank">
 								<img src="./assets/google-play.png" className="footerFixperto" alt="Norway" />
-							</a>
-							
+							</a>							
 						</div>
 						<div className="w3-cell w3-container">
 							<a href="https://www.apple.com/co/ios/app-store/" target="_blank">
