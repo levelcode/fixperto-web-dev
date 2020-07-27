@@ -27,7 +27,7 @@ class ServiciosNuevaSol extends React.Component {
 				}
 				else if (parsed["cat_add"]) {
 					localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
-					localStorage.setItem("@CAT_ADD", parsed["cat_add"]);
+					localStorage.setItem("@CAT_ADD", JSON.stringify(parsed["cat_add"]));
 				}
 			}
 			this.props["history"]["push"]("/ingreso");
@@ -64,7 +64,7 @@ class ServiciosNuevaSol extends React.Component {
 					}
 					else if (parsed["cat_add"]) {
 						localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
-						localStorage.setItem("@CAT_ADD", parsed["cat_add"]);
+						localStorage.setItem("@CAT_ADD", JSON.stringify(parsed["cat_add"]));
 						this.props.history.push({ pathname: '/fixperto/servicios', cat_add: parsed["cat_add"] });
 					}
 				}
