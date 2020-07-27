@@ -14,7 +14,7 @@ class ServiciosCateg extends React.Component {
 		if (!Object.keys(user).length) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
 				let parsed = queryString.parse(this.props["location"]["search"]);
-				parsed["service"]=JSON.parse(parsed["service"]);
+				parsed["service"] = JSON.parse(parsed["service"]);
 				localStorage.setItem("@SEARCHCAT", JSON.stringify(parsed["service"]));
 			}
 			this.props["history"]["push"]("/ingreso");
@@ -28,7 +28,7 @@ class ServiciosCateg extends React.Component {
 			else {
 				if (this.props["location"] && this.props["location"]["search"] !== "") {
 					let parsed = queryString.parse(this.props["location"]["search"]);
-					parsed["service"]=JSON.parse(parsed["service"]);
+					parsed["service"] = JSON.parse(parsed["service"]);
 					if (parsed["service"]) {
 						this.props.history.location.item = {
 							id: parsed["service"]['id'],
@@ -63,15 +63,13 @@ class ServiciosCateg extends React.Component {
 		var me = this;
 		axios({
 			method: 'post', url: httpClient.urlBase + url, data: { service: this.props.history.location.item['id'] }, headers: { Accept: 'application/json' }
+		}).then(function (responseJson) {
+			responseJson = responseJson['data']; me.setState({ categories: responseJson.categories });
+		}).catch((error) => {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			}
 		})
-			.then(function (responseJson) {
-				responseJson = responseJson['data']; me.setState({ categories: responseJson.categories });
-			})
-			.catch((error) => {
-				if (error.message === 'Timeout' || error.message === 'Network request failed') {
-					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-				}
-			})
 	}
 	continuarSolicitud = (category) => {
 		this.props.history.push({ pathname: '/fixperto/servicios-nueva', category, service: this.props.history.location.item });

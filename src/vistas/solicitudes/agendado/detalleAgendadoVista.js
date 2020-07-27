@@ -23,31 +23,34 @@ class DetalleAgendado extends React.Component {
 	}
 	getRequest = (id) => {
 		let me = this;
-		if (id !== "")
+		if (id !== "") {
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/getRequestScheduled',
 				data: { id }, headers: { Accept: 'application/json' }
-			})
-				.then(function (response) {
-					if (response["data"]["success"]) {
-						var responseJson = response["data"];
-						var fecha_agendada = "";
-						var fecha_actual = "";
-						if (responseJson.request["hour"] && responseJson.request["scheduled_date"]) {
-							var aux = responseJson.request["hour"].split(":");
-							var from1 = responseJson.request["scheduled_date"].split("/");
-							fecha_agendada = new Date(from1[2], from1[1] - 1, from1[0]);
-							fecha_agendada.setDate(fecha_agendada.getDate() - 1);
-							fecha_agendada.setHours(aux[0]);
-							fecha_agendada.setMinutes(aux[1]);
-							fecha_agendada.setSeconds(aux[2]);
-							fecha_actual = new Date(responseJson.request["date"]);
-						}
-						me.setState({ id, request: responseJson.request, expert: responseJson.expert, fecha_agendada, fecha_actual });
+			}).then(function (response) {
+				if (response["data"]["success"]) {
+					var responseJson = response["data"];
+					var fecha_agendada = "";
+					var fecha_actual = "";
+					if (responseJson.request["hour"] && responseJson.request["scheduled_date"]) {
+						var aux = responseJson.request["hour"].split(":");
+						var from1 = responseJson.request["scheduled_date"].split("/");
+						fecha_agendada = new Date(from1[2], from1[1] - 1, from1[0]);
+						fecha_agendada.setDate(fecha_agendada.getDate() - 1);
+						fecha_agendada.setHours(aux[0]);
+						fecha_agendada.setMinutes(aux[1]);
+						fecha_agendada.setSeconds(aux[2]);
+						fecha_actual = new Date(responseJson.request["date"]);
 					}
-					else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-				})
-				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
+					me.setState({ id, request: responseJson.request, expert: responseJson.expert, fecha_agendada, fecha_actual });
+				}
+				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+			}).catch((error) => {
+				if (error.message === 'Timeout' || error.message === 'Network request failed') {
+					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+				}
+			})
+		}
 		else { me.setState({ request: {} }); }
 	}
 	rechazar = () => {
@@ -56,12 +59,14 @@ class DetalleAgendado extends React.Component {
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/refuseOffert',
 				data: { expert: me.state["expert"].id, request: me.state["request"].id }, headers: { Accept: 'application/json' }
+			}).then(function (response) {
+				if (response["data"]["success"]) { me.props["backRechazar"](true); }
+				else { me.props["backRechazar"](false); }
+			}).catch((error) => {
+				if (error.message === 'Timeout' || error.message === 'Network request failed') {
+					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+				}
 			})
-				.then(function (response) {
-					if (response["data"]["success"]) { me.props["backRechazar"](true); }
-					else { me.props["backRechazar"](false); }
-				})
-				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	verDetalle = () => { this.setState({ isSolicitudVisible: true }); }
 	problema = () => { this.setState({ isProblemaVisible: true }); }
@@ -101,7 +106,7 @@ class DetalleAgendado extends React.Component {
 								request["emergency"] === 1 &&
 								<div className="w3-margin-bottom">
 									<div className="w3-cell w3-container">
-										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{marginTop : -13}} />
+										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{ marginTop: -13 }} />
 									</div>
 									<p className="w3-cell text_blue">Servicio de emergencia</p>
 								</div>

@@ -18,12 +18,14 @@ class DetalleCompletado extends React.Component {
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/getRequestCompleted',
 				data: { id }, headers: { Accept: 'application/json' }
+			}).then(function (responseJson) {
+				if (responseJson["data"]["success"]) { me.setState({ id, request: responseJson["data"].request, expert: responseJson["data"].expert }); }
+				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+			}).catch((error) => {
+				if (error.message === 'Timeout' || error.message === 'Network request failed') {
+					me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+				}
 			})
-				.then(function (responseJson) {
-					if (responseJson["data"]["success"]) { me.setState({ id, request: responseJson["data"].request, expert: responseJson["data"].expert }); }
-					else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-				})
-				.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 		else { me.setState({ request: {} }); }
 	}
 	verDetalle = () => { this.setState({ isSolicitudVisible: true }); }
@@ -65,7 +67,7 @@ class DetalleCompletado extends React.Component {
 								request["emergency"] === 1 &&
 								<div className="w3-margin-bottom">
 									<div className="w3-cell w3-container">
-										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{marginTop : -13}} />
+										<img src="../../../../assets/iconos/emergencia.png" className="imagen-icono" alt="Imagen" style={{ marginTop: -13 }} />
 									</div>
 									<p className="w3-cell text_blue">Servicio de emergencia</p>
 								</div>

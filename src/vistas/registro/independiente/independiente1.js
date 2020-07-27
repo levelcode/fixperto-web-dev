@@ -31,29 +31,30 @@ class Independiente1 extends React.Component {
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/services/getServicesConcatCategories',
 			data: { selected: false }, headers: { Accept: 'application/json' }
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) { me.getCertificationsType(responseJson["data"].categories); }
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+		}).catch((error) => {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			}
 		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) { me.getCertificationsType(responseJson["data"].categories); }
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	getCertificationsType = (categories) => {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/services/getCertificationsType',
 			data: { selected: false }, headers: { Accept: 'application/json' }
+		}).then(function (responseJson) {
+			if (responseJson["data"]["success"]) {
+				me.setState({ categories, certification_type: responseJson["data"].certification_type });
+			}
+			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
+		}).catch((error) => {
+			if (error.message === 'Timeout' || error.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			}
 		})
-			.then(function (responseJson) {
-				if (responseJson["data"]["success"]) {
-					me.setState({
-						categories,
-						certification_type: responseJson["data"].certification_type
-					});
-				}
-				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
-			})
-			.catch(function (response) { me.setState({ showAlert: true, textoAlert: "Problemas de conexión." }); });
 	}
 	addCategory = (elemento) => {
 		this.setState(prevState => ({ categoriesSelected: [...prevState["categoriesSelected"].concat(elemento)] }));
@@ -72,7 +73,6 @@ class Independiente1 extends React.Component {
 		{ id: 7, denomination: 'No aplica' }
 	];
 	almacenarCert = () => {
-
 		if (this.state["type"] !== 0 && this.state["certification"] !== "") {
 			let me = this
 			var reader = new FileReader();
@@ -85,7 +85,6 @@ class Independiente1 extends React.Component {
 					}));
 			}
 			reader.readAsDataURL(this.state["certification"]);
-
 		}
 	}
 	deleteCert(certification) {
@@ -96,7 +95,7 @@ class Independiente1 extends React.Component {
 	}
 	almacenarJob = () => {
 		if (this.state["photo"] !== "" && this.state["name"] !== "") {
-			let me = this
+			let me = this;
 			var reader = new FileReader();
 			reader.onload = function (e) {
 				me.setState(prevState => (
@@ -106,7 +105,7 @@ class Independiente1 extends React.Component {
 					}));
 			}
 			reader.readAsDataURL(this.state["photo"]);
-			this.setState({ photo: "" })
+			this.setState({ photo: "" });
 		}
 	}
 	deleteJob(job) {

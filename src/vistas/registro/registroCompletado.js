@@ -63,7 +63,11 @@ class RegistroCompletado extends React.Component {
 			let responseJson = response["data"];
 			if (responseJson["success"]) { me.props["history"]["push"]("fixpertos"); }
 			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error, por favor pruebe nuevamente" }); }
-		}).catch(function (response) { me.registrar(); });
+		}).catch(function (response) {
+			if (response.message === 'Timeout' || response.message === 'Network request failed') {
+				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
+			}
+		});
 	}
 	render() {
 		const { showAlert, textoAlert } = this.state;

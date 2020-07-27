@@ -35,7 +35,7 @@ class PerfilInformacion extends React.Component {
 		}).catch((error) => {
 			if (error.message === 'Timeout' || error.message === 'Network request failed') {
 				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-			} else { me.getInformation(); }
+			}
 		})
 	}
 	formatDate = date => {

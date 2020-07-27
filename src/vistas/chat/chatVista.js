@@ -42,7 +42,7 @@ class Chat extends React.Component {
 		}).catch(function (error) {
 			if (error.message === 'Timeout' || error.message === 'Network request failed') {
 				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-			} else { me.getChats(); }
+			}
 		});
 	}
 	onReceivedMessage(messages, de, request, type, user, action) {
@@ -80,7 +80,7 @@ class Chat extends React.Component {
 		}).catch(function (error) {
 			if (error.message === 'Timeout' || error.message === 'Network request failed') {
 				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-			} else { }
+			}
 		});
 	}
 	showChat = (datos) => {
@@ -97,7 +97,7 @@ class Chat extends React.Component {
 		}).catch(function (error) {
 			if (error.message === 'Timeout' || error.message === 'Network request failed') {
 				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
-			} else { }
+			}
 		});
 	}
 	closeVerOferta = (status = "") => {

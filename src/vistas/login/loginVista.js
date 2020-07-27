@@ -54,8 +54,8 @@ class Login extends React.Component {
 					else {
 						me.setState({ showAlert: true, textoAlert: "Correo o contraseña incorrecta, inténtelo nuevamente" });
 					}
-				}).catch(function (response) {
-					if (response.message === 'Timeout' || response.message === 'Network request failed') {
+				}).catch(function (error) {
+					if (error.message === 'Timeout' || error.message === 'Network request failed') {
 						me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
 					}
 				});

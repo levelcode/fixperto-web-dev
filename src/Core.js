@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "./style/index.css";
-
 const Solicitudes = () => <div>Componente Solicitudes</div>;
 const Servicios = () => <div>Componente servicios</div>;
 const Chat = () => <div>Componente chat</div>;
 const Perfil = () => <div>Componente perfil</div>;
-
 class Core extends Component {
 	render() {
 		const { path } = this.props.match;

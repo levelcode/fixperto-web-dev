@@ -27,5 +27,4 @@ class Ingreso extends React.Component {
 		);
 	}
 }
-
 export default Ingreso;

@@ -11,7 +11,6 @@ class Beneficios extends React.Component {
 					<div className="beneficios">
 						<h1 className="titleRegister">Beneficios</h1>
 						<div className="w3-row">
-
 							<div className="w3-col  s12 m4">
 								<div className="w3-row">
 									<div className="w3-col s12">
@@ -23,25 +22,21 @@ class Beneficios extends React.Component {
 									</div>
 								</div>
 							</div>
-
 							<div className="w3-col  s12 m4">
 								<div className="w3-row">
 									<div className="w3-col s12">
 										<img src="../assets/beneficio2.png" className="w3-round" alt="Norway" />
 									</div>
-
 									<div className="col s12 text_ben">
 										<p>Sistema de calificación del fixperto por recomendacioens y opiniones de clientes para una mejor elección </p>
 									</div>
 								</div>
 							</div>
-
 							<div className="w3-col  s12 m4">
 								<div className="w3-row">
 									<div className="col s12">
 										<img src="../assets/beneficio3.png" className="w3-round" alt="Norway" />
 									</div>
-
 									<div className="w3-col s12 text_ben">
 										<p>Cuenta personalizada, control e historial de tus servicios.</p>
 									</div>
