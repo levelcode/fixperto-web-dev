@@ -34,13 +34,7 @@ class ServiciosVista extends React.Component {
 	}
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (this.props["history"]["location"]["cat_add"]) {
-			this.setState({ user, name: user["name"], search: this.props["history"]["location"]["cat_add"] });
-		}
-		else {
-			this.setState({ user, name: user["name"] });
-		}
-		this.getServices();
+		this.setState({ user, name: user["name"] }); this.getServices();
 	}
 	getServices = () => {
 		var me = this;
@@ -53,6 +47,10 @@ class ServiciosVista extends React.Component {
 			let categories = responseJson.categories;
 			categories.unshift(responseJson.categoriesEmergency);
 			me.setState({ services: categories, copy: categories });
+			if (me.props["history"]["location"]["cat_add"] && me.props["history"]["location"]["cat_add"] !== "") {
+				me.updateSearch(this.props["history"]["location"]["cat_add"]);
+				me.props["history"]["location"]["cat_add"] = "";
+			}
 		}).catch((error) => {
 			if (error.message === 'Timeout' || error.message === 'Network request failed') {
 				me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
@@ -117,7 +115,7 @@ class ServiciosVista extends React.Component {
 						{(search !== "") ?
 							(copy.length === 0) ?
 								<div className="add_cat">
-									<p>Tu búsqueda no arrojó resultados, escribe aquí la categoría que estas buscando</p>
+									<p>Tu búsqueda no arrojó resultados, escribe aquí la categoría que estás buscando</p>
 									<input className="w3-round-large" type="text" value={new_categori}
 										onChange={(e) => this.setState({ new_categori: e.target.value })} />
 									<p className="p_btn">
