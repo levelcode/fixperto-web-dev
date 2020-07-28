@@ -122,7 +122,7 @@ class CodigoSms extends React.Component {
 										onChange={(e) => this.setState({ new_phone: e.target.value })} />
 								</div>
 								<p className="p_btn">
-									<button className="w3-button btn" style={{ width: 40 + "%" }}
+									<button className="w3-button btn" style={{ width: 220 }}
 										onClick={(e) => { this.shangePhone(); }}>Cambiar teléfono</button>
 								</p>
 								<p className="p_btn">
@@ -140,11 +140,11 @@ class CodigoSms extends React.Component {
 								</div>
 								<div className="w3-row">
 									<p className="p_btn">
-										<button className="w3-button btn" style={{ width: 40 + "%" }}
+										<button className="w3-button btn" style={{ width: 220 }}
 											onClick={() => { this.enviar(); }}>VERIFICAR CUENTA</button>
 									</p>
 									<p>Si no recibiste el código clic en
-										   <a href="#" onClick={() => { this.reenviar(); }}>Reenviar</a>
+										   <a href="#" onClick={() => { this.reenviar(); }}> Reenviar</a>
 									</p>
 									<p>
 										<a href="#" onClick={() => { this.setState({ showCahngePhone: true }); }}>CAMBIAR TELÉFONO</a>

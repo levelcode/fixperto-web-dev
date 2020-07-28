@@ -41,7 +41,7 @@ class Independiente3 extends React.Component {
 					<h1 className="titleRegister">Paso 4 de 5</h1>
 					<h3 className="w3-center">Seguridad Social</h3>
 					<div className="w3-row">
-						<div style={{ width: 50 + "%", margin: "auto" }}>
+						<div style={{ width: 95 + "%", margin: "auto" }}>
 							<label>Fecha vencimiento ARL*</label>
 							<input className="w3-input w3-border w3-round-large size200 w3-margin-bottom" type="date" value={date_arl}
 								onChange={(e) => this.setState({ date_arl: e.target.value })} min={fechaActual()} />

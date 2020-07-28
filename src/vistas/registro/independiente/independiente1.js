@@ -187,7 +187,7 @@ class Independiente1 extends React.Component {
 						<label>Adjunta tus certificaciones o cursos tomados</label>
 						<span onClick={() => { this.setState({ isModalVisibleCert: true }); }}
 							className="w3-circle w3-blue w3-margin-left"
-							style={{ cursor: "pointer", fontSize: 40 + "px", paddingLeft: 15 + "px", paddingRight: 15 + "px", verticalAlign: "middle" }}>
+							style={{ cursor: "pointer", fontSize: 25 + "px", paddingLeft: 10 + "px", paddingRight: 10 + "px", verticalAlign: "middle" }}>
 							+
 					    </span>
 						<div className="w3-row-padding" style={{ marginTop: 15 }} >
@@ -244,7 +244,7 @@ class Independiente1 extends React.Component {
 						<label>Adjunta las fotos de tus proyectos</label>
 						<span onClick={() => { this.setState({ isModalVisible: true }); }}
 							className="w3-circle w3-blue w3-margin-left"
-							style={{ cursor: "pointer", fontSize: 40 + "px", paddingLeft: 15 + "px", paddingRight: 15 + "px", verticalAlign: "middle" }}>
+							style={{ cursor: "pointer", fontSize: 25 + "px", paddingLeft: 10 + "px", paddingRight: 10 + "px", verticalAlign: "middle" }}>
 							+
 						</span>
 						<div className="w3-row-padding" style={{ marginTop: 15 }} >

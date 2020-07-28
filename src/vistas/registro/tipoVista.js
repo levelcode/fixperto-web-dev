@@ -14,13 +14,13 @@ class Tipo extends React.Component {
 						<h5>¿Necesitas un servicio?</h5>
 						<button
 							onClick={() => { this.props["history"]["push"]("beneficios"); }}
-							className="w3-button btn " style={{width : 40 + "%"}}>
+							className="w3-button btn " style={{width : 220}}>
 							<b>Eres cliente</b>
 						</button>
 					</div>
 					<div className="w3-container w3-section">
 						<h5>¿Quieres ofrecer un servicio?</h5>
-						<button style={{width : 40 + "%"}}
+						<button style={{width : 220}}
 							onClick={() => { this.props["history"]["push"]("registro-experto"); }}
 							className="w3-button btn ">
 							<b>Eres independiente</b>

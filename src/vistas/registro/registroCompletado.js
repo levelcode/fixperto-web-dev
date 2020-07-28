@@ -144,7 +144,7 @@ class RegistroCompletado extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div style={{ width: 30 + "%", margin: "auto" }}>
+					<div style={{ width:220, margin: "auto" }}>
 						<button className="w3-button btn w3-block" onClick={() => { this.registrar(); }}>Registrar</button>
 					</div>
 				</div>
