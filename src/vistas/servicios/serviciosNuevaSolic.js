@@ -10,13 +10,13 @@ class ServiciosNuevaSol extends React.Component {
 		super(props);
 		this.state = {
 			showMapBox: false, textoAlert: "", showAlert: false, start_date: new Date(), hour: "", buttonDisabled: false,
-			user: JSON.parse(localStorage.getItem("@USER")), description: "",
+			user: (localStorage.getItem("@USER")) ? JSON.parse(localStorage.getItem("@USER")) : {}, description: "",
 			region: { name: "", id: "" }, photos: [], photoss: [], emergency: false,
 			icon_mame: "", serv_den: "", cat_den: ""
 		};
 	}
 	componentDidMount() {
-		var user = JSON.parse(localStorage.getItem("@USER"));
+		var user = (localStorage.getItem("@USER")) ? JSON.parse(localStorage.getItem("@USER")) : {};
 		if (Object.keys(user).length === 0) {
 			if (this.props["location"] && this.props["location"]["search"] !== "") {
 				let parsed = queryString.parse(this.props["location"]["search"]);

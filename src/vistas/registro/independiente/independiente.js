@@ -17,7 +17,7 @@ class Independiente extends React.Component {
 		}
 	}
 	componentDidMount() {
-		var user = JSON.parse(localStorage.getItem("@USER"));
+		var user = (localStorage.getItem("@USER")) ? JSON.parse(localStorage.getItem("@USER")) : {}
 		if (Object.keys(user).length>0) {
 			localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("/ingreso");
 		}
