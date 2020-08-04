@@ -14,7 +14,7 @@ class CodigoSms extends React.Component {
 	}
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (Object.keys(user).length===0) { this.props["history"]["push"]("/ingreso"); }
+		if (Object.keys(user).length === 0) { this.props["history"]["push"]("/ingreso"); }
 	}
 	enviar = () => {
 		var user = JSON.parse(localStorage.getItem("@USER"));
@@ -44,7 +44,25 @@ class CodigoSms extends React.Component {
 						}
 						else {
 							localStorage.setItem("@USER", JSON.stringify({ type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false }));
-							me.props["history"]["push"]("fixperto/servicios");
+							var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));
+							var cat_add = JSON.parse(localStorage.getItem("@CAT_ADD"));
+							if (item && cat_add) {
+								if (Object.keys(item).length > 0 && Object.keys(cat_add).length === 0) {
+									localStorage.setItem("@SEARCHCAT", JSON.stringify({}));
+									let denomination = item['label'].split("/");
+									me.props["history"]["push"]({
+										pathname: 'fixperto/servicios-nueva',
+										category: { id: item['id'], denomination: denomination[1], },
+										service: { icon: item['icon'], denomination: denomination[0], emergency: item['emergency'] }
+									});
+								}
+								else if (Object.keys(item).length === 0 && Object.keys(cat_add).length > 0) {
+									localStorage.setItem("@CAT_ADD", JSON.stringify({}));
+									me.props["history"]["push"]({ pathname: 'fixperto/servicios', cat_add });
+								}
+								else { me.props["history"]["push"]("fixperto/servicios"); }
+							}
+							else { me.props["history"]["push"]("fixperto/servicios"); }
 						}
 					}
 					else { return me.setState({ showAlert: true, textoAlert: "Código incorrecto, inténtelo nuevamente" }); }

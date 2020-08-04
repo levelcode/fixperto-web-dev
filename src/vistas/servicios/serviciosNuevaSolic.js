@@ -14,6 +14,7 @@ class ServiciosNuevaSol extends React.Component {
 			region: { name: "", id: "" }, photos: [], photoss: [], emergency: false,
 			icon_mame: "", serv_den: "", cat_den: ""
 		};
+		this.myRef = React.createRef();
 	}
 	componentDidMount() {
 		var user = (localStorage.getItem("@USER")) ? JSON.parse(localStorage.getItem("@USER")) : {};
@@ -141,7 +142,7 @@ class ServiciosNuevaSol extends React.Component {
 			<React.Fragment>
 				<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
 				{showMapBox
-					? <div className=""><MapBox selectedRegion={region} onSelect={(region) => { this.selectRegion(region) }} /></div>
+					? <div className="" ref={this.myRef}><MapBox selectedRegion={region} onSelect={(region) => { this.selectRegion(region) }} /></div>
 					: <div className="padd-general">
 						<div className="nueva_solicitud">
 							<h1 className="titleRegister">Nueva solicitud</h1>
@@ -189,7 +190,7 @@ class ServiciosNuevaSol extends React.Component {
 									}
 									<div>
 										<button className="w3-button btn_ubicacion" style={{ marginTop: 5 }}
-											onClick={() => { this.setState({ showMapBox: true }) }}>
+											onClick={() => { window.scrollTo(0, 0); this.setState({ showMapBox: true }) }}>
 											ELEGIR UBICACIÓN
 									</button>
 									</div>

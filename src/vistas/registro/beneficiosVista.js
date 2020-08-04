@@ -28,7 +28,7 @@ class Beneficios extends React.Component {
 										<img src="../assets/beneficio2.png" className="w3-round" alt="Norway" />
 									</div>
 									<div className="col s12 text_ben">
-										<p>Sistema de calificación del fixperto por recomendacioens y opiniones de clientes para una mejor elección </p>
+										<p>Sistema de calificación del fixperto por recomendaciones y opiniones de clientes para una mejor elección </p>
 									</div>
 								</div>
 							</div>

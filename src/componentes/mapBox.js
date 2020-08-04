@@ -109,7 +109,6 @@ class MapBox extends React.Component {
 			<React.Fragment>
 				<div className="container_web">
 					<Alerta showAlert={showAlert} textoAlert={textoAlert} close={() => this.setState({ showAlert: false })} />
-
 					<div className="w3-container w3-section">
 						<label>Seleccione una ciudad*</label>
 						<select className="w3-select w3-border w3-round-large" name="type"
@@ -121,7 +120,6 @@ class MapBox extends React.Component {
 						</select>
 						<p className="text_blue" style={{ marginBottom: -10 }} >Selecciona el área <img src="../../assets/iconos/click.png" style={{ width: 25, height: 25 }} alt="Area" /> </p>
 					</div>
-
 					<div ref={this.mapRef} className="mapContainer w3-container" />
 					<div className=" w3-container w3-section">
 						<button className="w3-button btn w3-block"
@@ -129,12 +127,7 @@ class MapBox extends React.Component {
 							Aceptar
 						</button>
 					</div>
-
-
 				</div>
-
-
-
 			</React.Fragment >
 		);
 	}
