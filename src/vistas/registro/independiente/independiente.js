@@ -11,14 +11,14 @@ class Independiente extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showAlert: false, textoAlert: "", term_condition: false, politicas_privacidad: false, experiencia: 1,
+			btnActive: false, showAlert: false, textoAlert: "", term_condition: false, politicas_privacidad: false, experiencia: 1,
 			type: "numeric", photo: "", name: "", email: "", identification_type: 1, number: "", birth_date: "",
 			gender: 1, fotocopy: "", phone: "", password: "", repeat_password: "", coupon: false, coupon_number: "", clear: true, clearF: true
 		}
 	}
 	componentDidMount() {
 		var user = (localStorage.getItem("@USER")) ? JSON.parse(localStorage.getItem("@USER")) : {}
-		if (Object.keys(user).length>0) {
+		if (Object.keys(user).length > 0) {
 			localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("/ingreso");
 		}
 	}
@@ -116,6 +116,7 @@ class Independiente extends React.Component {
 					});
 					return data;
 				};
+				this.setState({ btnActive: true });
 				let me = this;
 				axios({
 					method: 'post',
@@ -128,10 +129,11 @@ class Independiente extends React.Component {
 						me.props["history"]["push"]("codigosms");
 					} else {
 						if (responseJson["existe"]) {
-							me.setState({ showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
+							me.setState({ btnActive: false, showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
 						}
 					}
 				}).catch(function (response) {
+					me.setState({ btnActive: false });
 					if (response.message === 'Timeout' || response.message === 'Network request failed') {
 						me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
 					}
@@ -142,7 +144,7 @@ class Independiente extends React.Component {
 		}
 	}
 	render() {
-		const { showAlert, textoAlert, name, email, identification_type, number, birth_date, gender, experiencia,
+		const { btnActive, showAlert, textoAlert, name, email, identification_type, number, birth_date, gender, experiencia,
 			phone, password, repeat_password, term_condition, politicas_privacidad, coupon, coupon_number, clear, clearF } = this.state;
 		return (
 			<React.Fragment>
@@ -215,7 +217,7 @@ class Independiente extends React.Component {
 									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
 								}}>
 									<img src="../../../assets/iconos/show_hide_password.png"
-										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop : 8, right : 60  }}
+										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 8, right: 60 }}
 										alt="Mostrar" />
 								</div>
 							</div>
@@ -230,7 +232,7 @@ class Independiente extends React.Component {
 									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
 								}}>
 									<img src="../../../assets/iconos/show_hide_password.png"
-										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop : 8, right : 60  }}
+										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 8, right: 60 }}
 										alt="Mostrar" />
 								</div>
 							</div>
@@ -254,7 +256,7 @@ class Independiente extends React.Component {
 								<label className="labelCheck">Bajo la política y privacidad <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link> </label>
 							</div>
 							<div>
-								<button className="w3-button btn w3-block"
+								<button className="w3-button btn w3-block" disabled={btnActive}
 									onClick={() => { this.continuar(); }}>Continuar</button>
 							</div>
 						</div>

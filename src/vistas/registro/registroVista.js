@@ -11,7 +11,7 @@ class Registro extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, politicas_privacidad: false, clear: true
+			btnActive: false, textoAlert: "", showAlert: false, photo: "", name: "", email: "", birth_date: "", gender: 1, phone: "", password: "", repeat_password: "", term_condition: false, politicas_privacidad: false, clear: true
 		}
 	}
 	componentDidMount() {
@@ -87,6 +87,7 @@ class Registro extends React.Component {
 					});
 					return data;
 				};
+				this.setState({ btnActive: true });
 				let me = this;
 				axios({
 					method: 'post',
@@ -99,10 +100,11 @@ class Registro extends React.Component {
 						me.props["history"]["push"]("codigosms");
 					} else {
 						if (responseJson["existe"]) {
-							me.setState({ showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
+							me.setState({ btnActive: false, showAlert: true, textoAlert: "Ya existe un usuario con ese correo." });
 						}
 					}
 				}).catch(function (response) {
+					me.setState({ btnActive: false });
 					if (response.message === 'Timeout' || response.message === 'Network request failed') {
 						me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
 					}
@@ -113,7 +115,7 @@ class Registro extends React.Component {
 		}
 	}
 	render() {
-		const { textoAlert, showAlert, name, email, birth_date, gender, phone, password, repeat_password, term_condition, politicas_privacidad, clear } = this.state;
+		const { btnActive, textoAlert, showAlert, name, email, birth_date, gender, phone, password, repeat_password, term_condition, politicas_privacidad, clear } = this.state;
 		return (
 			<React.Fragment>
 				<Header />
@@ -189,7 +191,7 @@ class Registro extends React.Component {
 									onChange={(e) => this.setState({ politicas_privacidad: !politicas_privacidad })} />
 								<label className="labelCheck">Bajo la política y privacidad <Link to="/politicas" target="_blank">autorizo el uso de mis datos personales.</Link>  </label>
 							</p>
-							<p><button className="w3-button btn"
+							<p><button className="w3-button btn" disabled={btnActive}
 								onClick={(e) => {
 									e.preventDefault();
 									this.continuar();
