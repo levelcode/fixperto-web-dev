@@ -8,7 +8,7 @@ class PerfilAtencionCliente extends React.Component {
 			textoAlert: "", showAlert: false, show_add: false, show_view: false,
 			user: JSON.parse(localStorage.getItem("@USER")), status: [], types: [], tickets: [],
 			description: "", type: 1, name_user: "", response: "",
-			ticket: { id: "", type_customer_support: "", status: "", date_registry: "", descriptions: [] }
+			ticket: { id: "", type_customer_support: "", status: "", date_registry: "", descriptions: [], answers: [] }
 		}
 	}
 	componentDidMount() {
@@ -133,11 +133,21 @@ class PerfilAtencionCliente extends React.Component {
 									<p style={{ textAlign: "left" }}> <span className="text_blue">Fecha: </span> {ticket.date_registry} </p>
 									<p style={{ textAlign: "left" }}> <span className="text_blue">Cliente: </span> {name_user} </p>
 									<p style={{ textAlign: "left" }}> <span className="text_blue">Tipo Soporte: </span> {ticket.type_customer_support} </p>
+									<p style={{ textAlign: "left" }}> <span className="text_blue">Descripciones: </span> </p>
 									<ul>
 										{this.state.ticket['descriptions'].map((i, key) => (
 											<li key={key} style={{ textAlign: "left" }}>{i.description}</li>
 										))}
 									</ul>
+									{ticket["answers"].length > 0 && <div>
+										<p style={{ textAlign: "left" }}> <span className="text_blue">Respuestas: </span> </p>
+										<ul>
+											{this.state.ticket['answers'].map((i, key) => (
+												<li key={key} style={{ textAlign: "left" }}>{i.response}</li>
+											))}
+										</ul>
+									</div>
+									}
 									<p style={{ textAlign: "left" }}> <span className="text_blue">Responder Ticket: </span></p>
 									<input className="w3-input w3-border w3-round-large" type="text" value={response}
 										onChange={(e) => this.setState({ response: e.target.value })} />
