@@ -63,7 +63,7 @@ class Chat extends React.Component {
 		messages[0]["user"]["_id"] = messages[0]["user"]["id"];
 		let me = this;
 		socket.emit('message', messages[0], me.state["to"]["userId"], me.state["request"], "cliente",
-			JSON.parse(localStorage.getItem("@USER")), (me.props["action"]) ? me.props["action"] : "");
+			JSON.parse(localStorage.getItem("@USER")), (me.props["action"]) ? me.props["action"] : "", me.state["to"], me.state["to"]["token"]);
 		this._storeMessages(messages);
 	}
 	_storeMessages(messages) {
