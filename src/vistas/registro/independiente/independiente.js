@@ -212,12 +212,12 @@ class Independiente extends React.Component {
 									<input id="myPass" className="w3-input w3-border w3-round-large" type="password" value={password}
 										onChange={(e) => this.setState({ password: e.target.value })} />
 								</div>
-								<div className="w3-rest" style={{ cursor: "pointer" }} onClick={() => {
+								<div className="w3-rest" style={{ cursor: "pointer", width: 1 + "px" }} onClick={() => {
 									var x = document.getElementById("myPass");
 									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
 								}}>
 									<img src="../../../assets/iconos/show_hide_password.png"
-										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 8, right: 60 }}
+										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 10, marginLeft: -45 }}
 										alt="Mostrar" />
 								</div>
 							</div>
@@ -227,12 +227,12 @@ class Independiente extends React.Component {
 									<input id="myRep_Pass" className="w3-input w3-border w3-round-large" type="password" value={repeat_password}
 										onChange={(e) => this.setState({ repeat_password: e.target.value })} />
 								</div>
-								<div className="w3-rest" style={{ cursor: "pointer" }} onClick={() => {
+								<div className="w3-rest" style={{ cursor: "pointer", width: 1 + "px" }} onClick={() => {
 									var x = document.getElementById("myRep_Pass");
 									if (x.type === "password") { x.type = "text"; } else { x.type = "password"; }
 								}}>
 									<img src="../../../assets/iconos/show_hide_password.png"
-										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 8, right: 60 }}
+										style={{ width: 30 + "px", height: 20 + "px", position: "absolute", marginTop: 10, marginLeft: -45 }}
 										alt="Mostrar" />
 								</div>
 							</div>
