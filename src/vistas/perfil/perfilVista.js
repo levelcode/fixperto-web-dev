@@ -24,6 +24,7 @@ class Perfil extends React.Component {
 		};
 	}
 	active = (text) => {
+		document.getElementById('id_perfil').scrollIntoView();
 		let rutas = this.state['rutas']; Object.keys(rutas).map((key) => { rutas[key] = (key === text) }); this.setState({ rutas });
 	}
 	componentDidMount() {
@@ -213,20 +214,21 @@ class Perfil extends React.Component {
 									</div>
 								</div>
 							</div>
-							{this.props["history"]["location"]["pathname"] !== "/fixperto/perfil/" && <div className="w3-col s12 m7">
-								<div className="w3-card card_info">
-									<Switch>
-										{/*	<Route path="/fixperto/perfil/perfil-informacion" component={PerfilInformacion} />*/}
-										<Route path="/fixperto/perfil/perfil-informacion" render={() => <PerfilInformacion actualizar={() => { this.actualizar() }} />} />
-										<Route path="/fixperto/perfil/configuracion" component={PerfilConfig} />
-										<Route path="/fixperto/perfil/cambio_password" component={PerfilCambiarContr} />
-										<Route path="/fixperto/perfil/quienes_somos" component={PerfilQuienesSomos} />
-										<Route path="/fixperto/perfil/atencion_cliente" component={PerfilAtencionCliente} />
-										<Route path="/fixperto/perfil/terminos_condiciones" component={PerfilTerminos} />
-										<Route path="/fixperto/perfil/politica_privacidad" component={PerfilPolitica} />
-									</Switch>
-								</div>
-							</div>}
+							{this.props["history"]["location"]["pathname"] !== "/fixperto/perfil/" &&
+								<div id="id_perfil" className="w3-col s12 m7">
+									<div className="w3-card card_info">
+										<Switch>
+											{/*	<Route path="/fixperto/perfil/perfil-informacion" component={PerfilInformacion} />*/}
+											<Route path="/fixperto/perfil/perfil-informacion" render={() => <PerfilInformacion actualizar={() => { this.actualizar() }} />} />
+											<Route path="/fixperto/perfil/configuracion" component={PerfilConfig} />
+											<Route path="/fixperto/perfil/cambio_password" component={PerfilCambiarContr} />
+											<Route path="/fixperto/perfil/quienes_somos" component={PerfilQuienesSomos} />
+											<Route path="/fixperto/perfil/atencion_cliente" component={PerfilAtencionCliente} />
+											<Route path="/fixperto/perfil/terminos_condiciones" component={PerfilTerminos} />
+											<Route path="/fixperto/perfil/politica_privacidad" component={PerfilPolitica} />
+										</Switch>
+									</div>
+								</div>}
 						</div>
 					</div>
 				</div>
