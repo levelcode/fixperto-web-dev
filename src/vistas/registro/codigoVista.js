@@ -100,7 +100,7 @@ class CodigoSms extends React.Component {
 	shangePhone = () => {
 		let me = this;
 		for (var i = 0; i < this.state["new_phone"].length; i++) {
-			if (this.state["phone"].charAt(i) === "e")
+			if (this.state["new_phone"].charAt(i) === "e")
 				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
 		}
 		if (this.state['new_phone'] !== '') {
