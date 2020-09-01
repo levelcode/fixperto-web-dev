@@ -48,6 +48,10 @@ class PerfilInformacion extends React.Component {
 	gender_type = [{ id: 1, denomination: 'Masculino' }, { id: 2, denomination: 'Femenino' }];
 	toggleModal = () => { this.setState({ isModalVisible: !this.state["isModalVisible"] }); }
 	guardar = () => {
+		for (var i = 0; i < this.state["phone"].length; i++) {
+			if (this.state["phone"].charAt(i) === "e")
+				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
+		}
 		if (this.state["name"] === "" || this.state["email"] === "" || this.state["birth_date"] === ""
 			|| this.state["gender"] === "" || this.state["phone"] === "") {
 			return this.setState({ showAlert: true, textoAlert: "Existen campos vacios" });

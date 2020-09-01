@@ -41,6 +41,10 @@ class Registro extends React.Component {
 		if (this.state["term_condition"] === false) { vacios.push("  *Términos y condiciones"); }
 		if (this.state["politicas_privacidad"] === false) { vacios.push("  *Política y privacidad"); }
 		if (!vacios.length) {
+			for (var i = 0; i < this.state["phone"].length; i++) {
+				if (this.state["phone"].charAt(i) === "e")
+					return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
+			}
 			if (this.state["password"] !== this.state["repeat_password"]) {
 				return this.setState({ showAlert: true, textoAlert: "Contraseña distinta a su confirmación" });
 			}
@@ -49,9 +53,6 @@ class Registro extends React.Component {
 			}
 			else if (!validateEmail(this.state["email"])) {
 				return this.setState({ showAlert: true, textoAlert: "Correo inválido, por favor verifíquelo" });
-			}
-			else if (this.state["phone"].length === 0) {
-				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
 			}
 			else if (!validatePhone(this.state["phone"])) {
 				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
@@ -156,7 +157,10 @@ class Registro extends React.Component {
 							</div>
 							<label>Teléfono*</label>
 							<input className="w3-input w3-border w3-round-large" type="number" value={phone}
-								onChange={(e) => this.setState({ phone: e.target.value })} />
+								onChange={(e) => {
+									if (e.target.value !== "e")
+										this.setState({ phone: e.target.value })
+								}} />
 							<label>Contraseña*</label>
 							<div className="w3-row">
 								<div className="w3-col" style={{ width: 99 + "%" }}>
