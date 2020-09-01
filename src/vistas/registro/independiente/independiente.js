@@ -52,8 +52,14 @@ class Independiente extends React.Component {
 			if (this.state["password"] !== this.state["repeat_password"]) {
 				return this.setState({ showAlert: true, textoAlert: "Contraseña distinta a su confirmación" });
 			}
+			if (this.state["password"].length <= 5) {
+				return this.setState({ showAlert: true, textoAlert: "La contraseña debe de tener más de 6 caracteres" });
+			}
 			else if (!validateEmail(this.state["email"])) {
 				return this.setState({ showAlert: true, textoAlert: "Correo inválido, por favor verifíquelo" });
+			}
+			else if (this.state["phone"].length === 0) {
+				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
 			}
 			else if (!validatePhone(this.state["phone"])) {
 				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
@@ -89,7 +95,8 @@ class Independiente extends React.Component {
 								data.append("number", this.state["number"]);
 								break;
 							case "birth_date":
-								data.append("birth_date", this.convertDateTime(this.state["birth_date"]));
+								if (this.state["birth_date"] !== "")
+									data.append("birth_date", this.convertDateTime(this.state["birth_date"]));
 								break;
 							case "gender":
 								data.append("gender", this.state["gender"]);
@@ -204,7 +211,7 @@ class Independiente extends React.Component {
 							<div className="w3-margin-bottom">
 								<label>Teléfono*</label>
 								<input className="w3-input w3-border w3-round-large" type="number" value={phone}
-									onChange={(e) => this.setState({ phone: e.target.value })} />
+									onChange={(e) => { this.setState({ phone: e.target.value }) }} />
 							</div>
 							<label>Contraseña*</label>
 							<div className="w3-row w3-margin-bottom">

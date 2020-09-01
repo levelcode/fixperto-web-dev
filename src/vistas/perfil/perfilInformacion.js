@@ -55,6 +55,9 @@ class PerfilInformacion extends React.Component {
 		else if (!validateEmail(this.state["email"])) {
 			return this.setState({ showAlert: true, textoAlert: "Correo inválido, por favor verifíquelo" });
 		}
+		else if (this.state["phone"].length === 0) {
+			return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
+		}
 		else if (!validatePhone(this.state["phone"])) {
 			return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
 		}
@@ -135,7 +138,7 @@ class PerfilInformacion extends React.Component {
 							<div>
 								<label>Teléfono*</label>
 								<input className="w3-input w3-border w3-round-large" type="number" value={phone}
-									onChange={(e) => this.setState({ phone: e.target.value })} />
+									onChange={(e) => { this.setState({ phone: e.target.value }) }} />
 							</div>
 							<p><button className="w3-button btn" onClick={() => { this.guardar(); }}>Guardar</button></p>
 						</div>

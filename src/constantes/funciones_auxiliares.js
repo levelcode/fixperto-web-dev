@@ -6,7 +6,7 @@ const convertDate = (inputFormat) => {
 	function pad(s) { return (s < 10) ? '0' + s : s; } const d = new Date(inputFormat);
 	return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
 }
-const validateEmail = email => { let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; return reg.test(email.trim()); };
+const validateEmail = email => { let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,25})+$/; return reg.test(email.trim()); };
 
 const validateName = name => { let reg = /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/; return reg.test(name); }
 

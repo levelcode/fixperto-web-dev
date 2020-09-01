@@ -41,7 +41,7 @@ class DetalleAgendado extends React.Component {
 						fecha_agendada.setMinutes(aux[1]);
 						fecha_agendada.setSeconds(aux[2]);
 						fecha_actual = new Date(responseJson.request["date"]);
-					}
+					} console.log(me.state["user"], responseJson.expert)
 					me.setState({ id, request: responseJson.request, expert: responseJson.expert, fecha_agendada, fecha_actual });
 				}
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
@@ -132,6 +132,18 @@ class DetalleAgendado extends React.Component {
 									<img src="../../../../assets/iconos/calendar.png" className="imagen-icono" alt="Imagen" />
 								</div>
 								<p className="w3-cell"> <b className="text_blue">Fecha del servicio:</b> {(request["scheduled_date"]) ? request["scheduled_date"] : "Pendiente"}</p>
+							</div>
+							<div className="w3-margin-bottom">
+								<div className="w3-cell  w3-container">
+									<img src="../../../../assets/iconos/phone.jpg" className="imagen-icono" alt="Imagen" />
+								</div>
+								<p className="w3-cell"> <b className="text_blue">Teléfono cliente:</b> {(user["phone"]) ? user["phone"] : "Pendiente"}</p>
+							</div>
+							<div className="w3-margin-bottom">
+								<div className="w3-cell  w3-container">
+									<img src="../../../../assets/iconos/phone.jpg" className="imagen-icono" alt="Imagen" />
+								</div>
+								<p className="w3-cell"> <b className="text_blue">Teléfono fixperto:</b> {(expert["phone"]) ? expert["phone"] : "Pendiente"}</p>
 							</div>
 							<div className="w3-margin-bottom" style={{ cursor: "pointer" }} onClick={() => this.verDetalle()}>
 								<div className="w3-cell w3-container">

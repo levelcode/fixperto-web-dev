@@ -28,7 +28,7 @@ class Login extends React.Component {
 					if (responseJson["success"] && responseJson["user"].length) {
 						var user = responseJson["user"][0];
 						if (user["type"] === "cliente") {
-							localStorage.setItem("@USER", JSON.stringify({ insured: 1, evaluation: (user["evaluation"]) ? user["evaluation"] : 0, userId: user["id"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], email: user["email"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false }));
+							localStorage.setItem("@USER", JSON.stringify({ phone: user["phone"], insured: 1, evaluation: (user["evaluation"]) ? user["evaluation"] : 0, userId: user["id"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], email: user["email"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false }));
 							socket.on('connect', () => { socket.emit('cliente', { id: user["id"] }); });
 							if (user["validate_number"] === 0) { me.props["history"]["push"]("codigosms"); }
 							else {
@@ -54,7 +54,7 @@ class Login extends React.Component {
 							}
 						}
 						else {
-							localStorage.setItem("@USER", JSON.stringify({ active: user["active"], insured: 1, evaluation: (user["evaluation"]) ? user["evaluation"] : 0, plan: user["plan"], userId: user["id"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], email: user["email"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false, codigo: user["codigo"], cant_fitcoints: user["fitcoints"], planId: user["planId"], planPrice: user["planPrice"], planUri: user["planUri"], planEnd: user["planEnd"], planStatus: user["planStatus"] }));
+							localStorage.setItem("@USER", JSON.stringify({ phone: user["phone"], active: user["active"], insured: 1, evaluation: (user["evaluation"]) ? user["evaluation"] : 0, plan: user["plan"], userId: user["id"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], email: user["email"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false, codigo: user["codigo"], cant_fitcoints: user["fitcoints"], planId: user["planId"], planPrice: user["planPrice"], planUri: user["planUri"], planEnd: user["planEnd"], planStatus: user["planStatus"] }));
 							if (user["validate_number"] === 0) { me.props["history"]["push"]({ pathname: "codigosms", to: (user["type"] === "empresa") ? "empresa1" : "independiente1" }); }
 							else { me.props["history"]["push"]("fixpertos"); }
 						}

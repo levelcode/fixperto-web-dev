@@ -12,7 +12,11 @@ class CambiarPassword extends React.Component {
 	enviar() {
 		if (this.state["pass"] === "" || this.state["new_pass"] === "" || this.state["confirm"] === "") {
 			return this.setState({ showAlert: true, textoAlert: "Existe campo vacío" });
-		} else if (this.state["new_pass"] !== this.state["confirm"]) {
+		}
+		else if (this.state["new_pass"].length <= 5) {
+			return this.setState({ showAlert: true, textoAlert: "La contraseña debe de tener más de 6 caracteres" });
+		}
+		else if (this.state["new_pass"] !== this.state["confirm"]) {
 			return this.setState({ showAlert: true, textoAlert: "Nueva contraseña distinta de su confirmación" });
 		}
 		else {

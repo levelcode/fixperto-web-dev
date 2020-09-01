@@ -33,9 +33,9 @@ class Registro extends React.Component {
 	continuar = () => {
 		let vacios = [];
 		//if (this.state["photo"] === "") { vacios.push("  *Foto"); }
-		if (this.state["name"] === "") { vacios.push("  *Nombre y Apellidos"); }
+		if (this.state["name"] === "") { vacios.push("  *Nombre y apellidos"); }
 		if (this.state["email"] === "") { vacios.push("  *Correo"); }
-		//if (this.state["birth_date"] === "") { vacios.push("  *Fecha de nacimiento"); }
+		if (this.state["birth_date"] === "") { vacios.push("  *Fecha de nacimiento"); }
 		if (this.state["phone"] === "") { vacios.push("  *Teléfono"); }
 		if (this.state["password"] === "") { vacios.push("  *Contraseña"); }
 		if (this.state["term_condition"] === false) { vacios.push("  *Términos y condiciones"); }
@@ -44,8 +44,14 @@ class Registro extends React.Component {
 			if (this.state["password"] !== this.state["repeat_password"]) {
 				return this.setState({ showAlert: true, textoAlert: "Contraseña distinta a su confirmación" });
 			}
+			if (this.state["password"].length <= 5) {
+				return this.setState({ showAlert: true, textoAlert: "La contraseña debe de tener más de 6 caracteres" });
+			}
 			else if (!validateEmail(this.state["email"])) {
 				return this.setState({ showAlert: true, textoAlert: "Correo inválido, por favor verifíquelo" });
+			}
+			else if (this.state["phone"].length === 0) {
+				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
 			}
 			else if (!validatePhone(this.state["phone"])) {
 				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
@@ -70,7 +76,8 @@ class Registro extends React.Component {
 								data.append("email", this.state["email"]);
 								break;
 							case "birth_date":
-								data.append("birth_date", this.convertDateTime(this.state["birth_date"]));
+								if (this.state["birth_date"] !== "")
+									data.append("birth_date", this.convertDateTime(this.state["birth_date"]));
 								break;
 							case "phone":
 								data.append("phone", this.state["phone"]);
