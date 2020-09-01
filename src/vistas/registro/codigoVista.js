@@ -99,6 +99,10 @@ class CodigoSms extends React.Component {
 	validatePhone = phone => { let reg = /^[0-9]{7,10}$/; return reg.test(phone); };
 	shangePhone = () => {
 		let me = this;
+		for (var i = 0; i < this.state["new_phone"].length; i++) {
+			if (this.state["phone"].charAt(i) === "e")
+				return this.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
+		}
 		if (this.state['new_phone'] !== '') {
 			if (this.validatePhone(this.state["new_phone"])) {
 				var user = JSON.parse(localStorage.getItem("@USER"));
@@ -120,6 +124,9 @@ class CodigoSms extends React.Component {
 						me.setState({ showAlert: true, textoAlert: "Problemas de conexión" });
 					}
 				});
+			}
+			else{
+				me.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" }); 
 			}
 		} else { me.setState({ showAlert: true, textoAlert: "Ingresa un número de teléfono" }); }
 	}
