@@ -34,7 +34,7 @@ class CodigoSms extends React.Component {
 				if (responseJson.success) {
 					if (responseJson.validate) {
 						if (user["type"] === "independiente" || user["type"] === "empresa") {
-							localStorage.setItem("@USER", JSON.stringify({ type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false, codigo: user["codigo"], cant_fitcoints: user["cant_fitcoints"], planId: user["planId"], planPrice: user["planPrice"], planUri: user["planUri"], planEnd: user["planEnd"], planStatus: user["planStatus"] }));
+							localStorage.setItem("@USER", JSON.stringify({ tokenAuth: user["tokenAuth"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false, codigo: user["codigo"], cant_fitcoints: user["cant_fitcoints"], planId: user["planId"], planPrice: user["planPrice"], planUri: user["planUri"], planEnd: user["planEnd"], planStatus: user["planStatus"] }));
 							if (me.props["history"]["location"]["to"]) {
 								me.props["history"]["push"](me.props["history"]["location"]["to"]);
 							} else {
@@ -43,7 +43,7 @@ class CodigoSms extends React.Component {
 							}
 						}
 						else {
-							localStorage.setItem("@USER", JSON.stringify({ type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false }));
+							localStorage.setItem("@USER", JSON.stringify({ tokenAuth: user["tokenAuth"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false }));
 							var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));
 							var cat_add = JSON.parse(localStorage.getItem("@CAT_ADD"));
 							if (item && cat_add) {
