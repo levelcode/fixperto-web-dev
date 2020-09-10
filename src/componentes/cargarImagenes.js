@@ -14,7 +14,7 @@ const CambiarImagenes = (props) => {
 		axios({
 			method: 'post',
 			url: httpClient.urlBase + '/cliente/modAvatar',
-			data: data, headers: { Accept: 'application/json' }
+			data: data, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (response) {
 			let responseJson = response["data"];
 			if (responseJson["success"]) { props['mod'](photo, name); }

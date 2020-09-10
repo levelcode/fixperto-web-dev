@@ -19,7 +19,7 @@ const Experto = ({ experto, history }) => {
 			method: 'post',
 			url: httpClient.urlBase + '/fixperto/getExpertData',
 			data: { expert: experto["id"] },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) {
 				responseJson = responseJson["data"];

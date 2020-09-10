@@ -104,7 +104,7 @@ class Registro extends React.Component {
 				}).then(function (response) {
 					let responseJson = response["data"];
 					if (responseJson["success"]) {
-						localStorage.setItem("@USER", JSON.stringify({ userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, type: "cliente", avatar: responseJson.user.avatar, notification: true, notification_chat: true, name: me.state["name"], email: me.state["email"], token: me.state["token"], code_number: responseJson.user.code_number }));
+						localStorage.setItem("@USER", JSON.stringify({ tokenAuth: responseJson.user.tokenAuth, userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, type: "cliente", avatar: responseJson.user.avatar, notification: true, notification_chat: true, name: me.state["name"], email: me.state["email"], token: me.state["token"], code_number: responseJson.user.code_number }));
 						me.props["history"]["push"]("codigosms");
 					} else {
 						if (responseJson["existe"]) {

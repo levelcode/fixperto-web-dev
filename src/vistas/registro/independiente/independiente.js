@@ -133,7 +133,7 @@ class Independiente extends React.Component {
 				}).then(function (response) {
 					let responseJson = response["data"];
 					if (responseJson["success"]) {
-						localStorage.setItem("@USER", JSON.stringify({ active: 0, insured: 1, plan: 0, userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, avatar: responseJson.user.avatar, name: me.state["name"], email: me.state["email"], token: "web", notification: true, notification_chat: true, codigo: responseJson.user.codigo, cant_fitcoints: responseJson.user.fitcoints, type: "independiente", planId: responseJson.user.planId, planUri: "regalo", planEnd: responseJson.user.planEnd, planPrice: false, planStatus: "active", code_number: responseJson.user.code_number }));
+						localStorage.setItem("@USER", JSON.stringify({ tokenAuth: responseJson.user.tokenAuth, active: 0, insured: 1, plan: 0, userId: responseJson.user.id, id: responseJson.user.id, typeId: responseJson.user.typeId, avatar: responseJson.user.avatar, name: me.state["name"], email: me.state["email"], token: "web", notification: true, notification_chat: true, codigo: responseJson.user.codigo, cant_fitcoints: responseJson.user.fitcoints, type: "independiente", planId: responseJson.user.planId, planUri: "regalo", planEnd: responseJson.user.planEnd, planPrice: false, planStatus: "active", code_number: responseJson.user.code_number }));
 						me.props["history"]["push"]("codigosms");
 					} else {
 						if (responseJson["existe"]) {

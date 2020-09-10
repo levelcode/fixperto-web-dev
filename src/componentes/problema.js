@@ -12,7 +12,7 @@ const Problema = ({ show, request, close, user, type_user, typeId }) => {
 		return axios({
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/getProblemType',
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { setProblems(responseJson["data"].problems); }
 			else { setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true); }
@@ -28,7 +28,7 @@ const Problema = ({ show, request, close, user, type_user, typeId }) => {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/reportProblem',
 			data: { problem, type, request, user, type_user, typeId },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { close(true); }
 			else { close(false); }

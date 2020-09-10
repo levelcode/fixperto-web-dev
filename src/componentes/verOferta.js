@@ -23,7 +23,7 @@ class VerOferta extends React.Component {
 		me.setState({ mostrar: false });
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/fixperto/getOffert',
-			data: { expert: me.props["expert"], request: me.props["request"] }, headers: { Accept: 'application/json' }
+			data: { expert: me.props["expert"], request: me.props["request"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) {
 				me.setState({ mostrar: true, offert: responseJson["data"].offert, solicitud: responseJson["data"].solicitud });
@@ -45,7 +45,7 @@ class VerOferta extends React.Component {
 				expert: me.props["expert"],
 				request: me.props["request"],
 				collaborator: me.state["offert"]["collaborator"]
-			}, headers: { Accept: 'application/json' }
+			}, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { me.setState({ showDir: false, address: "" }); me.props["close"]("aceptada"); }
 			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
@@ -59,7 +59,7 @@ class VerOferta extends React.Component {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/cliente/refuseOffert',
-			data: { expert: me.props["expert"], request: me.props["request"] }, headers: { Accept: 'application/json' }
+			data: { expert: me.props["expert"], request: me.props["request"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { me.setState({ showDir: false, address: "" }); me.props["close"]("rechazada"); }
 			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }

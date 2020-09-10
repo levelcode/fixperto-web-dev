@@ -17,7 +17,7 @@ const ChangePassword = (props) => {
 				return axios({
 					method: 'post',
 					url: httpClient.urlBase + '/seguridad/olvidoPassword',
-					data: { email: email }, headers: { Accept: 'application/json' }
+					data: { email: email }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 				})
 					.then(function (response) {
 						let responseJson = response["data"];
@@ -53,7 +53,7 @@ const ChangePassword = (props) => {
 				return axios({
 					method: 'post',
 					url: httpClient.urlBase + '/seguridad/shangePassword',
-					data: { id: props["id"], pass: pass, new_pass: new_pass }, headers: { Accept: 'application/json' }
+					data: { id: props["id"], pass: pass, new_pass: new_pass }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 				})
 					.then(function (response) {
 						let responseJson = response["data"];

@@ -20,9 +20,6 @@ const Header = (props) => {
 					<div className="w3-cell" style={{ width: 25 + "px" }}>
 						<a href="https://www.fixperto.com/blog/"><b>Blog</b></a>
 					</div>
-					{/*<div className="w3-cell" >
-						<img src="../../assets/iconos/bell.png" style={{ width: 25 + "px", marginLeft: 10 }} />
-					</div>*/}
 				</div>
 			</div>
 		</React.Fragment >

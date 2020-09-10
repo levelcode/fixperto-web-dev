@@ -15,7 +15,7 @@ const Calificar = (props) => {
 			method: 'post',
 			url: httpClient.urlBase + '/cliente/ratingExpert',
 			data: { evaluation, cost, commentary, calificador: props["calificador"], calificado: props["experto"]["id"] },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { props["close"](true); }
 			else { props["close"](false); }

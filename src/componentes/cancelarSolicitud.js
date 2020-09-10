@@ -12,7 +12,7 @@ const CancelarSolicitud = ({ show, id, close }) => {
 		return axios({
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/getCancelType',
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { setCancellations(responseJson["data"].cancellations); }
 			else { setTextoAlert("Ha ocurrido un error intente nuevamente"); setShowAlert(true); }
@@ -28,7 +28,7 @@ const CancelarSolicitud = ({ show, id, close }) => {
 			method: 'post',
 			url: httpClient.urlBase + '/cliente/cancelRequest',
 			data: { texto: texto, type: type, id },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { close(true); }
 			else { close(false); }

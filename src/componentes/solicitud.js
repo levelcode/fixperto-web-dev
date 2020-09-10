@@ -10,7 +10,7 @@ const Solicitud = (props) => {
 	const getRequest = () => {
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/seguridad/getRequest',
-			data: { id: props["request"] }, headers: { Accept: 'application/json' }
+			data: { id: props["request"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { setRequest(responseJson["data"]["request"]); setActualizar(false); }
 			else { setTextoAlert("Ha ocurrido un erro, intente nuevamente"); setShowAlert(true); }

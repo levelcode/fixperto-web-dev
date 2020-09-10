@@ -25,7 +25,7 @@ class MapBox extends React.Component {
 		if (this.state["routes"].length === 0) {
 			let me = this;
 			return axios({
-				method: 'post', url: httpClient.urlBase + '/seguridad/getRegions', headers: { Accept: 'application/json' }
+				method: 'post', url: httpClient.urlBase + '/seguridad/getRegions', headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				if (responseJson["data"]["success"]) {
 					me.setState({ routes: responseJson["data"]["regions"] });
