@@ -63,7 +63,7 @@ class Perfil extends React.Component {
 		}
 	}
 	actualizar = () => { this.setState({ cliente: JSON.parse(localStorage.getItem("@USER")) }); }
-	onError = () => { /*window.location.reload(false);*/ }
+	onError = () => { }
 	render() {
 		const { info, config, contraseña, quienes, atencion, terminos, politica } = this.state;
 		const itemStyle = "active";
@@ -218,7 +218,6 @@ class Perfil extends React.Component {
 								<div id="id_perfil" className="w3-col s12 m7">
 									<div className="w3-card card_info">
 										<Switch>
-											{/*	<Route path="/fixperto/perfil/perfil-informacion" component={PerfilInformacion} />*/}
 											<Route path="/fixperto/perfil/perfil-informacion" render={() => <PerfilInformacion actualizar={() => { this.actualizar() }} />} />
 											<Route path="/fixperto/perfil/configuracion" component={PerfilConfig} />
 											<Route path="/fixperto/perfil/cambio_password" component={PerfilCambiarContr} />

@@ -18,7 +18,7 @@ class Independiente1 extends React.Component {
 	}
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (Object.keys(user).length===0) { this.props["history"]["push"]("/ingreso"); }
+		if (Object.keys(user).length === 0) { this.props["history"]["push"]("/ingreso"); }
 		else {
 			if (user["type"] === "cliente") {
 				localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("/ingreso");
@@ -30,7 +30,7 @@ class Independiente1 extends React.Component {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/services/getServicesConcatCategories',
-			data: { selected: false }, headers: { Accept: 'application/json' }
+			data: { selected: false }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { me.getCertificationsType(responseJson["data"].categories); }
 			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
@@ -44,7 +44,7 @@ class Independiente1 extends React.Component {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/services/getCertificationsType',
-			data: { selected: false }, headers: { Accept: 'application/json' }
+			data: { selected: false }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) {
 				me.setState({ categories, certification_type: responseJson["data"].certification_type });

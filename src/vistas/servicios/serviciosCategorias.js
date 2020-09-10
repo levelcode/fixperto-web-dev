@@ -62,7 +62,7 @@ class ServiciosCateg extends React.Component {
 		else if (this.props.history.location.item['emergency'] === 1) { url = "/services/getCategoriesEmergency"; }
 		var me = this;
 		axios({
-			method: 'post', url: httpClient.urlBase + url, data: { service: this.props.history.location.item['id'] }, headers: { Accept: 'application/json' }
+			method: 'post', url: httpClient.urlBase + url, data: { service: this.props.history.location.item['id'] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data']; me.setState({ categories: responseJson.categories });
 		}).catch((error) => {

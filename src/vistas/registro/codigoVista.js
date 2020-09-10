@@ -28,7 +28,7 @@ class CodigoSms extends React.Component {
 				data: {
 					id: user["id"], code_number: this.state["code_number"], cliente: (user["type"] === "cliente") ? 1 : 0
 				},
-				headers: { Accept: 'application/json' }
+				headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				responseJson = responseJson['data'];
 				if (responseJson.success) {
@@ -84,7 +84,7 @@ class CodigoSms extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/reenviarCode',
 			data: { id: user["id"], type: user["type"] },
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) {
@@ -110,7 +110,7 @@ class CodigoSms extends React.Component {
 					method: 'post',
 					url: httpClient.urlBase + '/seguridad/shangePhone',
 					data: { user: user["id"], type: user["type"], phone: this.state["new_phone"] },
-					headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+					headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 				}).then(function (responseJson) {
 					responseJson = responseJson['data'];
 					if (responseJson.success) {
@@ -125,8 +125,8 @@ class CodigoSms extends React.Component {
 					}
 				});
 			}
-			else{
-				me.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" }); 
+			else {
+				me.setState({ showAlert: true, textoAlert: "Teléfono inválido, por favor verifíquelo" });
 			}
 		} else { me.setState({ showAlert: true, textoAlert: "Ingresa un número de teléfono" }); }
 	}

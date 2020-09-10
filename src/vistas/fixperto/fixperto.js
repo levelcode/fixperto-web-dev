@@ -20,7 +20,7 @@ class Fixperto extends React.Component {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/fixperto/getOffertsCompleted',
-			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json' }
+			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { me.setState({ services: responseJson["data"].services }); }
 			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }

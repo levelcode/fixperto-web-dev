@@ -27,7 +27,7 @@ class ConfiguracionVista extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/setNotification',
 			data: { id: id, notification: (sta["notification"] === true) ? 0 : 1 },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (!responseJson.success) {
@@ -52,7 +52,7 @@ class ConfiguracionVista extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/setNotificationChat',
 			data: { id: id, notification_chat: (sta["notification_chat"] === true) ? 0 : 1 },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (!responseJson.success) {
@@ -75,7 +75,7 @@ class ConfiguracionVista extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/getConfigNotifications',
 			data: { id: id },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) {

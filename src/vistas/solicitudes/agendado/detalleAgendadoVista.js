@@ -26,7 +26,7 @@ class DetalleAgendado extends React.Component {
 		if (id !== "") {
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/getRequestScheduled',
-				data: { id }, headers: { Accept: 'application/json' }
+				data: { id }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (response) {
 				if (response["data"]["success"]) {
 					var responseJson = response["data"];
@@ -41,7 +41,7 @@ class DetalleAgendado extends React.Component {
 						fecha_agendada.setMinutes(aux[1]);
 						fecha_agendada.setSeconds(aux[2]);
 						fecha_actual = new Date(responseJson.request["date"]);
-					} console.log(me.state["user"], responseJson.expert)
+					}
 					me.setState({ id, request: responseJson.request, expert: responseJson.expert, fecha_agendada, fecha_actual });
 				}
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
@@ -58,7 +58,7 @@ class DetalleAgendado extends React.Component {
 		if (this.state["fecha_actual"] !== "" && this.state["fecha_agendada"] !== "" && (this.state["fecha_actual"].getTime() < this.state["fecha_agendada"].getTime()))
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/refuseOffert',
-				data: { expert: me.state["expert"].id, request: me.state["request"].id }, headers: { Accept: 'application/json' }
+				data: { expert: me.state["expert"].id, request: me.state["request"].id }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (response) {
 				if (response["data"]["success"]) { me.props["backRechazar"](true); }
 				else { me.props["backRechazar"](false); }

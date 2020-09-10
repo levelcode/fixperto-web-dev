@@ -41,7 +41,7 @@ class ServiciosVista extends React.Component {
 		axios({
 			method: 'post',
 			url: httpClient.urlBase + '/services/getServicess',
-			headers: { 'Content-Type': 'text/plain' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			let categories = responseJson.categories;
@@ -76,7 +76,7 @@ class ServiciosVista extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/services/addCategoriaSugerida',
 			data: { denomination: this.state["new_categori"] },
-			headers: { 'Content-Type': 'text/plain' }
+			headers: { Accept: 'application/json', 'Content-Type': 'text/plain', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) {

@@ -29,7 +29,7 @@ class Login extends React.Component {
 						var user = responseJson["user"][0];
 						if (user["type"] === "cliente") {
 							localStorage.setItem("@USER", JSON.stringify({ tokenAuth: user["tokenAuth"], phone: user["phone"], insured: 1, evaluation: (user["evaluation"]) ? user["evaluation"] : 0, userId: user["id"], type: user["type"], id: user["id"], typeId: user["typeId"], avatar: user["avatar"], name: user["name"], email: user["email"], token: user["token"], photo: user["photo"], notification: (user["notification"] === 1) ? true : false, notification_chat: (user["notification_chat"] === 1) ? true : false }));
-							socket.on('connect', () => { socket.emit('cliente', { id: user["id"] }); });
+							socket.on('connect', () => { socket.emit('cliente', { id: user["id"], tokenAuth: user["tokenAuth"] }); });
 							if (user["validate_number"] === 0) { me.props["history"]["push"]("codigosms"); }
 							else {
 								var item = JSON.parse(localStorage.getItem("@SEARCHCAT"));

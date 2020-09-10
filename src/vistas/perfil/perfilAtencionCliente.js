@@ -21,7 +21,7 @@ class PerfilAtencionCliente extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/getDatasCustomerSupport',
 			data: { user: id },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) {
@@ -41,7 +41,7 @@ class PerfilAtencionCliente extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/getDataCustomerSupport',
 			data: { id },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) {
@@ -64,7 +64,7 @@ class PerfilAtencionCliente extends React.Component {
 				method: 'post',
 				url: httpClient.urlBase + '/seguridad/addDataCustomerSupport',
 				data: { user: id, type_customer_support: this.state["type"], description: this.state["description"] },
-				headers: { Accept: 'application/json' }
+				headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				responseJson = responseJson['data'];
 				if (responseJson.success) { me.setState({ description: "", type: 1 }); me.getDatasCustomerSupport(); }
@@ -84,7 +84,7 @@ class PerfilAtencionCliente extends React.Component {
 				method: 'post',
 				url: httpClient.urlBase + '/seguridad/responseDataCustomerSupport',
 				data: { id: me.state["ticket"]["id"], response: me.state["response"] },
-				headers: { Accept: 'application/json' }
+				headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				responseJson = responseJson['data'];
 				if (responseJson.success) { me.setState({ show_add: false }); me.getDatasCustomerSupport(); }
@@ -102,7 +102,7 @@ class PerfilAtencionCliente extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/seguridad/hideDataCustomerSupport',
 			data: { id },
-			headers: { Accept: 'application/json' }
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) {

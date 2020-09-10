@@ -13,7 +13,7 @@ class SolicitudesProgreso extends React.Component {
 		var me = this;
 		axios({
 			method: 'post', url: httpClient.urlBase + '/cliente/getRequestsProgress',
-			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json' }
+			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) { me.setState({ requests: responseJson.requests }); }

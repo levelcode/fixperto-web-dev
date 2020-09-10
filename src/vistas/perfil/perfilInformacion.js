@@ -20,7 +20,7 @@ class PerfilInformacion extends React.Component {
 			method: 'post',
 			url: httpClient.urlBase + '/cliente/getInformation',
 			data: { id: id },
-			headers: { Accept: 'application/json' },
+			headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			var datos = responseJson['data']['customer'];
 			me.setState({
@@ -84,7 +84,7 @@ class PerfilInformacion extends React.Component {
 					gender: me.state["gender"],
 					phone: me.state["phone"]
 				},
-				headers: { Accept: 'application/json' },
+				headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				var responseJson = responseJson['data'];
 				me.setState({ buttonDisabled: false });

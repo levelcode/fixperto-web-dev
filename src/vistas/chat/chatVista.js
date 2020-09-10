@@ -35,7 +35,7 @@ class Chat extends React.Component {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/seguridad/getChats',
-			data: { user: JSON.parse(localStorage.getItem("@USER"))["id"] }, headers: { Accept: 'application/json' }
+			data: { user: JSON.parse(localStorage.getItem("@USER"))["id"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { me.setState({ chats: responseJson["data"].chats }); }
 			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
@@ -46,17 +46,6 @@ class Chat extends React.Component {
 		});
 	}
 	onReceivedMessage(messages, de, request, type, user, action) {
-		/*	if (this.state["user"].id !== messages[0]["user"]["_id"]) {
-				Notifications.presentLocalNotificationAsync({
-					title: "Chat", body: "Nuevo mensaje...",
-					data: {
-						title: "Chat", texto: "Nuevo mensaje...", fecha: "", tipo: "chat", vista: "Chat",
-						vista_data: { chat: { to: user, user: this.state["user"], request, type: this.state["type"], action, de, para: this.state["to"] } }
-					},
-					ios: { sound: true },
-					android: { channelId: 'fixperto-messages' },
-				});
-			}*/
 		this._storeMessages(messages);
 	}
 	onSend(messages = []) {
@@ -74,7 +63,7 @@ class Chat extends React.Component {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/seguridad/getMessages',
-			data: { request, user: JSON.parse(localStorage.getItem("@USER"))["id"], to }, headers: { Accept: 'application/json' }
+			data: { request, user: JSON.parse(localStorage.getItem("@USER"))["id"], to }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) { me.setState({ messages: responseJson["data"].messages }); }
 			else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }
@@ -88,7 +77,7 @@ class Chat extends React.Component {
 		let me = this;
 		return axios({
 			method: 'post', url: httpClient.urlBase + '/fixperto/getExpert',
-			data: { id: datos["typeId"] }, headers: { Accept: 'application/json' }
+			data: { id: datos["typeId"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			if (responseJson["data"]["success"]) {
 				me.setState({ showChat: true, to: responseJson["data"].result, request: datos["request"], action: datos["action"] });
@@ -187,7 +176,6 @@ class Chat extends React.Component {
 						</div>
 					</div>
 				</div>
-
 			</React.Fragment>
 		);
 	}

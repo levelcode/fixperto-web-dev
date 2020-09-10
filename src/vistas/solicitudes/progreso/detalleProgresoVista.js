@@ -22,7 +22,7 @@ class DetalleProgreso extends React.Component {
 		if (id !== "")
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/getRequestProgress',
-				data: { id }, headers: { Accept: 'application/json' }
+				data: { id }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				if (responseJson["data"]["success"]) { me.setState({ id, request: responseJson["data"].request, experts: responseJson["data"].experts }); }
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }

@@ -8,7 +8,7 @@ class RegistroCompletado extends React.Component {
 	constructor(props) { super(props); this.state = { showAlert: false, textoAlert: "" }; }
 	componentDidMount() {
 		var user = JSON.parse(localStorage.getItem("@USER"));
-		if (Object.keys(user).length===0) { this.props["history"]["push"]("/ingreso"); }
+		if (Object.keys(user).length === 0) { this.props["history"]["push"]("/ingreso"); }
 		else {
 			if (user["type"] === "cliente") {
 				localStorage.setItem("@USER", JSON.stringify({})); this.props["history"]["push"]("/ingreso");
@@ -58,7 +58,7 @@ class RegistroCompletado extends React.Component {
 		};
 		axios({
 			method: 'post', url: httpClient.urlBase + '/fixpertoProfesional/addProfesionalContinue',
-			data: createFormData(), headers: { Accept: 'application/json' }
+			data: createFormData(), headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (response) {
 			let responseJson = response["data"];
 			if (responseJson["success"]) { me.props["history"]["push"]("fixpertos"); }
@@ -144,7 +144,7 @@ class RegistroCompletado extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div style={{ width:220, margin: "auto" }}>
+					<div style={{ width: 220, margin: "auto" }}>
 						<button className="w3-button btn w3-block" onClick={() => { this.registrar(); }}>Registrar</button>
 					</div>
 				</div>

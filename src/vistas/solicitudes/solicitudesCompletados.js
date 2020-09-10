@@ -14,7 +14,7 @@ class SolicitudesCompletado extends React.Component {
 		axios({
 			method: 'post',
 			url: httpClient.urlBase + '/cliente/getRequestsCompleted',
-			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json' }
+			data: { id: JSON.parse(localStorage.getItem("@USER"))["typeId"] }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 		}).then(function (responseJson) {
 			responseJson = responseJson['data'];
 			if (responseJson.success) { me.setState({ requests: responseJson.requests }); }

@@ -17,7 +17,7 @@ class DetalleCompletado extends React.Component {
 		if (id !== "")
 			return axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/getRequestCompleted',
-				data: { id }, headers: { Accept: 'application/json' }
+				data: { id }, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				if (responseJson["data"]["success"]) { me.setState({ id, request: responseJson["data"].request, expert: responseJson["data"].expert }); }
 				else { me.setState({ showAlert: true, textoAlert: "Ha ocurrido un error intente nuevamente" }); }

@@ -102,7 +102,7 @@ class ServiciosNuevaSol extends React.Component {
 			let me = this;
 			axios({
 				method: 'post', url: httpClient.urlBase + '/cliente/sendRequest',
-				data: datos, headers: { Accept: 'application/json' }
+				data: datos, headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (response) {
 				let responseJson = response["data"];
 				if (responseJson["success"]) {

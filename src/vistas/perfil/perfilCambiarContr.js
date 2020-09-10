@@ -27,7 +27,7 @@ class CambiarPassword extends React.Component {
 				method: 'post',
 				url: httpClient.urlBase + '/seguridad/shangePassword',
 				data: { id: id, pass: me.state["pass"], new_pass: me.state["new_pass"] },
-				headers: { Accept: 'application/json' }
+				headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
 			}).then(function (responseJson) {
 				responseJson = responseJson['data']
 				me.setState({ buttonDisabled: false });
