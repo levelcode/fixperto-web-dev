@@ -2,10 +2,6 @@ import React from 'react';
 import Alerta from "../../componentes/alertaVista";
 import axios from "axios";
 import httpClient from "../../constantes/axios";
-const configuracion = [
-	{ name: "Notificaciones", action: "notification", value: "notification" },
-	{ name: "Notificaciones del chat", action: "chat", value: "notification_chat" },
-]
 class ConfiguracionVista extends React.Component {
 	constructor(props) {
 		super(props);

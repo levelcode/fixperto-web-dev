@@ -85,8 +85,8 @@ class PerfilInformacion extends React.Component {
 					phone: me.state["phone"]
 				},
 				headers: { Accept: 'application/json', "Access-Token": JSON.parse(localStorage.getItem("@USER"))["tokenAuth"] }
-			}).then(function (responseJson) {
-				var responseJson = responseJson['data'];
+			}).then(function (response) {
+				var responseJson = response['data'];
 				me.setState({ buttonDisabled: false });
 				if (responseJson.success) {
 					me.setState({ showAlert: true, textoAlert: "Se ha guardado la informaición" });

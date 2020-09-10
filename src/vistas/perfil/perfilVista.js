@@ -84,11 +84,11 @@ class Perfil extends React.Component {
 										<div className="w3-col s12 l5">
 											{this.state['photo'] === "" ?
 												<div className="w3-center img_upl">
-													<img src={this.state['photo']} style={{ width: 100, height: 100, objectFit: "cover" }} />
+													<img alt="1" src={this.state['photo']} style={{ width: 100, height: 100, objectFit: "cover" }} />
 												</div>
 												: <form>
 													<div>
-														<img src={this.state['photo']} style={{ width: 100, height: 100, objectFit: "cover" }}
+														<img alt="2" src={this.state['photo']} style={{ width: 100, height: 100, objectFit: "cover" }}
 															onError={this.onError}
 														/>
 														<CargarImagenes mod={(photo, name) => {

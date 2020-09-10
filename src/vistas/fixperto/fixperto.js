@@ -85,10 +85,10 @@ class Fixperto extends React.Component {
 											</div>
 											<div className="w3-col s9">
 												<p>Para interactuar y disfrutar de todas las funciones de fixperto descarga la app en:
-													<a href="https://www.apple.com/co/ios/app-store/" target="_blank">
+													<a href="https://www.apple.com/co/ios/app-store/">
 														<img src="../../assets/iconos/apple.png" alt="alert" style={{ width: 20, height: 20, marginLeft: 5 }}></img>
 													</a>
-													<a href="https://play.google.com/store/apps/details?id=com.shiftactive.fixperto&hl=es_CO" target="_blank">
+													<a href="https://play.google.com/store/apps/details?id=com.shiftactive.fixperto&hl=es_CO">
 														<img src="../../assets/iconos/google-play.png" alt="alert" style={{ width: 20, height: 20, marginLeft: 5 }}></img>
 													</a>
 												</p>
@@ -124,7 +124,7 @@ class Fixperto extends React.Component {
 													</div>
 												</div>
 												:
-												(active === 1 && services.length == 0) ?
+												(active === 1 && services.length === 0) ?
 													<div className="copy w3-row progreso">
 														<div className="w3-col s12">
 															<p style={{ textAlign: "center" }}>Bienvenido ya eres parte de fixperto. </p>

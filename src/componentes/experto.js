@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import httpClient from "../constantes/axios";
 import axios from "axios";
-import Alerta from "./alertaVista";
 const Experto = ({ experto, history }) => {
 	const [showExpert, setShowExpert] = useState(false);
-	const [showAlert, setShowAlert] = useState(false);
-	const [textoAlert, setTextoAlert] = useState("");
+	const [setShowAlert] = useState(false);
+	const [setTextoAlert] = useState("");
 	const [expert, setExpert] = useState({});
 	const [jobs, setJobs] = useState([]);
 	const [comments, setComments] = useState([]);

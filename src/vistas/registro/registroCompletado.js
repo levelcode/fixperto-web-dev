@@ -19,7 +19,6 @@ class RegistroCompletado extends React.Component {
 		let me = this;
 		var expert = JSON.parse(localStorage.getItem("@USER"))["typeId"];
 		var user = JSON.parse(localStorage.getItem("@USER"))["id"];
-		let method = (JSON.parse(localStorage.getItem("@USER"))["type"] === "empresa") ? "/fixpertoEmpresa/addEmpresaContinue" : "/fixpertoProfesional/addProfesionalContinue";
 		const createFormData = () => {
 			let informacion = me.props["history"]["location"]["informacion"];
 			const data = new FormData();

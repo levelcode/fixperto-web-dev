@@ -52,7 +52,7 @@ class SolicitudeAgendado extends React.Component {
 						<h1 className="titleRegister">Agendados</h1>
 						<div className="w3-row serv">
 							{
-								requests.length == 0 &&
+								requests.length === 0 &&
 								<div className="copy w3-row progreso">
 									<div className="w3-col s3 m1 l3">
 										<img src="../../assets/iconos/progreso.png" className="img_star" alt="star" style={{ position: "relative", top: -2, }}></img>

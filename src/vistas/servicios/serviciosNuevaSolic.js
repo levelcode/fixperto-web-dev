@@ -211,7 +211,7 @@ class ServiciosNuevaSol extends React.Component {
 											<div className="w3-quarter" key={key}>
 												<div className="w3-row ">
 													<div style={{ cursor: "pointer" }} onClick={() => { this.deleteFoto(photo) }}>
-														<img src="../../../assets/iconos/eliminar.png" className="img_elim" />
+														<img src="../../../assets/iconos/eliminar.png" className="img_elim" alt="3" />
 													</div>
 													<img src={photo} className="imagen-experto img_new" alt="Foto"></img>
 												</div>

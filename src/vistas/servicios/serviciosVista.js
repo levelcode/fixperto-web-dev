@@ -1,5 +1,4 @@
 import React from 'react';
-import Alerta from "../../componentes/alertaVista";
 import axios from "axios";
 import httpClient from "../../constantes/axios";
 class Categorias extends React.Component {
